@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuer Schärfauftrag - Schärfservice Hartmann</title>
+    <style>
+        /* Reset und Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .email-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        /* Header */
+        .header {
+            background: #ffffff;
+            color: #000000;
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 2px solid #000000;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.025em;
+        }
+        
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .order-info {
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: left;
+        }
+        
+        .order-info h2 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .order-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .order-meta div {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .order-meta strong {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        /* Content */
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #000000;
+        }
+        
+        /* Kontaktdaten */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #000000;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-item strong {
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .contact-item span {
+            color: #000000;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Instrumententabelle */
+        .instruments-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .instruments-table th {
+            background-color: #ffffff;
+            color: #000000;
+            font-weight: 600;
+            padding: 16px 12px;
+            text-align: left;
+            font-size: 14px;
+            letter-spacing: 0.025em;
+            border: 1px solid #000000;
+        }
+        
+        .instruments-table th:last-child,
+        .instruments-table td:last-child {
+            text-align: right;
+        }
+        
+        .instruments-table td {
+            padding: 14px 12px;
+            border: 1px solid #000000;
+            font-size: 15px;
+            color: #000000;
+            background-color: #ffffff;
+        }
+        
+        .quantity-badge {
+            background-color: #dbeafe;
+            color: #1d4ed8;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        /* Preisberechnung */
+        .price-summary {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 25px;
+            border: 2px solid #000000;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #000000;
+            color: #000000;
+            font-weight: 500;
+        }
+        
+        .price-row:last-child {
+            border-bottom: none;
+            padding-top: 16px;
+            margin-top: 8px;
+            border-top: 2px solid #000000;
+            font-weight: 700;
+            font-size: 18px;
+            color: #000000;
+        }
+        
+        .discount-badge {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        /* Status und Checkboxen */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .status-item {
+            background-color: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .status-item.success {
+            background-color: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+        
+        .status-item.success .status-icon {
+            color: #059669;
+        }
+        
+        .status-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #0284c7;
+        }
+        
+        .status-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+        
+        .status-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #059669;
+        }
+        
+        /* Nachricht */
+        .message-box {
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .message-box h3 {
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .message-box p {
+            color: #000000;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        
+        /* Nächste Schritte */
+        .next-steps {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid #000000;
+        }
+        
+        .next-steps h3 {
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+        
+        .steps-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .steps-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding: 12px;
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 6px;
+        }
+        
+        .step-number {
+            background-color: #000000;
+            color: #ffffff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 12px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid #000000;
+        }
+        
+        .footer h3 {
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        
+        .footer p {
+            margin-bottom: 8px;
+            color: #000000;
+        }
+        
+        .footer a {
+            color: #000000;
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .order-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .instruments-table {
+                font-size: 14px;
+            }
+            
+            .instruments-table th,
+            .instruments-table td {
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Neuer Schärfauftrag</h1>
+            <p class="subtitle">Schärfservice Hartmann</p>
+            
+            <div class="order-info">
+                <h2>Auftragsinformationen</h2>
+                <div class="order-meta">
+                    <div>
+                        <strong>Datum:</strong>
+                        {{order_date}}
+                    </div>
+                    <div>
+                        <strong>Uhrzeit:</strong>
+                        {{order_time}}
+                    </div>
+                    <div>
+                        <strong>Gesamtanzahl:</strong>
+                        {{total_quantity}} Instrumente
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Kontaktdaten -->
+            <div class="section">
+                <h2 class="section-title">Kontaktdaten</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <strong>Praxisname</strong>
+                        <span>{{praxisname}}</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Ansprechpartner</strong>
+                        <span>{{ansprechpartner}}</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>E-Mail</strong>
+                        <span>{{email}}</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Telefon</strong>
+                        <span>{{telefon}}</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Adresse</strong>
+                        <span>{{full_address}}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ausgewählte Instrumente -->
+            <div class="section">
+                <h2 class="section-title">Ausgewählte Instrumente</h2>
+                <div style="white-space: pre-line; background-color: #ffffff; padding: 20px; border: 1px solid #000000; border-radius: 8px; font-family: monospace; font-size: 14px; line-height: 1.8; color: #000000;">{{instruments_list}}</div>
+            </div>
+            
+            <!-- Preisberechnung -->
+            <div class="section">
+                <h2 class="section-title">Preisberechnung</h2>
+                <div class="price-summary">
+                    <div class="price-row">
+                        <span>Zwischensumme {{discount_info}}</span>
+                        <span>{{subtotal}}</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Versandkosten</span>
+                        <span>{{shipping}}</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Nettobetrag</span>
+                        <span>{{total_net}}</span>
+                    </div>
+                    <div class="price-row">
+                        <span>MwSt. (19%)</span>
+                        <span>{{vat}}</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Gesamtbetrag Brutto</span>
+                        <span>{{total_gross}}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Besondere Wünsche -->
+            <div class="section">
+                <h2 class="section-title">Besondere Wünsche / Nachricht</h2>
+                <div class="message-box">
+                    <h3>Kundennotiz:</h3>
+                    <p>{{nachricht}}</p>
+                </div>
+            </div>
+            
+            <!-- Einverständniserklärungen -->
+            <div class="section">
+                <h2 class="section-title">Einverständniserklärungen</h2>
+                <div class="status-grid">
+                    <div class="status-item success">
+                        <div class="status-icon">✓</div>
+                        <div class="status-title">Widerrufsrecht</div>
+                        <div class="status-value">{{widerrufsrecht_accepted}}</div>
+                    </div>
+                    <div class="status-item success">
+                        <div class="status-icon">✓</div>
+                        <div class="status-title">AGB akzeptiert</div>
+                        <div class="status-value">{{agb_accepted}}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nächste Schritte -->
+            <div class="section">
+                <h2 class="section-title">Nächste Schritte</h2>
+                <div class="next-steps">
+                    <h3>Bearbeitungsablauf:</h3>
+                    <ul class="steps-list">
+                        <li>
+                            <span class="step-number">1</span>
+                            <span>Bestätigungs-E-Mail an Kunden senden</span>
+                        </li>
+                        <li>
+                            <span class="step-number">2</span>
+                            <span>Auf Instrumentensendung warten</span>
+                        </li>
+                        <li>
+                            <span class="step-number">3</span>
+                            <span>Nach Erhalt sofort mit Schärfarbeiten beginnen</span>
+                        </li>
+                        <li>
+                            <span class="step-number">4</span>
+                            <span>Qualitätskontrolle durchführen</span>
+                        </li>
+                        <li>
+                            <span class="step-number">5</span>
+                            <span>Geschärfte Instrumente sicher verpacken und zurücksenden</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <h3>Schärfservice Hartmann</h3>
+            <p>Professionelle Instrumentenschärfung seit über 20 Jahren</p>
+            <p>E-Mail: <a href="mailto:info@schaerfservice-hartmann.de">info@schaerfservice-hartmann.de</a></p>
+            <p>Web: <a href="https://schaerfservice-hartmann.de">schaerfservice-hartmann.de</a></p>
+        </div>
+    </div>
+</body>
+</html>

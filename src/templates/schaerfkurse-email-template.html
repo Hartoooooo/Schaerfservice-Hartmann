@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neue Schärfkurs-Anfrage - Schärfservice Hartmann</title>
+    <style>
+        /* Apple-inspired Reset und Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+        
+        .email-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            color: #000000;
+            padding: 48px 32px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.025em;
+            color: #000000;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            opacity: 0.7;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .kurs-info {
+            background-color: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+            text-align: left;
+        }
+        
+        .kurs-info h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            color: #000000;
+        }
+        
+        .kurs-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .kurs-meta div {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .kurs-meta strong {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6b7280;
+        }
+        
+        .kurs-meta span {
+            font-size: 16px;
+            font-weight: 500;
+            color: #000000;
+        }
+        
+        /* Content */
+        .content {
+            padding: 48px 32px;
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #000000;
+            letter-spacing: -0.025em;
+        }
+        
+        /* Kontaktdaten */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            background-color: #ffffff;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-item strong {
+            color: #6b7280;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .contact-item span {
+            color: #000000;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Kursdetails */
+        .kurs-details {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #f3f4f6;
+            color: #000000;
+            font-weight: 500;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+            padding-top: 20px;
+            margin-top: 12px;
+            border-top: 2px solid #000000;
+            font-weight: 700;
+            font-size: 18px;
+            color: #000000;
+        }
+        
+        .detail-label {
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .detail-value {
+            font-weight: 600;
+            color: #000000;
+        }
+        
+        /* Preisberechnung */
+        .price-summary {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #f3f4f6;
+            color: #000000;
+            font-weight: 500;
+        }
+        
+        .price-row:last-child {
+            border-bottom: none;
+            padding-top: 20px;
+            margin-top: 12px;
+            border-top: 2px solid #000000;
+            font-weight: 700;
+            font-size: 20px;
+            color: #000000;
+        }
+        
+        .price-label {
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .price-value {
+            font-weight: 600;
+            color: #000000;
+        }
+        
+        /* Kursinhalt */
+        .kurs-inhalt {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .inhalt-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .inhalt-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            padding: 16px;
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        
+        .inhalt-number {
+            background-color: #000000;
+            color: #ffffff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        
+        .inhalt-text {
+            color: #374151;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        /* Nächste Schritte */
+        .next-steps {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .next-steps h3 {
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .steps-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .steps-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            padding: 16px;
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        
+        .step-number {
+            background-color: #000000;
+            color: #ffffff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            color: #374151;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #f9fafb;
+            color: #000000;
+            padding: 40px 32px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .footer h3 {
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+        
+        .footer p {
+            margin-bottom: 8px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .footer a {
+            color: #000000;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        
+        .footer a:hover {
+            color: #374151;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .content {
+                padding: 32px 20px;
+            }
+            
+            .header {
+                padding: 32px 20px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 24px;
+            }
+            
+            .kurs-meta {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .detail-row,
+            .price-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            
+            .detail-value,
+            .price-value {
+                font-weight: 700;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Neue Schärfkurs-Anfrage</h1>
+            <p class="subtitle">Schärfservice Hartmann</p>
+            
+            <div class="kurs-info">
+                <h2>Kursinformationen</h2>
+                <div class="kurs-meta">
+                    <div>
+                        <strong>Kurstyp</strong>
+                        <span>{{kurs_typ}}</span>
+                    </div>
+                    <div>
+                        <strong>Kursdauer</strong>
+                        <span>{{kurs_dauer}}</span>
+                    </div>
+                    <div>
+                        <strong>Kursort</strong>
+                        <span>{{kurs_ort}}</span>
+                    </div>
+                    <div>
+                        <strong>Anfrage Datum</strong>
+                        <span>{{anfrage_datum}}</span>
+                    </div>
+                    <div>
+                        <strong>Anfrage Uhrzeit</strong>
+                        <span>{{anfrage_uhrzeit}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Kontaktdaten -->
+            <div class="section">
+                <h2 class="section-title">Kontaktdaten</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <strong>Ansprechpartner</strong>
+                        <span>{{ansprechpartner}}</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>E-Mail</strong>
+                        <span>{{email}}</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Telefon</strong>
+                        <span>{{telefon}}</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Adresse</strong>
+                        <span>{{adresse}}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Kursdetails -->
+            <div class="section">
+                <h2 class="section-title">Kursdetails</h2>
+                <div class="kurs-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Gewünschtes Datum</span>
+                        <span class="detail-value">{{kurs_datum}}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Gewünschte Uhrzeit</span>
+                        <span class="detail-value">{{kurs_uhrzeit}}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Teilnehmeranzahl</span>
+                        <span class="detail-value">{{teilnehmer_anzahl}} Personen</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Kursort</span>
+                        <span class="detail-value">{{kurs_ort}}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Preisberechnung -->
+            <div class="section">
+                <h2 class="section-title">Preisberechnung</h2>
+                <div class="price-summary">
+                    <div class="price-row">
+                        <span class="price-label">Grundpreis (bis 2 Teilnehmer)</span>
+                        <span class="price-value">{{grundpreis}}</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-label">Zusätzliche Teilnehmer ({{zusaetzliche_teilnehmer}} × 45€)</span>
+                        <span class="price-value">{{zusaetzliche_kosten}}€</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-label">Anfahrt ({{anfahrt_kosten}})</span>
+                        <span class="price-value">Nach Entfernung</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-label">Gesamtpreis</span>
+                        <span class="price-value">{{gesamtpreis}}€</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Kursinhalt -->
+            <div class="section">
+                <h2 class="section-title">Kursinhalt</h2>
+                <div class="kurs-inhalt">
+                    <ul class="inhalt-list">
+                        <li>
+                            <span class="inhalt-number">1</span>
+                            <span class="inhalt-text">Einführung in die Grundlagen der Instrumentenschärfung</span>
+                        </li>
+                        <li>
+                            <span class="inhalt-number">2</span>
+                            <span class="inhalt-text">Praktische Übungen mit verschiedenen Instrumententypen</span>
+                        </li>
+                        <li>
+                            <span class="inhalt-number">3</span>
+                            <span class="inhalt-text">Qualitätskontrolle und Schärfwinkel-Bestimmung</span>
+                        </li>
+                        <li>
+                            <span class="inhalt-number">4</span>
+                            <span class="inhalt-text">Wartung und Pflege der Schärfgeräte</span>
+                        </li>
+                        <li>
+                            <span class="inhalt-number">5</span>
+                            <span class="inhalt-text">Tipps für optimale Schärfergebnisse</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Nächste Schritte -->
+            <div class="section">
+                <h2 class="section-title">Nächste Schritte</h2>
+                <div class="next-steps">
+                    <h3>Bearbeitungsablauf:</h3>
+                    <ul class="steps-list">
+                        <li>
+                            <span class="step-number">1</span>
+                            <span class="step-text">Bestätigung der Kursanfrage per E-Mail</span>
+                        </li>
+                        <li>
+                            <span class="step-number">2</span>
+                            <span class="step-text">Terminabstimmung und Bestätigung</span>
+                        </li>
+                        <li>
+                            <span class="step-number">3</span>
+                            <span class="step-text">Vorbereitung der Kursmaterialien</span>
+                        </li>
+                        <li>
+                            <span class="step-number">4</span>
+                            <span class="step-text">Durchführung des Schärfkurses vor Ort</span>
+                        </li>
+                        <li>
+                            <span class="step-number">5</span>
+                            <span class="step-text">Nachbetreuung und Feedback</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <h3>Schärfservice Hartmann</h3>
+            <p>Professionelle Instrumentenschärfung und Schulungen seit über 20 Jahren</p>
+            <p>E-Mail: <a href="mailto:info@schaerfservice-hartmann.de">info@schaerfservice-hartmann.de</a></p>
+            <p>Web: <a href="{{website}}">{{website}}</a></p>
+            <p>Telefon: <a href="tel:+4930123456789">+49 (0) 30 123 456 789</a></p>
+        </div>
+    </div>
+</body>
+</html>
