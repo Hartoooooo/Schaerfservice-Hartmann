@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { analytics } from "@/components/GoogleAnalytics";
 import emailjs from '@emailjs/browser';

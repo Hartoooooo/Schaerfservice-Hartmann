@@ -507,7 +507,7 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-700 text-sm leading-relaxed mb-4 italic">
-                "{review.text}"
+                &ldquo;{review.text}&rdquo;
               </p>
               <div className="border-t border-gray-100 pt-4">
                 <p className="font-semibold text-gray-900 text-sm">{review.author}</p>

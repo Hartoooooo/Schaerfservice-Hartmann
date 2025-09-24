@@ -19,7 +19,6 @@ interface SchaerfauftragFormProps {
 
 export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   const router = useRouter();
-  const [name, setName] = useState("");
   const [quantities, setQuantities] = useState<number[]>(() => rows.map(() => 0));
   const [currentStep, setCurrentStep] = useState(1);
   
@@ -44,7 +43,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   // EmailJS State
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
-  const [emailSent, setEmailSent] = useState(false);
   const [showCheckmarkAnimation, setShowCheckmarkAnimation] = useState(false);
 
   const handleFormChange = (field: string, value: string) => {
