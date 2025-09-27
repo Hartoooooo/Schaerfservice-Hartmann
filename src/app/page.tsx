@@ -34,10 +34,6 @@ export default function Home() {
       answer: "Die Preise richten sich nach der Art und Anzahl der Instrumente. Scaler und Exkavatoren ab 6,04 €, Raspatorien ab 11,06 €. Bei größeren Mengen gewähren wir Mengenrabatte. Fordern Sie gerne ein individuelles Angebot an."
     },
     {
-      question: "Gibt es eine Garantie auf die Schärfung?",
-      answer: "Ja, wir gewähren eine 6-monatige Garantie auf unsere Schärfarbeiten. Sollten Sie mit dem Ergebnis nicht zufrieden sein, schärfen wir die Instrumente kostenlos nach."
-    },
-    {
       question: "Wie kann ich einen Schärfauftrag starten?",
       answer: "Besuchen Sie einfach unsere Schärfauftrag-Seite, füllen Sie das Formular aus und senden Sie Ihre Instrumente an uns. Wir kontaktieren Sie bei Rückfragen und informieren Sie über den Bearbeitungsstand."
     }
