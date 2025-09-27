@@ -245,8 +245,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         <Step>
           <h2 className="text-2xl font-semibold mb-4">Ihr Schärfauftrag</h2>
           <p className="text-neutral-600 text-lg leading-relaxed mb-4">
-            Handgeschärft mit über 20 Jahren Erfahrung<br />
-            für dentale und chirurgische Instrumente<br />
+            Handgeschärft für dentale und chirurgische Instrumente<br />
             mit langlebiger Schärfe und präzisen Ergebnissen
           </p>
           <p className="text-neutral-500 text-sm">
