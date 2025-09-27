@@ -1,21 +1,16 @@
 "use client";
 
-import { Badge } from "@/components/Badge";
 import { Button } from "@/components/Button";
 import { WhiteButton } from "@/components/WhiteButton";
 import { Card } from "@/components/Card";
 import { Container } from "@/components/Container";
 import { FAQ } from "@/components/FAQ";
-import { GradientText } from "@/components/GradientText";
 import { analytics } from "@/components/GoogleAnalytics";
-import { InnovationHeading } from "@/components/SectionHeading";
 import Image from "next/image";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 export default function Home() {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
-  const [scrollY, setScrollY] = useState(0);
-  const sectionRef = useRef<HTMLElement>(null);
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const h2Ref = useRef<HTMLHeadingElement>(null);
   const h3Ref = useRef<HTMLHeadingElement>(null);
@@ -49,18 +44,6 @@ export default function Home() {
   ];
 
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, []);
 
   const blogPosts = [
     {

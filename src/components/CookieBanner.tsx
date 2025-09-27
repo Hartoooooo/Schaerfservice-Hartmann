@@ -60,13 +60,15 @@ export function CookieBanner() {
     // Google Analytics basierend auf Präferenzen aktivieren/deaktivieren
     if (prefs.analytics) {
       // Google Analytics aktivieren
-      window.gtag?.('consent', 'update', {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).gtag?.('consent', 'update', {
         analytics_storage: 'granted',
         ad_storage: prefs.marketing ? 'granted' : 'denied',
       });
     } else {
       // Google Analytics deaktivieren
-      window.gtag?.('consent', 'update', {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).gtag?.('consent', 'update', {
         analytics_storage: 'denied',
         ad_storage: 'denied',
       });

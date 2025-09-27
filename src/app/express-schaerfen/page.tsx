@@ -85,10 +85,11 @@ export default function ExpressSchaerfenPage() {
       <section className="py-20 bg-gray-50">
         <Container>
           <SectionHeading 
-            title="Warum Express-Schärfen?"
             subtitle="Die Vorteile unseres mobilen Schärfservices"
             className="text-center mb-16"
-          />
+          >
+            Warum Express-Schärfen?
+          </SectionHeading>
           
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="text-center p-8">
@@ -136,10 +137,11 @@ export default function ExpressSchaerfenPage() {
       <section className="py-20">
         <Container>
           <SectionHeading 
-            title="So funktioniert's"
             subtitle="Einfacher Ablauf für Ihren Express-Service"
             className="text-center mb-16"
-          />
+          >
+            So funktioniert&apos;s
+          </SectionHeading>
           
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
@@ -190,10 +192,11 @@ export default function ExpressSchaerfenPage() {
         <Container>
           <div className="max-w-4xl mx-auto text-center">
             <SectionHeading 
-              title="Service-Gebiet"
               subtitle="Wir sind in Berlin und Umgebung für Sie da"
               className="mb-12"
-            />
+            >
+              Service-Gebiet
+            </SectionHeading>
             
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
               <div className="grid md:grid-cols-2 gap-8 items-center">

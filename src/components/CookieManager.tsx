@@ -47,14 +47,17 @@ export function CookieManager() {
     localStorage.setItem('cookie-consent-date', new Date().toISOString());
     
     // Google Analytics basierend auf Präferenzen aktivieren/deaktivieren
-    if (typeof window !== 'undefined' && window.gtag) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (typeof window !== 'undefined' && (window as any).gtag) {
       if (prefs.analytics) {
-        window.gtag('consent', 'update', {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).gtag('consent', 'update', {
           analytics_storage: 'granted',
           ad_storage: prefs.marketing ? 'granted' : 'denied',
         });
       } else {
-        window.gtag('consent', 'update', {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).gtag('consent', 'update', {
           analytics_storage: 'denied',
           ad_storage: 'denied',
         });
