@@ -164,6 +164,48 @@ export default function Home() {
         }}
       />
 
+      {/* Organization Schema mit Logo für Google Suchergebnisse */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Schärfservice Hartmann",
+            "url": "https://www.dentalschleifen.de",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.dentalschleifen.de/schaerfservice-hartmann-logo.png",
+              "width": 600,
+              "height": 600
+            },
+            "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung",
+            "foundingDate": "2004",
+            "founder": {
+              "@type": "Person",
+              "name": "Björn Hartmann"
+            },
+            "employee": {
+              "@type": "Person",
+              "name": "Carina Hartmann"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Petershagener Straße 29",
+              "addressLocality": "Schöneiche bei Berlin",
+              "postalCode": "15566",
+              "addressRegion": "Brandenburg",
+              "addressCountry": "DE"
+            },
+            "telephone": "+49-174-9342576",
+            "email": "hartmann-schaerfservice@web.de",
+            "sameAs": [
+              "https://www.dentalschleifen.de"
+            ]
+          })
+        }}
+      />
+
       {/* LocalBusiness Schema für SEO */}
       <script
         type="application/ld+json"
@@ -176,6 +218,10 @@ export default function Home() {
             "url": "https://www.dentalschleifen.de",
             "telephone": "+49-174-9342576",
             "email": "hartmann-schaerfservice@web.de",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.dentalschleifen.de/schaerfservice-hartmann-logo.png"
+            },
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Petershagener Straße 29",
