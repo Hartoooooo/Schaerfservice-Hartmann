@@ -190,7 +190,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
       );
 
       console.log('E-Mail erfolgreich gesendet');
-      setEmailSent(true);
       
       // Kurz warten, dann Checkmark-Animation starten
       setTimeout(() => {
