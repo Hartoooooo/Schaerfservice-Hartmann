@@ -18,6 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
+      alternates: {
+        languages: {
+          'de': `${baseUrl}/schaerfauftrag`,
+        }
+      }
     },
     {
       url: `${baseUrl}/schaerfkurse`,
@@ -54,6 +59,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/cookie-einstellungen`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.2,
+    },
+    {
+      url: `${baseUrl}/express-schaerfen`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
   ]
 }

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
-  title: "Impressum",
-  description: "Impressum von Schärfservice Hartmann. Inhaber Björn Hartmann, Petershagener Str. 27, 15566 Schöneiche bei Berlin. Kontakt und rechtliche Angaben.",
+  title: "Impressum - Instrumente schärfen Berlin",
+  description: "Impressum Schärfservice Hartmann - Instrumente schärfen & Dental schleifen Berlin. Inhaber Björn Hartmann, Petershagener Str. 27, 15566 Schöneiche bei Berlin.",
   robots: {
     index: true,
     follow: false,
@@ -26,7 +26,7 @@ export default function ImpressumPage() {
                 <p className="text-neutral-600 mb-1">Petershagener Str. 27</p>
                 <p className="text-neutral-600 mb-3">15566 Schöneiche bei Berlin</p>
                 <p className="text-neutral-600">
-                  <span className="font-medium">Telefon:</span> 0175 9342576
+                  <span className="font-medium">Telefon:</span> 0174 9342576
                 </p>
               </div>
             </section>

@@ -208,7 +208,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   };
 
   return (
-    <div className={`container-page ${getPaddingClass()}`}>
+    <div className={`container-page ${getPaddingClass()} pt-20`}>
       <Stepper
         initialStep={1}
         className={getStepperClass()}
@@ -245,7 +245,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         <Step>
           <h2 className="text-2xl font-semibold mb-4">Ihr Schärfauftrag</h2>
           <p className="text-neutral-600 text-lg leading-relaxed mb-4">
-            Handgeschärft für dentale und chirurgische Instrumente<br />
+            für dentale und chirurgische Instrumente<br />
             mit langlebiger Schärfe und präzisen Ergebnissen
           </p>
           <p className="text-neutral-500 text-sm">
@@ -254,7 +254,9 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         </Step>
         <Step>
           <h2 className="text-2xl font-semibold mb-4">Instrumente auswählen</h2>
-          <div className="table-wrapper">
+          
+          {/* Desktop Tabelle */}
+          <div className="table-wrapper hidden md:block">
             <table className="table-apple table-primary-header" style={{ tableLayout: 'fixed', width: '100%' }}>
               <colgroup>
                 <col style={{ width: '40%' }} />
@@ -364,6 +366,105 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                     <tr>
                       <td colSpan={4} className="text-neutral-900 font-bold text-lg">Gesamtbetrag Brutto</td>
                       <td className="table-number font-bold text-lg">
+                        <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalGross)}</span>
+                      </td>
+                    </tr>
+                  </>
+                )}
+              </tfoot>
+            </table>
+          </div>
+
+          {/* Mobile Tabelle */}
+          <div className="table-wrapper md:hidden">
+            <table className="table-apple table-primary-header" style={{ tableLayout: 'fixed', width: '100%' }}>
+              <colgroup>
+                <col style={{ width: '50%' }} />
+                <col style={{ width: '25%' }} />
+                <col style={{ width: '25%' }} />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Instrumente</th>
+                  <th className="table-number">
+                    Preis
+                    {totalQuantity >= 40 && <span className="text-xs block">(15% Rabatt)</span>}
+                    {totalQuantity >= 15 && totalQuantity < 40 && <span className="text-xs block">(7% Rabatt)</span>}
+                  </th>
+                  <th className="table-number">Menge</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row, idx) => {
+                  // Berechne aktuellen Preis basierend auf Gesamtmenge
+                  const getCurrentPrice = () => {
+                    if (totalQuantity >= 40) return row.price15;
+                    if (totalQuantity >= 15) return row.price7;
+                    return row.price;
+                  };
+                  
+                  return (
+                    <tr key={row.name}>
+                      <td>{row.name}</td>
+                      <td className="table-number">
+                        <span className="cell-right">{getCurrentPrice()}</span>
+                      </td>
+                      <td className="table-number">
+                        <input
+                          className="qty-input w-full"
+                          type="number"
+                          inputMode="numeric"
+                          min={0}
+                          max={999}
+                          value={quantities[idx]}
+                          onChange={(e) => {
+                            const v = e.target.value;
+                            const n = v === "" ? 0 : Number(v);
+                            handleQtyChange(idx, isNaN(n) || n < 0 ? 0 : Math.min(999, Math.floor(n)));
+                          }}
+                          aria-label={`Menge für ${row.name}`}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td className="text-neutral-600">
+                    Zwischensumme Nettobetrag
+                    {totalQuantity >= 40 && <span className="text-blue-600 ml-2">(15% Rabatt)</span>}
+                    {totalQuantity >= 15 && totalQuantity < 40 && <span className="text-blue-600 ml-2">(7% Rabatt)</span>}
+                  </td>
+                  <td colSpan={2} className="table-number font-medium">
+                    <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(subtotalWithDiscount)}</span>
+                  </td>
+                </tr>
+                {totalQuantity > 0 && (
+                  <tr>
+                    <td className="text-neutral-600">Versand</td>
+                    <td colSpan={2} className="table-number font-medium">
+                      <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(shipping)}</span>
+                    </td>
+                  </tr>
+                )}
+                {totalQuantity > 0 && (
+                  <>
+                    <tr>
+                      <td className="text-neutral-600 font-semibold">Gesamtbetrag Netto</td>
+                      <td colSpan={2} className="table-number font-semibold">
+                        <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalNet)}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="text-neutral-600">MwSt. 19%</td>
+                      <td colSpan={2} className="table-number font-medium">
+                        <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(vat)}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="text-neutral-900 font-bold text-lg">Gesamtbetrag Brutto</td>
+                      <td colSpan={2} className="table-number font-bold text-lg">
                         <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalGross)}</span>
                       </td>
                     </tr>

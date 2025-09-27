@@ -99,7 +99,7 @@ export default function SchaerfkurseForm() {
   const totalPrice = 215 + (participantCount - 1) * 45;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white pt-20">
       <Container>
         {/* Main Content */}
         <div className="pb-12">

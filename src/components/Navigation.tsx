@@ -18,12 +18,31 @@ export function Navigation() {
   const pathname = usePathname();
   const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
   const [mounted, setMounted] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const itemRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Schließe das mobile Menü bei Routenwechsel
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Verhindere Body-Scroll wenn mobiles Menü offen ist
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -51,44 +70,111 @@ export function Navigation() {
 
   if (!mounted) {
     return (
-      <nav className="relative flex items-center gap-1">
-        {navItems.map((item) => (
+      <>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex relative items-center gap-1">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="relative px-3 py-2 rounded-full transition-colors duration-200 hover:bg-[var(--color-blue-600)]/10"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile Hamburger Button */}
+        <button className="md:hidden p-2">
+          <div className="w-6 h-5 flex flex-col justify-between">
+            <span className="block h-0.5 w-full bg-gray-900 transition-all"></span>
+            <span className="block h-0.5 w-full bg-gray-900 transition-all"></span>
+            <span className="block h-0.5 w-full bg-gray-900 transition-all"></span>
+          </div>
+        </button>
+      </>
+    );
+  }
+
+  return (
+    <>
+      {/* Desktop Navigation */}
+      <nav ref={navRef} className="hidden md:flex relative items-center gap-1">
+        {/* Animierter Indikator */}
+        <div
+          className="absolute top-0 h-full bg-[var(--color-blue-600)] rounded-full transition-all duration-300 ease-out"
+          style={{
+            left: `${indicatorStyle.left}px`,
+            width: `${indicatorStyle.width}px`,
+          }}
+        />
+        {navItems.map((item, index) => (
           <Link
             key={item.href}
+            ref={el => { itemRefs.current[index] = el; }}
             href={item.href}
-            className="relative px-3 py-2 rounded-full transition-colors duration-200 hover:bg-[var(--color-blue-600)]/10"
+            className={`relative px-3 py-2 rounded-full transition-colors duration-200 ${
+              pathname === item.href && !footerPages.includes(pathname)
+                ? "text-white" 
+                : "hover:bg-[var(--color-blue-600)]/10"
+            }`}
           >
             {item.label}
           </Link>
         ))}
       </nav>
-    );
-  }
 
-  return (
-    <nav ref={navRef} className="relative flex items-center gap-1">
-      {/* Animierter Indikator */}
-      <div
-        className="absolute top-0 h-full bg-[var(--color-blue-600)] rounded-full transition-all duration-300 ease-out"
-        style={{
-          left: `${indicatorStyle.left}px`,
-          width: `${indicatorStyle.width}px`,
+      {/* Mobile Hamburger Button */}
+      <button 
+        className="md:hidden p-2 relative z-[60]"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Menü öffnen"
+      >
+        <div className="w-6 h-5 flex flex-col justify-between">
+          <span className={`block h-0.5 w-full bg-gray-900 transition-all duration-300 ease-out ${
+            isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+          }`}></span>
+          <span className={`block h-0.5 w-full bg-gray-900 transition-all duration-300 ease-out ${
+            isMobileMenuOpen ? 'opacity-0' : ''
+          }`}></span>
+          <span className={`block h-0.5 w-full bg-gray-900 transition-all duration-300 ease-out ${
+            isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+          }`}></span>
+        </div>
+      </button>
+
+      {/* Mobile Menu Fullscreen */}
+      <div 
+        className={`md:hidden fixed top-0 left-0 right-0 bottom-0 z-50 bg-white transition-all duration-500 ease-out ${
+          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+        }`}
+        style={{ 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: '#ffffff'
         }}
-      />
-      {navItems.map((item, index) => (
-        <Link
-          key={item.href}
-          ref={el => { itemRefs.current[index] = el; }}
-          href={item.href}
-          className={`relative px-3 py-2 rounded-full transition-colors duration-200 ${
-            pathname === item.href && !footerPages.includes(pathname)
-              ? "text-white" 
-              : "hover:bg-[var(--color-blue-600)]/10"
-          }`}
-        >
-          {item.label}
-        </Link>
-      ))}
-    </nav>
+      >
+        <div className="pt-20 px-6 h-full w-full">
+          <nav className="flex flex-col space-y-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`block px-4 py-4 rounded-xl text-xl font-medium transition-all duration-200 ${
+                  pathname === item.href && !footerPages.includes(pathname)
+                    ? "bg-blue-600 text-white shadow-md" 
+                    : "text-gray-900 hover:bg-gray-100 active:bg-gray-200"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
+    </>
   );
 }

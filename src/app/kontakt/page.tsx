@@ -3,20 +3,21 @@ import KontaktForm from "@/components/KontaktForm";
 
 // SEO-Metadaten für Server-Side Rendering
 export const metadata: Metadata = {
-  title: "Kontakt",
-  description: "Kontaktieren Sie Schärfservice Hartmann. Inhaber Björn Hartmann, Ansprechpartnerin Carina Hartmann. Telefon 0175-9342576, E-Mail hartmann-schaerfservice@web.de. Schöneiche bei Berlin.",
+  title: "Kontakt - Instrumente schärfen Berlin",
+  description: "📞 Kontakt Instrumente schärfen Berlin ✅ Dental schärfen & schleifen Service | Björn Hartmann 0174-9342576 | hartmann-schaerfservice@web.de | Schöneiche bei Berlin",
   keywords: [
-    "Kontakt Schärfservice",
+    "kontakt instrumente schärfen",
+    "dental schärfen kontakt",
+    "instrumente schleifen berlin kontakt",
+    "schärfservice kontakt berlin",
     "Björn Hartmann",
     "Carina Hartmann", 
     "Schöneiche Berlin",
-    "Petershagener Straße",
-    "Telefon Schärfservice",
-    "E-Mail Kontakt"
+    "instrumente aufbereiten kontakt"
   ],
   openGraph: {
     title: "Kontakt | Schärfservice Hartmann",
-    description: "Kontaktieren Sie Schärfservice Hartmann. Inhaber Björn Hartmann, Ansprechpartnerin Carina Hartmann. Telefon 0175-9342576 in Schöneiche bei Berlin.",
+    description: "Kontaktieren Sie Schärfservice Hartmann. Inhaber Björn Hartmann, Ansprechpartnerin Carina Hartmann. Telefon 0174-9342576 in Schöneiche bei Berlin.",
   },
 };
 

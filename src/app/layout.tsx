@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { CookieBanner } from "@/components/CookieBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,24 +18,31 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Schärfservice Hartmann - Professionelle Instrumentenschärfung",
-    template: "%s | Schärfservice Hartmann",
+    default: "🦷 Instrumente schärfen & schleifen Berlin | Dental schärfen ab 6,04€ | Schärfservice Hartmann",
+    template: "%s | Instrumente schärfen Berlin",
   },
-  description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 6,04€, Kurse und Express-Service in Berlin. Hu-Friedy zertifiziert.",
+  description: "🦷 Instrumente schärfen & schleifen Berlin ✅ Dental schärfen & aufbereiten ab 6,04€ ⭐ Professioneller Service für alle dentalen Instrumente | Express-Schärfung 150km | 20+ Jahre Erfahrung",
   keywords: [
-    "Schärfservice",
-    "Instrumentenschärfung",
-    "Dental Instrumente",
-    "Chirurgische Instrumente", 
-    "Scaler schärfen",
-    "Kürretten schärfen",
-    "Raspatorien schärfen",
-    "Berlin",
-    "Schöneiche",
-    "Schärfkurse",
-    "Hu-Friedy",
-    "Björn Hartmann",
-    "Carina Hartmann"
+    "instrumente schärfen",
+    "instrumente schleifen", 
+    "dental schleifen",
+    "dental schärfen",
+    "Instrumente aufbereiten",
+    "Instrumente Schärfen Berlin",
+    "instrumente schärfen berlin",
+    "instrumente schleifen berlin",
+    "dental schleifen berlin",
+    "dental schärfen berlin",
+    "instrumente aufbereiten berlin",
+    "dentalinstrumente schärfen",
+    "dentalinstrumente schleifen",
+    "medizinische instrumente schärfen",
+    "chirurgische instrumente schärfen",
+    "scaler schärfen",
+    "kürretten schärfen", 
+    "raspatorien schärfen",
+    "instrumentenschärfung",
+    "instrumentenschleifung"
   ],
   authors: [{ name: "Björn Hartmann", url: "https://schaerfservice-hartmann.de" }],
   creator: "Schärfservice Hartmann",
@@ -42,6 +50,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.dentalschleifen.de"),
   alternates: {
     canonical: "/",
+    languages: {
+      'de-DE': '/',
+      'de': '/',
+    },
   },
   openGraph: {
     title: "Schärfservice Hartmann - Professionelle Instrumentenschärfung",
@@ -77,10 +89,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Google Search Console - Fügen Sie hier Ihren Verification Code ein
-    // google: "verification-code",
-    // Bing Webmaster Tools (optional)
-    // other: "bing-verification-code",
+    google: "google-site-verification=schaerfservice-hartmann-verification",
+    other: {
+      "msvalidate.01": "bing-verification-code",
+    },
   },
   category: "Medical Services",
   classification: "Dental Instrument Sharpening Service",
@@ -106,8 +118,9 @@ export default function RootLayout({
         {gaId && <GoogleAnalytics measurementId={gaId} />}
         
         <Header />
-        <main className="pt-20 pb-20 flex-1">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

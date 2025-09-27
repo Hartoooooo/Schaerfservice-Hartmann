@@ -3,16 +3,19 @@ import SchaerfauftragForm from "@/components/SchaerfauftragForm";
 
 // SEO-Metadaten für Server-Side Rendering
 export const metadata: Metadata = {
-  title: "Schärfauftrag starten",
-  description: "Starten Sie jetzt Ihren Schärfauftrag für dentale und chirurgische Instrumente. Scaler ab 6,04€, Raspatorien ab 11,06€. Express-Service verfügbar. Einfacher Online-Prozess mit 3-5 Tagen Bearbeitungszeit.",
+  title: "Instrumente schärfen lassen - Online Auftrag",
+  description: "🦷 Instrumente schärfen lassen online ✅ Dental schärfen & schleifen ab 6,04€ | Scaler, Kürretten schärfen | Instrumente aufbereiten | Express-Service Berlin | 3-5 Tage Bearbeitungszeit",
   keywords: [
-    "Schärfauftrag",
-    "Online Auftrag",
-    "Instrumente schärfen lassen",
-    "Dental Schärfservice",
-    "Scaler Kürretten",
-    "Raspatorien",
-    "Preise Schärfung"
+    "instrumente schärfen lassen",
+    "dental schärfen auftrag",
+    "instrumente schleifen lassen",
+    "dental schleifen auftrag", 
+    "instrumente aufbereiten auftrag",
+    "online schärfauftrag",
+    "scaler schärfen lassen",
+    "kürretten schärfen lassen",
+    "raspatorien schärfen",
+    "instrumente schärfen berlin auftrag"
   ],
   openGraph: {
     title: "Schärfauftrag starten | Schärfservice Hartmann",

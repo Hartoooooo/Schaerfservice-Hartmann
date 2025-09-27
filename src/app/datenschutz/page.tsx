@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Datenschutzerklärung",
-  description: "Datenschutzerklärung von Schärfservice Hartmann. Informationen zum Umgang mit personenbezogenen Daten, Ihre Rechte und Kontaktmöglichkeiten gemäß DSGVO.",
+  title: "Datenschutz - Instrumente schärfen Berlin",
+  description: "Datenschutzerklärung Schärfservice Hartmann - Instrumente schärfen & Dental schleifen Berlin. Informationen zum Umgang mit personenbezogenen Daten gemäß DSGVO.",
   robots: {
     index: true,
     follow: false,
@@ -33,7 +33,7 @@ export default function DatenschutzPage() {
                   Inhaber: Björn Hartmann<br />
                   Petershagener Str. 27<br />
                   15566 Schöneiche bei Berlin<br />
-                  Telefon: 0175 9342576
+                  Telefon: 0174 9342576
                 </p>
               </div>
             </section>
@@ -44,6 +44,91 @@ export default function DatenschutzPage() {
                 Beim Besuch der Website werden automatisch Informationen erfasst (z. B. IP-Adresse, Datum und Uhrzeit,
                 aufgerufene Seite). Diese Daten dienen der Sicherstellung eines störungsfreien Betriebs.
               </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Cookies</h2>
+              <div className="space-y-4">
+                <p className="text-neutral-600 leading-relaxed">
+                  Unsere Website verwendet Cookies, um Ihnen die bestmögliche Nutzererfahrung zu bieten. 
+                  Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden.
+                </p>
+                
+                <div className="bg-gray-50 rounded-lg p-6">
+                  <h3 className="font-semibold mb-3 text-gray-900">Cookie-Kategorien:</h3>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium text-gray-800 mb-2">Notwendige Cookies</h4>
+                      <p className="text-sm text-gray-600">
+                        Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden. 
+                        Sie werden in der Regel nur als Reaktion auf Aktionen gesetzt, die einer Anfrage nach Diensten entsprechen.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-medium text-gray-800 mb-2">Analyse-Cookies</h4>
+                      <p className="text-sm text-gray-600">
+                        Diese Cookies ermöglichen es uns, die Anzahl der Besucher zu zählen und zu verstehen, 
+                        wie Besucher mit unserer Website interagieren. Alle Informationen, die diese Cookies sammeln, 
+                        werden aggregiert und sind daher anonym.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-medium text-gray-800 mb-2">Marketing-Cookies</h4>
+                      <p className="text-sm text-gray-600">
+                        Diese Cookies werden verwendet, um Besuchern auf Webseiten relevante Anzeigen und 
+                        Marketingkampagnen bereitzustellen. Diese Cookies verfolgen Besucher über Websites hinweg 
+                        und sammeln Informationen, um angepasste Anzeigen bereitzustellen.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <p className="text-neutral-600 leading-relaxed">
+                  Sie können Ihre Cookie-Einstellungen jederzeit über den Cookie-Banner auf unserer Website 
+                  anpassen oder in den Einstellungen Ihres Browsers verwalten.
+                </p>
+                
+                <div className="bg-blue-50 rounded-lg p-4 mt-4">
+                  <p className="text-sm text-blue-700">
+                    <strong>Cookie-Einstellungen verwalten:</strong> 
+                    <a href="/cookie-einstellungen" className="text-blue-600 hover:text-blue-700 underline ml-1">
+                      Hier können Sie Ihre Cookie-Präferenzen jederzeit anpassen
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Google Analytics</h2>
+              <div className="space-y-4">
+                <p className="text-neutral-600 leading-relaxed">
+                  Diese Website nutzt Google Analytics, einen Webanalysedienst der Google LLC. 
+                  Google Analytics verwendet Cookies, um die Nutzung der Website zu analysieren.
+                </p>
+                
+                <div className="bg-blue-50 rounded-lg p-6">
+                  <p className="text-sm text-gray-700">
+                    <strong>Anbieter:</strong> Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA<br />
+                    <strong>Zweck:</strong> Analyse der Website-Nutzung, Erstellung von Statistiken<br />
+                    <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)<br />
+                    <strong>Speicherdauer:</strong> 14 Monate<br />
+                    <strong>Opt-out:</strong> Sie können die Erfassung durch Google Analytics verhindern, 
+                    indem Sie das entsprechende Cookie in den Einstellungen deaktivieren.
+                  </p>
+                </div>
+                
+                <p className="text-neutral-600 leading-relaxed">
+                  Weitere Informationen zum Datenschutz bei Google Analytics finden Sie in der 
+                  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" 
+                     className="text-blue-600 hover:text-blue-700 underline">
+                    Datenschutzerklärung von Google
+                  </a>.
+                </p>
+              </div>
             </section>
 
             <section>

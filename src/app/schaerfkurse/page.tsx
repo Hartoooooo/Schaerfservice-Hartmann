@@ -3,17 +3,19 @@ import SchaerfkurseForm from "@/components/SchaerfkurseForm";
 
 // SEO-Metadaten für Server-Side Rendering
 export const metadata: Metadata = {
-  title: "Schärfkurse",
-  description: "Professionelle Schärfkurse für Zahnärzte und Praxispersonal. Lernen Sie die richtige Schärftechnik für dentale Instrumente. 2-stündige Kurse vor Ort ab 215€. Hu-Friedy zertifizierte Schulung.",
+  title: "Schärfkurse - Instrumente schärfen lernen Berlin",
+  description: "🎓 Schärfkurse Berlin: Instrumente schärfen & schleifen lernen ✅ Dental schärfen Schulung für Praxispersonal | Instrumente aufbereiten Kurs | 2h vor Ort ab 215€ | Hu-Friedy zertifiziert",
   keywords: [
     "Schärfkurse",
-    "Schulung Instrumentenschärfung",
-    "Dental Fortbildung",
-    "Schärftechnik lernen",
-    "Praxisschulung",
-    "Vor-Ort Kurs",
-    "Zahnärzte Fortbildung",
-    "Instrumentenpflege"
+    "instrumente schärfen lernen",
+    "dental schärfen schulung",
+    "instrumente schleifen kurs",
+    "dental schleifen lernen",
+    "instrumente aufbereiten schulung",
+    "schärfkurse berlin",
+    "instrumentenschärfung lernen",
+    "dental fortbildung berlin",
+    "schärftechnik schulung"
   ],
   openGraph: {
     title: "Schärfkurse | Schärfservice Hartmann",

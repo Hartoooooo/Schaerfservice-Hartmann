@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Widerrufsbelehrung",
-  description: "Widerrufsbelehrung für Schärfservice Hartmann. Informationen zu Ihrem Widerrufsrecht bei Verträgen und Dienstleistungen.",
+  title: "Widerruf - Instrumente schärfen Berlin", 
+  description: "Widerrufsbelehrung Schärfservice Hartmann - Instrumente schärfen & Dental schleifen Berlin. Informationen zu Ihrem Widerrufsrecht bei Verträgen und Dienstleistungen.",
   robots: {
     index: false,
     follow: false,
@@ -14,41 +14,75 @@ export default function WiderrufsbelehrungPage() {
     <div className="container-page py-16">
       <div className="max-w-4xl mx-auto">
         <div className="surface p-8">
-          <h1 className="text-3xl font-semibold mb-8 text-center">Widerrufsbelehrung</h1>
+          <h1 className="text-3xl font-semibold mb-4 text-center">Widerrufsbelehrung</h1>
+          <p className="text-center text-lg text-gray-600 mb-8">Schärfservice-Hartmann · Widerrufsrecht bei Dienstleistungen</p>
+          <p className="text-center text-sm text-gray-500 mb-12">Stand: 27.09.2025</p>
           
           <div className="space-y-8">
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0">
-                  <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                  </svg>
-                </div>
-                <div>
-                  <h2 className="text-lg font-semibold text-yellow-800 mb-2">Inhalt wird bereitgestellt</h2>
-                  <p className="text-yellow-700 leading-relaxed">
-                    Diese Seite ist bereits im Footer verlinkt und wird mit dem finalen Text vom Auftraggeber überschrieben.
-                    Die Widerrufsbelehrung wird hier in Kürze verfügbar sein.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Kontakt für Rückfragen</h2>
+            <section>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">📋 Ihr Widerrufsrecht</h2>
               <p className="text-neutral-600 leading-relaxed mb-4">
-                Bei Fragen zum Widerrufsrecht oder anderen rechtlichen Angelegenheiten wenden Sie sich gerne an uns:
+                Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.
               </p>
-              <div className="bg-white rounded-lg p-4 border border-gray-200">
-                <p className="text-neutral-600">
-                  <span className="font-medium">Schärfservice Hartmann</span><br />
-                  Inhaber: Björn Hartmann<br />
-                  Petershagener Str. 27<br />
-                  15566 Schöneiche bei Berlin<br />
-                  <span className="font-medium">Telefon:</span> 0175 9342576
+              <p className="text-neutral-600 leading-relaxed">
+                Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsschlusses.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Widerrufsbelehrung für Dienstleistungen</h2>
+              <p className="text-neutral-600 leading-relaxed mb-4">
+                Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.
+              </p>
+              <p className="text-neutral-600 leading-relaxed mb-4">
+                Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsschlusses.
+              </p>
+              <p className="text-neutral-600 leading-relaxed">
+                Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Schärfservice-Hartmann, Björn Hartmann, Petershagener Str. 27, 
+                15566 Schöneiche bei Berlin, Telefon: +49 174 93 42 576, E-Mail: hartmann-schaerfservice@web.de) mittels einer 
+                eindeutigen Erklärung (z.B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss, 
+                diesen Vertrag zu widerrufen, informieren.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Ausschluss des Widerrufsrechts</h2>
+              <p className="text-neutral-600 leading-relaxed">
+                Das Widerrufsrecht besteht nicht bei Verträgen zur Erbringung von Dienstleistungen, wenn der Unternehmer mit der 
+                Ausführung der Dienstleistung mit ausdrücklicher Zustimmung des Verbrauchers und dessen Kenntnis, dass er sein 
+                Widerrufsrecht bei vollständiger Vertragserfüllung durch den Unternehmer verliert, begonnen hat.
+              </p>
+            </section>
+
+            <section>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                <h2 className="text-xl font-semibold mb-4 text-green-800">✅ Wichtiger Hinweis für Schärfdienstleistungen</h2>
+                <p className="text-green-700 leading-relaxed">
+                  Da Sie ausdrücklich zustimmen, dass wir mit den Schärfarbeiten sofort nach Erhalt Ihrer Instrumente beginnen, 
+                  erlischt Ihr Widerrufsrecht ab Beginn der Bearbeitung. Ein Widerruf ist dann nicht mehr möglich. 
+                  Dies ist in Ihrem Interesse, um eine schnelle Bearbeitung zu gewährleisten.
                 </p>
               </div>
-            </div>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Ende der Widerrufsbelehrung</h2>
+              <p className="text-neutral-600 leading-relaxed">
+                Diese Widerrufsbelehrung wurde erstellt gemäß den gesetzlichen Vorgaben des Bürgerlichen Gesetzbuches (BGB) 
+                und dient dem Schutz Ihrer Verbraucherrechte.
+              </p>
+            </section>
+
+            <section className="bg-gray-50 rounded-lg p-6">
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Kontaktdaten für Widerruf:</h2>
+              <div className="text-neutral-600 space-y-2">
+                <p><strong>Schärfservice-Hartmann</strong></p>
+                <p>Inhaber: Björn Hartmann</p>
+                <p>Petershagener Str. 27, 15566 Schöneiche bei Berlin</p>
+                <p>E-Mail: hartmann-schaerfservice@web.de</p>
+                <p>Telefon: +49 174 93 42 576</p>
+              </div>
+            </section>
           </div>
         </div>
       </div>
