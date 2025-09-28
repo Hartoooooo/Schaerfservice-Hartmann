@@ -547,27 +547,11 @@ export default function Home() {
               className="absolute top-0 left-0 w-full bg-gradient-to-b from-blue-500 to-blue-600 rounded-full transition-all duration-300 ease-out"
               style={{ height: `${scrollProgress * 100}%` }}
             ></div>
-            {/* Glowing Dot am Ende */}
-            <div 
-              className="absolute left-1/2 w-4 h-4 bg-blue-600 rounded-full -translate-x-1/2 transition-all duration-300 ease-out shadow-lg"
-              style={{ 
-                top: `${scrollProgress * 100}%`,
-                transform: `translateX(-50%) translateY(-50%)`,
-                boxShadow: scrollProgress > 0 ? '0 0 20px rgba(59, 130, 246, 0.5)' : 'none'
-              }}
-            ></div>
           </div>
 
           <div className="space-y-24 relative z-20">
             {/* 1. Instrumenten schärfen - Links */}
-            <div className="flex items-center relative">
-              {/* Service Point Circle */}
-              <div className={`absolute left-1/2 top-1/2 w-6 h-6 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg transition-all duration-500 ${
-                scrollProgress >= 0.33 
-                  ? 'bg-blue-600 border-4 border-blue-600' 
-                  : 'bg-white border-4 border-gray-300'
-              }`}></div>
-              
+            <div className="flex items-center">
               <div className="w-1/2 pr-16">
                 <div className="group text-left">
                   <h3 ref={h1Ref} className="text-2xl font-medium mb-4 text-gray-900">Instrumente schärfen & schleifen</h3>
@@ -590,14 +574,7 @@ export default function Home() {
             </div>
 
             {/* 2. Express-Service Berlin - Rechts */}
-            <div className="flex items-center relative">
-              {/* Service Point Circle */}
-              <div className={`absolute left-1/2 top-1/2 w-6 h-6 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg transition-all duration-500 ${
-                scrollProgress >= 0.66 
-                  ? 'bg-blue-600 border-4 border-blue-600' 
-                  : 'bg-white border-4 border-gray-300'
-              }`}></div>
-              
+            <div className="flex items-center">
               <div className="w-1/2"></div>
               <div className="w-1/2 pl-16">
                 <div className="group text-right">
@@ -620,14 +597,7 @@ export default function Home() {
             </div>
 
             {/* 3. Schärfkurse - Links */}
-            <div className="flex items-center relative">
-              {/* Service Point Circle */}
-              <div className={`absolute left-1/2 top-1/2 w-6 h-6 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg transition-all duration-500 ${
-                scrollProgress >= 1.0 
-                  ? 'bg-blue-600 border-4 border-blue-600' 
-                  : 'bg-white border-4 border-gray-300'
-              }`}></div>
-              
+            <div className="flex items-center">
               <div className="w-1/2 pr-16">
                 <div className="group text-left">
                   <h3 ref={h3Ref} className="text-2xl font-medium mb-4 text-gray-900">Schärfkurse</h3>
