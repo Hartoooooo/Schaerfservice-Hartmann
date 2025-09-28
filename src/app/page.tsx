@@ -7,13 +7,50 @@ import { Container } from "@/components/Container";
 import { FAQ } from "@/components/FAQ";
 import { analytics } from "@/components/GoogleAnalytics";
 import Image from "next/image";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 export default function Home() {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const h2Ref = useRef<HTMLHeadingElement>(null);
   const h3Ref = useRef<HTMLHeadingElement>(null);
+  const servicesRef = useRef<HTMLElement>(null);
+
+  // Scroll Progress für Services Section
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!servicesRef.current) return;
+      
+      const element = servicesRef.current;
+      const rect = element.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Berechne den Progress basierend auf der Position der Services Section
+      const elementTop = rect.top;
+      const elementHeight = rect.height;
+      
+      // Startet wenn die Section in den Viewport kommt
+      const startProgress = windowHeight;
+      // Endet wenn die Section den Viewport verlässt
+      const endProgress = -elementHeight;
+      
+      let progress = 0;
+      if (elementTop <= startProgress && elementTop >= endProgress) {
+        progress = (startProgress - elementTop) / (startProgress - endProgress);
+        progress = Math.max(0, Math.min(1, progress));
+      } else if (elementTop < endProgress) {
+        progress = 1;
+      }
+      
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // FAQ Daten für Schema
   const faqItems = [
@@ -488,7 +525,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20">
+      <section ref={servicesRef} className="py-20 relative">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-gray-900">
@@ -499,9 +536,32 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="space-y-24">
+          {/* Vertikaler Progress Balken */}
+          <div className="absolute left-1/2 top-20 bottom-20 w-1 -translate-x-1/2 z-10">
+            {/* Hintergrund Linie */}
+            <div className="w-full h-full bg-gray-200 rounded-full"></div>
+            {/* Progress Linie */}
+            <div 
+              className="absolute top-0 left-0 w-full bg-gradient-to-b from-blue-500 to-blue-600 rounded-full transition-all duration-300 ease-out"
+              style={{ height: `${scrollProgress * 100}%` }}
+            ></div>
+            {/* Glowing Dot am Ende */}
+            <div 
+              className="absolute left-1/2 w-4 h-4 bg-blue-600 rounded-full -translate-x-1/2 transition-all duration-300 ease-out shadow-lg"
+              style={{ 
+                top: `${scrollProgress * 100}%`,
+                transform: `translateX(-50%) translateY(-50%)`,
+                boxShadow: scrollProgress > 0 ? '0 0 20px rgba(59, 130, 246, 0.5)' : 'none'
+              }}
+            ></div>
+          </div>
+
+          <div className="space-y-24 relative z-20">
             {/* 1. Instrumenten schärfen - Links */}
-            <div className="flex items-center">
+            <div className="flex items-center relative">
+              {/* Service Point Circle */}
+              <div className="absolute left-1/2 top-1/2 w-6 h-6 bg-white border-4 border-blue-600 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg"></div>
+              
               <div className="w-1/2 pr-16">
                 <div className="group text-left">
                   <h3 ref={h1Ref} className="text-2xl font-medium mb-4 text-gray-900">Instrumente schärfen & schleifen</h3>
@@ -524,7 +584,10 @@ export default function Home() {
             </div>
 
             {/* 2. Express-Service Berlin - Rechts */}
-            <div className="flex items-center">
+            <div className="flex items-center relative">
+              {/* Service Point Circle */}
+              <div className="absolute left-1/2 top-1/2 w-6 h-6 bg-white border-4 border-blue-600 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg"></div>
+              
               <div className="w-1/2"></div>
               <div className="w-1/2 pl-16">
                 <div className="group text-right">
@@ -547,7 +610,10 @@ export default function Home() {
             </div>
 
             {/* 3. Schärfkurse - Links */}
-            <div className="flex items-center">
+            <div className="flex items-center relative">
+              {/* Service Point Circle */}
+              <div className="absolute left-1/2 top-1/2 w-6 h-6 bg-white border-4 border-blue-600 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg"></div>
+              
               <div className="w-1/2 pr-16">
                 <div className="group text-left">
                   <h3 ref={h3Ref} className="text-2xl font-medium mb-4 text-gray-900">Schärfkurse</h3>
