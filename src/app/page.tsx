@@ -17,7 +17,7 @@ export default function Home() {
   const h3Ref = useRef<HTMLHeadingElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
 
-  // Scroll Progress für Services Section
+  // Scroll Progress für Services Section - mittig im Viewport
   useEffect(() => {
     const handleScroll = () => {
       if (!servicesRef.current) return;
@@ -25,24 +25,26 @@ export default function Home() {
       const element = servicesRef.current;
       const rect = element.getBoundingClientRect();
       const windowHeight = window.innerHeight;
+      const windowCenter = windowHeight / 2;
       
-      // Berechne den Progress basierend auf der Position der Services Section
+      // Berechne den Progress basierend auf der mittigen Position im Viewport
       const elementTop = rect.top;
       const elementHeight = rect.height;
       
-      // Startet wenn die Section in den Viewport kommt
-      const startProgress = windowHeight;
-      // Endet wenn die Section den Viewport verlässt
-      const endProgress = -elementHeight;
+      // Die Services Section soll mittig im Viewport sein für den Progress
+      const centerOffset = windowCenter;
       
+      // Progress von 0 bis 1 basierend auf der Position der Section relativ zur Viewport-Mitte
       let progress = 0;
-      if (elementTop <= startProgress && elementTop >= endProgress) {
-        progress = (startProgress - elementTop) / (startProgress - endProgress);
-        progress = Math.max(0, Math.min(1, progress));
-      } else if (elementTop < endProgress) {
-        progress = 1;
+      
+      if (elementTop <= centerOffset) {
+        // Wie weit ist die Section durch die Viewport-Mitte gescrollt
+        const scrolledDistance = centerOffset - elementTop;
+        const maxScrollDistance = elementHeight;
+        progress = Math.min(scrolledDistance / maxScrollDistance, 1);
       }
       
+      progress = Math.max(0, Math.min(1, progress));
       setScrollProgress(progress);
     };
 
@@ -536,8 +538,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Vertikaler Progress Balken */}
-          <div className="absolute left-1/2 top-20 bottom-20 w-1 -translate-x-1/2 z-10">
+          {/* Vertikaler Progress Balken - beginnt beim ersten Service */}
+          <div className="absolute left-1/2 w-1 -translate-x-1/2 z-10" style={{ top: '16rem', bottom: '5rem' }}>
             {/* Hintergrund Linie */}
             <div className="w-full h-full bg-gray-200 rounded-full"></div>
             {/* Progress Linie */}
@@ -560,7 +562,11 @@ export default function Home() {
             {/* 1. Instrumenten schärfen - Links */}
             <div className="flex items-center relative">
               {/* Service Point Circle */}
-              <div className="absolute left-1/2 top-1/2 w-6 h-6 bg-white border-4 border-blue-600 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg"></div>
+              <div className={`absolute left-1/2 top-1/2 w-6 h-6 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg transition-all duration-500 ${
+                scrollProgress >= 0.33 
+                  ? 'bg-blue-600 border-4 border-blue-600' 
+                  : 'bg-white border-4 border-gray-300'
+              }`}></div>
               
               <div className="w-1/2 pr-16">
                 <div className="group text-left">
@@ -586,7 +592,11 @@ export default function Home() {
             {/* 2. Express-Service Berlin - Rechts */}
             <div className="flex items-center relative">
               {/* Service Point Circle */}
-              <div className="absolute left-1/2 top-1/2 w-6 h-6 bg-white border-4 border-blue-600 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg"></div>
+              <div className={`absolute left-1/2 top-1/2 w-6 h-6 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg transition-all duration-500 ${
+                scrollProgress >= 0.66 
+                  ? 'bg-blue-600 border-4 border-blue-600' 
+                  : 'bg-white border-4 border-gray-300'
+              }`}></div>
               
               <div className="w-1/2"></div>
               <div className="w-1/2 pl-16">
@@ -612,7 +622,11 @@ export default function Home() {
             {/* 3. Schärfkurse - Links */}
             <div className="flex items-center relative">
               {/* Service Point Circle */}
-              <div className="absolute left-1/2 top-1/2 w-6 h-6 bg-white border-4 border-blue-600 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg"></div>
+              <div className={`absolute left-1/2 top-1/2 w-6 h-6 rounded-full -translate-x-1/2 -translate-y-1/2 z-30 shadow-lg transition-all duration-500 ${
+                scrollProgress >= 1.0 
+                  ? 'bg-blue-600 border-4 border-blue-600' 
+                  : 'bg-white border-4 border-gray-300'
+              }`}></div>
               
               <div className="w-1/2 pr-16">
                 <div className="group text-left">
