@@ -212,12 +212,7 @@ export default function Home() {
             "@type": "Organization",
             "name": "Schärfservice Hartmann",
             "url": "https://www.dentalschleifen.de",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://www.dentalschleifen.de/schaerfservice-hartmann-logo.png",
-              "width": 600,
-              "height": 600
-            },
+            "logo": "https://www.dentalschleifen.de/schaerfservice-hartmann-logo.png",
             "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung",
             "foundingDate": "2004",
             "founder": {

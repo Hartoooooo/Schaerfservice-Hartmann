@@ -113,6 +113,10 @@ export default function RootLayout({
   
   return (
     <html lang="de" dir="ltr">
+      <head>
+        <link rel="icon" href="/schaerfservice-hartmann-logo.png" type="image/png" sizes="600x600" />
+        <link rel="apple-touch-icon" href="/schaerfservice-hartmann-logo.png" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         {/* Google Analytics */}
         {gaId && <GoogleAnalytics measurementId={gaId} />}
