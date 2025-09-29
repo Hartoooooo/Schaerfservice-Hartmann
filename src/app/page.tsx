@@ -473,8 +473,8 @@ export default function Home() {
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight mb-8 text-white">
-              <span className="text-blue-600">Instrumente schärfen</span><br />
-              & <span className="text-blue-600">schleifen Berlin</span>
+              Instrumente <span className="text-blue-600">schärfen</span><br />
+              <span className="text-blue-600">&</span> <span className="text-blue-600">schleifen</span> Berlin
             </h1>
             
             <p className="text-xl sm:text-2xl text-white/90 leading-relaxed mb-12 max-w-4xl">
