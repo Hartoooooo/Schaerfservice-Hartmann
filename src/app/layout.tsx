@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "🦷 Instrumente schärfen & schleifen Berlin | Dental schärfen ab 6,04€ | Schärfservice Hartmann",
-    template: "%s | Instrumente schärfen Berlin",
+    default: "Schärfservice Hartmann - Dentalinstrumente schärfen & schleifen Berlin | Dentalinstrumente schärfen ab 6,04€",
+    template: "%s | Schärfservice Hartmann",
   },
   description: "🦷 Instrumente schärfen & schleifen Berlin ✅ Dental schärfen & aufbereiten ab 6,04€ ⭐ Professioneller Service für alle dentalen Instrumente | Express-Schärfung 150km | 20+ Jahre Erfahrung",
   keywords: [
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Schärfservice Hartmann - Professionelle Instrumentenschärfung",
+    title: "Schärfservice Hartmann",
     description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 6,04€, Kurse und Express-Service in Berlin. Hu-Friedy zertifiziert.",
     url: "https://www.dentalschleifen.de",
     siteName: "Schärfservice Hartmann",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Schärfservice Hartmann - Professionelle Instrumentenschärfung",
+    title: "Schärfservice Hartmann",
     description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 6,04€, Express-Service Berlin.",
     images: ["https://www.dentalschleifen.de/schaerfservice-werkstatt-berlin.jpg"],
   },
