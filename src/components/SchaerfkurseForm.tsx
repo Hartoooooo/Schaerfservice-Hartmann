@@ -96,7 +96,7 @@ export default function SchaerfkurseForm() {
     }
   };
 
-  const totalPrice = 215 + (participantCount - 1) * 45;
+  const totalPrice = 215 + Math.max(0, participantCount - 2) * 45;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white pt-20">
@@ -140,7 +140,12 @@ export default function SchaerfkurseForm() {
                     <button
                       type="button"
                       onClick={() => setParticipantCount(Math.max(1, participantCount - 1))}
-                      className="w-12 h-12 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-xl font-medium text-gray-600 transition-colors duration-200"
+                      disabled={participantCount <= 1}
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl font-medium transition-colors duration-200 ${
+                        participantCount <= 1
+                          ? 'bg-gray-100 text-gray-300 cursor-not-allowed'
+                          : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+                      }`}
                     >
                       -
                     </button>
@@ -149,14 +154,20 @@ export default function SchaerfkurseForm() {
                     </div>
                     <button
                       type="button"
-                      onClick={() => setParticipantCount(participantCount + 1)}
-                      className="w-12 h-12 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-xl font-medium text-gray-600 transition-colors duration-200"
+                      onClick={() => setParticipantCount(Math.min(4, participantCount + 1))}
+                      disabled={participantCount >= 4}
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl font-medium transition-colors duration-200 ${
+                        participantCount >= 4
+                          ? 'bg-gray-100 text-gray-300 cursor-not-allowed'
+                          : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+                      }`}
                     >
                       +
                     </button>
                   </div>
                   <div className="text-center text-sm text-gray-500">
                     Gesamtpreis: {totalPrice}€
+                    <span className="ml-2 text-xs text-gray-400">(zzgl. 0,30€ je Kilometer Anfahrt)</span>
                   </div>
                 </div>
 

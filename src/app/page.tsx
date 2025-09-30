@@ -513,7 +513,25 @@ export default function Home() {
               {title:"20 Jahre",subtitle:"Erfahrung"}
             ].map((item) => (
               <div key={item.title} className="space-y-2">
-                <div className="text-4xl sm:text-5xl font-bold text-blue-600">{item.title}</div>
+                <div className="flex items-center justify-center gap-2">
+                  <div className="text-4xl sm:text-5xl font-bold text-blue-600">{item.title}</div>
+                  {item.title === "450+" && (
+                    <div className="relative group inline-flex items-center">
+                      <span
+                        className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-sm font-bold cursor-help"
+                        aria-label="Info zu unseren Kunden"
+                      >
+                        i
+                      </span>
+                      <div
+                        className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-72 z-20 rounded-md bg-gray-900 text-white text-xs px-3 py-2 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-150 text-left"
+                        role="tooltip"
+                      >
+                        Zu unseren Kunden zählen zahlreiche Zahnarztpraxen sowie Ausbildungs-/Fortbildungsinstitutionen und Universitäten.
+                      </div>
+                    </div>
+                  )}
+                </div>
                 <div className="text-lg text-gray-600">{item.subtitle}</div>
               </div>
             ))}
@@ -526,7 +544,7 @@ export default function Home() {
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-gray-900">
-              Unsere Services
+              Unser Service
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Professionelle Schärfdienstleistungen für alle Ihre Bedürfnisse
@@ -595,10 +613,10 @@ export default function Home() {
             <div className="flex items-center">
               <div className="w-1/2 pr-16">
                 <div className="group text-left">
-                  <h3 ref={h3Ref} className="text-2xl font-medium mb-4 text-gray-900">Schärfkurse</h3>
+                  <h3 ref={h3Ref} className="text-2xl font-medium mb-4 text-gray-900">Schärfkurs in Ihrer Praxis</h3>
                   <p className="text-gray-600 leading-relaxed text-lg mb-4">
-                    Lernen Sie die richtige Schärftechnik. 
-                    Professionelle Schulungen für Praxisteams und Einzelpersonen mit zertifizierter Expertise.
+                    Erlernen Sie die richtige Schärftechnik. 
+                    Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.
                   </p>
                   <div className="flex items-center gap-2 mb-6">
                     <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">

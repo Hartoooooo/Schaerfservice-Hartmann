@@ -245,8 +245,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         <Step>
           <h2 className="text-2xl font-semibold mb-4">Ihr Schärfauftrag</h2>
           <p className="text-neutral-600 text-lg leading-relaxed mb-4">
-            für dentale und chirurgische Instrumente<br />
-            mit langlebiger Schärfe und präzisen Ergebnissen
+            für zahnärztliche und chirurgische Instrumente<br />
+            für langlebige Schärfe und präzise Ergebnisse
           </p>
           <p className="text-neutral-500 text-sm">
             Bearbeitungszeit ca. 5 Werktage
@@ -592,7 +592,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                     className="mt-1 w-4 h-4 text-[var(--color-blue-600)] border-gray-300 rounded focus:ring-[var(--color-blue-600)]"
                   />
                   <span className="text-sm text-gray-700 leading-relaxed">
-                    Ich verlange ausdrücklich, dass Sie ab Erhalt meiner Sendung mit den Schärfarbeiten beginnen. 
+                    Hiermit beauftrage ich Sie ausdrücklich, ab Erhalt meiner Sendung mit dem Schärffen der Instrumente beginnen zu dürfen. 
                     Mir ist bekannt, dass mein Widerrufsrecht ab Beginn der Schärfarbeiten erlischt.
                   </span>
                 </label>
