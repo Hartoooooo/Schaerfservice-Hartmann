@@ -113,12 +113,6 @@ export default function RootLayout({
   
   return (
     <html lang="de" dir="ltr">
-      <head>
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         {/* Google Analytics */}
         {gaId && <GoogleAnalytics measurementId={gaId} />}
