@@ -26,7 +26,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-neutral-600 hover:text-[var(--color-blue-600)] transition-colors duration-200"
               >
-                Neoklar
+                Neoklar™
               </a>
             </p>
         </div>
