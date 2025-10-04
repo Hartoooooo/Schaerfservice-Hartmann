@@ -680,8 +680,8 @@ function HomeContent() {
             </p>
           </div>
 
-          {/* Vertikaler Progress Balken - beginnt beim ersten Service */}
-          <div className="absolute left-1/2 w-1 -translate-x-1/2 z-10" style={{ top: '16rem', bottom: '5rem' }}>
+          {/* Vertikaler Progress Balken - nur auf Desktop sichtbar */}
+          <div className="hidden lg:block absolute left-1/2 w-1 -translate-x-1/2 z-10" style={{ top: '16rem', bottom: '5rem' }}>
             {/* Hintergrund Linie */}
             <div className="w-full h-full bg-gray-200 rounded-full"></div>
             {/* Progress Linie */}
@@ -691,7 +691,8 @@ function HomeContent() {
             ></div>
           </div>
 
-          <div className="space-y-24 relative z-20">
+          {/* Desktop Layout - horizontal mit Progress Balken */}
+          <div className="hidden lg:block space-y-24 relative z-20">
             {/* 1. Instrumenten schärfen - Links */}
             <div className="flex items-center">
               <div className="w-1/2 pr-16">
@@ -761,6 +762,75 @@ function HomeContent() {
               <div className="w-1/2"></div>
             </div>
           </div>
+
+          {/* Mobile Layout - vertikal ohne Scrollbalken */}
+          <div className="lg:hidden space-y-12">
+            {/* 1. Instrumenten schärfen */}
+            <div className="w-full">
+              <div className="group text-left">
+                <h3 ref={h1Ref} className="text-2xl font-medium mb-4 text-gray-900">Instrumente schärfen & schleifen</h3>
+                <p className="text-gray-600 leading-relaxed text-lg mb-4">
+                  Professionelles <strong>Dental schärfen</strong> und <strong>Instrumente aufbereiten</strong> aller dentalen und chirurgischen Instrumente. 
+                  Höchste Qualität für optimale Behandlungsergebnisse durch präzise Handarbeit.
+                </p>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
+                    </svg>
+                    <p className="text-sm text-blue-600 font-medium">Herstellerunabhängig</p>
+                  </div>
+                  <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift" title="Dentalinstrumente schärfen lassen - Online Auftrag">
+                    Jetzt schärfen lassen
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. Express-Service Berlin */}
+            <div className="w-full">
+              <div className="group text-left">
+                <h3 ref={h2Ref} className="text-2xl font-medium mb-4 text-gray-900">Express-Schärfen in Berlin</h3>
+                <p className="text-gray-600 leading-relaxed text-lg mb-4">
+                  Wir kommen zu Ihnen in die Praxis und gehen erst, wenn alle Instrumente
+                  ihre ursprüngliche Schärfe wiedererlangt haben.
+                </p>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <p className="text-sm text-blue-600 font-medium">Nur in Berlin & Umgebung</p>
+                  </div>
+                  <Button href="/express-schaerfen" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift" title="Express Schärfung Berlin - Vor Ort Service">
+                    Express-Service anfragen
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. Schärfkurse */}
+            <div className="w-full">
+              <div className="group text-left">
+                <h3 ref={h3Ref} className="text-2xl font-medium mb-4 text-gray-900">Schärfkurs in Ihrer Praxis</h3>
+                <p className="text-gray-600 leading-relaxed text-lg mb-4">
+                  Erlernen Sie die richtige Schärftechnik. 
+                  Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.
+                </p>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                    </svg>
+                    <p className="text-sm text-blue-600 font-medium">2h | 1-4 Teilnehmer</p>
+                  </div>
+                  <Button href="/schaerfkurse" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift" title="Schärfkurse für Dentalinstrumente - Professionelle Schulung">
+                    Kurse entdecken
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
         </Container>
       </section>
 
@@ -780,7 +850,11 @@ function HomeContent() {
             {[
               {
                 h:"Qualifiziert", 
-                p:"Neben über 20-jähriger Erfahrung wurden wir als eine der wenigen Firmen im deutschsprachigen Raum direkt bei Hu-Friedy in Chicago in Instrumentenkunde und der Technik des Schärfens von Instrumenten ausgebildet. Diese Expertise garantiert höchste Qualitätsstandards.", 
+                points:[
+                  "20+ Jahre Schärferfahrung",
+                  "Hu-Friedy Schulung in Chicago",
+                  "Höchste Qualitätsstandards"
+                ],
                 icon: (
                   <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -790,7 +864,11 @@ function HomeContent() {
               },
               {
                 h:"Langlebig", 
-                p:"Durch präzise Schärfung und fachgerechte Pflege verlängern wir die Nutzungsdauer hochwertiger Dentalinstrumente – nachhaltig und wirtschaftlich sinnvoll. Unsere Arbeit sorgt für langanhaltende Schärfe und reduziert den Bedarf an Neuanschaffungen erheblich.",
+                points:[
+                  "Präzise Schärfung optimal",
+                  "Fachgerechte Instrumentenpflege",
+                  "Längere Nutzungsdauer"
+                ],
                 icon: (
                   <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -799,7 +877,11 @@ function HomeContent() {
               },
               {
                 h:"Nachhaltig", 
-                p:"Wir setzen auf umweltfreundliche Verpackungen und nachhaltige Arbeitsweisen. Durch die Verlängerung der Lebensdauer Ihrer Instrumente tragen wir aktiv zum Umweltschutz bei und reduzieren Abfall.",
+                points:[
+                  "Umweltfreundliche Verpackung",
+                  "Nachhaltige Arbeitsweise",
+                  "Emissionsfreie Bearbeitung"
+                ],
                 icon: (
                   <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -807,12 +889,21 @@ function HomeContent() {
                 )
               }
             ].map((item, index) => (
-              <Card key={index} className="text-center p-8">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Card key={index} className="p-6">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">{item.h}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.p}</p>
+                <h3 className="text-xl font-semibold mb-3 text-gray-900 text-center">{item.h}</h3>
+                <ul className="text-gray-600 text-left space-y-1">
+                  {item.points.map((point, pointIndex) => (
+                    <li key={pointIndex} className="flex items-center gap-2 whitespace-nowrap">
+                      <svg className="w-4 h-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="truncate">{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </Card>
             ))}
           </div>
