@@ -7,15 +7,177 @@ import { Container } from "@/components/Container";
 import { FAQ } from "@/components/FAQ";
 import { analytics } from "@/components/GoogleAnalytics";
 import Image from "next/image";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export default function Home() {
+function HomeContent() {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [copiedArticleId, setCopiedArticleId] = useState<string | null>(null);
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const h2Ref = useRef<HTMLHeadingElement>(null);
   const h3Ref = useRef<HTMLHeadingElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const blogPosts = useMemo(() => [
+    {
+      id: "reinigung-dentalinstrumente",
+      title: "Richtige Reinigung von Dentalinstrumenten",
+      excerpt: "Erfahren Sie, wie Sie Ihre Instrumente nach der Behandlung optimal reinigen und vor Korrosion schützen. Wichtige Schritte für die",
+      fullText: "Die Reinigung von Dentalinstrumenten ist der erste und wichtigste Schritt in der Aufbereitung. Nach jeder Behandlung sollten die Instrumente sofort unter fließendem Wasser abgespült werden, um Blut und Speichel zu entfernen. Anschließend ist eine gründliche Reinigung mit speziellen Reinigungsmitteln erforderlich, die für medizinische Instrumente geeignet sind. Verwenden Sie milde, pH-neutrale Reiniger. Achten Sie darauf, dass alle Oberflächen erreicht werden, besonders bei komplexen Instrumenten wie Scaler und Kürretten. Nach der Reinigung sollten die Instrumente vollständig getrocknet werden, um Korrosion zu vermeiden. Eine ordnungsgemäße Reinigung verlängert nicht nur die Lebensdauer Ihrer Instrumente, sondern gewährleistet auch die Patientensicherheit.",
+      date: "15. März 2024",
+      imageUrl: "/dentalinstrumente-kassette-schaerfung.jpg",
+      imageAlt: "Professionelle Reinigung von Dentalinstrumenten in Kassette - Schärfservice Hartmann Berlin"
+    },
+    {
+      id: "schaerfwinkel-scaler-kueretten",
+      title: "Schärfwinkel bei Scaler und Kürretten",
+      excerpt: "Warum der korrekte Schärfwinkel entscheidend für die Effektivität Ihrer Instrumente ist. Optimale Winkel zwischen",
+      fullText: "Der Schärfwinkel ist bei Dentalinstrumenten von entscheidender Bedeutung für deren Funktionalität. Bei Scaler und Kürretten liegt der optimale Winkel zwischen 70 und 80 Grad. Ein zu flacher Winkel reduziert die Schärfe, während ein zu steiler Winkel die Schneide zu dünn macht und Bruchgefahr besteht. Die richtige Schärfung erfolgt in mehreren Schritten: Zuerst wird die Schneide mit einem groben Schleifstein vorbereitet, dann mit einem feineren Stein nachgeschärft. Wichtig ist dabei, den ursprünglichen Winkel beizubehalten und gleichmäßig zu arbeiten. Regelmäßige Kontrolle mit einer Lupe hilft dabei, Unebenheiten zu erkennen und zu korrigieren. Professionell geschärfte Instrumente sorgen für präzise und effiziente Behandlungen.",
+      date: "8. März 2024",
+      imageUrl: "/dental-schere-schaerfwinkel-berlin.jpg",
+      imageAlt: "Optimaler Schärfwinkel bei Dentalscheren - Professionelle Schärfung Berlin Schärfservice Hartmann"
+    },
+    {
+      id: "lagerung-pflege-raspatorien",
+      title: "Lagerung und Pflege von Raspatorien",
+      excerpt: "Tipps zur ordnungsgemäßen Aufbewahrung und regelmäßigen Wartung Ihrer Raspatorien. Schützen Sie die feinen",
+      fullText: "Raspatorien benötigen besondere Aufmerksamkeit bei der Lagerung und Pflege. Nach der Reinigung sollten sie einzeln in speziellen Halterungen oder Schaumstoffeinlagen aufbewahrt werden, um Beschädigungen der feinen Zähne zu vermeiden. Die Lagerung sollte an einem trockenen, staubfreien Ort erfolgen. Regelmäßige Inspektion der Zähne ist wichtig - beschädigte oder abgenutzte Bereiche sollten umgehend repariert oder ersetzt werden. Bei der Reinigung ist Vorsicht geboten: Aggressive Reinigungsmittel können die Oberfläche angreifen. Verwenden Sie milde, pH-neutrale Reiniger und trocknen Sie die Instrumente sorgfältig ab. Eine ordnungsgemäße Pflege verlängert die Lebensdauer erheblich und gewährleistet optimale Arbeitsergebnisse.",
+      date: "1. März 2024",
+      imageUrl: "/raspatorien-lagerung-pflege-dental.png",
+      imageAlt: "Fachgerechte Lagerung und Pflege von Raspatorien - Schärfservice Hartmann Expertenberatung"
+    },
+    {
+      id: "wann-geschaerft-werden",
+      title: "Wann sollte geschärft werden?",
+      excerpt: "Anzeichen erkennen und den optimalen Zeitpunkt für eine professionelle Schärfung bestimmen. Faustregel: Nach 20-30",
+      fullText: "Die rechtzeitige Schärfung Ihrer Dentalinstrumente ist entscheidend für deren Effektivität. Erste Anzeichen für eine notwendige Schärfung sind: verminderte Schneidleistung, erhöhter Kraftaufwand bei der Anwendung und sichtbare Abnutzungsspuren. Bei Scaler und Kürretten sollten Sie auf eine glatte, scharfe Schneide achten - stumpfe Instrumente können das Gewebe traumatisieren. Als Faustregel gilt: Instrumente sollten nach 20-30 Behandlungen geschärft werden, abhängig von der Intensität der Nutzung. Regelmäßige Kontrolle mit einer Lupe hilft dabei, den optimalen Zeitpunkt zu bestimmen. Eine professionelle Schärfung durch Experten gewährleistet nicht nur die richtige Schärfe, sondern auch die Beibehaltung der korrekten Winkel und Formen. Investieren Sie in regelmäßige Wartung - es lohnt sich für Ihre Praxis und Ihre Patienten.",
+      date: "22. Februar 2024",
+      imageUrl: "/schaerfservice-werkstatt-berlin.jpg",
+      imageAlt: "Wann sollten Dentalinstrumente geschärft werden - Schärfservice Hartmann Berlin Expertentipps"
+    }
+  ], []);
+
+  // Prüfe URL-Parameter beim Laden der Seite und aktualisiere Meta-Tags
+  useEffect(() => {
+    const articleId = searchParams.get('article');
+    if (articleId) {
+      const article = blogPosts.find(post => post.id === articleId);
+      if (article) {
+        const articleIndex = blogPosts.findIndex(post => post.id === articleId);
+        setExpandedCard(articleIndex);
+        
+        // Dynamische Meta-Tags für den Artikel
+        document.title = `${article.title} | Schärfservice Hartmann`;
+        
+        // Meta Description
+        let metaDescription = document.querySelector('meta[name="description"]');
+        if (!metaDescription) {
+          metaDescription = document.createElement('meta');
+          metaDescription.setAttribute('name', 'description');
+          document.head.appendChild(metaDescription);
+        }
+        metaDescription.setAttribute('content', article.excerpt);
+        
+        // Open Graph Tags
+        let ogTitle = document.querySelector('meta[property="og:title"]');
+        if (!ogTitle) {
+          ogTitle = document.createElement('meta');
+          ogTitle.setAttribute('property', 'og:title');
+          document.head.appendChild(ogTitle);
+        }
+        ogTitle.setAttribute('content', article.title);
+        
+        let ogDescription = document.querySelector('meta[property="og:description"]');
+        if (!ogDescription) {
+          ogDescription = document.createElement('meta');
+          ogDescription.setAttribute('property', 'og:description');
+          document.head.appendChild(ogDescription);
+        }
+        ogDescription.setAttribute('content', article.excerpt);
+        
+        let ogUrl = document.querySelector('meta[property="og:url"]');
+        if (!ogUrl) {
+          ogUrl = document.createElement('meta');
+          ogUrl.setAttribute('property', 'og:url');
+          document.head.appendChild(ogUrl);
+        }
+        ogUrl.setAttribute('content', `${window.location.origin}/?article=${articleId}`);
+        
+        // Scroll zur Expertentipps-Sektion
+        setTimeout(() => {
+          const expertentippsSection = document.getElementById('expertentipps');
+          if (expertentippsSection) {
+            expertentippsSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    } else {
+      // Zurücksetzen auf Standard-Titel wenn kein Artikel geöffnet
+      document.title = "Schärfservice Hartmann - Dentalinstrumente schärfen & schleifen Berlin | Dentalinstrumente schärfen ab 6,04€";
+    }
+  }, [searchParams, blogPosts]);
+
+  // Funktionen für Artikel-Navigation
+  const openArticle = (index: number) => {
+    setExpandedCard(index);
+    const articleId = blogPosts[index].id;
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.set('article', articleId);
+    router.push(newUrl.pathname + newUrl.search, { scroll: false });
+  };
+
+  const closeArticle = () => {
+    setExpandedCard(null);
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.delete('article');
+    router.push(newUrl.pathname + newUrl.search, { scroll: false });
+  };
+
+  const shareArticle = async (articleId: string) => {
+    const shareUrl = `${window.location.origin}/?article=${articleId}`;
+    const article = blogPosts.find(post => post.id === articleId);
+    const shareData = {
+      title: article?.title || 'Expertentipp',
+      text: article?.excerpt || 'Interessanter Artikel über Dentalinstrumente',
+      url: shareUrl
+    };
+
+    // Prüfe ob Native Share API verfügbar ist
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+        return; // Erfolgreich geteilt, keine weitere Aktion nötig
+      } catch (err: unknown) {
+        // User hat das Teilen abgebrochen oder Fehler aufgetreten
+        if (err && typeof err === 'object' && 'name' in err && err.name !== 'AbortError') {
+          console.log('Native Share fehlgeschlagen, fallback zu Copy:', err);
+        } else {
+          return; // User hat abgebrochen, keine weitere Aktion
+        }
+      }
+    }
+
+    // Fallback: Copy to Clipboard
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopiedArticleId(articleId);
+      setTimeout(() => setCopiedArticleId(null), 2000);
+    } catch (err) {
+      console.error('Fehler beim Kopieren:', err);
+      // Fallback für ältere Browser
+      const textArea = document.createElement('textarea');
+      textArea.value = shareUrl;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopiedArticleId(articleId);
+      setTimeout(() => setCopiedArticleId(null), 2000);
+    }
+  };
 
   // Scroll Progress für Services Section - mittig im Viewport
   useEffect(() => {
@@ -78,43 +240,6 @@ export default function Home() {
     }
   ];
 
-
-
-  const blogPosts = [
-    {
-      title: "Richtige Reinigung von Dentalinstrumenten",
-      excerpt: "Erfahren Sie, wie Sie Ihre Instrumente nach der Behandlung optimal reinigen und vor Korrosion schützen. Wichtige Schritte für die",
-      fullText: "Die Reinigung von Dentalinstrumenten ist der erste und wichtigste Schritt in der Aufbereitung. Nach jeder Behandlung sollten die Instrumente sofort unter fließendem Wasser abgespült werden, um Blut und Speichel zu entfernen. Anschließend ist eine gründliche Reinigung mit speziellen Reinigungsmitteln erforderlich, die für medizinische Instrumente geeignet sind. Verwenden Sie milde, pH-neutrale Reiniger. Achten Sie darauf, dass alle Oberflächen erreicht werden, besonders bei komplexen Instrumenten wie Scaler und Kürretten. Nach der Reinigung sollten die Instrumente vollständig getrocknet werden, um Korrosion zu vermeiden. Eine ordnungsgemäße Reinigung verlängert nicht nur die Lebensdauer Ihrer Instrumente, sondern gewährleistet auch die Patientensicherheit.",
-      date: "15. März 2024",
-      imageUrl: "/dentalinstrumente-kassette-schaerfung.jpg",
-      imageAlt: "Professionelle Reinigung von Dentalinstrumenten in Kassette - Schärfservice Hartmann Berlin"
-    },
-    {
-      title: "Schärfwinkel bei Scaler und Kürretten",
-      excerpt: "Warum der korrekte Schärfwinkel entscheidend für die Effektivität Ihrer Instrumente ist. Optimale Winkel zwischen",
-      fullText: "Der Schärfwinkel ist bei Dentalinstrumenten von entscheidender Bedeutung für deren Funktionalität. Bei Scaler und Kürretten liegt der optimale Winkel zwischen 70 und 80 Grad. Ein zu flacher Winkel reduziert die Schärfe, während ein zu steiler Winkel die Schneide zu dünn macht und Bruchgefahr besteht. Die richtige Schärfung erfolgt in mehreren Schritten: Zuerst wird die Schneide mit einem groben Schleifstein vorbereitet, dann mit einem feineren Stein nachgeschärft. Wichtig ist dabei, den ursprünglichen Winkel beizubehalten und gleichmäßig zu arbeiten. Regelmäßige Kontrolle mit einer Lupe hilft dabei, Unebenheiten zu erkennen und zu korrigieren. Professionell geschärfte Instrumente sorgen für präzise und effiziente Behandlungen.",
-      date: "8. März 2024",
-      imageUrl: "/dental-schere-schaerfwinkel-berlin.jpg",
-      imageAlt: "Optimaler Schärfwinkel bei Dentalscheren - Professionelle Schärfung Berlin Schärfservice Hartmann"
-    },
-    {
-      title: "Lagerung und Pflege von Raspatorien",
-      excerpt: "Tipps zur ordnungsgemäßen Aufbewahrung und regelmäßigen Wartung Ihrer Raspatorien. Schützen Sie die feinen",
-      fullText: "Raspatorien benötigen besondere Aufmerksamkeit bei der Lagerung und Pflege. Nach der Reinigung sollten sie einzeln in speziellen Halterungen oder Schaumstoffeinlagen aufbewahrt werden, um Beschädigungen der feinen Zähne zu vermeiden. Die Lagerung sollte an einem trockenen, staubfreien Ort erfolgen. Regelmäßige Inspektion der Zähne ist wichtig - beschädigte oder abgenutzte Bereiche sollten umgehend repariert oder ersetzt werden. Bei der Reinigung ist Vorsicht geboten: Aggressive Reinigungsmittel können die Oberfläche angreifen. Verwenden Sie milde, pH-neutrale Reiniger und trocknen Sie die Instrumente sorgfältig ab. Eine ordnungsgemäße Pflege verlängert die Lebensdauer erheblich und gewährleistet optimale Arbeitsergebnisse.",
-      date: "1. März 2024",
-      imageUrl: "/raspatorien-lagerung-pflege-dental.png",
-      imageAlt: "Fachgerechte Lagerung und Pflege von Raspatorien - Schärfservice Hartmann Expertenberatung"
-    },
-    {
-      title: "Wann sollte geschärft werden?",
-      excerpt: "Anzeichen erkennen und den optimalen Zeitpunkt für eine professionelle Schärfung bestimmen. Faustregel: Nach 20-30",
-      fullText: "Die rechtzeitige Schärfung Ihrer Dentalinstrumente ist entscheidend für deren Effektivität. Erste Anzeichen für eine notwendige Schärfung sind: verminderte Schneidleistung, erhöhter Kraftaufwand bei der Anwendung und sichtbare Abnutzungsspuren. Bei Scaler und Kürretten sollten Sie auf eine glatte, scharfe Schneide achten - stumpfe Instrumente können das Gewebe traumatisieren. Als Faustregel gilt: Instrumente sollten nach 20-30 Behandlungen geschärft werden, abhängig von der Intensität der Nutzung. Regelmäßige Kontrolle mit einer Lupe hilft dabei, den optimalen Zeitpunkt zu bestimmen. Eine professionelle Schärfung durch Experten gewährleistet nicht nur die richtige Schärfe, sondern auch die Beibehaltung der korrekten Winkel und Formen. Investieren Sie in regelmäßige Wartung - es lohnt sich für Ihre Praxis und Ihre Patienten.",
-      date: "22. Februar 2024",
-      imageUrl: "/schaerfservice-werkstatt-berlin.jpg",
-      imageAlt: "Wann sollten Dentalinstrumente geschärft werden - Schärfservice Hartmann Berlin Expertentipps"
-    }
-  ];
-
   return (
     <>
       {/* Modal Overlay für erweiterte Artikel */}
@@ -123,7 +248,7 @@ export default function Home() {
           {/* Backdrop */}
           <div 
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setExpandedCard(null)}
+            onClick={closeArticle}
           />
           
           {/* Modal Content */}
@@ -139,7 +264,7 @@ export default function Home() {
                   </h3>
                 </div>
                 <button
-                  onClick={() => setExpandedCard(null)}
+                  onClick={closeArticle}
                   className="text-gray-400 hover:text-gray-600 ml-4 cursor-pointer hover:bg-gray-100 rounded-full p-1 transition-all duration-200"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -415,10 +540,12 @@ export default function Home() {
             "@type": "Blog",
             "name": "Schärfservice Hartmann Blog",
             "description": "Tipps und Ratgeber zur Instrumentenpflege und Schärfung",
-            "blogPost": blogPosts.map((post, index) => ({
+            "blogPost": blogPosts.map((post) => ({
               "@type": "BlogPosting",
               "headline": post.title,
               "description": post.excerpt,
+              "articleBody": post.fullText,
+              "url": `https://www.dentalschleifen.de/?article=${post.id}`,
               "datePublished": "2024-03-15",
               "dateModified": "2024-03-15",
               "author": {
@@ -441,8 +568,10 @@ export default function Home() {
               },
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "https://www.dentalschleifen.de/#blog"
-              }
+                "@id": `https://www.dentalschleifen.de/?article=${post.id}`
+              },
+              "keywords": ["dentalinstrumente", "schärfen", "reinigung", "pflege", "raspatorien", "scaler", "kürretten"],
+              "articleSection": "Expertentipps"
             }))
           })
         }}
@@ -691,7 +820,7 @@ export default function Home() {
       </section>
 
       {/* Blog Section */}
-      <section className="py-20">
+      <section id="expertentipps" className="py-20">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-gray-900">
@@ -711,12 +840,36 @@ export default function Home() {
                   <p className="text-gray-600 leading-relaxed">{post.excerpt}</p>
                   <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none"></div>
                 </div>
-                <button
-                  onClick={() => setExpandedCard(index)}
-                  className="text-blue-600 hover:text-blue-700 font-medium cursor-pointer hover:underline transition-all duration-200"
-                >
-                  Mehr lesen
-                </button>
+                <div className="flex items-center justify-between gap-3">
+                  <button
+                    onClick={() => openArticle(index)}
+                    className="text-blue-600 hover:text-blue-700 font-medium cursor-pointer hover:underline transition-all duration-200"
+                  >
+                    Mehr lesen
+                  </button>
+                  
+                  <button
+                    onClick={() => shareArticle(post.id)}
+                    className="flex items-center gap-1 text-blue-600 hover:text-blue-700 font-medium cursor-pointer hover:underline transition-all duration-200 group"
+                    title="Artikel teilen"
+                  >
+                    {copiedArticleId === post.id ? (
+                      <>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-green-600">Kopiert!</span>
+                      </>
+                    ) : (
+                      <>
+                        <svg className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                        </svg>
+                        <span>Teilen</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </Card>
             ))}
           </div>
@@ -770,5 +923,13 @@ export default function Home() {
       </section>
     </div>
     </>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomeContent />
+    </Suspense>
   );
 }

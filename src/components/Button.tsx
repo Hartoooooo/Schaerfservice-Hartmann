@@ -21,7 +21,6 @@ export function Button({ children, className, variant = "primary", href, hover =
   
   if (href) {
     return (
-      // eslint-disable-next-line jsx-a11y/anchor-is-valid
       <a href={href} className={clsx(base, styles, hoverEffect, cursorEffect, className)}>
         {children}
       </a>

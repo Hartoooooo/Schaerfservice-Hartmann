@@ -24,7 +24,6 @@ const rows: Row[] = [
 ];
 
 export default function StepperDemo() {
-  const [name, setName] = useState("");
   const [quantities, setQuantities] = useState<number[]>(() => rows.map(() => 0));
   const [currentStep, setCurrentStep] = useState(1);
   
