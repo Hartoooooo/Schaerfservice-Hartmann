@@ -18,17 +18,17 @@ export function Footer() {
       <div className="container-page py-12 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex flex-col items-center sm:items-start gap-1">
           <p className="text-sm text-neutral-600">© {new Date().getFullYear()} Schärfservice Hartmann. Alle Rechte vorbehalten.</p>
-          <p className="text-xs text-neutral-500">
-            Entwickelt von{" "}
-            <a 
-              href="https://www.neoklar.de" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-neutral-600 hover:text-[var(--color-blue-600)] transition-colors duration-200"
-            >
-              Neoklar™
-            </a>
-          </p>
+            <p className="text-xs text-neutral-500">
+              Umsetzung von{" "}
+              <a 
+                href="https://www.neoklar.de" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-neutral-600 hover:text-[var(--color-blue-600)] transition-colors duration-200"
+              >
+                Neoklar
+              </a>
+            </p>
         </div>
         <nav className="flex items-center gap-4 text-sm">
           {footerLinks.map((link) => (
