@@ -440,7 +440,7 @@ export default function StepperDemo() {
             
             <div className="pt-4">
               <p className="text-sm text-gray-500">
-                Bei Fragen erreichen Sie uns unter <a href="mailto:info@schaerfservice-hartmann.de" className="text-[var(--color-blue-600)] hover:underline">info@schaerfservice-hartmann.de</a>
+                Bei Fragen erreichen Sie uns unter <a href="mailto:hartmann-schaerfservice@web.de" className="text-[var(--color-blue-600)] hover:underline">hartmann-schaerfservice@web.de</a>
               </p>
             </div>
           </div>

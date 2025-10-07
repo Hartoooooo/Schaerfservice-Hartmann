@@ -5,10 +5,11 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 const navItems = [
-  { href: "/", label: "Startseite" },
-  { href: "/schaerfauftrag", label: "Schärfauftrag" },
-  { href: "/schaerfkurse", label: "Schärfkurse" },
-  { href: "/kontakt", label: "Kontakt" },
+  { href: "/", label: "Startseite", mobileLabel: "Startseite" },
+  { href: "/schaerfauftrag", label: "Schärfauftrag", mobileLabel: "Schärfauftrag" },
+  { href: "/schaerfkurse", label: "Schärfkurse", mobileLabel: "Schärfkurse" },
+  { href: "/express-schaerfen", label: "Express", mobileLabel: "Express Schärfen" },
+  { href: "/kontakt", label: "Kontakt", mobileLabel: "Kontakt" },
 ] as const;
 
 // Footer-Seiten, die nicht im Header als aktiv angezeigt werden sollen
@@ -169,7 +170,7 @@ export function Navigation() {
                     : "text-gray-900 hover:bg-gray-100 active:bg-gray-200"
                 }`}
               >
-                {item.label}
+                {item.mobileLabel}
               </Link>
             ))}
           </nav>

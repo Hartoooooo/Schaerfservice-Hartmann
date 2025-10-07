@@ -592,7 +592,7 @@ function HomeContent() {
             placeholder="blur"
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" style={{background: 'linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 30%, transparent 60%)'}}></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" style={{background: 'linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 50%, transparent 80%)'}}></div>
         </div>
         
         <Container className="relative z-10 pt-20 w-full">
@@ -602,13 +602,13 @@ function HomeContent() {
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight mb-8 text-white">
-              Instrumente <span className="text-blue-600">schärfen</span><br />
-              <span className="text-blue-600">&</span> <span className="text-blue-600">schleifen</span> Berlin
+              <span className="text-blue-600">Instrumente</span> schärfen<br />
+              & schleifen
             </h1>
             
             <p className="text-xl sm:text-2xl text-white/90 leading-relaxed mb-12 max-w-4xl">
-              <strong>Dental schärfen & schleifen</strong> mit höchster Präzision.<br />
-              Professionelle <strong>Instrumente aufbereiten</strong> für dentale und chirurgische Anwendungen
+              <strong>Dentalinstrumente schärfen & schleifen</strong> mit höchster Präzision.<br />
+              Professionelle <strong>Instrumente aufbereiten</strong> für dentale und chirurgische Anwendungen. <strong>Schärfkurse</strong> in ihrer Praxis.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -622,6 +622,7 @@ function HomeContent() {
               </Button>
               <WhiteButton 
                 href="/schaerfkurse" 
+                className="text-lg"
                 hover="lift"
                 onClick={() => analytics.buttonClick('schaerfkurse_hero', 'homepage')}
               >

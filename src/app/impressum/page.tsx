@@ -25,7 +25,8 @@ export default function ImpressumPage() {
                 <p className="text-neutral-600 mb-1">Petershagener Str. 27</p>
                 <p className="text-neutral-600 mb-3">15566 Schöneiche bei Berlin</p>
                 <p className="text-neutral-600">
-                  <span className="font-medium">Telefon:</span> 0174 9342576
+                  <span className="font-medium">Telefon:</span> 0174 9342576<br />
+                  <span className="font-medium">E-Mail:</span> hartmann-schaerfservice@web.de
                 </p>
               </div>
             </section>
