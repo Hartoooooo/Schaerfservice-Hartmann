@@ -16,8 +16,9 @@ export function Footer() {
   return (
     <footer className="border-t border-[var(--color-border)]">
       <div className="container-page py-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex flex-col items-center sm:items-start gap-1">
-          <p className="text-sm text-neutral-600">© {new Date().getFullYear()} Schärfservice Hartmann. Alle Rechte vorbehalten.</p>
+        {/* Desktop: Copyright links, Mobile: Order 2 */}
+        <div className="flex flex-col items-center sm:items-start gap-1 order-2 sm:order-1">
+          <p className="text-xs sm:text-sm text-neutral-600">© {new Date().getFullYear()} Schärfservice Hartmann. Alle Rechte vorbehalten.</p>
             <p className="text-xs text-neutral-500">
               Umsetzung von{" "}
               <a 
@@ -30,7 +31,8 @@ export function Footer() {
               </a>
             </p>
         </div>
-        <nav className="flex items-center gap-4 text-sm">
+        {/* Desktop: Nav rechts, Mobile: Order 1 (oben) */}
+        <nav className="flex items-center gap-4 text-sm order-1 sm:order-2">
           {footerLinks.map((link) => (
             <Link 
               key={link.href}

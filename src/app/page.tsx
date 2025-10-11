@@ -14,10 +14,15 @@ function HomeContent() {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [copiedArticleId, setCopiedArticleId] = useState<string | null>(null);
+  const [statsVisible, setStatsVisible] = useState(false);
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(0);
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const h2Ref = useRef<HTMLHeadingElement>(null);
   const h3Ref = useRef<HTMLHeadingElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
+  const statsRef = useRef<HTMLElement>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -212,9 +217,66 @@ function HomeContent() {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial call
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Intersection Observer für Stats Animation
+  useEffect(() => {
+    const currentStatsRef = statsRef.current;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !statsVisible) {
+            setStatsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (currentStatsRef) {
+      observer.observe(currentStatsRef);
+    }
+
+    return () => {
+      if (currentStatsRef) {
+        observer.unobserve(currentStatsRef);
+      }
+    };
+  }, [statsVisible]);
+
+  // Counter Animation für Stats
+  useEffect(() => {
+    if (!statsVisible) return;
+
+    const duration = 2000; // 2 Sekunden
+    const target1 = 450;
+    const target2 = 10000;
+    const target3 = 20;
+    const fps = 60;
+    const totalFrames = (duration / 1000) * fps;
+    
+    let frame = 0;
+    const counter = setInterval(() => {
+      frame++;
+      const progress = frame / totalFrames;
+      
+      setCount1(Math.floor(target1 * progress));
+      setCount2(Math.floor(target2 * progress));
+      setCount3(Math.floor(target3 * progress));
+      
+      if (frame >= totalFrames) {
+        setCount1(target1);
+        setCount2(target2);
+        setCount3(target3);
+        clearInterval(counter);
+      }
+    }, 1000 / fps);
+
+    return () => clearInterval(counter);
+  }, [statsVisible]);
 
   // FAQ Daten für Schema
   const faqItems = [
@@ -579,7 +641,7 @@ function HomeContent() {
     
     <div>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center overflow-hidden">
+      <section className="relative h-[75vh] lg:h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/schaerfservice-werkstatt-berlin.jpg" 
@@ -606,7 +668,7 @@ function HomeContent() {
               & schleifen
             </h1>
             
-            <p className="text-xl sm:text-2xl text-white/90 leading-relaxed mb-12 max-w-4xl">
+            <p className="hidden lg:block text-xl sm:text-2xl text-white/90 leading-relaxed mb-12 max-w-4xl">
               <strong>Dentalinstrumente schärfen & schleifen</strong> mit höchster Präzision.<br />
               <strong>Präzisionsinstrumente aufbereiten</strong> für dentale und chirurgische Anwendungen. <strong>Schärfkurse</strong> in ihrer Praxis.
             </p>
@@ -634,21 +696,23 @@ function HomeContent() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gray-50 mt-20">
+      <section ref={statsRef} className="py-8 lg:py-20 bg-gray-50 mt-0 lg:mt-20">
         <Container>
-          <div className="grid sm:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-3 gap-2 sm:gap-8 text-center">
             {[
-              {title:"450+",subtitle:"Zufriedene Kunden"},
-              {title:"10.000+",subtitle:"Instrumente geschärft"},
-              {title:"20 Jahre",subtitle:"Erfahrung"}
+              {title:"450+",subtitle:"Zufriedene Kunden", value: count1, suffix: "+"},
+              {title:"10.000+",subtitle:"Instrumente geschärft", value: count2, suffix: "+"},
+              {title:"20 Jahre",subtitle:"Erfahrung", value: count3, suffix: " Jahre"}
             ].map((item) => (
-              <div key={item.title} className="space-y-2">
-                <div className="flex items-center justify-center gap-2">
-                  <div className="text-4xl sm:text-5xl font-bold text-blue-600">{item.title}</div>
+              <div key={item.title} className="space-y-1 lg:space-y-2">
+                <div className="flex items-center justify-center gap-1 lg:gap-2">
+                  <div className="text-2xl sm:text-4xl lg:text-5xl font-bold text-blue-600">
+                    {item.value.toLocaleString('de-DE')}{item.suffix}
+                  </div>
                   {item.title === "450+" && (
                     <div className="relative group inline-flex items-center">
                       <span
-                        className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-sm font-bold cursor-help"
+                        className="inline-flex items-center justify-center w-4 h-4 lg:w-6 lg:h-6 rounded-full bg-blue-100 text-blue-700 text-xs lg:text-sm font-bold cursor-help"
                         aria-label="Info zu unseren Kunden"
                       >
                         i
@@ -662,7 +726,7 @@ function HomeContent() {
                     </div>
                   )}
                 </div>
-                <div className="text-lg text-gray-600">{item.subtitle}</div>
+                <div className="text-[0.65rem] sm:text-base lg:text-lg text-gray-600">{item.subtitle}</div>
               </div>
             ))}
           </div>
@@ -710,7 +774,8 @@ function HomeContent() {
                     <p className="text-sm text-blue-600 font-medium">Herstellerunabhängig</p>
                   </div>
                   <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift" title="Dentalinstrumente schärfen lassen - Online Auftrag">
-                    Jetzt schärfen lassen
+                    <span className="lg:hidden">Jetzt schärfen</span>
+                    <span className="hidden lg:inline">Jetzt schärfen lassen</span>
                   </Button>
                 </div>
               </div>
@@ -731,10 +796,14 @@ function HomeContent() {
                     <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                     </svg>
-                    <p className="text-sm text-blue-600 font-medium">Nur in Berlin & Umgebung</p>
+                    <p className="text-sm text-blue-600 font-medium">
+                      <span className="lg:hidden">Berlin & Brandenburg</span>
+                      <span className="hidden lg:inline">Nur in Berlin & Umgebung</span>
+                    </p>
                   </div>
-                  <Button href="/express-schaerfen" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift" title="Express Schärfung Berlin - Vor Ort Service">
-                    Express-Service anfragen
+                  <Button href="/express-schaerfen" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 whitespace-nowrap" hover="lift" title="Express Schärfung Berlin - Vor Ort Service">
+                    <span className="lg:hidden">Express schärfen</span>
+                    <span className="hidden lg:inline">Express-Service anfragen</span>
                   </Button>
                 </div>
               </div>
@@ -782,7 +851,8 @@ function HomeContent() {
                     <p className="text-sm text-blue-600 font-medium">Herstellerunabhängig</p>
                   </div>
                   <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift" title="Dentalinstrumente schärfen lassen - Online Auftrag">
-                    Jetzt schärfen lassen
+                    <span className="lg:hidden">Jetzt schärfen</span>
+                    <span className="hidden lg:inline">Jetzt schärfen lassen</span>
                   </Button>
                 </div>
               </div>
@@ -801,10 +871,14 @@ function HomeContent() {
                     <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                     </svg>
-                    <p className="text-sm text-blue-600 font-medium">Nur in Berlin & Umgebung</p>
+                    <p className="text-sm text-blue-600 font-medium">
+                      <span className="lg:hidden">Berlin & Brandenburg</span>
+                      <span className="hidden lg:inline">Nur in Berlin & Umgebung</span>
+                    </p>
                   </div>
-                  <Button href="/express-schaerfen" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift" title="Express Schärfung Berlin - Vor Ort Service">
-                    Express-Service anfragen
+                  <Button href="/express-schaerfen" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 whitespace-nowrap" hover="lift" title="Express Schärfung Berlin - Vor Ort Service">
+                    <span className="lg:hidden">Express schärfen</span>
+                    <span className="hidden lg:inline">Express-Service anfragen</span>
                   </Button>
                 </div>
               </div>
