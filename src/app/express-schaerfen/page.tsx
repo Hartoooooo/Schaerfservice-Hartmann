@@ -1,32 +1,19 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import Image from "next/image";
-
-export const metadata: Metadata = {
-  title: "Express Instrumente schärfen Berlin - Vor Ort Service",
-  description: "🚀 Express Instrumente schärfen Berlin ✅ Dental schleifen vor Ort | Instrumente aufbereiten in der Praxis | 150km Radius | Professioneller Service | Höchste Qualität",
-  keywords: [
-    "express instrumente schärfen",
-    "instrumente schärfen vor ort",
-    "dental schärfen berlin express",
-    "instrumente schleifen express",
-    "dental schleifen vor ort",
-    "instrumente aufbereiten express",
-    "mobile instrumentenschärfung",
-    "vor ort schärfservice berlin",
-    "express dental schärfung",
-    "schnell instrumente schärfen"
-  ],
-  openGraph: {
-    title: "Express-Schärfen in Berlin | Schärfservice Hartmann",
-    description: "Express-Schärfservice in Berlin und Umgebung. Wir kommen zu Ihnen in die Praxis und schärfen Ihre Instrumente vor Ort.",
-  },
-};
+import { useState, useEffect } from "react";
 
 export default function ExpressSchaerfenPage() {
+  const [activeService, setActiveService] = useState<'mobile' | '24h'>('mobile');
+
+  useEffect(() => {
+    document.title = "Express Instrumente schärfen Berlin - Vor Ort Service | Schärfservice Hartmann";
+  }, []);
+
   return (
     <>
       {/* Hero Section */}
@@ -85,50 +72,124 @@ export default function ExpressSchaerfenPage() {
       <section className="py-20 bg-gray-50">
         <Container>
           <SectionHeading 
-            subtitle="Die Vorteile unseres mobilen Schärfservices"
-            className="text-center mb-16"
+            subtitle="Die Vorteile unseres Express Schärfservices"
+            className="text-center mb-12"
           >
             Warum Express-Schärfen?
           </SectionHeading>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center p-8">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Schnelle Bearbeitung</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Ihre Instrumente werden direkt in Ihrer Praxis geschärft. 
-                Keine Wartezeiten durch Versand und Rückversand.
-              </p>
-            </Card>
+          {/* Switch Buttons */}
+          <div className="flex justify-center mb-12">
+            <div className="relative inline-flex bg-white rounded-full p-1 shadow-sm border border-gray-200">
+              {/* Animierter Hintergrund */}
+              <div
+                className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-blue-600 rounded-full shadow-md transition-all duration-300 ease-in-out ${
+                  activeService === 'mobile' ? 'left-1' : 'left-[calc(50%+2px)]'
+                }`}
+              />
+              
+              <button
+                onClick={() => setActiveService('mobile')}
+                className={`relative z-10 px-8 py-3 rounded-full text-sm font-medium transition-colors duration-300 ${
+                  activeService === 'mobile'
+                    ? 'text-white'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Mobiles Schärfen
+              </button>
+              <button
+                onClick={() => setActiveService('24h')}
+                className={`relative z-10 px-8 py-3 rounded-full text-sm font-medium transition-colors duration-300 ${
+                  activeService === '24h'
+                    ? 'text-white'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                24h Schärfservice
+              </button>
+            </div>
+          </div>
 
-            <Card className="text-center p-8">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Vor Ort Service</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Wir kommen zu Ihnen – keine Versandkosten, kein Risiko für Ihre wertvollen Instrumente.
-              </p>
-            </Card>
+          {/* Content basierend auf aktiver Auswahl */}
+          <div key={activeService} className="grid md:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-3 duration-700 ease-out">
+            {activeService === 'mobile' ? (
+              <>
+                <Card className="text-center p-8">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900">Vor Ort Service</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Wir kommen zu Ihnen – keine Versandkosten, kein Risiko für Ihre wertvollen Instrumente.
+                  </p>
+                </Card>
 
-            <Card className="text-center p-8">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Höchste Qualität</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Professionelle Schärfung mit über 20 Jahren Erfahrung. 
-                Hu-Friedy zertifizierte Expertise direkt bei Ihnen.
-              </p>
-            </Card>
+                <Card className="text-center p-8">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900">Sofort einsatzbereit</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Ihre Instrumente werden direkt in Ihrer Praxis geschärft und sind sofort wieder einsatzbereit.
+                  </p>
+                </Card>
+
+                <Card className="text-center p-8">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900">Flexible Termine</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Wir richten uns nach Ihrem Zeitplan und kommen zu einem für Sie passenden Termin.
+                  </p>
+                </Card>
+              </>
+            ) : (
+              <>
+                <Card className="text-center p-8">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900">24 Stunden Service</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Express-Bearbeitung innerhalb von 24 Stunden. Ihre Instrumente sind schnell wieder einsatzbereit.
+                  </p>
+                </Card>
+
+                <Card className="text-center p-8">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900">Express Abholung</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Wir holen die Instrumente ab und kommen am Folgetag vorbei. Berlin & Umkreis. Nur an Werktagen verfügbar.
+                  </p>
+                </Card>
+
+                <Card className="text-center p-8">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900">Priorität Bearbeitung</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Ihre Instrumente werden mit höchster Priorität bearbeitet und schnellstmöglich zurückgeschickt.
+                  </p>
+                </Card>
+              </>
+            )}
           </div>
         </Container>
       </section>
@@ -248,7 +309,7 @@ export default function ExpressSchaerfenPage() {
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
               Kontaktieren Sie uns jetzt für einen Termin. Wir kommen zu Ihnen und 
-              sorgen für scharfe Instrumente in Ihrer Praxis.
+              sorgen für präzise geschärfte Instrumente in Ihrer Praxis.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

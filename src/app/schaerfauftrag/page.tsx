@@ -4,7 +4,7 @@ import SchaerfauftragForm from "@/components/SchaerfauftragForm";
 // SEO-Metadaten für Server-Side Rendering
 export const metadata: Metadata = {
   title: "Instrumente schärfen lassen - Online Auftrag",
-  description: "🦷 Instrumente schärfen lassen online ✅ Dental schärfen & schleifen ab 6,04€ | Scaler, Kürretten schärfen | Instrumente aufbereiten | Express-Service Berlin | 3-5 Tage Bearbeitungszeit",
+  description: "🦷 Instrumente schärfen lassen online ✅ Dental schärfen & schleifen ab 6,04€ | Scaler, Küretten schärfen | Instrumente aufbereiten | Express-Service Berlin | 3-5 Tage Bearbeitungszeit",
   keywords: [
     "instrumente schärfen lassen",
     "dental schärfen auftrag",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "instrumente aufbereiten auftrag",
     "online schärfauftrag",
     "scaler schärfen lassen",
-    "kürretten schärfen lassen",
+    "küretten schärfen lassen",
     "raspatorien schärfen",
     "instrumente schärfen berlin auftrag"
   ],

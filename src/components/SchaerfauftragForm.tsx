@@ -592,7 +592,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                     className="mt-1 w-4 h-4 text-[var(--color-blue-600)] border-gray-300 rounded focus:ring-[var(--color-blue-600)]"
                   />
                   <span className="text-sm text-gray-700 leading-relaxed">
-                    Hiermit beauftrage ich Sie ausdrücklich, ab Erhalt meiner Sendung mit dem Schärffen der Instrumente beginnen zu dürfen. 
+                    Hiermit beauftrage ich Sie ausdrücklich, ab Erhalt meiner Sendung mit dem Schärfen der Instrumente beginnen zu dürfen. 
                     Mir ist bekannt, dass mein Widerrufsrecht ab Beginn der Schärfarbeiten erlischt.
                   </span>
                 </label>

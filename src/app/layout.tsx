@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "medizinische instrumente schärfen",
     "chirurgische instrumente schärfen",
     "scaler schärfen",
-    "kürretten schärfen", 
+    "küretten schärfen", 
     "raspatorien schärfen",
     "instrumentenschärfung",
     "instrumentenschleifung"
