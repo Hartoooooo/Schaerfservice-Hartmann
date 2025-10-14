@@ -58,7 +58,7 @@ export default function ExpressSchaerfenPage() {
               </Button>
               <Button 
                 variant="outline" 
-                href="tel:+491749342576"
+                href="tel:+4903092371278"
                 className="px-8 py-3 text-lg"
               >
                 Jetzt anrufen
@@ -123,7 +123,7 @@ export default function ExpressSchaerfenPage() {
                   </div>
                   <h3 className="text-xl font-semibold mb-4 text-gray-900">Vor Ort Service</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Wir kommen zu Ihnen – keine Versandkosten, kein Risiko für Ihre wertvollen Instrumente.
+                    Wir kommen zu Ihnen – keine Wartezeit, keine Versandkosten, kein Verlustrisiko für Ihre wertvollen Instrumente.
                   </p>
                 </Card>
 
@@ -183,9 +183,9 @@ export default function ExpressSchaerfenPage() {
                       <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900">Priorität Bearbeitung</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900">Prioritäts Bearbeitung</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Ihre Instrumente werden mit höchster Priorität bearbeitet und schnellstmöglich zurückgeschickt.
+                    Ihre Instrumente werden mit höchster Priorität bearbeitet und nach 24h zurückgebracht.
                   </p>
                 </Card>
               </>
@@ -221,7 +221,7 @@ export default function ExpressSchaerfenPage() {
               </div>
               <h3 className="text-lg font-semibold mb-3 text-gray-900">Termin</h3>
               <p className="text-gray-600 text-sm">
-                Wir vereinbaren einen passenden Termin für Ihren Praxisbesuch.
+                Wir vereinbaren einen passenden Termin für unseren Praxisbesuch.
               </p>
             </div>
 
@@ -253,7 +253,7 @@ export default function ExpressSchaerfenPage() {
         <Container>
           <div className="max-w-4xl mx-auto text-center">
             <SectionHeading 
-              subtitle="Wir sind in Berlin und Umgebung für Sie da"
+              subtitle="Unser 24h & vor Ort Schärfservice"
               className="mb-12"
             >
               Service-Gebiet
@@ -264,7 +264,7 @@ export default function ExpressSchaerfenPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-4 text-gray-900">Berlin & Umgebung</h3>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    Unser Express-Schärfservice ist verfügbar in Berlin und im Umkreis von 150 km. 
+                    <strong className="text-gray-900">Nur vor Ort Service:</strong> Unser Express-Schärfservice ist verfügbar in Berlin und im Umkreis von 100 km. 
                     Bei größeren Entfernungen beraten wir Sie gerne über alternative Lösungen.
                   </p>
                   
@@ -285,13 +285,13 @@ export default function ExpressSchaerfenPage() {
                       <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                       </svg>
-                      <span className="text-gray-700">Brandenburg (bis 150 km)</span>
+                      <span className="text-gray-700">Brandenburg (bis 100 km)</span>
                     </div>
                   </div>
                 </div>
                 
                 <div className="bg-gray-100 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">150 km</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-2">100 km</div>
                   <div className="text-gray-600">Service-Radius</div>
                 </div>
               </div>
@@ -322,10 +322,10 @@ export default function ExpressSchaerfenPage() {
               </Button>
               <Button 
                 variant="outline" 
-                href="tel:+491749342576"
+                href="tel:+4903092371278"
                 className="px-8 py-3 text-lg"
               >
-                +49 174 93 42 576
+                +49 30 92371278
               </Button>
             </div>
           </div>

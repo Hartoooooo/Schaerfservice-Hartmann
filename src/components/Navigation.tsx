@@ -15,7 +15,12 @@ const navItems = [
 // Footer-Seiten, die nicht im Header als aktiv angezeigt werden sollen
 const footerPages = ["/impressum", "/datenschutz", "/agb", "/widerrufsbelehrung"];
 
-export function Navigation() {
+interface NavigationProps {
+  isTransparentMobile?: boolean;
+  onMenuToggle?: (isOpen: boolean) => void;
+}
+
+export function Navigation({ isTransparentMobile = false, onMenuToggle }: NavigationProps) {
   const pathname = usePathname();
   const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
   const [mounted, setMounted] = useState(false);
@@ -44,6 +49,13 @@ export function Navigation() {
       document.body.style.overflow = '';
     };
   }, [isMobileMenuOpen]);
+
+  // Benachrichtige Parent über Menüstatus
+  useEffect(() => {
+    if (onMenuToggle) {
+      onMenuToggle(isMobileMenuOpen);
+    }
+  }, [isMobileMenuOpen, onMenuToggle]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -88,9 +100,9 @@ export function Navigation() {
         {/* Mobile Hamburger Button */}
         <button className="md:hidden p-2">
           <div className="w-6 h-5 flex flex-col justify-between">
-            <span className="block h-0.5 w-full bg-gray-900 transition-all"></span>
-            <span className="block h-0.5 w-full bg-gray-900 transition-all"></span>
-            <span className="block h-0.5 w-full bg-gray-900 transition-all"></span>
+            <span className={`block h-0.5 w-full transition-all ${isTransparentMobile ? 'bg-white' : 'bg-gray-900'}`}></span>
+            <span className={`block h-0.5 w-full transition-all ${isTransparentMobile ? 'bg-white' : 'bg-gray-900'}`}></span>
+            <span className={`block h-0.5 w-full transition-all ${isTransparentMobile ? 'bg-white' : 'bg-gray-900'}`}></span>
           </div>
         </button>
       </>
@@ -132,14 +144,14 @@ export function Navigation() {
         aria-label="Menü öffnen"
       >
         <div className="w-6 h-5 flex flex-col justify-between">
-          <span className={`block h-0.5 w-full bg-gray-900 transition-all duration-300 ease-out ${
-            isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+          <span className={`block h-0.5 w-full transition-all duration-300 ease-out ${
+            isMobileMenuOpen ? 'rotate-45 translate-y-2 bg-gray-900' : isTransparentMobile ? 'bg-white' : 'bg-gray-900'
           }`}></span>
-          <span className={`block h-0.5 w-full bg-gray-900 transition-all duration-300 ease-out ${
+          <span className={`block h-0.5 w-full transition-all duration-300 ease-out ${
             isMobileMenuOpen ? 'opacity-0' : ''
-          }`}></span>
-          <span className={`block h-0.5 w-full bg-gray-900 transition-all duration-300 ease-out ${
-            isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+          } ${isTransparentMobile && !isMobileMenuOpen ? 'bg-white' : 'bg-gray-900'}`}></span>
+          <span className={`block h-0.5 w-full transition-all duration-300 ease-out ${
+            isMobileMenuOpen ? '-rotate-45 -translate-y-2 bg-gray-900' : isTransparentMobile ? 'bg-white' : 'bg-gray-900'
           }`}></span>
         </div>
       </button>
@@ -158,22 +170,39 @@ export function Navigation() {
           backgroundColor: '#ffffff'
         }}
       >
-        <div className="pt-20 px-6 h-full w-full">
-          <nav className="flex flex-col space-y-2">
-            {navItems.map((item) => (
+        <div className="pt-20 px-6 h-full w-full flex flex-col">
+          <nav className="flex flex-col space-y-2 flex-1">
+            {navItems.map((item, index) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`block px-4 py-4 rounded-xl text-xl font-medium transition-all duration-200 ${
+                className={`block px-4 py-4 rounded-xl text-xl font-medium transition-all duration-300 ${
                   pathname === item.href && !footerPages.includes(pathname)
                     ? "bg-blue-600 text-white shadow-md" 
                     : "text-gray-900 hover:bg-gray-100 active:bg-gray-200"
                 }`}
+                style={{
+                  animation: isMobileMenuOpen 
+                    ? `slideIn 0.5s ease-out ${index * 0.1}s both`
+                    : 'none',
+                }}
               >
                 {item.mobileLabel}
               </Link>
             ))}
           </nav>
+          
+          {/* Copyright Text */}
+          <div 
+            className="text-center py-8 text-gray-500 text-sm"
+            style={{
+              animation: isMobileMenuOpen 
+                ? `slideIn 0.5s ease-out ${navItems.length * 0.1}s both`
+                : 'none',
+            }}
+          >
+            © 2025 Schärfservice Hartmann
+          </div>
         </div>
       </div>
     </>

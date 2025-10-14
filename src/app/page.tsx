@@ -33,8 +33,8 @@ function HomeContent() {
       excerpt: "Erfahren Sie, wie Sie Ihre Instrumente nach der Behandlung optimal reinigen und vor Korrosion schützen. Wichtige Schritte für die",
       fullText: "Die Reinigung von Dentalinstrumenten ist der erste und wichtigste Schritt in der Aufbereitung. Nach jeder Behandlung sollten die Instrumente sofort unter fließendem Wasser abgespült werden, um Blut und Speichel zu entfernen. Anschließend ist eine gründliche Reinigung mit speziellen Reinigungsmitteln erforderlich, die für medizinische Instrumente geeignet sind. Verwenden Sie milde, pH-neutrale Reiniger. Achten Sie darauf, dass alle Oberflächen erreicht werden, besonders bei komplexen Instrumenten wie Scaler und Küretten. Nach der Reinigung sollten die Instrumente vollständig getrocknet werden, um Korrosion zu vermeiden. Eine ordnungsgemäße Reinigung verlängert nicht nur die Lebensdauer Ihrer Instrumente, sondern gewährleistet auch die Patientensicherheit.",
       date: "15. März 2024",
-      imageUrl: "/dentalinstrumente-kassette-schaerfung.jpg",
-      imageAlt: "Professionelle Reinigung von Dentalinstrumenten in Kassette - Schärfservice Hartmann Berlin"
+      imageUrl: "/dental-schere-schaerfwinkel-berlin.jpg",
+      imageAlt: "Optimaler Schärfwinkel bei Dentalscheren - Professionelle Schärfung Berlin Schärfservice Hartmann"
     },
     {
       id: "schaerfwinkel-scaler-kueretten",
@@ -42,8 +42,8 @@ function HomeContent() {
       excerpt: "Warum der korrekte Schärfwinkel entscheidend für die Effektivität Ihrer Instrumente ist. Optimale Winkel zwischen",
       fullText: "Der Schärfwinkel ist bei Dentalinstrumenten von entscheidender Bedeutung für deren Funktionalität. Bei Scaler und Küretten liegt der optimale Winkel zwischen 70 und 80 Grad. Ein zu flacher Winkel reduziert die Schärfe, während ein zu steiler Winkel die Schneide zu dünn macht und Bruchgefahr besteht. Die richtige Schärfung erfolgt in mehreren Schritten: Zuerst wird die Schneide mit einem groben Schleifstein vorbereitet, dann mit einem feineren Stein nachgeschärft. Wichtig ist dabei, den ursprünglichen Winkel beizubehalten und gleichmäßig zu arbeiten. Regelmäßige Kontrolle mit einer Lupe hilft dabei, Unebenheiten zu erkennen und zu korrigieren. Professionell geschärfte Instrumente sorgen für präzise und effiziente Behandlungen.",
       date: "8. März 2024",
-      imageUrl: "/dental-schere-schaerfwinkel-berlin.jpg",
-      imageAlt: "Optimaler Schärfwinkel bei Dentalscheren - Professionelle Schärfung Berlin Schärfservice Hartmann"
+      imageUrl: "/raspatorien-lagerung-pflege-dental.png",
+      imageAlt: "Fachgerechte Lagerung und Pflege von Raspatorien - Schärfservice Hartmann Expertenberatung"
     },
     {
       id: "lagerung-pflege-raspatorien",
@@ -51,8 +51,8 @@ function HomeContent() {
       excerpt: "Tipps zur ordnungsgemäßen Aufbewahrung und regelmäßigen Wartung Ihrer Raspatorien. Schützen Sie die feinen",
       fullText: "Raspatorien benötigen besondere Aufmerksamkeit bei der Lagerung und Pflege. Nach der Reinigung sollten sie einzeln in speziellen Halterungen oder Schaumstoffeinlagen aufbewahrt werden, um Beschädigungen der feinen Zähne zu vermeiden. Die Lagerung sollte an einem trockenen, staubfreien Ort erfolgen. Regelmäßige Inspektion der Zähne ist wichtig - beschädigte oder abgenutzte Bereiche sollten umgehend repariert oder ersetzt werden. Bei der Reinigung ist Vorsicht geboten: Aggressive Reinigungsmittel können die Oberfläche angreifen. Verwenden Sie milde, pH-neutrale Reiniger und trocknen Sie die Instrumente sorgfältig ab. Eine ordnungsgemäße Pflege verlängert die Lebensdauer erheblich und gewährleistet optimale Arbeitsergebnisse.",
       date: "1. März 2024",
-      imageUrl: "/raspatorien-lagerung-pflege-dental.png",
-      imageAlt: "Fachgerechte Lagerung und Pflege von Raspatorien - Schärfservice Hartmann Expertenberatung"
+      imageUrl: "/dentalinstrumente-kassette-schaerfung.jpg",
+      imageAlt: "Professionelle Reinigung von Dentalinstrumenten in Kassette - Schärfservice Hartmann Berlin"
     },
     {
       id: "wann-geschaerft-werden",
@@ -289,12 +289,8 @@ function HomeContent() {
       answer: "Wir schärfen alle gängigen Dentalinstrumente wie Scaler, Küretten, Raspatorien, Exkavatoren und chirurgische Instrumente. Bei speziellen Instrumenten beraten wir Sie gerne vorab über die Schärfbarkeit."
     },
     {
-      question: "Wie werden die Instrumente verpackt und versendet?",
-      answer: "Alle Instrumente werden einzeln in speziellen Schutzhüllen verpackt und in stabilen Versandboxen aus recyceltem Karton versendet. Der Versand erfolgt versichert und nachverfolgbar."
-    },
-    {
       question: "Was kostet die Schärfung?",
-      answer: "Die Preise richten sich nach der Art und Anzahl der Instrumente. Scaler und Exkavatoren ab 6,04 €, Raspatorien ab 11,06 €. Bei größeren Mengen gewähren wir Mengenrabatte. Fordern Sie gerne ein individuelles Angebot an."
+      answer: "Die Preise richten sich nach der Art und Anzahl der Instrumente. Bei größeren Mengen gewähren wir Mengenrabatte. Fordern Sie gerne ein individuelles Angebot an."
     },
     {
       question: "Wie kann ich einen Schärfauftrag starten?",
@@ -418,7 +414,7 @@ function HomeContent() {
               "addressRegion": "Brandenburg",
               "addressCountry": "DE"
             },
-            "telephone": "+49-174-9342576",
+            "telephone": "+49-30-92371278",
             "email": "hartmann-schaerfservice@web.de",
             "sameAs": [
               "https://www.dentalschleifen.de"
@@ -437,7 +433,7 @@ function HomeContent() {
             "name": "Schärfservice Hartmann",
             "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung",
             "url": "https://www.dentalschleifen.de",
-            "telephone": "+49-174-9342576",
+            "telephone": "+49-30-92371278",
             "email": "hartmann-schaerfservice@web.de",
             "logo": {
               "@type": "ImageObject",
@@ -673,22 +669,24 @@ function HomeContent() {
               <strong>Präzisionsinstrumente aufbereiten</strong> für dentale und chirurgische Anwendungen. <strong>Schärfkurse</strong> in ihrer Praxis.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-row gap-4 w-full lg:w-auto">
               <Button 
                 href="/schaerfauftrag" 
-                className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 text-lg font-medium"
+                className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 text-lg font-medium flex-1 lg:flex-none"
                 hover="lift"
                 onClick={() => analytics.buttonClick('schaerfauftrag_hero', 'homepage')}
               >
-                Schärfauftrag starten
+                <span className="lg:hidden">Schärfen</span>
+                <span className="hidden lg:inline">Schärfauftrag starten</span>
               </Button>
               <WhiteButton 
                 href="/schaerfkurse" 
-                className="text-lg"
+                className="text-lg flex-1 lg:flex-none"
                 hover="lift"
                 onClick={() => analytics.buttonClick('schaerfkurse_hero', 'homepage')}
               >
-                Schärfkurse ansehen
+                <span className="lg:hidden">Schärfkurs</span>
+                <span className="hidden lg:inline">Schärfkurse ansehen</span>
               </WhiteButton>
             </div>
           </div>
@@ -764,7 +762,7 @@ function HomeContent() {
                 <div className="group text-left">
                   <h3 ref={h1Ref} className="text-2xl font-medium mb-4 text-gray-900">Instrumente schärfen & schleifen</h3>
                   <p className="text-gray-600 leading-relaxed text-lg mb-4">
-                    Professionelles <strong>Dental schärfen</strong> und <strong>Instrumente aufbereiten</strong> aller dentalen und chirurgischen Instrumente. 
+                    Professionelles <strong>Schärfen und Instrumente aufarbeiten</strong> aller dentalen und chirurgischen Instrumente. 
                     Höchste Qualität für optimale Behandlungsergebnisse durch präzise Handarbeit.
                   </p>
                   <div className="flex items-center gap-2 mb-6">
@@ -840,7 +838,7 @@ function HomeContent() {
               <div className="group text-left">
                 <h3 ref={h1Ref} className="text-2xl font-medium mb-4 text-gray-900">Instrumente schärfen & schleifen</h3>
                 <p className="text-gray-600 leading-relaxed text-lg mb-4">
-                  Professionelles <strong>Dental schärfen</strong> und <strong>Instrumente aufbereiten</strong> aller dentalen und chirurgischen Instrumente. 
+                  Professionelles <strong>Schärfen und Instrumente aufarbeiten</strong> aller dentalen und chirurgischen Instrumente. 
                   Höchste Qualität für optimale Behandlungsergebnisse durch präzise Handarbeit.
                 </p>
                 <div className="flex items-center justify-between mb-6">
@@ -917,7 +915,7 @@ function HomeContent() {
               Unsere Philosophie
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Qualität, Langlebigkeit und Nachhaltigkeit stehen im Mittelpunkt unserer Arbeit
+              Qualität, Zuverlässigkeit, Präzision, Langlebigkeit und Nachhaltigkeit stehen im Mittelpunkt unserer Arbeit
             </p>
           </div>
           
@@ -1062,7 +1060,7 @@ function HomeContent() {
         <Container>
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-semibold mb-6 text-gray-900">
-              Bereit für professionelle Schärfung?
+              Bereit für professionelle Schärfdienstleistungen?
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
               Starten Sie jetzt Ihren Schärfauftrag oder kontaktieren Sie uns für eine persönliche Beratung.

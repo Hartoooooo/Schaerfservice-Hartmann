@@ -106,7 +106,8 @@ export default function SchaerfkurseForm() {
           {/* Header Section - nur Titel über beiden Spalten */}
           <div className="text-center mb-12">
             <h1 className="text-5xl font-bold tracking-tight text-gray-900">
-              Schärfkursanfrage
+              <span className="lg:hidden">Schärfkurse</span>
+              <span className="hidden lg:inline">Schärfkursanfrage</span>
             </h1>
           </div>
 
@@ -309,7 +310,7 @@ export default function SchaerfkurseForm() {
                   <div className="bg-blue-50 rounded-xl p-4 border-l-4 border-blue-500">
                     <h3 className="font-bold text-blue-600 mb-2">2. Praxisnahe Schulung</h3>
                     <p className="text-gray-700 text-sm leading-relaxed">
-                      Wir glauben daran, dass Lernen am besten in der Praxis stattfindet. Daher erhalten Sie ausreichend Gelegenheit, Ihre neu erlernten Fähigkeiten direkt an Ihren eigenen Instrumenten zu üben.
+                      Wir glauben daran, dass Lernen am besten in der Praxis stattfindet. Daher erhalten Sie ausreichend Gelegenheit, Ihre neu erlernten Fähigkeiten direkt an Ihren praxiseigenen Instrumenten zu üben.
                     </p>
                   </div>
                 </div>

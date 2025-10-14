@@ -39,7 +39,7 @@ export default function WiderrufsbelehrungPage() {
               </p>
               <p className="text-neutral-600 leading-relaxed">
                 Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Schärfservice-Hartmann, Björn Hartmann, Petershagener Str. 27, 
-                15566 Schöneiche bei Berlin, Telefon: +49 174 93 42 576, E-Mail: hartmann-schaerfservice@web.de) mittels einer 
+                15566 Schöneiche bei Berlin, Telefon: +49 30 92371278, E-Mail: hartmann-schaerfservice@web.de) mittels einer 
                 eindeutigen Erklärung (z.B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss, 
                 diesen Vertrag zu widerrufen, informieren.
               </p>
@@ -80,7 +80,7 @@ export default function WiderrufsbelehrungPage() {
                 <p>Inhaber: Björn Hartmann</p>
                 <p>Petershagener Str. 27, 15566 Schöneiche bei Berlin</p>
                 <p>E-Mail: hartmann-schaerfservice@web.de</p>
-                <p>Telefon: +49 174 93 42 576</p>
+                <p>Telefon: +49 30 92371278</p>
               </div>
             </section>
           </div>

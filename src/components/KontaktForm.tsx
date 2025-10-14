@@ -74,7 +74,7 @@ export default function KontaktForm() {
                 </div>
                 <div>
                   <p className="font-semibold text-sm text-gray-900">Telefon</p>
-                  <p className="text-gray-600">+49 174 93 42 576</p>
+                  <p className="text-gray-600">+49 30 92371278</p>
                 </div>
               </div>
 
