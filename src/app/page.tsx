@@ -31,34 +31,34 @@ function HomeContent() {
       id: "reinigung-dentalinstrumente",
       title: "Richtige Reinigung von Dentalinstrumenten",
       excerpt: "Erfahren Sie, wie Sie Ihre Instrumente nach der Behandlung optimal reinigen und vor Korrosion schützen. Wichtige Schritte für die",
-      fullText: "Die Reinigung von Dentalinstrumenten ist der erste und wichtigste Schritt in der Aufbereitung. Nach jeder Behandlung sollten die Instrumente sofort unter fließendem Wasser abgespült werden, um Blut und Speichel zu entfernen. Anschließend ist eine gründliche Reinigung mit speziellen Reinigungsmitteln erforderlich, die für medizinische Instrumente geeignet sind. Verwenden Sie milde, pH-neutrale Reiniger. Achten Sie darauf, dass alle Oberflächen erreicht werden, besonders bei komplexen Instrumenten wie Scaler und Küretten. Nach der Reinigung sollten die Instrumente vollständig getrocknet werden, um Korrosion zu vermeiden. Eine ordnungsgemäße Reinigung verlängert nicht nur die Lebensdauer Ihrer Instrumente, sondern gewährleistet auch die Patientensicherheit.",
+      fullText: "Die Reinigung von Dentalinstrumenten ist der erste und wichtigste Schritt in der Aufbereitung. Nach jeder Behandlung sollten die Instrumente sofort unter fließendem Wasser abgespült werden, um Blut und Speichel zu entfernen. Anschließend ist eine gründliche Reinigung mittels Ultraschallbad, mit speziellen Reinigungsmitteln und Benutzung des Thermodesinfektors erforderlich. Verwenden Sie milde, pH-neutrale Reiniger. Achten Sie darauf, dass alle Oberflächen erreicht werden, besonders bei komplexen Instrumenten wie Scharnierinstrumenten. Nach der Reinigung sollten die Instrumente vollständig getrocknet werden, um Korrosion zu vermeiden. Eine ordnungsgemäße Reinigung verlängert nicht nur die Lebensdauer Ihrer Instrumente, sondern gewährleistet auch die Patientensicherheit.",
       date: "15. März 2024",
       imageUrl: "/dental-schere-schaerfwinkel-berlin.jpg",
       imageAlt: "Optimaler Schärfwinkel bei Dentalscheren - Professionelle Schärfung Berlin Schärfservice Hartmann"
     },
     {
       id: "schaerfwinkel-scaler-kueretten",
-      title: "Schärfwinkel bei Scaler und Küretten",
+      title: "Schärfwinkel bei Scalern und Küretten",
       excerpt: "Warum der korrekte Schärfwinkel entscheidend für die Effektivität Ihrer Instrumente ist. Optimale Winkel zwischen",
-      fullText: "Der Schärfwinkel ist bei Dentalinstrumenten von entscheidender Bedeutung für deren Funktionalität. Bei Scaler und Küretten liegt der optimale Winkel zwischen 70 und 80 Grad. Ein zu flacher Winkel reduziert die Schärfe, während ein zu steiler Winkel die Schneide zu dünn macht und Bruchgefahr besteht. Die richtige Schärfung erfolgt in mehreren Schritten: Zuerst wird die Schneide mit einem groben Schleifstein vorbereitet, dann mit einem feineren Stein nachgeschärft. Wichtig ist dabei, den ursprünglichen Winkel beizubehalten und gleichmäßig zu arbeiten. Regelmäßige Kontrolle mit einer Lupe hilft dabei, Unebenheiten zu erkennen und zu korrigieren. Professionell geschärfte Instrumente sorgen für präzise und effiziente Behandlungen.",
+      fullText: "Der Schärfwinkel ist bei Dentalinstrumenten von entscheidender Bedeutung für deren Funktionalität. Bei Scalern und Küretten liegt der optimale Winkel zwischen 70 und 80 Grad. Ein zu flacher Winkel reduziert die Schärfe, während ein zu steiler Winkel die Schneide zu dünn macht und Bruchgefahr besteht. Die richtige Schärfung erfolgt in mehreren Schritten: Zuerst wird die Schneide mit einem groben Schleifstein vorbereitet, dann mit einem feineren Stein nachgeschärft. Wichtig ist dabei, den ursprünglichen Winkel beizubehalten und gleichmäßig zu arbeiten. Regelmäßige Kontrolle mit einer Lupe hilft dabei, Unebenheiten zu erkennen und zu korrigieren. Professionell geschärfte Instrumente sorgen für präzise und effiziente Behandlungen.",
       date: "8. März 2024",
-      imageUrl: "/raspatorien-lagerung-pflege-dental.png",
-      imageAlt: "Fachgerechte Lagerung und Pflege von Raspatorien - Schärfservice Hartmann Expertenberatung"
+      imageUrl: "/kueretten.webp",
+      imageAlt: "Schärfwinkel bei Scalern und Küretten - Professionelle Instrumentenschärfung Schärfservice Hartmann"
     },
     {
       id: "lagerung-pflege-raspatorien",
-      title: "Lagerung und Pflege von Raspatorien",
-      excerpt: "Tipps zur ordnungsgemäßen Aufbewahrung und regelmäßigen Wartung Ihrer Raspatorien. Schützen Sie die feinen",
-      fullText: "Raspatorien benötigen besondere Aufmerksamkeit bei der Lagerung und Pflege. Nach der Reinigung sollten sie einzeln in speziellen Halterungen oder Schaumstoffeinlagen aufbewahrt werden, um Beschädigungen der feinen Zähne zu vermeiden. Die Lagerung sollte an einem trockenen, staubfreien Ort erfolgen. Regelmäßige Inspektion der Zähne ist wichtig - beschädigte oder abgenutzte Bereiche sollten umgehend repariert oder ersetzt werden. Bei der Reinigung ist Vorsicht geboten: Aggressive Reinigungsmittel können die Oberfläche angreifen. Verwenden Sie milde, pH-neutrale Reiniger und trocknen Sie die Instrumente sorgfältig ab. Eine ordnungsgemäße Pflege verlängert die Lebensdauer erheblich und gewährleistet optimale Arbeitsergebnisse.",
+      title: "Lagerung & Pflege von Präzisionsinstrumenten",
+      excerpt: "Tipps zur ordnungsgemäßen Aufbewahrung und regelmäßigen Wartung Ihrer Präzisionsinstrumente. Schützen Sie die feinen",
+      fullText: "Präzisionsinstrumente benötigen besondere Aufmerksamkeit bei der Lagerung und Pflege. Nach der Reinigung sollten sie einzeln in speziellen Halterungen oder Trays aufbewahrt werden. Die Lagerung sollte an einem trockenen, staubfreien Ort erfolgen. Bei der Reinigung ist Vorsicht geboten: Aggressive Reinigungsmittel können die Oberfläche angreifen. Verwenden Sie milde, pH-neutrale Reiniger und trocknen Sie die Instrumente sorgfältig ab. Eine ordnungsgemäße Pflege verlängert die Lebensdauer erheblich und gewährleistet optimale Arbeitsergebnisse.",
       date: "1. März 2024",
       imageUrl: "/dentalinstrumente-kassette-schaerfung.jpg",
-      imageAlt: "Professionelle Reinigung von Dentalinstrumenten in Kassette - Schärfservice Hartmann Berlin"
+      imageAlt: "Lagerung und Pflege von Präzisionsinstrumenten - Schärfservice Hartmann Berlin"
     },
     {
       id: "wann-geschaerft-werden",
       title: "Wann sollte geschärft werden?",
-      excerpt: "Anzeichen erkennen und den optimalen Zeitpunkt für eine professionelle Schärfung bestimmen. Faustregel: Nach 20-30",
-      fullText: "Die rechtzeitige Schärfung Ihrer Dentalinstrumente ist entscheidend für deren Effektivität. Erste Anzeichen für eine notwendige Schärfung sind: verminderte Schneidleistung, erhöhter Kraftaufwand bei der Anwendung und sichtbare Abnutzungsspuren. Bei Scaler und Küretten sollten Sie auf eine glatte, scharfe Schneide achten - stumpfe Instrumente können das Gewebe traumatisieren. Als Faustregel gilt: Instrumente sollten nach 20-30 Behandlungen geschärft werden, abhängig von der Intensität der Nutzung. Regelmäßige Kontrolle mit einer Lupe hilft dabei, den optimalen Zeitpunkt zu bestimmen. Eine professionelle Schärfung durch Experten gewährleistet nicht nur die richtige Schärfe, sondern auch die Beibehaltung der korrekten Winkel und Formen. Investieren Sie in regelmäßige Wartung - es lohnt sich für Ihre Praxis und Ihre Patienten.",
+      excerpt: "Anzeichen erkennen und den optimalen Zeitpunkt für eine professionelle Schärfung bestimmen. Faustregel: Abhängig von",
+      fullText: "Die rechtzeitige Schärfung Ihrer Dentalinstrumente ist entscheidend für deren Effektivität. Erste Anzeichen für eine notwendige Schärfung sind: verminderte Schneidleistung, erhöhter Kraftaufwand bei der Anwendung und sichtbare Abnutzungsspuren. Bei Scalern und Küretten sollten Sie auf eine glatte, scharfe Schneide achten - stumpfe Instrumente können das Gewebe traumatisieren. Als Faustregel gilt: Instrumente sollten abhängig von der Intensität der Nutzung geschärft werden, regelmäßige Kontrolle mit einer Lupe hilft dabei, den optimalen Zeitpunkt zu bestimmen. Eine professionelle Schärfung durch Experten gewährleistet nicht nur die richtige Schärfe, sondern auch die Beibehaltung der korrekten Winkel und Formen. Investieren Sie in regelmäßige Wartung - es lohnt sich für Ihre Praxis und Ihre Patienten.",
       date: "22. Februar 2024",
       imageUrl: "/schaerfservice-werkstatt-berlin.jpg",
       imageAlt: "Wann sollten Dentalinstrumente geschärft werden - Schärfservice Hartmann Berlin Expertentipps"
@@ -278,15 +278,24 @@ function HomeContent() {
     return () => clearInterval(counter);
   }, [statsVisible]);
 
-  // FAQ Daten für Schema
+  // FAQ Daten für Schema und Anzeige
   const faqItems = [
     {
       question: "Wie lange dauert die Schärfung meiner Instrumente?",
-      answer: "Die Bearbeitungszeit beträgt in der Regel 3-5 Werktage. Bei dringenden Fällen können wir auch Express-Service anbieten. Sie erhalten eine detaillierte Zeitangabe bei der Auftragserteilung."
+      answer: (
+        <>
+          Die Bearbeitungszeit beträgt in der Regel 3-5 Werktage. In dringenden Fällen können wir auch unseren{" "}
+          <a href="/express-schaerfen" className="text-blue-600 hover:text-blue-700 underline font-medium">
+            Express-Service
+          </a>{" "}
+          anbieten. Sie erhalten eine detaillierte Zeitangabe bei der Auftragserteilung.
+        </>
+      ),
+      answerText: "Die Bearbeitungszeit beträgt in der Regel 3-5 Werktage. In dringenden Fällen können wir auch unseren Express-Service anbieten. Sie erhalten eine detaillierte Zeitangabe bei der Auftragserteilung."
     },
     {
       question: "Welche Instrumente können Sie schärfen?",
-      answer: "Wir schärfen alle gängigen Dentalinstrumente wie Scaler, Küretten, Raspatorien, Exkavatoren und chirurgische Instrumente. Bei speziellen Instrumenten beraten wir Sie gerne vorab über die Schärfbarkeit."
+      answer: "Wir schärfen herstellerunabhängig alle gängigen Dentalinstrumente wie Scaler, Küretten, Raspatorien, Exkavatoren, scharfe Löffel, Knochenküretten, Meißel, Gingivalrandschräger, Schnitzinstrumente, Wurzelheber, Luxatoren, Scheren,  Microscheren, Periotome und Tunnelierungsinstrumente. Bei speziellen Instrumenten beraten wir Sie gerne vorab über die Schärfbarkeit."
     },
     {
       question: "Was kostet die Schärfung?",
@@ -295,6 +304,10 @@ function HomeContent() {
     {
       question: "Wie kann ich einen Schärfauftrag starten?",
       answer: "Besuchen Sie einfach unsere Schärfauftrag-Seite, füllen Sie das Formular aus und senden Sie Ihre Instrumente an uns. Wir kontaktieren Sie bei Rückfragen und informieren Sie über den Bearbeitungsstand."
+    },
+    {
+      question: "Wie werden die Instrumente verpackt & versendet?",
+      answer: "Alle von Ihnen eingeschickten Instrumente müssen sterilisiert und sicher verpackt zu uns verschickt werden. Sollten die Instrumente nicht sterilisiert sein, wird eine Reinigungspauschale von 20€ erhoben. Nach dem Schärfprozess werden Ihre Instrumente gut verpackt und versichert an Sie zurück geschickt."
     }
   ];
 
@@ -379,7 +392,7 @@ function HomeContent() {
               "name": item.question,
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": item.answer
+                "text": 'answerText' in item ? item.answerText : typeof item.answer === 'string' ? item.answer : ''
               }
             }))
           })

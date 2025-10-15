@@ -40,12 +40,11 @@ export default function ExpressSchaerfenPage() {
             
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-6 text-gray-900">
               Express-Schärfen
-              <span className="block text-blue-600">vor Ort</span>
             </h1>
             
             <p className="text-xl text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto">
-              Wir kommen zu Ihnen in die Praxis und schärfen Ihre Instrumente direkt vor Ort. 
-              Keine Wartezeiten, keine Versandkosten – nur höchste Qualität und schnelle Bearbeitung.
+              Wir kommen zu Ihnen in die Praxis oder holen Ihre Instrumente ab.
+              <span className="block mt-2">– Höchste Qualität und schnelle Bearbeitung –</span>
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -231,7 +230,7 @@ export default function ExpressSchaerfenPage() {
               </div>
               <h3 className="text-lg font-semibold mb-3 text-gray-900">Schärfung</h3>
               <p className="text-gray-600 text-sm">
-                Wir kommen zu Ihnen und schärfen Ihre Instrumente vor Ort.
+                Wir kommen in Ihre Praxis – Schärfen vor Ort oder –24h Abhol-/Bringservice
               </p>
             </div>
 
@@ -264,7 +263,7 @@ export default function ExpressSchaerfenPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-4 text-gray-900">Berlin & Umgebung</h3>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    <strong className="text-gray-900">Nur vor Ort Service:</strong> Unser Express-Schärfservice ist verfügbar in Berlin und im Umkreis von 100 km. 
+                    Unser Express 24h & vor Ort Schärfservice ist verfügbar in Berlin und im Umkreis von 100 km, nur vor Ort Service. 
                     Bei größeren Entfernungen beraten wir Sie gerne über alternative Lösungen.
                   </p>
                   

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import clsx from "clsx";
 
 type FAQItemProps = {
   question: string;
-  answer: string;
+  answer: string | ReactNode;
   isOpen?: boolean;
   onToggle?: () => void;
 };
@@ -42,7 +42,7 @@ export function FAQItem({ question, answer, isOpen = false, onToggle }: FAQItemP
         )}
       >
         <div className="p-2.5">
-          <p className="text-gray-600 leading-relaxed">{answer}</p>
+          <div className="text-gray-600 leading-relaxed">{answer}</div>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@ export function FAQItem({ question, answer, isOpen = false, onToggle }: FAQItemP
 type FAQProps = {
   items: Array<{
     question: string;
-    answer: string;
+    answer: string | ReactNode;
   }>;
   className?: string;
 };

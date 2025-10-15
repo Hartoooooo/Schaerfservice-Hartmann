@@ -296,7 +296,7 @@ export default function SchaerfkurseForm() {
                 </h2>
                 
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  Die ultimative Schulung, um das optimale Schärfen Ihrer zahnmedizinischen Instrumente zu erlernen! Unser Team von qualifizierten Experten freut sich darauf, Sie in die Geheimnisse der präzisen Instrumentenschärfung einzuführen. In unserem intensiven, praxisorientierten Kurs erfahren Sie alles über die Techniken, die erforderlich sind, um Ihre Instrumente in Bestform zu halten und deren Lebensdauer zu verlängern.
+                  Die ultimative Schulung, um das optimale Schärfen Ihrer zahnmedizinischen Instrumente zu erlernen! Unser Team von qualifizierten Experten freut sich darauf, Sie in die Geheimnisse der präzisen Instrumentenschärfung einzuführen. In unserem intensiven, praxisorientierten Kurs erfahren Sie alles über die Techniken, die erforderlich sind, um Ihren Instrumenten die notwendige Schärfe zurückzugeben, diese in Bestform zu halten und deren Lebensdauer zu verlängern.
                 </p>
 
                 <div className="space-y-4">
