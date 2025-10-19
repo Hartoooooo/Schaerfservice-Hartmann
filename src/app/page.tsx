@@ -18,13 +18,58 @@ function HomeContent() {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
+  const [philosophyActiveIndex, setPhilosophyActiveIndex] = useState(0);
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const h2Ref = useRef<HTMLHeadingElement>(null);
   const h3Ref = useRef<HTMLHeadingElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLElement>(null);
+  const philosophyScrollRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  const philosophyItems = useMemo(() => [
+    {
+      h:"Qualifiziert", 
+      points:[
+        "20+ Jahre Schärferfahrung",
+        "Hu-Friedy Schulung in Chicago",
+        "Höchste Qualitätsstandards"
+      ],
+      icon: (
+        <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+        </svg>
+      )
+    },
+    {
+      h:"Langlebig", 
+      points:[
+        "exakte Präzisonsschärfe",
+        "Fachgerechte Instrumentenpflege",
+        "Längere Nutzungsdauer"
+      ],
+      icon: (
+        <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      )
+    },
+    {
+      h:"Nachhaltig", 
+      points:[
+        "Emissionsfreie Bearbeitung",
+        "Nachhaltige Arbeitsweise",
+        "Umweltfreundliche Verpackung"
+      ],
+      icon: (
+        <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
+    }
+  ], []);
 
   const blogPosts = useMemo(() => [
     {
@@ -124,6 +169,22 @@ function HomeContent() {
       document.title = "Schärfservice Hartmann - Dentalinstrumente schärfen & schleifen Berlin | Dentalinstrumente schärfen ab 6,04€";
     }
   }, [searchParams, blogPosts]);
+
+  // Philosophy Cards Scroll Handler
+  useEffect(() => {
+    const scrollContainer = philosophyScrollRef.current;
+    if (!scrollContainer) return;
+
+    const handleScroll = () => {
+      const scrollLeft = scrollContainer.scrollLeft;
+      const cardWidth = window.innerWidth - 48 + 24; // calc(100vw - 3rem) + gap (1.5rem = 24px)
+      const index = Math.round(scrollLeft / cardWidth);
+      setPhilosophyActiveIndex(Math.min(index, philosophyItems.length - 1));
+    };
+
+    scrollContainer.addEventListener('scroll', handleScroll);
+    return () => scrollContainer.removeEventListener('scroll', handleScroll);
+  }, [philosophyItems.length]);
 
   // Funktionen für Artikel-Navigation
   const openArticle = (index: number) => {
@@ -668,10 +729,6 @@ function HomeContent() {
         
         <Container className="relative z-10 pt-20 w-full">
           <div className="text-left">
-            <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-8">
-              Über <span className="font-bold">20</span> Jahre Erfahrung
-            </div>
-            
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight mb-8 text-white">
               <span className="text-blue-600">Instrumente</span> schärfen<br />
               & schleifen
@@ -685,20 +742,20 @@ function HomeContent() {
             <div className="flex flex-row gap-4 w-full lg:w-auto">
               <Button 
                 href="/schaerfauftrag" 
-                className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 text-lg font-medium flex-1 lg:flex-none"
+                className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 text-base lg:text-lg font-medium flex-1 lg:flex-none"
                 hover="lift"
                 onClick={() => analytics.buttonClick('schaerfauftrag_hero', 'homepage')}
               >
-                <span className="lg:hidden">Schärfen</span>
+                <span className="lg:hidden">Jetzt schärfen</span>
                 <span className="hidden lg:inline">Schärfauftrag starten</span>
               </Button>
               <WhiteButton 
                 href="/schaerfkurse" 
-                className="text-lg flex-1 lg:flex-none"
+                className="text-base lg:text-lg flex-1 lg:flex-none"
                 hover="lift"
                 onClick={() => analytics.buttonClick('schaerfkurse_hero', 'homepage')}
               >
-                <span className="lg:hidden">Schärfkurs</span>
+                <span className="lg:hidden">Schärfkurse</span>
                 <span className="hidden lg:inline">Schärfkurse ansehen</span>
               </WhiteButton>
             </div>
@@ -932,50 +989,12 @@ function HomeContent() {
             </p>
           </div>
           
-          <div className="grid sm:grid-cols-3 gap-8">
-            {[
-              {
-                h:"Qualifiziert", 
-                points:[
-                  "20+ Jahre Schärferfahrung",
-                  "Hu-Friedy Schulung in Chicago",
-                  "Höchste Qualitätsstandards"
-                ],
-                icon: (
-                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                  </svg>
-                )
-              },
-              {
-                h:"Langlebig", 
-                points:[
-                  "exakte Präzisonsschärfe",
-                  "Fachgerechte Instrumentenpflege",
-                  "Längere Nutzungsdauer"
-                ],
-                icon: (
-                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                )
-              },
-              {
-                h:"Nachhaltig", 
-                points:[
-                  "Emissionsfreie Bearbeitung",
-                  "Nachhaltige Arbeitsweise",
-                  "Umweltfreundliche Verpackung"
-                ],
-                icon: (
-                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                )
-              }
-            ].map((item, index) => (
-              <Card key={index} className="p-6">
+          <div 
+            ref={philosophyScrollRef}
+            className="flex sm:grid sm:grid-cols-3 gap-6 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory sm:snap-none pb-4 sm:pb-0 -mx-6 sm:mx-0 px-6 sm:px-0"
+          >
+            {philosophyItems.map((item, index) => (
+              <Card key={index} className="p-6 flex-shrink-0 w-[calc(100vw-3rem)] sm:w-auto snap-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   {item.icon}
                 </div>
@@ -991,6 +1010,31 @@ function HomeContent() {
                   ))}
                 </ul>
               </Card>
+            ))}
+          </div>
+          
+          {/* Navigation Dots (nur auf Mobile sichtbar) */}
+          <div className="flex sm:hidden justify-center gap-2 mt-6">
+            {philosophyItems.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  const scrollContainer = philosophyScrollRef.current;
+                  if (scrollContainer) {
+                    const cardWidth = window.innerWidth - 48 + 24; // calc(100vw - 3rem) + gap
+                    scrollContainer.scrollTo({
+                      left: index * cardWidth,
+                      behavior: 'smooth'
+                    });
+                  }
+                }}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  philosophyActiveIndex === index 
+                    ? 'w-8 bg-blue-600' 
+                    : 'w-2 bg-gray-300'
+                }`}
+                aria-label={`Zu ${philosophyItems[index].h} springen`}
+              />
             ))}
           </div>
         </Container>

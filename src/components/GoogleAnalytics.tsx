@@ -1,35 +1,134 @@
 "use client";
 
 import Script from 'next/script';
+import { useEffect, useState } from 'react';
 
 interface GoogleAnalyticsProps {
   measurementId: string;
 }
 
 export function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
+  const [hasConsent, setHasConsent] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
+    // Consent Mode Standard initialisieren (DSGVO-konform)
+    if (typeof window !== 'undefined') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(...args: unknown[]) {
+        window.dataLayer.push(args);
+      }
+      
+      // Default: Alle Tracking-Features verweigert
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      
+      setIsInitialized(true);
+    }
+
+    // Cookie-Präferenzen prüfen
+    const checkConsent = () => {
+      const cookieConsent = localStorage.getItem('cookie-consent');
+      if (cookieConsent) {
+        try {
+          const preferences = JSON.parse(cookieConsent);
+          setHasConsent(preferences.analytics === true);
+          
+          // Consent aktualisieren wenn Präferenzen vorhanden
+          if (typeof window !== 'undefined' && window.gtag) {
+            window.gtag('consent', 'update', {
+              'analytics_storage': preferences.analytics ? 'granted' : 'denied',
+              'ad_storage': preferences.marketing ? 'granted' : 'denied',
+              'ad_user_data': preferences.marketing ? 'granted' : 'denied',
+              'ad_personalization': preferences.marketing ? 'granted' : 'denied',
+            });
+          }
+        } catch (error) {
+          console.error('Fehler beim Lesen der Cookie-Präferenzen:', error);
+        }
+      }
+    };
+
+    checkConsent();
+
+    // Event-Listener für Änderungen der Cookie-Präferenzen
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'cookie-consent') {
+        checkConsent();
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Custom Event für Cookie-Änderungen innerhalb des gleichen Tabs
+    const handleCookieChange = () => {
+      checkConsent();
+    };
+    window.addEventListener('cookie-consent-changed', handleCookieChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('cookie-consent-changed', handleCookieChange);
+    };
+  }, []);
+
   if (!measurementId || measurementId === 'YOUR_GA_MEASUREMENT_ID') {
-    // Entwicklungsmodus - keine Analytics laden
     return null;
   }
 
   return (
     <>
-      {/* Google Analytics gtag.js */}
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
+      {/* Google Consent Mode Initialisierung */}
+      <Script id="google-consent-mode" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${measurementId}', {
-            page_title: document.title,
-            page_location: window.location.href,
+          
+          // Default Consent (alle verweigert - DSGVO-konform)
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 500
           });
         `}
       </Script>
+
+      {/* Google Analytics wird nur geladen wenn initialisiert */}
+      {isInitialized && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              
+              // Google Analytics wird mit Consent Mode konfiguriert
+              gtag('config', '${measurementId}', {
+                'anonymize_ip': true,
+                'cookie_flags': 'SameSite=None;Secure',
+                ${hasConsent ? `
+                'page_title': document.title,
+                'page_location': window.location.href,
+                ` : `
+                'client_storage': 'none',
+                'send_page_view': false
+                `}
+              });
+            `}
+          </Script>
+        </>
+      )}
     </>
   );
 }
@@ -127,12 +226,12 @@ export const analytics = {
   },
 };
 
-// TypeScript-Deklaration für gtag
+// TypeScript-Deklaration für gtag mit Consent Mode
 declare global {
   interface Window {
     gtag: (
-      command: 'config' | 'event',
-      targetId: string,
+      command: 'config' | 'event' | 'consent' | 'js',
+      targetIdOrAction: string | 'default' | 'update' | Date,
       parameters?: Record<string, unknown>
     ) => void;
     dataLayer: unknown[];

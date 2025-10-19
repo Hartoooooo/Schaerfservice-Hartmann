@@ -417,6 +417,16 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                           min={0}
                           max={999}
                           value={quantities[idx]}
+                          onFocus={(e) => {
+                            if (quantities[idx] === 0) {
+                              e.target.value = "";
+                            }
+                          }}
+                          onBlur={(e) => {
+                            if (e.target.value === "") {
+                              handleQtyChange(idx, 0);
+                            }
+                          }}
                           onChange={(e) => {
                             const v = e.target.value;
                             const n = v === "" ? 0 : Number(v);

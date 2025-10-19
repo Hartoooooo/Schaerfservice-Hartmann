@@ -57,21 +57,21 @@ export function CookieBanner() {
     localStorage.setItem('cookie-consent', JSON.stringify(prefs));
     localStorage.setItem('cookie-consent-date', new Date().toISOString());
     
-    // Google Analytics basierend auf Präferenzen aktivieren/deaktivieren
-    if (prefs.analytics) {
-      // Google Analytics aktivieren
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window as any).gtag?.('consent', 'update', {
-        analytics_storage: 'granted',
-        ad_storage: prefs.marketing ? 'granted' : 'denied',
+    // Google Analytics Consent Mode aktualisieren (DSGVO-konform)
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('consent', 'update', {
+        'analytics_storage': prefs.analytics ? 'granted' : 'denied',
+        'ad_storage': prefs.marketing ? 'granted' : 'denied',
+        'ad_user_data': prefs.marketing ? 'granted' : 'denied',
+        'ad_personalization': prefs.marketing ? 'granted' : 'denied',
       });
-    } else {
-      // Google Analytics deaktivieren
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window as any).gtag?.('consent', 'update', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-      });
+    }
+    
+    // Custom Event auslösen für andere Komponenten
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('cookie-consent-changed', { 
+        detail: prefs 
+      }));
     }
   };
 
