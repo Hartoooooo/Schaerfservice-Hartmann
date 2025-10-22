@@ -25,17 +25,11 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
   const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [isReady, setIsReady] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const itemRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     setMounted(true);
-    // Kleine Verzögerung, um sicherzustellen, dass die Animation sofort funktioniert
-    const timer = setTimeout(() => {
-      setIsReady(true);
-    }, 50);
-    return () => clearTimeout(timer);
   }, []);
 
   // Schließe das mobile Menü bei Routenwechsel
@@ -138,21 +132,21 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
         </div>
       </button>
 
-      {/* Mobile Menu Fullscreen - nur Client-side rendern */}
-      {isReady && (
-        <div 
-          className={`md:hidden fixed top-0 left-0 right-0 bottom-0 z-50 bg-white transition-all duration-300 ease-out ${
-            isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-          }`}
-          style={{ 
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            backgroundColor: '#ffffff'
-          }}
-        >
+      {/* Mobile Menu Fullscreen - immer gerendert für sofortige Animation */}
+      <div 
+        className={`md:hidden fixed top-0 left-0 right-0 bottom-0 z-50 bg-white transition-all duration-300 ease-out ${
+          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+        }`}
+        style={{ 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: '#ffffff'
+        }}
+        suppressHydrationWarning
+      >
           <div className="pt-20 px-6 h-full w-full flex flex-col">
             <nav className="flex flex-col space-y-2 flex-1">
               {navItems.map((item, index) => (
@@ -188,7 +182,6 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
             </div>
           </div>
         </div>
-      )}
     </>
   );
 }
