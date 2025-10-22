@@ -538,7 +538,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="strasse">Straße & Hausnummer *</label>
+              <label className="form-label" htmlFor="strasse">Adresse des Kursortes *</label>
               <input
                 type="text"
                 id="strasse"
