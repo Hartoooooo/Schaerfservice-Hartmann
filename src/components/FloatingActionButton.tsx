@@ -22,17 +22,15 @@ export function FloatingActionButton() {
     "/agb"
   ];
 
-  // Prüfen, ob der Benutzer im Footer-Bereich ist (nur auf Desktop)
+  // Prüfen, ob der Benutzer im Footer-Bereich ist (auf allen Geräten)
   useEffect(() => {
     const handleScroll = () => {
-      if (window.innerWidth >= 768) { // Nur auf Desktop (md und größer)
-        const footer = document.querySelector('footer');
-        if (footer) {
-          const footerRect = footer.getBoundingClientRect();
-          const viewportHeight = window.innerHeight;
-          // Prüfe, ob der Footer im Viewport sichtbar ist
-          setIsInFooterArea(footerRect.top < viewportHeight);
-        }
+      const footer = document.querySelector('footer');
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        // Prüfe, ob der Footer im Viewport sichtbar ist
+        setIsInFooterArea(footerRect.top < viewportHeight);
       }
     };
 
@@ -53,7 +51,7 @@ export function FloatingActionButton() {
     <Link
       href="/schaerfauftrag"
       onClick={() => analytics.buttonClick('floating_action_button', pathname)}
-      className={`fixed bottom-6 right-6 z-50 flex md:${isInFooterArea ? 'hidden' : 'flex'} items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group`}
+      className={`fixed bottom-6 right-6 z-50 ${isInFooterArea ? 'hidden' : 'flex'} items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group`}
       aria-label="Jetzt schärfen - Schärfauftrag starten"
     >
       {/* Blitz-Icon */}
