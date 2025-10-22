@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Stepper, { Step } from "@/components/Stepper";
 import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG } from '@/lib/emailjs-config';
+import { EMAILJS_CONFIG, EMAILJS_TEMPLATES } from '@/lib/emailjs-config';
 
 type Row = {
   name: string;
@@ -184,7 +184,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
       // E-Mail senden
       await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
+        EMAILJS_TEMPLATES.SCHAERFAUFTRAG,
         templateParams,
         EMAILJS_CONFIG.PUBLIC_KEY
       );

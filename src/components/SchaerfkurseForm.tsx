@@ -62,7 +62,7 @@ export default function SchaerfkurseForm() {
       // EmailJS senden
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!, // Service ID
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!, // Template ID
+        process.env.NEXT_PUBLIC_EMAILJS_SCHAERFKURSE_TEMPLATE_ID || 'template_ycm070n', // Template ID
         templateParams,
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! // Public Key
       );

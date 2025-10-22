@@ -8,6 +8,12 @@ export const EMAILJS_CONFIG = {
   PUBLIC_KEY: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '-CNrMDj1ODX0p1fZH',
 };
 
+// Separate Template-IDs für verschiedene Formulare
+export const EMAILJS_TEMPLATES = {
+  SCHAERFAUFTRAG: process.env.NEXT_PUBLIC_EMAILJS_SCHAERFAUFTRAG_TEMPLATE_ID || 'template_k23y2x9',
+  SCHAERFKURSE: process.env.NEXT_PUBLIC_EMAILJS_SCHAERFKURSE_TEMPLATE_ID || 'template_ycm070n',
+};
+
 // HTML E-Mail-Template für EmailJS:
 /*
 TEMPLATE NAME: schaerfauftrag_template
