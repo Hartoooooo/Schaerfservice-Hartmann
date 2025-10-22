@@ -132,24 +132,26 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
         </div>
       </button>
 
-      {/* Mobile Menu Fullscreen - immer gerendert für sofortige Animation */}
-      <div 
-        className={`md:hidden fixed top-0 left-0 right-0 bottom-0 z-50 bg-white transition-all duration-300 ease-out ${
-          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-        }`}
-        style={{ 
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          backgroundColor: '#ffffff'
-        }}
-        suppressHydrationWarning
-      >
+      {/* Mobile Menu Fullscreen - neue einfache Animation */}
+      {mounted && (
+        <div 
+          className={`md:hidden fixed top-0 left-0 right-0 bottom-0 z-50 bg-white transition-all duration-300 ease-out ${
+            isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+          }`}
+          style={{ 
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: '#ffffff'
+          }}
+        >
           <div className="pt-20 px-6 h-full w-full flex flex-col">
-            <nav className="flex flex-col space-y-2 flex-1">
-              {navItems.map((item, index) => (
+            <nav className={`flex flex-col space-y-2 flex-1 transition-all duration-500 ease-out ${
+              isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
+            }`}>
+              {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -158,11 +160,6 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
                       ? "bg-blue-600 text-white shadow-md" 
                       : "text-gray-900 hover:bg-gray-100 active:bg-gray-200"
                   }`}
-                  style={{
-                    animation: isMobileMenuOpen 
-                      ? `slideIn 0.4s ease-out ${index * 0.08}s both`
-                      : 'none',
-                  }}
                 >
                   {item.mobileLabel}
                 </Link>
@@ -171,17 +168,15 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
             
             {/* Copyright Text */}
             <div 
-              className="text-center py-8 text-gray-500 text-sm"
-              style={{
-                animation: isMobileMenuOpen 
-                  ? `slideIn 0.4s ease-out ${navItems.length * 0.08}s both`
-                  : 'none',
-              }}
+              className={`text-center py-8 text-gray-500 text-sm transition-all duration-500 ease-out ${
+                isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
+              }`}
             >
               © 2025 Schärfservice Hartmann
             </div>
           </div>
         </div>
+      )}
     </>
   );
 }
