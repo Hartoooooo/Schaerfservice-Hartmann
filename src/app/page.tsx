@@ -717,7 +717,7 @@ function HomeContent() {
             src="/schaerfservice-werkstatt-berlin.jpg" 
             alt="Schärfservice Hartmann Werkstatt in Berlin - Professionelle Instrumentenschärfung für dentale und chirurgische Instrumente" 
             fill
-            className="object-cover scale-x-[-1]"
+            className="object-cover object-[15%_center] lg:object-center scale-x-[-1]"
             priority
             quality={90}
             sizes="100vw"
