@@ -28,7 +28,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     ansprechpartner: "",
     email: "",
     telefon: "",
-    strasse: "",
     plz: "",
     ort: "",
     nachricht: "",
@@ -148,7 +147,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         ansprechpartner: formData.ansprechpartner,
         email: formData.email,
         telefon: formData.telefon || 'Nicht angegeben',
-        strasse: formData.strasse,
         plz: formData.plz,
         ort: formData.ort,
         nachricht: formData.nachricht || 'Keine besonderen Wünsche',
@@ -178,7 +176,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         order_time: new Date().toLocaleTimeString('de-DE'),
         
         // Vollständige Adresse
-        full_address: `${formData.strasse}, ${formData.plz} ${formData.ort}`,
+        full_address: `${formData.plz} ${formData.ort}`,
       };
 
       // E-Mail senden
@@ -490,17 +488,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
           <form className="space-y-6">
             <div className="form-row">
               <div className="form-group">
-                <label className="form-label" htmlFor="praxisname">Praxisname *</label>
-                <input
-                  type="text"
-                  id="praxisname"
-                  className="form-input"
-                  value={formData.praxisname}
-                  onChange={(e) => handleFormChange("praxisname", e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
                 <label className="form-label" htmlFor="ansprechpartner">Ansprechpartner *</label>
                 <input
                   type="text"
@@ -509,20 +496,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   value={formData.ansprechpartner}
                   onChange={(e) => handleFormChange("ansprechpartner", e.target.value)}
                   required
-                />
-              </div>
-            </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label className="form-label" htmlFor="email">E-Mail *</label>
-                <input
-                  type="email"
-                  id="email"
-                  className="form-input"
-                  value={formData.email}
-                  onChange={(e) => handleFormChange("email", e.target.value)}
-                  required
+                  placeholder="z.B. Dr. Max Mustermann"
                 />
               </div>
               <div className="form-group">
@@ -533,23 +507,37 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   className="form-input"
                   value={formData.telefon}
                   onChange={(e) => handleFormChange("telefon", e.target.value)}
+                  placeholder="z.B. 030 12345678"
                 />
               </div>
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="strasse">Adresse des Kursortes *</label>
+              <label className="form-label" htmlFor="email">E-Mail *</label>
               <input
-                type="text"
-                id="strasse"
+                type="email"
+                id="email"
                 className="form-input"
-                value={formData.strasse}
-                onChange={(e) => handleFormChange("strasse", e.target.value)}
+                value={formData.email}
+                onChange={(e) => handleFormChange("email", e.target.value)}
                 required
+                placeholder="z.B. praxis@beispiel.de"
               />
             </div>
 
-            <div className="form-row">
+            <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_2fr] gap-4">
+              <div className="form-group">
+                <label className="form-label" htmlFor="praxisname">Praxisanschrift *</label>
+                <input
+                  type="text"
+                  id="praxisname"
+                  className="form-input"
+                  value={formData.praxisname}
+                  onChange={(e) => handleFormChange("praxisname", e.target.value)}
+                  required
+                  placeholder="z.B. Zahnarztpraxis Dr. Müller, Hauptstraße 1"
+                />
+              </div>
               <div className="form-group">
                 <label className="form-label" htmlFor="plz">PLZ *</label>
                 <input
@@ -559,6 +547,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   value={formData.plz}
                   onChange={(e) => handleFormChange("plz", e.target.value)}
                   required
+                  placeholder="z.B. 10115"
                 />
               </div>
               <div className="form-group">
@@ -570,6 +559,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   value={formData.ort}
                   onChange={(e) => handleFormChange("ort", e.target.value)}
                   required
+                  placeholder="z.B. Berlin"
                 />
               </div>
             </div>
