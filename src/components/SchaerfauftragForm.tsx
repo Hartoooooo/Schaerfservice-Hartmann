@@ -147,6 +147,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         ansprechpartner: formData.ansprechpartner,
         email: formData.email,
         telefon: formData.telefon || 'Nicht angegeben',
+        praxisanschrift: formData.praxisname,
         plz: formData.plz,
         ort: formData.ort,
         nachricht: formData.nachricht || 'Keine besonderen Wünsche',
@@ -176,7 +177,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         order_time: new Date().toLocaleTimeString('de-DE'),
         
         // Vollständige Adresse
-        full_address: `${formData.plz} ${formData.ort}`,
+        full_address: `${formData.praxisname}, ${formData.plz} ${formData.ort}`,
       };
 
       // E-Mail senden
