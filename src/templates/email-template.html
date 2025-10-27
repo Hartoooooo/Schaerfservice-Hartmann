@@ -119,15 +119,15 @@
         }
         
         .contact-item {
-            display: flex;
-            flex-direction: column;
+            display: block;
         }
         
         .contact-item strong {
             color: #000000;
             font-weight: 600;
-            margin-bottom: 4px;
-            font-size: 14px;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
@@ -135,7 +135,9 @@
         .contact-item span {
             color: #000000;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 400;
+            display: block;
+            line-height: 1.5;
         }
         
         /* Instrumententabelle */
@@ -197,6 +199,15 @@
             border-bottom: 1px solid #000000;
             color: #000000;
             font-weight: 500;
+            gap: 20px;
+        }
+        
+        .price-row > span:first-child {
+            flex: 1;
+        }
+        
+        .price-row > span:last-child {
+            white-space: nowrap;
         }
         
         .price-row:last-child {
