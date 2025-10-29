@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { MicrosoftClarity } from "@/components/MicrosoftClarity";
 import { CookieBanner } from "@/components/CookieBanner";
 import { FloatingActionButton } from "@/components/FloatingActionButton";
 
@@ -111,12 +112,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || "twv4i5n7yv";
+  const isProd = process.env.NODE_ENV === "production";
   
   return (
     <html lang="de" dir="ltr">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         {/* Google Analytics */}
         {gaId && <GoogleAnalytics measurementId={gaId} />}
+        
+        {/* Microsoft Clarity */}
+        {isProd && clarityId && <MicrosoftClarity projectId={clarityId} />}
         
         <Header />
         <main className="flex-1">{children}</main>

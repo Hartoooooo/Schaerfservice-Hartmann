@@ -133,6 +133,40 @@ export default function DatenschutzPage() {
             </section>
 
             <section>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Microsoft Clarity</h2>
+              <div className="space-y-4">
+                <p className="text-neutral-600 leading-relaxed">
+                  Diese Website nutzt Microsoft Clarity, einen Analyse-Service der Microsoft Corporation, 
+                  um die Nutzung der Website zu verstehen und zu verbessern. Clarity erfasst Informationen 
+                  über Nutzerinteraktionen (Klicks, Scroll-Verhalten, Heatmaps) zur Optimierung der Benutzererfahrung.
+                </p>
+                
+                <div className="bg-blue-50 rounded-lg p-6">
+                  <p className="text-sm text-gray-700">
+                    <strong>Anbieter:</strong> Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA<br />
+                    <strong>Zweck:</strong> Analyse der Website-Nutzung, Verbesserung der Benutzererfahrung<br />
+                    <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)<br />
+                    <strong>Datenspeicherung:</strong> Daten werden von Microsoft auf Azure-Servern verarbeitet<br />
+                    <strong>Opt-out:</strong> Sie können die Erfassung durch Microsoft Clarity verhindern, 
+                    indem Sie das entsprechende Cookie in den Einstellungen deaktivieren.
+                  </p>
+                </div>
+                
+                <p className="text-neutral-600 leading-relaxed">
+                  Weitere Informationen zum Datenschutz bei Microsoft Clarity finden Sie in den 
+                  <a href="https://clarity.microsoft.com/faq" target="_blank" rel="noopener noreferrer" 
+                     className="text-blue-600 hover:text-blue-700 underline">
+                    Microsoft Clarity FAQ
+                  </a> und der 
+                  <a href="https://privacy.microsoft.com/de-de/privacystatement" target="_blank" rel="noopener noreferrer" 
+                     className="text-blue-600 hover:text-blue-700 underline ml-1">
+                    Microsoft Datenschutzerklärung
+                  </a>.
+                </p>
+              </div>
+            </section>
+
+            <section>
               <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Kontaktaufnahme</h2>
               <p className="text-neutral-600 leading-relaxed">
                 Bei der Kontaktaufnahme per Telefon oder E-Mail werden die von Ihnen gemachten Angaben zum Zwecke der
