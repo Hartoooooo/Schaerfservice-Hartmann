@@ -95,7 +95,7 @@ export default function ExpressSchaerfenPage() {
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                Mobiles Schärfen
+                Mobiles Schärfen (ab 75 Instr.)
               </button>
               <button
                 onClick={() => setActiveService('24h')}
@@ -105,7 +105,7 @@ export default function ExpressSchaerfenPage() {
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                24h Schärfservice
+                24h Schärfservice (ab 75 Instr.)
               </button>
             </div>
           </div>
@@ -286,6 +286,12 @@ export default function ExpressSchaerfenPage() {
                       </svg>
                       <span className="text-gray-700">Brandenburg (bis 100 km)</span>
                     </div>
+                  </div>
+                  
+                  <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p className="text-sm text-blue-700">
+                      <strong>💡 Bis 50 km keine Pauschale</strong>
+                    </p>
                   </div>
                 </div>
                 

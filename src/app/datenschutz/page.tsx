@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function DatenschutzPage() {
   return (
-    <div className="container-page py-16">
+    <div className="container-page pt-20 pb-16">
       <div className="max-w-4xl mx-auto">
         <div className="surface p-8">
           <h1 className="text-3xl font-semibold mb-8 text-center">Datenschutzerklärung</h1>
