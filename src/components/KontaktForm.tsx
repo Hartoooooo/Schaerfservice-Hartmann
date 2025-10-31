@@ -3,8 +3,15 @@
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function KontaktForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const isSentFromUrl = searchParams.get("sent") === "1";
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSent, setIsSent] = useState(isSentFromUrl);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -17,11 +24,51 @@ export default function KontaktForm() {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Hier würde die Formular-Logik implementiert werden
-    console.log("Formular gesendet:", formData);
-    alert("Nachricht wurde gesendet!");
+    if (isSubmitting || isSent) return;
+    setIsSubmitting(true);
+
+    try {
+      const payload: Record<string, string> = {
+        Vorname: formData.firstName,
+        Nachname: formData.lastName,
+        "E-Mail": formData.email,
+        Telefon: formData.phone,
+        Nachricht: formData.message,
+        _subject: "Neue Kontaktanfrage – Website",
+        _captcha: "false", // AJAX ohne Redirect: CAPTCHA muss deaktiviert sein
+      };
+
+      // Honeypot aus dem DOM lesen (falls befüllt, ebenfalls senden)
+      const formEl = e.currentTarget as HTMLFormElement;
+      const honeyInput = formEl.querySelector<HTMLInputElement>('input[name="_honey"]');
+      if (honeyInput && honeyInput.value) {
+        payload["_honey"] = honeyInput.value;
+      }
+
+      const res = await fetch("https://formsubmit.co/ajax/hartmanntimon@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        throw new Error(`FormSubmit Fehler: ${res.status}`);
+      }
+
+      setIsSent(true);
+      // URL aktualisieren, damit Zustand bei Refresh erhalten bleibt
+      router.replace("/kontakt?sent=1");
+    } catch (err) {
+      console.error(err);
+      alert("Senden fehlgeschlagen. Bitte versuchen Sie es erneut.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -110,6 +157,8 @@ export default function KontaktForm() {
         </Card>
         <Card title="Nachricht senden">
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Honeypot gegen Spam (optional) */}
+            <input type="text" name="_honey" className="hidden" aria-hidden="true" tabIndex={-1} />
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -118,6 +167,7 @@ export default function KontaktForm() {
                 <input
                   type="text"
                   required
+                  name="Vorname"
                   value={formData.firstName}
                   onChange={(e) => handleInputChange("firstName", e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
@@ -131,6 +181,7 @@ export default function KontaktForm() {
                 <input
                   type="text"
                   required
+                  name="Nachname"
                   value={formData.lastName}
                   onChange={(e) => handleInputChange("lastName", e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
@@ -146,6 +197,7 @@ export default function KontaktForm() {
               <input
                 type="email"
                 required
+                name="E-Mail"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
@@ -159,6 +211,7 @@ export default function KontaktForm() {
               </label>
               <input
                 type="tel"
+                name="Telefon"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
@@ -173,6 +226,7 @@ export default function KontaktForm() {
               <textarea
                 required
                 rows={4}
+                name="Nachricht"
                 value={formData.message}
                 onChange={(e) => handleInputChange("message", e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors resize-vertical"
@@ -181,8 +235,8 @@ export default function KontaktForm() {
             </div>
             
             <div className="flex gap-3 pt-2">
-              <Button type="submit" className="flex-1">
-                Nachricht senden
+              <Button type="submit" className="flex-1" disabled={isSent}>
+                {isSent ? "Vielen Dank für Ihre Anfrage" : "Nachricht senden"}
               </Button>
               <Button variant="outline" type="button">
                 Anrufen

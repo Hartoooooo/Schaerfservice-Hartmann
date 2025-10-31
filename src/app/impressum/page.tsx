@@ -54,6 +54,29 @@ export default function ImpressumPage() {
                 dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet.
               </p>
             </section>
+
+            <section>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Online-Streitbeilegung</h2>
+              <div className="space-y-4">
+                <p className="text-neutral-600 leading-relaxed">
+                  Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: {" "}
+                  <a
+                    href="https://ec.europa.eu/consumers/odr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-700 underline"
+                  >
+                    https://ec.europa.eu/consumers/odr
+                  </a>.
+                </p>
+                <p className="text-neutral-600 leading-relaxed">
+                  Unsere E-Mail-Adresse finden Sie oben im Impressum.
+                </p>
+                <p className="text-neutral-600 leading-relaxed">
+                  Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                </p>
+              </div>
+            </section>
           </div>
         </div>
       </div>

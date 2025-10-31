@@ -27,7 +27,7 @@ export function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
+      className={`fixed top-8 left-0 right-0 z-[60] transition-all duration-300 ${
         isTransparentMobile 
           ? 'md:backdrop-blur md:bg-white/90 md:border-b md:border-[var(--color-border)]' 
           : 'backdrop-blur bg-white/90 border-b border-[var(--color-border)]'

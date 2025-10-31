@@ -124,8 +124,15 @@ export default function RootLayout({
         {/* Microsoft Clarity */}
         {isProd && clarityId && <MicrosoftClarity projectId={clarityId} />}
         
+        {/* Announcement Bar */}
+        <div className="fixed top-0 left-0 right-0 z-[70] bg-blue-600 text-white text-sm">
+          <div className="container-page h-8 flex items-center justify-center">
+            <span className="font-medium">Neukundenangebot – ab 15 Instr. erhalten Sie 30€ Rabatt</span>
+          </div>
+        </div>
+
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-8">{children}</main>
         <Footer />
         <CookieBanner />
         <FloatingActionButton />
