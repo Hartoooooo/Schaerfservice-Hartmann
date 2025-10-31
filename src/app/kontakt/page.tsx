@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import KontaktForm from "@/components/KontaktForm";
+import { Suspense } from "react";
 
 // SEO-Metadaten für Server-Side Rendering
 export const metadata: Metadata = {
@@ -109,7 +110,9 @@ export default function KontaktPage() {
       />
       
       {/* Client-Component für Interaktivität */}
-      <KontaktForm />
+      <Suspense fallback={null}>
+        <KontaktForm />
+      </Suspense>
     </>
   );
 }
