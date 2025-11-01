@@ -199,11 +199,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
 
       console.log('E-Mail erfolgreich gesendet');
       
-      // Kurz warten, dann Checkmark-Animation starten
-      setTimeout(() => {
-        setShowCheckmarkAnimation(true);
-      }, 500);
-      
     } catch (error) {
       console.error('Fehler beim Senden der E-Mail:', error);
       setSubmitError('Fehler beim Senden des Auftrags. Bitte versuchen Sie es erneut.');
