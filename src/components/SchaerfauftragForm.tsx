@@ -42,7 +42,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   // EmailJS State
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
-  const [showCheckmarkAnimation, setShowCheckmarkAnimation] = useState(false);
 
   const handleFormChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -100,8 +99,21 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     return ""; // Normale Höhe für andere Steps
   };
 
-  // Prüfe ob "Weiter" Button deaktiviert werden soll (nur bei Step 4)
+  // Prüfe ob "Weiter" Button deaktiviert werden soll
   const isNextButtonDisabled = () => {
+    // Step 2: Prüfe ob mindestens 1 Instrument ausgewählt wurde
+    if (currentStep === 2) {
+      return totalQuantity === 0;
+    }
+    // Step 3: Prüfe ob alle Pflichtfelder ausgefüllt sind
+    if (currentStep === 3) {
+      return !formData.ansprechpartner.trim() || 
+             !formData.email.trim() || 
+             !formData.praxisname.trim() || 
+             !formData.plz.trim() || 
+             !formData.ort.trim();
+    }
+    // Step 4: Prüfe ob Checkboxes aktiviert sind
     if (currentStep === 4) {
       return !checkboxes.widerrufsrecht || !checkboxes.agbAkzeptiert;
     }
@@ -112,9 +124,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   const getCustomNextButtonText = () => {
     if (currentStep === 4) {
       return isSubmitting ? "Wird gesendet..." : "Abschließen";
-    }
-    if (currentStep === 5) {
-      return "Zur Startseite";
     }
     return undefined;
   };
@@ -214,12 +223,15 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         isNextDisabled={isNextButtonDisabled()}
         customNextButtonText={getCustomNextButtonText()}
         onStepChange={async (step) => {
-          // Beim Wechsel von Step 4 zu Step 5 E-Mail senden
-          if (currentStep === 4 && step === 5) {
-            const emailSent = await sendEmail();
-            if (!emailSent) {
-              return; // Verhindere den Schritt-Wechsel bei Fehler
-            }
+          // Beim Abschluss von Step 4 E-Mail im Hintergrund senden und sofort zur Danke-Seite weiterleiten
+          if (currentStep === 4 && step > 4) {
+            // E-Mail im Hintergrund senden (ohne await, damit Weiterleitung sofort erfolgt)
+            sendEmail().catch(err => {
+              console.error('E-Mail konnte nicht gesendet werden:', err);
+            });
+            // Sofort zur Danke-Seite weiterleiten
+            router.push('/danke');
+            return; // Verhindere den Schritt-Wechsel, da wir weiterleiten
           }
           
           setCurrentStep(step);
@@ -231,11 +243,15 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
           
           console.log(step);
         }}
-        onFinalStepCompleted={() => {
-          if (currentStep === 5) {
-            router.push('/');
-          } else {
-            console.log("All steps completed!");
+        onFinalStepCompleted={async () => {
+          // Wenn Step 4 abgeschlossen ist, E-Mail im Hintergrund senden und sofort zur Danke-Seite weiterleiten
+          if (currentStep === 4) {
+            // E-Mail im Hintergrund senden (ohne await, damit Weiterleitung sofort erfolgt)
+            sendEmail().catch(err => {
+              console.error('E-Mail konnte nicht gesendet werden:', err);
+            });
+            // Sofort zur Danke-Seite weiterleiten
+            router.push('/danke');
           }
         }}
         backButtonText="Zurück"
@@ -624,72 +640,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               </div>
             )}
 
-          </div>
-        </Step>
-        <Step>
-          <h2 className="text-2xl font-semibold mb-6">
-            {isSubmitting ? "Auftrag wird gesendet..." : "Auftrag erfolgreich übermittelt"}
-          </h2>
-          
-          <div className="text-center space-y-6">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto relative overflow-visible">
-              {isSubmitting ? (
-                // Loading Spinner
-                <div className="w-8 h-8 border-2 border-green-600 border-t-transparent rounded-full animate-spin"></div>
-              ) : (
-                // Checkmark mit Animation
-                <svg 
-                  className={`w-8 h-8 text-green-600 transition-all duration-1000 ${
-                    showCheckmarkAnimation ? 'animate-checkmark' : 'opacity-0 scale-0'
-                  }`} 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              )}
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-medium text-gray-900 mb-2">Vielen Dank für Ihren Auftrag!</h3>
-              <p className="text-gray-600 mb-4">
-                Ihr Schärfauftrag wurde erfolgreich übermittelt und wird bearbeitet.
-              </p>
-            </div>
-            
-            <div className="bg-blue-50 rounded-lg p-6 text-left">
-              <h4 className="font-medium text-gray-900 mb-3">Nächste Schritte:</h4>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-[var(--color-blue-600)] mt-0.5">1.</span>
-                  Sie erhalten in Kürze eine Bestätigungs-E-Mail mit allen Details
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[var(--color-blue-600)] mt-0.5">2.</span>
-                  Senden Sie Ihre Instrumente an die angegebene Adresse
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[var(--color-blue-600)] mt-0.5">3.</span>
-                  Wir beginnen sofort nach Erhalt mit der Bearbeitung
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[var(--color-blue-600)] mt-0.5">4.</span>
-                  Ihre geschärften Instrumente werden schnellstmöglich zurückgesendet
-                </li>
-              </ul>
-            </div>
-            
-            <div className="pt-4">
-              <p className="text-sm text-gray-500">
-                Bei Fragen erreichen Sie uns unter <a href="mailto:hartmann-schaerfservice@web.de" className="text-[var(--color-blue-600)] hover:underline">hartmann-schaerfservice@web.de</a>
-              </p>
-            </div>
           </div>
         </Step>
       </Stepper>
