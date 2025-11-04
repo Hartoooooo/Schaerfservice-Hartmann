@@ -7,7 +7,8 @@ import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { MicrosoftClarity } from "@/components/MicrosoftClarity";
 import { CookieBanner } from "@/components/CookieBanner";
 import { FloatingActionButton } from "@/components/FloatingActionButton";
-import { SmoothScroll } from "@/components/SmoothScroll";
+import { HeroImagePreload } from "@/components/HeroImagePreload";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -119,7 +120,21 @@ export default function RootLayout({
   return (
     <html lang="de" dir="ltr">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
-        <SmoothScroll />
+        {/* Preload Hero-Bild für schnelles Laden beim ersten Besuch */}
+        <HeroImagePreload />
+        
+        {/* Verstecktes Image-Element zum Vorladen des Hero-Bildes - bleibt im Browser-Cache */}
+        <div className="fixed -z-50 opacity-0 pointer-events-none">
+          <Image
+            src="/schaerfservice-werkstatt-berlin.jpg"
+            alt=""
+            width={1920}
+            height={1080}
+            priority
+            quality={90}
+            fetchPriority="high"
+          />
+        </div>
         
         {/* Google Analytics */}
         {gaId && <GoogleAnalytics measurementId={gaId} />}
