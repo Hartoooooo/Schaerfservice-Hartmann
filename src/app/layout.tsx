@@ -7,6 +7,7 @@ import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { MicrosoftClarity } from "@/components/MicrosoftClarity";
 import { CookieBanner } from "@/components/CookieBanner";
 import { FloatingActionButton } from "@/components/FloatingActionButton";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -118,6 +119,8 @@ export default function RootLayout({
   return (
     <html lang="de" dir="ltr">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+        <SmoothScroll />
+        
         {/* Google Analytics */}
         {gaId && <GoogleAnalytics measurementId={gaId} />}
         
