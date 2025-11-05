@@ -8,11 +8,12 @@ import { FAQ } from "@/components/FAQ";
 import { analytics } from "@/components/GoogleAnalytics";
 import Image from "next/image";
 import React, { useState, useRef, useEffect, useMemo, Suspense } from "react";
+import Link from "next/link";
+import { blogPosts as blogPostsData } from "@/lib/blogPosts";
 import { useRouter, useSearchParams } from "next/navigation";
 
 function HomeContent() {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [copiedArticleId, setCopiedArticleId] = useState<string | null>(null);
   const [statsVisible, setStatsVisible] = useState(false);
   const [count1, setCount1] = useState(0);
@@ -71,44 +72,7 @@ function HomeContent() {
     }
   ], []);
 
-  const blogPosts = useMemo(() => [
-    {
-      id: "reinigung-dentalinstrumente",
-      title: "Richtige Reinigung von Dentalinstrumenten",
-      excerpt: "Erfahren Sie, wie Sie Ihre Instrumente nach der Behandlung optimal reinigen und vor Korrosion schützen. Wichtige Schritte für die",
-      fullText: "Die Reinigung von Dentalinstrumenten ist der erste und wichtigste Schritt in der Aufbereitung. Nach jeder Behandlung sollten die Instrumente sofort unter fließendem Wasser abgespült werden, um Blut und Speichel zu entfernen. Anschließend ist eine gründliche Reinigung mittels Ultraschallbad, mit speziellen Reinigungsmitteln und Benutzung des Thermodesinfektors erforderlich. Verwenden Sie milde, pH-neutrale Reiniger. Achten Sie darauf, dass alle Oberflächen erreicht werden, besonders bei komplexen Instrumenten wie Scharnierinstrumenten. Nach der Reinigung sollten die Instrumente vollständig getrocknet werden, um Korrosion zu vermeiden. Eine ordnungsgemäße Reinigung verlängert nicht nur die Lebensdauer Ihrer Instrumente, sondern gewährleistet auch die Patientensicherheit.",
-      date: "15. März 2024",
-      imageUrl: "/dental-schere-schaerfwinkel-berlin.jpg",
-      imageAlt: "Optimaler Schärfwinkel bei Dentalscheren - Professionelle Schärfung Berlin Schärfservice Hartmann"
-    },
-    {
-      id: "schaerfwinkel-scaler-kueretten",
-      title: "Schärfwinkel bei Scalern und Küretten",
-      excerpt: "Warum der korrekte Schärfwinkel entscheidend für die Effektivität Ihrer Instrumente ist. Optimale Winkel zwischen",
-      fullText: "Der Schärfwinkel ist bei Dentalinstrumenten von entscheidender Bedeutung für deren Funktionalität. Bei Scalern und Küretten liegt der optimale Winkel zwischen 70 und 80 Grad. Ein zu flacher Winkel reduziert die Schärfe, während ein zu steiler Winkel die Schneide zu dünn macht und Bruchgefahr besteht. Die richtige Schärfung erfolgt in mehreren Schritten: Zuerst wird die Schneide mit einem groben Schleifstein vorbereitet, dann mit einem feineren Stein nachgeschärft. Wichtig ist dabei, den ursprünglichen Winkel beizubehalten und gleichmäßig zu arbeiten. Regelmäßige Kontrolle mit einer Lupe hilft dabei, Unebenheiten zu erkennen und zu korrigieren. Professionell geschärfte Instrumente sorgen für präzise und effiziente Behandlungen.",
-      date: "8. März 2024",
-      imageUrl: "/kueretten.webp",
-      imageAlt: "Schärfwinkel bei Scalern und Küretten - Professionelle Instrumentenschärfung Schärfservice Hartmann"
-    },
-    {
-      id: "lagerung-pflege-raspatorien",
-      title: "Lagerung & Pflege von Präzisionsinstrumenten",
-      excerpt: "Tipps zur ordnungsgemäßen Aufbewahrung und regelmäßigen Wartung Ihrer Präzisionsinstrumente. Schützen Sie die feinen",
-      fullText: "Präzisionsinstrumente benötigen besondere Aufmerksamkeit bei der Lagerung und Pflege. Nach der Reinigung sollten sie einzeln in speziellen Halterungen oder Trays aufbewahrt werden. Die Lagerung sollte an einem trockenen, staubfreien Ort erfolgen. Bei der Reinigung ist Vorsicht geboten: Aggressive Reinigungsmittel können die Oberfläche angreifen. Verwenden Sie milde, pH-neutrale Reiniger und trocknen Sie die Instrumente sorgfältig ab. Eine ordnungsgemäße Pflege verlängert die Lebensdauer erheblich und gewährleistet optimale Arbeitsergebnisse.",
-      date: "1. März 2024",
-      imageUrl: "/dentalinstrumente-kassette-schaerfung.jpg",
-      imageAlt: "Lagerung und Pflege von Präzisionsinstrumenten - Schärfservice Hartmann Berlin"
-    },
-    {
-      id: "wann-geschaerft-werden",
-      title: "Wann sollte geschärft werden?",
-      excerpt: "Anzeichen erkennen und den optimalen Zeitpunkt für eine professionelle Schärfung bestimmen. Faustregel: Abhängig von",
-      fullText: "Die rechtzeitige Schärfung Ihrer Dentalinstrumente ist entscheidend für deren Effektivität. Erste Anzeichen für eine notwendige Schärfung sind: verminderte Schneidleistung, erhöhter Kraftaufwand bei der Anwendung und sichtbare Abnutzungsspuren. Bei Scalern und Küretten sollten Sie auf eine glatte, scharfe Schneide achten - stumpfe Instrumente können das Gewebe traumatisieren. Als Faustregel gilt: Instrumente sollten abhängig von der Intensität der Nutzung geschärft werden, regelmäßige Kontrolle mit einer Lupe hilft dabei, den optimalen Zeitpunkt zu bestimmen. Eine professionelle Schärfung durch Experten gewährleistet nicht nur die richtige Schärfe, sondern auch die Beibehaltung der korrekten Winkel und Formen. Investieren Sie in regelmäßige Wartung - es lohnt sich für Ihre Praxis und Ihre Patienten.",
-      date: "22. Februar 2024",
-      imageUrl: "/schaerfservice-werkstatt-berlin.jpg",
-      imageAlt: "Wann sollten Dentalinstrumente geschärft werden - Schärfservice Hartmann Berlin Expertentipps"
-    }
-  ], []);
+  const blogPosts = useMemo(() => blogPostsData, []);
 
   // Prüfe URL-Parameter beim Laden der Seite und aktualisiere Meta-Tags
   useEffect(() => {
@@ -154,7 +118,7 @@ function HomeContent() {
           ogUrl.setAttribute('property', 'og:url');
           document.head.appendChild(ogUrl);
         }
-        ogUrl.setAttribute('content', `${window.location.origin}/?article=${articleId}`);
+        ogUrl.setAttribute('content', `${window.location.origin}/blog/${articleId}`);
         
         // Scroll zur Expertentipps-Sektion
         setTimeout(() => {
@@ -187,14 +151,6 @@ function HomeContent() {
   }, [philosophyItems.length]);
 
   // Funktionen für Artikel-Navigation
-  const openArticle = (index: number) => {
-    setExpandedCard(index);
-    const articleId = blogPosts[index].id;
-    const newUrl = new URL(window.location.href);
-    newUrl.searchParams.set('article', articleId);
-    router.push(newUrl.pathname + newUrl.search, { scroll: false });
-  };
-
   const closeArticle = () => {
     setExpandedCard(null);
     const newUrl = new URL(window.location.href);
@@ -245,42 +201,6 @@ function HomeContent() {
     }
   };
 
-  // Scroll Progress für Services Section - mittig im Viewport
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!servicesRef.current) return;
-      
-      const element = servicesRef.current;
-      const rect = element.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const windowCenter = windowHeight / 2;
-      
-      // Berechne den Progress basierend auf der mittigen Position im Viewport
-      const elementTop = rect.top;
-      const elementHeight = rect.height;
-      
-      // Die Services Section soll mittig im Viewport sein für den Progress
-      const centerOffset = windowCenter;
-      
-      // Progress von 0 bis 1 basierend auf der Position der Section relativ zur Viewport-Mitte
-      let progress = 0;
-      
-      if (elementTop <= centerOffset) {
-        // Wie weit ist die Section durch die Viewport-Mitte gescrollt
-        const scrolledDistance = centerOffset - elementTop;
-        const maxScrollDistance = elementHeight;
-        progress = Math.min(scrolledDistance / maxScrollDistance, 1);
-      }
-      
-      progress = Math.max(0, Math.min(1, progress));
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Intersection Observer für Stats Animation
   useEffect(() => {
@@ -376,7 +296,7 @@ function HomeContent() {
     <>
       {/* Modal Overlay für erweiterte Artikel */}
       {expandedCard !== null && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
           {/* Backdrop */}
           <div 
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
@@ -677,7 +597,7 @@ function HomeContent() {
               "headline": post.title,
               "description": post.excerpt,
               "articleBody": post.fullText,
-              "url": `https://www.dentalschleifen.de/?article=${post.id}`,
+              "url": `https://www.dentalschleifen.de/blog/${post.id}`,
               "datePublished": "2024-03-15",
               "dateModified": "2024-03-15",
               "author": {
@@ -699,8 +619,8 @@ function HomeContent() {
                 "height": 630
               },
               "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": `https://www.dentalschleifen.de/?article=${post.id}`
+              "@type": "WebPage",
+              "@id": `https://www.dentalschleifen.de/blog/${post.id}`
               },
               "keywords": ["dentalinstrumente", "schärfen", "reinigung", "pflege", "raspatorien", "scaler", "küretten"],
               "articleSection": "Expertentipps"
@@ -764,7 +684,7 @@ function HomeContent() {
       </section>
 
       {/* Stats Section */}
-      <section ref={statsRef} className="py-8 lg:py-20 bg-gray-50 mt-0 lg:mt-20">
+      <section ref={statsRef} className="py-8 lg:py-20 bg-gray-50">
         <Container>
           <div className="grid grid-cols-3 gap-2 sm:gap-8 text-center">
             {[
@@ -802,7 +722,7 @@ function HomeContent() {
       </section>
 
       {/* Services Section */}
-      <section ref={servicesRef} className="py-20 relative">
+      <section ref={servicesRef} className="py-20">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-gray-900">
@@ -813,165 +733,75 @@ function HomeContent() {
             </p>
           </div>
 
-          {/* Vertikaler Progress Balken - nur auf Desktop sichtbar */}
-          <div className="hidden lg:block absolute left-1/2 w-1 -translate-x-1/2 z-10" style={{ top: '16rem', bottom: '5rem' }}>
-            {/* Hintergrund Linie */}
-            <div className="w-full h-full bg-gray-200 rounded-full"></div>
-            {/* Progress Linie */}
-            <div 
-              className="absolute top-0 left-0 w-full bg-gradient-to-b from-blue-500 to-blue-600 rounded-full transition-all duration-300 ease-out"
-              style={{ height: `${scrollProgress * 100}%` }}
-            ></div>
-          </div>
-
-          {/* Desktop Layout - horizontal mit Progress Balken */}
-          <div className="hidden lg:block space-y-24 relative z-20">
-            {/* 1. Instrumenten schärfen - Links */}
-            <div className="flex items-center">
-              <div className="w-1/2 pr-16">
-                <div className="group text-left">
-                  <h3 ref={h1Ref} className="text-2xl font-medium mb-4 text-gray-900">Instrumente schärfen & schleifen</h3>
-                  <p className="text-gray-600 leading-relaxed text-lg mb-4">
-                    Professionelles <strong>Schärfen und Instrumente aufarbeiten</strong> aller dentalen und chirurgischen Instrumente. 
-                    Höchste Qualität für optimale Behandlungsergebnisse durch präzise Handarbeit.
-                  </p>
-                  <div className="flex items-center gap-2 mb-6">
-                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
-                    </svg>
-                    <p className="text-sm text-blue-600 font-medium">Herstellerunabhängig</p>
-                  </div>
-                  <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift" title="Dentalinstrumente schärfen lassen - Online Auftrag">
-                    <span className="lg:hidden">Jetzt schärfen</span>
-                    <span className="hidden lg:inline">Jetzt schärfen lassen</span>
-                  </Button>
-                </div>
-              </div>
-              <div className="w-1/2"></div>
-            </div>
-
-            {/* 2. Express-Service Berlin - Rechts */}
-            <div className="flex items-center">
-              <div className="w-1/2"></div>
-              <div className="w-1/2 pl-16">
-                <div className="group text-right">
-                  <h3 ref={h2Ref} className="text-2xl font-medium mb-4 text-gray-900">Express-Schärfen in Berlin</h3>
-                  <p className="text-gray-600 leading-relaxed text-lg mb-4">
-                    Wir kommen zu Ihnen in die Praxis und gehen erst, wenn alle Instrumente
-                    ihre ursprüngliche Schärfe wiedererlangt haben.
-                  </p>
-                  <div className="flex items-center justify-end gap-2 mb-6">
-                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    <p className="text-sm text-blue-600 font-medium">
-                      <span className="lg:hidden">Berlin & Brandenburg</span>
-                      <span className="hidden lg:inline">Nur in Berlin & Umgebung</span>
-                    </p>
-                  </div>
-                  <Button href="/express-schaerfen" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 whitespace-nowrap" hover="lift" title="Express Schärfung Berlin - Vor Ort Service">
-                    <span className="lg:hidden">Express schärfen</span>
-                    <span className="hidden lg:inline">Express-Service anfragen</span>
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* 3. Schärfkurse - Links */}
-            <div className="flex items-center">
-              <div className="w-1/2 pr-16">
-                <div className="group text-left">
-                  <h3 ref={h3Ref} className="text-2xl font-medium mb-4 text-gray-900">Schärfkurs in Ihrer Praxis</h3>
-                  <p className="text-gray-600 leading-relaxed text-lg mb-4">
-                    Erlernen Sie die richtige Schärftechnik. 
-                    Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.
-                  </p>
-                  <div className="flex items-center gap-2 mb-6">
-                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                    </svg>
-                    <p className="text-sm text-blue-600 font-medium">2h | 1-4 Teilnehmer</p>
-                  </div>
-                  <Button href="/schaerfkurse" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift" title="Schärfkurse für Dentalinstrumente - Professionelle Schulung">
-                    Kurse entdecken
-                  </Button>
-                </div>
-              </div>
-              <div className="w-1/2"></div>
-            </div>
-          </div>
-
-          {/* Mobile Layout - vertikal ohne Scrollbalken */}
-          <div className="lg:hidden space-y-12">
+          {/* Modern Card Layout - 3 Cards nebeneinander auf Desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* 1. Instrumenten schärfen */}
-            <div className="w-full">
-              <div className="group text-left">
-                <h3 ref={h1Ref} className="text-2xl font-medium mb-4 text-gray-900">Instrumente schärfen & schleifen</h3>
-                <p className="text-gray-600 leading-relaxed text-lg mb-4">
-                  Professionelles <strong>Schärfen und Instrumente aufarbeiten</strong> aller dentalen und chirurgischen Instrumente. 
-                  Höchste Qualität für optimale Behandlungsergebnisse durch präzise Handarbeit.
-                </p>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2">
-                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
-                    </svg>
-                    <p className="text-sm text-blue-600 font-medium">Herstellerunabhängig</p>
-                  </div>
-                  <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift" title="Dentalinstrumente schärfen lassen - Online Auftrag">
-                    <span className="lg:hidden">Jetzt schärfen</span>
-                    <span className="hidden lg:inline">Jetzt schärfen lassen</span>
-                  </Button>
-                </div>
+            <div className="p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col">
+              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-7 h-7 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
+                </svg>
               </div>
+              <h3 ref={h1Ref} className="text-2xl font-semibold mb-4 text-gray-900">Instrumente schärfen</h3>
+              <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
+                Professionelles <strong>Schärfen und Instrumente aufarbeiten</strong> aller dentalen und chirurgischen Instrumente. 
+                Höchste Qualität für optimale Behandlungsergebnisse durch präzise Handarbeit.
+              </p>
+              <div className="flex items-center gap-2 mb-6">
+                <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
+                </svg>
+                <p className="text-sm text-blue-600 font-medium">Herstellerunabhängig</p>
+              </div>
+              <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Dentalinstrumente schärfen lassen - Online Auftrag">
+                Jetzt schärfen lassen
+              </Button>
             </div>
 
             {/* 2. Express-Service Berlin */}
-            <div className="w-full">
-              <div className="group text-left">
-                <h3 ref={h2Ref} className="text-2xl font-medium mb-4 text-gray-900">Express-Schärfen in Berlin</h3>
-                <p className="text-gray-600 leading-relaxed text-lg mb-4">
-                  Wir kommen zu Ihnen in die Praxis und gehen erst, wenn alle Instrumente
-                  ihre ursprüngliche Schärfe wiedererlangt haben.
-                </p>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2">
-                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    <p className="text-sm text-blue-600 font-medium">
-                      <span className="lg:hidden">Berlin & Brandenburg</span>
-                      <span className="hidden lg:inline">Nur in Berlin & Umgebung</span>
-                    </p>
-                  </div>
-                  <Button href="/express-schaerfen" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 whitespace-nowrap" hover="lift" title="Express Schärfung Berlin - Vor Ort Service">
-                    <span className="lg:hidden">Express schärfen</span>
-                    <span className="hidden lg:inline">Express-Service anfragen</span>
-                  </Button>
-                </div>
+            <div className="p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col">
+              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-7 h-7 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
               </div>
+              <h3 ref={h2Ref} className="text-2xl font-semibold mb-4 text-gray-900">Express-Schärfen in Berlin</h3>
+              <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
+                Wir kommen zu Ihnen in die Praxis und gehen erst, wenn alle Instrumente
+                ihre ursprüngliche Schärfe wiedererlangt haben.
+              </p>
+              <div className="flex items-center gap-2 mb-6">
+                <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <p className="text-sm text-blue-600 font-medium">Nur in Berlin & Umgebung</p>
+              </div>
+              <Button href="/express-schaerfen" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Express Schärfung Berlin - Vor Ort Service">
+                Express-Service anfragen
+              </Button>
             </div>
 
             {/* 3. Schärfkurse */}
-            <div className="w-full">
-              <div className="group text-left">
-                <h3 ref={h3Ref} className="text-2xl font-medium mb-4 text-gray-900">Schärfkurs in Ihrer Praxis</h3>
-                <p className="text-gray-600 leading-relaxed text-lg mb-4">
-                  Erlernen Sie die richtige Schärftechnik. 
-                  Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.
-                </p>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2">
-                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                    </svg>
-                    <p className="text-sm text-blue-600 font-medium">2h | 1-4 Teilnehmer</p>
-                  </div>
-                  <Button href="/schaerfkurse" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift" title="Schärfkurse für Dentalinstrumente - Professionelle Schulung">
-                    Kurse entdecken
-                  </Button>
-                </div>
+            <div className="p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col md:col-span-2 lg:col-span-1">
+              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-7 h-7 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                </svg>
               </div>
+              <h3 ref={h3Ref} className="text-2xl font-semibold mb-4 text-gray-900">Schärfkurs in Ihrer Praxis</h3>
+              <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
+                Erlernen Sie die richtige Schärftechnik. 
+                Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.
+              </p>
+              <div className="flex items-center gap-2 mb-6">
+                <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                </svg>
+                <p className="text-sm text-blue-600 font-medium">2h | 1-4 Teilnehmer</p>
+              </div>
+              <Button href="/schaerfkurse" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Schärfkurse für Dentalinstrumente - Professionelle Schulung">
+                Kurse entdecken
+              </Button>
             </div>
           </div>
         </Container>
@@ -1062,12 +892,12 @@ function HomeContent() {
                   <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none"></div>
                 </div>
                 <div className="flex items-center justify-between gap-3">
-                  <button
-                    onClick={() => openArticle(index)}
+                  <Link
+                    href={`/blog/${post.id}`}
                     className="text-blue-600 hover:text-blue-700 font-medium cursor-pointer hover:underline transition-all duration-200"
                   >
                     Mehr lesen
-                  </button>
+                  </Link>
                   
                   <button
                     onClick={() => shareArticle(post.id)}
