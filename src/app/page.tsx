@@ -736,72 +736,114 @@ function HomeContent() {
           {/* Modern Card Layout - 3 Cards nebeneinander auf Desktop */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* 1. Instrumenten schärfen */}
-            <div className="p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col">
-              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-7 h-7 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
-                </svg>
+            <div className="p-0 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden">
+              <div className="relative w-full h-64 mb-0 rounded-t-2xl overflow-hidden">
+                <Image 
+                  src="/schleifen bild.JPG" 
+                  alt="Instrumente schärfen - Professionelle Schärfung" 
+                  fill
+                  className="object-cover"
+                />
+                {/* Gradient für bessere Lesbarkeit */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                {/* Überschrift als Overlay - gleiche Breite wie Card-Inhalt */}
+                <div className="absolute bottom-0 left-0 right-0 px-8 pb-4">
+                  <h3 ref={h1Ref} className="text-2xl font-semibold text-white">
+                    Instrumente schärfen
+                  </h3>
+                </div>
               </div>
-              <h3 ref={h1Ref} className="text-2xl font-semibold mb-4 text-gray-900">Instrumente schärfen</h3>
-              <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
+              <div className="px-8 pb-8 pt-6 flex flex-col flex-grow">
+              <p className="text-gray-600 leading-relaxed mb-6">
                 Professionelles <strong>Schärfen und Instrumente aufarbeiten</strong> aller dentalen und chirurgischen Instrumente. 
                 Höchste Qualität für optimale Behandlungsergebnisse durch präzise Handarbeit.
               </p>
-              <div className="flex items-center gap-2 mb-6">
-                <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
-                </svg>
-                <p className="text-sm text-blue-600 font-medium">Herstellerunabhängig</p>
+              <div className="mt-auto space-y-6">
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
+                  </svg>
+                  <p className="text-sm text-blue-600 font-medium">Herstellerunabhängig</p>
+                </div>
+                <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Dentalinstrumente schärfen lassen - Online Auftrag">
+                  Jetzt schärfen lassen
+                </Button>
               </div>
-              <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Dentalinstrumente schärfen lassen - Online Auftrag">
-                Jetzt schärfen lassen
-              </Button>
+              </div>
             </div>
 
             {/* 2. Express-Service Berlin */}
-            <div className="p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col">
-              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-7 h-7 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
+            <div className="p-0 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden">
+              <div className="relative w-full h-64 mb-0 rounded-t-2xl overflow-hidden">
+                <Image 
+                  src="/3 spitzen.JPG" 
+                  alt="Express-Service Berlin - Vor Ort Schärfung" 
+                  fill
+                  className="object-cover"
+                />
+                {/* Gradient für bessere Lesbarkeit */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                {/* Überschrift als Overlay - gleiche Breite wie Card-Inhalt */}
+                <div className="absolute bottom-0 left-0 right-0 px-8 pb-4">
+                  <h3 ref={h2Ref} className="text-2xl font-semibold text-white">
+                    Express-Schärfen in Berlin
+                  </h3>
+                </div>
               </div>
-              <h3 ref={h2Ref} className="text-2xl font-semibold mb-4 text-gray-900">Express-Schärfen in Berlin</h3>
-              <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
+              <div className="px-8 pb-8 pt-6 flex flex-col flex-grow">
+              <p className="text-gray-600 leading-relaxed mb-6">
                 Wir kommen zu Ihnen in die Praxis und gehen erst, wenn alle Instrumente
                 ihre ursprüngliche Schärfe wiedererlangt haben.
               </p>
-              <div className="flex items-center gap-2 mb-6">
-                <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                <p className="text-sm text-blue-600 font-medium">Nur in Berlin & Umgebung</p>
+              <div className="mt-auto space-y-6">
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  <p className="text-sm text-blue-600 font-medium">Nur in Berlin & Umgebung</p>
+                </div>
+                <Button href="/express-schaerfen" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Express Schärfung Berlin - Vor Ort Service">
+                  Express-Service anfragen
+                </Button>
               </div>
-              <Button href="/express-schaerfen" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Express Schärfung Berlin - Vor Ort Service">
-                Express-Service anfragen
-              </Button>
+              </div>
             </div>
 
             {/* 3. Schärfkurse */}
-            <div className="p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col md:col-span-2 lg:col-span-1">
-              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-7 h-7 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                </svg>
+            <div className="p-0 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col md:col-span-2 lg:col-span-1 overflow-hidden">
+              <div className="relative w-full h-64 mb-0 rounded-t-2xl overflow-hidden">
+                <Image 
+                  src="/schaerfkursbild.png" 
+                  alt="Schärfkurse - Professionelle Schulung" 
+                  fill
+                  className="object-cover"
+                />
+                {/* Gradient für bessere Lesbarkeit */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                {/* Überschrift als Overlay - gleiche Breite wie Card-Inhalt */}
+                <div className="absolute bottom-0 left-0 right-0 px-8 pb-4">
+                  <h3 ref={h3Ref} className="text-2xl font-semibold text-white">
+                    Schärfkurs in Ihrer Praxis
+                  </h3>
+                </div>
               </div>
-              <h3 ref={h3Ref} className="text-2xl font-semibold mb-4 text-gray-900">Schärfkurs in Ihrer Praxis</h3>
-              <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
+              <div className="px-8 pb-8 pt-6 flex flex-col flex-grow">
+              <p className="text-gray-600 leading-relaxed mb-6">
                 Erlernen Sie die richtige Schärftechnik. 
                 Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.
               </p>
-              <div className="flex items-center gap-2 mb-6">
-                <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                </svg>
-                <p className="text-sm text-blue-600 font-medium">2h | 1-4 Teilnehmer</p>
+              <div className="mt-auto space-y-6">
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                  </svg>
+                  <p className="text-sm text-blue-600 font-medium">2h | 1-4 Teilnehmer</p>
+                </div>
+                <Button href="/schaerfkurse" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Schärfkurse für Dentalinstrumente - Professionelle Schulung">
+                  Kurse entdecken
+                </Button>
               </div>
-              <Button href="/schaerfkurse" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Schärfkurse für Dentalinstrumente - Professionelle Schulung">
-                Kurse entdecken
-              </Button>
+              </div>
             </div>
           </div>
         </Container>
