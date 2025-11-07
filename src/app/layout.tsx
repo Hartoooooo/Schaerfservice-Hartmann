@@ -9,6 +9,7 @@ import { CookieBanner } from "@/components/CookieBanner";
 import { FloatingActionButton } from "@/components/FloatingActionButton";
 import { HeroImagePreload } from "@/components/HeroImagePreload";
 import Image from "next/image";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -119,6 +120,19 @@ export default function RootLayout({
   
   return (
     <html lang="de" dir="ltr">
+      {/* Google tag (gtag.js) */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-17687247253"
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads-tag" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-17687247253');
+        `}
+      </Script>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         {/* Preload Hero-Bild für schnelles Laden beim ersten Besuch */}
         <HeroImagePreload />
