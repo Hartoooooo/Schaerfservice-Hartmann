@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "AGB - Instrumente schärfen Berlin",
   description: "AGB Schärfservice Hartmann - Instrumente schärfen & Dental schleifen Berlin. Geltungsbereich, Vertragsschluss, Leistungen, Preise, Haftung und Gewährleistung für Instrumentenschärfung.",
   robots: {
-    index: true,
+    index: false,
     follow: false,
   },
 };

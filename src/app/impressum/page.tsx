@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "Impressum - Instrumente schärfen Berlin",
   description: "Impressum Schärfservice Hartmann - Instrumente schärfen & Dental schleifen Berlin. Inhaber Björn Hartmann, Petershagener Str. 27, 15566 Schöneiche bei Berlin.",
   robots: {
-    index: true,
+    index: false,
     follow: false,
   },
 };
