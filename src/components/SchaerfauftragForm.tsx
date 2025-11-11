@@ -263,7 +263,16 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
           </p>
         </Step>
         <Step>
-          <h2 className="text-2xl font-semibold mb-4">Instrumente auswählen</h2>
+          <h2 className="text-2xl font-semibold mb-4">
+            <span className="hidden md:inline">Instrumente auswählen</span>
+            <span className="md:hidden">Instrumente wählen</span>
+          </h2>
+          
+          {/* Rabattübersicht für Mobile */}
+          <div className="md:hidden text-sm text-gray-600 mb-4">
+            <p>ab 15 Instrumenten <span className="font-bold">7%</span> Rabatt</p>
+            <p>ab 40 Instrumenten <span className="font-bold">15%</span> Rabatt</p>
+          </div>
           
           {/* Desktop Tabelle */}
           <div className="table-wrapper hidden md:block">

@@ -159,7 +159,10 @@ export default function RootLayout({
         {/* Announcement Bar */}
         <div className="fixed top-0 left-0 right-0 z-[70] bg-blue-600 text-white text-sm">
           <div className="container-page h-8 flex items-center justify-center">
-            <span className="font-medium">Neukundenangebot – ab 15 Instr. erhalten Sie 30€ Rabatt</span>
+            <span className="font-medium">
+              <span className="hidden md:inline">Neukundenangebot – ab 15 Instr. erhalten Sie 30€ Rabatt</span>
+              <span className="md:hidden">Neukundenangebot – ab 15 Instr. sparen Sie 30 €</span>
+            </span>
           </div>
         </div>
 
