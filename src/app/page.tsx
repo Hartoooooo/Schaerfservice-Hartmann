@@ -650,13 +650,13 @@ function HomeContent() {
         <Container className="relative z-10 pt-20 w-full">
           <div className="text-left">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight mb-8 text-white">
-              <span className="text-blue-600">Instrumente</span> schärfen<br />
-              & schleifen
+              <span className="text-blue-600">Schärfe</span> in Perfektion
             </h1>
             
             <p className="hidden lg:block text-xl sm:text-2xl text-white/90 leading-relaxed mb-12 max-w-4xl">
-              <strong>Dentalinstrumente schärfen & schleifen</strong> mit höchster Präzision.<br />
-              <strong>Präzisionsinstrumente aufbereiten</strong> für dentale und chirurgische Anwendungen. <strong>Schärfkurse</strong> in ihrer Praxis.
+              <strong>Dentale/Chirurgische Instrumente schärfen & schleifen</strong><br />
+              <strong>Präzisionsinstrumente aufarbeiten</strong><br />
+              <strong>Schärfkurse</strong> in ihrer Praxis.
             </p>
             
             <div className="flex flex-row gap-4 w-full lg:w-auto">
