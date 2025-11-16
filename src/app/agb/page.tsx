@@ -16,7 +16,7 @@ export default function AgbPage() {
         <div className="surface p-8">
           <h1 className="text-3xl font-semibold mb-4 text-center">Allgemeine Geschäftsbedingungen</h1>
           <p className="text-center text-lg text-gray-600 mb-8">Schärfservice-Hartmann · Professionelle Schärfdienstleistungen</p>
-          <p className="text-center text-sm text-gray-500 mb-12">Stand: 27.09.2025</p>
+          <p className="text-center text-sm text-gray-500 mb-12">Stand: 16.11.2025</p>
           
           <div className="space-y-8">
             <section>

@@ -14,7 +14,8 @@ export default function DatenschutzPage() {
     <div className="container-page pt-20 pb-16">
       <div className="max-w-4xl mx-auto">
         <div className="surface p-8">
-          <h1 className="text-3xl font-semibold mb-8 text-center">Datenschutzerklärung</h1>
+          <h1 className="text-3xl font-semibold mb-4 text-center">Datenschutzerklärung</h1>
+          <p className="text-center text-sm text-gray-500 mb-8">Stand: 16.11.2025</p>
           
           <div className="space-y-8">
             <section>
