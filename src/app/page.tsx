@@ -5,12 +5,14 @@ import { WhiteButton } from "@/components/WhiteButton";
 import { Card } from "@/components/Card";
 import { Container } from "@/components/Container";
 import { FAQ } from "@/components/FAQ";
+import { InteractiveHoverButton } from "@/components/InteractiveHoverButton";
 import { analytics } from "@/components/GoogleAnalytics";
 import Image from "next/image";
 import React, { useState, useRef, useEffect, useMemo, Suspense } from "react";
 import Link from "next/link";
 import { blogPosts as blogPostsData } from "@/lib/blogPosts";
 import { useRouter, useSearchParams } from "next/navigation";
+import { motion, AnimatePresence } from "motion/react";
 
 function HomeContent() {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
@@ -25,7 +27,6 @@ function HomeContent() {
   const h3Ref = useRef<HTMLHeadingElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLElement>(null);
-  const philosophyScrollRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -33,9 +34,9 @@ function HomeContent() {
     {
       h:"Qualifiziert", 
       points:[
-        "20+ Jahre Schärferfahrung",
-        "Hu-Friedy Schulung in Chicago",
-        "Höchste Qualitätsstandards"
+        "20+ Jahre Schärferfahrung mit hunderten zufriedenen Kunden und langjähriger Expertise",
+        "Hu-Friedy Schulung in Chicago für höchste Qualitätsstandards und international anerkannte Techniken",
+        "Höchste Qualitätsstandards durch zertifizierte Expertise und regelmäßige Weiterbildungen"
       ],
       icon: (
         <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -47,9 +48,9 @@ function HomeContent() {
     {
       h:"Langlebig", 
       points:[
-        "exakte Präzisonsschärfe",
-        "Fachgerechte Instrumentenpflege",
-        "Längere Nutzungsdauer"
+        "Exakte Präzisionsschärfe für optimale Behandlungsergebnisse und längere Lebensdauer Ihrer Instrumente",
+        "Fachgerechte Instrumentenpflege durch schonende Bearbeitung und Erhaltung der Materialqualität",
+        "Längere Nutzungsdauer durch präzise Schärfung, die die ursprüngliche Funktionalität wiederherstellt"
       ],
       icon: (
         <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,9 +61,9 @@ function HomeContent() {
     {
       h:"Nachhaltig", 
       points:[
-        "Emissionsfreie Bearbeitung",
-        "Nachhaltige Arbeitsweise",
-        "Umweltfreundliche Verpackung"
+        "Emissionsfreie Bearbeitung durch umweltfreundliche Schärfprozesse ohne schädliche Chemikalien",
+        "Nachhaltige Arbeitsweise mit ressourcenschonenden Prozessen und wiederverwendbaren Materialien",
+        "Umweltfreundliche Verpackung und CO2-neutraler Versand für einen nachhaltigen Beitrag"
       ],
       icon: (
         <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -134,21 +135,6 @@ function HomeContent() {
     }
   }, [searchParams, blogPosts]);
 
-  // Philosophy Cards Scroll Handler
-  useEffect(() => {
-    const scrollContainer = philosophyScrollRef.current;
-    if (!scrollContainer) return;
-
-    const handleScroll = () => {
-      const scrollLeft = scrollContainer.scrollLeft;
-      const cardWidth = window.innerWidth - 48 + 24; // calc(100vw - 3rem) + gap (1.5rem = 24px)
-      const index = Math.round(scrollLeft / cardWidth);
-      setPhilosophyActiveIndex(Math.min(index, philosophyItems.length - 1));
-    };
-
-    scrollContainer.addEventListener('scroll', handleScroll);
-    return () => scrollContainer.removeEventListener('scroll', handleScroll);
-  }, [philosophyItems.length]);
 
   // Funktionen für Artikel-Navigation
   const closeArticle = () => {
@@ -765,9 +751,9 @@ function HomeContent() {
                   </svg>
                   <p className="text-sm text-blue-600 font-medium">Herstellerunabhängig</p>
                 </div>
-                <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Dentalinstrumente schärfen lassen - Online Auftrag">
-                  Jetzt schärfen lassen
-                </Button>
+                <Link href="/schaerfauftrag" title="Dentalinstrumente schärfen lassen - Online Auftrag">
+                  <InteractiveHoverButton className="w-full" text="Jetzt schärfen lassen" />
+                </Link>
               </div>
               </div>
             </div>
@@ -802,9 +788,9 @@ function HomeContent() {
                   </svg>
                   <p className="text-sm text-blue-600 font-medium">Nur in Berlin & Umgebung</p>
                 </div>
-                <Button href="/express-schaerfen" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Express Schärfung Berlin - Vor Ort Service">
-                  Express-Service anfragen
-                </Button>
+                <Link href="/express-schaerfen" title="Express Schärfung Berlin - Vor Ort Service">
+                  <InteractiveHoverButton className="w-full" text="Express-Service" />
+                </Link>
               </div>
               </div>
             </div>
@@ -839,9 +825,9 @@ function HomeContent() {
                   </svg>
                   <p className="text-sm text-blue-600 font-medium">2h | 1-4 Teilnehmer</p>
                 </div>
-                <Button href="/schaerfkurse" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 w-full" hover="lift" title="Schärfkurse für Dentalinstrumente - Professionelle Schulung">
-                  Kurse entdecken
-                </Button>
+                <Link href="/schaerfkurse" title="Schärfkurse für Dentalinstrumente - Professionelle Schulung">
+                  <InteractiveHoverButton className="w-full" text="Kurse entdecken" />
+                </Link>
               </div>
               </div>
             </div>
@@ -861,53 +847,106 @@ function HomeContent() {
             </p>
           </div>
           
-          <div 
-            ref={philosophyScrollRef}
-            className="flex sm:grid sm:grid-cols-3 gap-6 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory sm:snap-none pb-4 sm:pb-0 -mx-6 sm:mx-0 px-6 sm:px-0"
-          >
-            {philosophyItems.map((item, index) => (
-              <Card key={index} className="p-6 flex-shrink-0 w-[calc(100vw-3rem)] sm:w-auto snap-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900 text-center">{item.h}</h3>
-                <ul className="text-gray-600 text-left space-y-1">
-                  {item.points.map((point, pointIndex) => (
-                    <li key={pointIndex} className="flex items-center gap-2 whitespace-nowrap">
-                      <svg className="w-4 h-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="truncate">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            ))}
-          </div>
-          
-          {/* Navigation Dots (nur auf Mobile sichtbar) */}
-          <div className="flex sm:hidden justify-center gap-2 mt-6">
-            {philosophyItems.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  const scrollContainer = philosophyScrollRef.current;
-                  if (scrollContainer) {
-                    const cardWidth = window.innerWidth - 48 + 24; // calc(100vw - 3rem) + gap
-                    scrollContainer.scrollTo({
-                      left: index * cardWidth,
-                      behavior: 'smooth'
-                    });
-                  }
-                }}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  philosophyActiveIndex === index 
-                    ? 'w-8 bg-blue-600' 
-                    : 'w-2 bg-gray-300'
-                }`}
-                aria-label={`Zu ${philosophyItems[index].h} springen`}
-              />
-            ))}
+          <div className="grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 items-stretch">
+            {/* Navigation Links - Links */}
+            <div className="flex lg:flex-col gap-2 lg:gap-3 justify-center lg:justify-between h-full">
+              {philosophyItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => setPhilosophyActiveIndex(index)}
+                  className="relative group text-left flex-1 lg:flex-none cursor-pointer"
+                >
+                  <motion.div
+                    className={`relative px-3 py-2 lg:px-6 lg:py-4 rounded-xl border-2 transition-all duration-300 h-full flex items-center justify-center cursor-pointer ${
+                      philosophyActiveIndex === index
+                        ? 'border-blue-600 bg-blue-50 shadow-md'
+                        : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="flex items-center gap-4 w-full lg:w-auto">
+                      {/* Icons nur auf Desktop */}
+                      <div className={`hidden lg:flex w-12 h-12 rounded-lg items-center justify-center transition-colors duration-300 ${
+                        philosophyActiveIndex === index
+                          ? 'bg-blue-600'
+                          : 'bg-gray-100 group-hover:bg-gray-200'
+                      }`}>
+                        {React.cloneElement(item.icon as React.ReactElement<React.SVGProps<SVGSVGElement>>, {
+                          className: `w-8 h-8 ${philosophyActiveIndex === index ? 'text-white' : 'text-gray-600'}`
+                        })}
+                      </div>
+                      <h3 className={`text-xs lg:text-lg font-semibold transition-colors duration-300 text-center lg:text-left ${
+                        philosophyActiveIndex === index
+                          ? 'text-blue-600'
+                          : 'text-gray-700 group-hover:text-gray-900'
+                      }`}>
+                        {item.h}
+                      </h3>
+                    </div>
+                    {/* Aktiver Indikator: nur auf Desktop */}
+                    {philosophyActiveIndex === index && (
+                      <motion.div
+                        className="hidden lg:block absolute left-0 top-0 bottom-0 w-1 bg-blue-600 rounded-l-xl"
+                        layoutId="activeIndicator"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </motion.div>
+                </button>
+              ))}
+            </div>
+
+            {/* Content Card - Rechts */}
+            <div className="relative flex items-stretch">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={philosophyActiveIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="w-full"
+                >
+                  <Card className="p-6 lg:p-8 h-full flex flex-col">
+                    <div className="flex items-center gap-4 mb-6">
+                      <motion.div
+                        className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                        initial={{ scale: 0.8, rotate: -10 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
+                      >
+                        {philosophyItems[philosophyActiveIndex].icon}
+                      </motion.div>
+                      <motion.h3
+                        className="text-2xl font-semibold text-gray-900"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        {philosophyItems[philosophyActiveIndex].h}
+                      </motion.h3>
+                    </div>
+                    <ul className="space-y-3 flex-1">
+                      {philosophyItems[philosophyActiveIndex].points.map((point, pointIndex) => (
+                        <motion.li
+                          key={pointIndex}
+                          className="flex items-start gap-3 text-gray-600"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 + pointIndex * 0.1 }}
+                        >
+                          <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span>{point}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </Card>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </Container>
       </section>
@@ -989,7 +1028,7 @@ function HomeContent() {
         <Container>
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-semibold mb-6 text-gray-900">
-              Bereit für professionelle Schärfdienstleistungen?
+              Bereit für perfekte Schärfe?
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
               Starten Sie jetzt Ihren Schärfauftrag oder kontaktieren Sie uns für eine persönliche Beratung.
