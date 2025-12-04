@@ -850,7 +850,7 @@ function HomeContent() {
           <div className="grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 items-stretch">
             {/* Navigation Links - Links */}
             <div className="flex lg:flex-col gap-2 lg:gap-3 justify-center lg:justify-between h-full">
-              {philosophyItems.map((item, index) => (
+            {philosophyItems.map((item, index) => (
                 <button
                   key={index}
                   onClick={() => setPhilosophyActiveIndex(index)}
@@ -875,7 +875,7 @@ function HomeContent() {
                         {React.cloneElement(item.icon as React.ReactElement<React.SVGProps<SVGSVGElement>>, {
                           className: `w-8 h-8 ${philosophyActiveIndex === index ? 'text-white' : 'text-gray-600'}`
                         })}
-                      </div>
+                </div>
                       <h3 className={`text-xs lg:text-lg font-semibold transition-colors duration-300 text-center lg:text-left ${
                         philosophyActiveIndex === index
                           ? 'text-blue-600'
@@ -937,16 +937,16 @@ function HomeContent() {
                           transition={{ delay: 0.3 + pointIndex * 0.1 }}
                         >
                           <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
                           <span>{point}</span>
                         </motion.li>
-                      ))}
-                    </ul>
-                  </Card>
+                  ))}
+                </ul>
+              </Card>
                 </motion.div>
               </AnimatePresence>
-            </div>
+          </div>
           </div>
         </Container>
       </section>

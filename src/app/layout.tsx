@@ -134,6 +134,47 @@ export default function RootLayout({
         `}
       </Script>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+        {/* Organization Schema für Google Brand Name */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": "https://www.dentalschleifen.de/#organization",
+              "name": "Schärfservice Hartmann",
+              "alternateName": "Schärfservice Hartmann",
+              "legalName": "Schärfservice Hartmann",
+              "url": "https://www.dentalschleifen.de",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.dentalschleifen.de/dentalschleifen-logo-512.png",
+                "width": 512,
+                "height": 512
+              },
+              "image": "https://www.dentalschleifen.de/dentalschleifen-logo-512.png",
+              "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung",
+              "foundingDate": "2004",
+              "founder": {
+                "@type": "Person",
+                "name": "Björn Hartmann"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Petershagener Str. 27",
+                "addressLocality": "Schöneiche bei Berlin",
+                "postalCode": "15566",
+                "addressCountry": "DE"
+              },
+              "telephone": "+49-30-92371278",
+              "email": "hartmann-schaerfservice@web.de",
+              "sameAs": [
+                "https://www.dentalschleifen.de"
+              ]
+            })
+          }}
+        />
+        
         {/* Preload Hero-Bild für schnelles Laden beim ersten Besuch */}
         <HeroImagePreload />
         
