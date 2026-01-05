@@ -4,10 +4,11 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { blogPosts } from "@/lib/blogPosts";
 
-type Props = { params: { slug: string } };
+type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = blogPosts.find(p => p.id === params.slug);
+  const { slug } = await params;
+  const post = blogPosts.find(p => p.id === slug);
   if (!post) return { title: "Artikel nicht gefunden" };
 
   const url = `https://www.dentalschleifen.de/blog/${post.id}`;
@@ -28,8 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const post = blogPosts.find(p => p.id === params.slug);
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = blogPosts.find(p => p.id === slug);
   if (!post) {
     return (
       <Container className="py-16">
