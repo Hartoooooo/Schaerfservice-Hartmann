@@ -109,7 +109,7 @@ export default function KontaktForm() {
                 </div>
                 <div>
                   <p className="font-semibold text-sm text-gray-900">E-Mail</p>
-                  <p className="text-gray-600">hartmann-schaerfservice@web.de</p>
+                  <a href="mailto:hartmann-schaerfservice@web.de" className="text-blue-600 hover:text-blue-700 hover:underline">hartmann-schaerfservice@web.de</a>
                 </div>
               </div>
 
@@ -121,7 +121,7 @@ export default function KontaktForm() {
                 </div>
                 <div>
                   <p className="font-semibold text-sm text-gray-900">Telefon</p>
-                  <p className="text-gray-600">+49 30 92371278</p>
+                  <a href="tel:+493092376694" className="text-blue-600 hover:text-blue-700 hover:underline">030 92376694</a>
                 </div>
               </div>
 
@@ -238,9 +238,9 @@ export default function KontaktForm() {
               <Button type="submit" className="flex-1" disabled={isSent}>
                 {isSent ? "Vielen Dank für Ihre Anfrage" : "Nachricht senden"}
               </Button>
-              <Button variant="outline" type="button">
+              <a href="tel:+493092376694" className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors">
                 Anrufen
-              </Button>
+              </a>
             </div>
           </form>
         </Card>

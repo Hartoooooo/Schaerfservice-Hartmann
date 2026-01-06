@@ -57,7 +57,7 @@ export default function ExpressSchaerfenPage() {
               </Button>
               <Button 
                 variant="outline" 
-                href="tel:+4903092371278"
+                href="tel:+493092376694"
                 className="px-8 py-3 text-lg"
               >
                 Jetzt anrufen
@@ -327,10 +327,10 @@ export default function ExpressSchaerfenPage() {
               </Button>
               <Button 
                 variant="outline" 
-                href="tel:+4903092371278"
+                href="tel:+493092376694"
                 className="px-8 py-3 text-lg"
               >
-                +49 30 92371278
+                030 92376694
               </Button>
             </div>
           </div>

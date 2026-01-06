@@ -34,7 +34,7 @@ export default function DatenschutzPage() {
                   Inhaber: Björn Hartmann<br />
                   Petershagener Str. 27<br />
                   15566 Schöneiche bei Berlin<br />
-                  Telefon: 030 92371278<br />
+                  Telefon: <a href="tel:+493092376694" className="text-blue-600 hover:text-blue-700 hover:underline">030 92376694</a><br />
                   E-Mail: hartmann-schaerfservice@web.de
                 </p>
               </div>

@@ -166,7 +166,7 @@ export default function RootLayout({
                 "postalCode": "15566",
                 "addressCountry": "DE"
               },
-              "telephone": "+49-30-92371278",
+              "telephone": "+49-30-92376694",
               "email": "hartmann-schaerfservice@web.de",
               "sameAs": [
                 "https://www.dentalschleifen.de"
