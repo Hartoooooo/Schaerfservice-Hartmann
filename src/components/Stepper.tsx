@@ -22,6 +22,13 @@ interface StepperProps extends HTMLAttributes<HTMLDivElement> {
     currentStep: number;
     onStepClick: (clicked: number) => void;
   }) => ReactNode;
+  renderFooter?: (props: {
+    currentStep: number;
+    isLastStep: boolean;
+    handleBack: () => void;
+    handleNext: () => void;
+    handleComplete: () => void;
+  }) => ReactNode;
 }
 
 export default function Stepper({
@@ -41,6 +48,7 @@ export default function Stepper({
   isNextDisabled = false,
   customNextButtonText,
   renderStepIndicator,
+  renderFooter,
   ...rest
 }: StepperProps) {
   const [currentStep, setCurrentStep] = useState<number>(initialStep);
@@ -129,33 +137,43 @@ export default function Stepper({
 
         {!isCompleted && (
           <div className={`px-8 pb-8 ${footerClassName}`}>
-            <div className={`mt-10 flex ${currentStep !== 1 ? 'justify-between' : 'justify-end'}`}>
-              {currentStep !== 1 && (
+            {renderFooter ? (
+              renderFooter({ 
+                currentStep, 
+                isLastStep,
+                handleBack,
+                handleNext,
+                handleComplete
+              })
+            ) : (
+              <div className={`mt-10 flex ${currentStep !== 1 ? 'justify-between' : 'justify-end'}`}>
+                {currentStep !== 1 && (
+                  <button
+                    onClick={handleBack}
+                    className={`duration-350 rounded px-2 py-1 transition cursor-pointer ${
+                      currentStep === 1
+                        ? 'pointer-events-none opacity-50 text-neutral-400'
+                        : 'text-neutral-400 hover:text-neutral-700'
+                    }`}
+                    {...backButtonProps}
+                  >
+                    {backButtonText}
+                  </button>
+                )}
                 <button
-                  onClick={handleBack}
-                  className={`duration-350 rounded px-2 py-1 transition cursor-pointer ${
-                    currentStep === 1
-                      ? 'pointer-events-none opacity-50 text-neutral-400'
-                      : 'text-neutral-400 hover:text-neutral-700'
+                  onClick={isLastStep ? handleComplete : handleNext}
+                  disabled={isNextDisabled}
+                  className={`duration-350 flex items-center justify-center rounded-full py-1.5 px-3.5 font-medium tracking-tight transition ${
+                    isNextDisabled
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                      : 'bg-[var(--color-blue-600)] text-white hover:bg-[var(--color-blue-700)] active:bg-[var(--color-blue-800)] cursor-pointer'
                   }`}
-                  {...backButtonProps}
+                  {...nextButtonProps}
                 >
-                  {backButtonText}
-                </button>
-              )}
-              <button
-                onClick={isLastStep ? handleComplete : handleNext}
-                disabled={isNextDisabled}
-                className={`duration-350 flex items-center justify-center rounded-full py-1.5 px-3.5 font-medium tracking-tight transition ${
-                  isNextDisabled
-                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                    : 'bg-[var(--color-blue-600)] text-white hover:bg-[var(--color-blue-700)] active:bg-[var(--color-blue-800)] cursor-pointer'
-                }`}
-                {...nextButtonProps}
-              >
 {customNextButtonText || (isLastStep ? 'Abschließen' : nextButtonText)}
-              </button>
-            </div>
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>

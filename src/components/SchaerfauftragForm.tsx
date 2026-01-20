@@ -251,9 +251,73 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         }}
         backButtonText="Zurück"
         nextButtonText="Weiter"
+        renderFooter={({ currentStep, isLastStep, handleBack, handleNext, handleComplete }) => {
+          const handleCompleteWithEmail = () => {
+            sendEmail().catch(err => {
+              console.error('E-Mail konnte nicht gesendet werden:', err);
+            });
+            router.push('/danke');
+          };
+
+          return (
+            <div className="mt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              {currentStep === 1 ? (
+                <>
+                  <p className="text-neutral-500 text-sm">
+                    Bearbeitungszeit ca. 5 Werktage
+                  </p>
+                  <button
+                    onClick={handleNext}
+                    disabled={isNextButtonDisabled()}
+                    className={`duration-350 flex items-center justify-center rounded-full py-1.5 px-3.5 font-medium tracking-tight transition ${
+                      isNextButtonDisabled()
+                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                        : 'bg-[var(--color-blue-600)] text-white hover:bg-[var(--color-blue-700)] active:bg-[var(--color-blue-800)] cursor-pointer'
+                    }`}
+                  >
+                    {getCustomNextButtonText() || (isLastStep ? 'Abschließen' : 'Weiter')}
+                  </button>
+                </>
+              ) : (
+                <div className="flex w-full justify-between">
+                  <button
+                    onClick={handleBack}
+                    className="duration-350 rounded px-2 py-1 transition cursor-pointer text-neutral-400 hover:text-neutral-700"
+                  >
+                    Zurück
+                  </button>
+                  <button
+                    onClick={isLastStep ? handleCompleteWithEmail : handleNext}
+                    disabled={isNextButtonDisabled()}
+                    className={`duration-350 flex items-center justify-center rounded-full py-1.5 px-3.5 font-medium tracking-tight transition ${
+                      isNextButtonDisabled()
+                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                        : 'bg-[var(--color-blue-600)] text-white hover:bg-[var(--color-blue-700)] active:bg-[var(--color-blue-800)] cursor-pointer'
+                    }`}
+                  >
+                    {getCustomNextButtonText() || (isLastStep ? 'Abschließen' : 'Weiter')}
+                  </button>
+                </div>
+              )}
+            </div>
+          );
+        }}
       >
         <Step>
-          <h2 className="text-2xl font-semibold mb-4">Ihr Schärfauftrag</h2>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-4">
+            <h2 className="text-2xl font-semibold">Ihr Schärfauftrag</h2>
+            <a 
+              href="/Schärfpreisliste 2026 (1).pdf" 
+              download="Schärfpreisliste 2026.pdf"
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline transition-colors flex-shrink-0"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span className="text-sm font-medium">Schärfpreisliste 2026 (PDF) herunterladen</span>
+            </a>
+          </div>
+          
           <p className="text-neutral-600 text-lg leading-relaxed mb-4">
             für zahnärztliche und chirurgische Instrumente<br />
             für langlebige Schärfe und präzise Ergebnisse
@@ -269,21 +333,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               Vielen Dank für Ihr Verständnis.
             </p>
           </div>
-          
-          <p className="text-neutral-500 text-sm mb-4">
-            Bearbeitungszeit ca. 5 Werktage
-          </p>
-          
-          <a 
-            href="/Schärfpreisliste 2026 (1).pdf" 
-            download="Schärfpreisliste 2026.pdf"
-            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <span className="text-sm font-medium">Schärfpreisliste 2026 (PDF) herunterladen</span>
-          </a>
         </Step>
         <Step>
           <h2 className="text-2xl font-semibold mb-4">
