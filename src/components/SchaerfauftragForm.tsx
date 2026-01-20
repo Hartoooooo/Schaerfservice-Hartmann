@@ -270,9 +270,20 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
             </p>
           </div>
           
-          <p className="text-neutral-500 text-sm">
+          <p className="text-neutral-500 text-sm mb-4">
             Bearbeitungszeit ca. 5 Werktage
           </p>
+          
+          <a 
+            href="/Schärfpreisliste 2026 (1).pdf" 
+            download="Schärfpreisliste 2026.pdf"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span className="text-sm font-medium">Schärfpreisliste 2026 (PDF) herunterladen</span>
+          </a>
         </Step>
         <Step>
           <h2 className="text-2xl font-semibold mb-4">
