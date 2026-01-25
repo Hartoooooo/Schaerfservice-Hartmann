@@ -71,7 +71,11 @@ export default async function BlogPostPage({ params }: Props) {
 
         {(post.downloadImages && post.downloadImages.length > 0) || (post.previewImages && post.previewImages.length > 0) ? (
           <div className="mt-10 space-y-4">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Schärfplatten</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+              {post.previewImages && post.previewImages.length > 0 && (!post.downloadImages || post.downloadImages.length === 0) 
+                ? "Pflegeprodukte" 
+                : "Schärfplatten"}
+            </h2>
             
             {/* Bildvorschau nebeneinander */}
             <div className="space-y-4 mb-4">
