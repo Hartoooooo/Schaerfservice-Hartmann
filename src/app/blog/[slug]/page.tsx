@@ -69,6 +69,94 @@ export default async function BlogPostPage({ params }: Props) {
           <p className="text-gray-700 leading-relaxed text-lg whitespace-pre-line">{post.fullText}</p>
         </div>
 
+        {(post.downloadImages && post.downloadImages.length > 0) || (post.previewImages && post.previewImages.length > 0) ? (
+          <div className="mt-10 space-y-4">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Schärfplatten</h2>
+            
+            {/* Bildvorschau nebeneinander */}
+            <div className="space-y-4 mb-4">
+              {/* Download-Bilder groß nebeneinander */}
+              {post.downloadImages && post.downloadImages.length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {post.downloadImages.map((imageItem, imgIndex) => {
+                    const imageUrl = typeof imageItem === 'string' ? imageItem : imageItem.url;
+                    const imageName = typeof imageItem === 'string' ? imageItem.split('/').pop() || `Bild ${imgIndex + 1}` : imageItem.name;
+                    return (
+                      <div key={imgIndex} className="relative group">
+                        <div className="relative w-full aspect-video bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
+                          <Image
+                            src={imageUrl}
+                            alt={`${post.title} - ${imageName}`}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+              
+              {/* Preview-Bilder kleiner (ohne Download) */}
+              {post.previewImages && post.previewImages.length > 0 && (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {post.previewImages.map((imageUrl, imgIndex) => {
+                      const imageName = imageUrl.split('/').pop() || `Bild ${imgIndex + 1}`;
+                      return (
+                        <div key={imgIndex} className="relative group">
+                          <div className="relative w-full aspect-video bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
+                            <Image
+                              src={imageUrl}
+                              alt={`${post.title} - ${imageName}`}
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  
+                  {/* Info über Pflegeprodukte */}
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <p className="text-gray-700 text-sm">
+                      Diese Pflegeprodukte sind bei uns erhältlich.{" "}
+                      <Link href="/kontakt" className="text-blue-600 hover:text-blue-700 hover:underline font-medium">
+                        Kontaktieren Sie uns für weitere Informationen
+                      </Link>
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            {/* Download-Links darunter (nur für downloadImages) */}
+            {post.downloadImages && post.downloadImages.length > 0 && (
+              <div className="flex flex-wrap gap-4">
+                {post.downloadImages.map((imageItem, imgIndex) => {
+                  const imageUrl = typeof imageItem === 'string' ? imageItem : imageItem.url;
+                  const imageName = typeof imageItem === 'string' ? imageItem.split('/').pop() || `Bild ${imgIndex + 1}` : imageItem.name;
+                  const fileName = typeof imageItem === 'string' ? imageItem.split('/').pop() || `Bild ${imgIndex + 1}` : imageItem.url.split('/').pop() || imageItem.name;
+                  return (
+                    <a
+                      key={imgIndex}
+                      href={imageUrl}
+                      download={fileName}
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      <span className="font-medium">{imageName}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        ) : null}
+
         <div className="mt-10">
           <Link href="/" className="text-blue-600 hover:text-blue-700 hover:underline">← Zurück zur Startseite</Link>
         </div>

@@ -6,6 +6,8 @@ export type BlogPost = {
   date: string;
   imageUrl: string;
   imageAlt: string;
+  downloadImages?: Array<string | { url: string; name: string }>;
+  previewImages?: string[];
 };
 
 export const blogPosts: BlogPost[] = [
@@ -26,6 +28,11 @@ export const blogPosts: BlogPost[] = [
     date: "8. März 2024",
     imageUrl: "/kueretten.webp",
     imageAlt: "Schärfwinkel bei Scalern und Küretten - Professionelle Instrumentenschärfung Schärfservice Hartmann",
+    downloadImages: [
+      { url: "/101108.JPG", name: "Scaler" },
+      { url: "/101138.JPG", name: "Küretten" }
+    ],
+    previewImages: ["/PHOTO-2026-01-25-10-50-08.jpg"],
   },
   {
     id: "lagerung-pflege-raspatorien",
