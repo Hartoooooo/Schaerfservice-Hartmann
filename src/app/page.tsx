@@ -262,7 +262,7 @@ function HomeContent() {
     },
     {
       question: "Welche Instrumente können Sie schärfen?",
-      answer: "Wir schärfen herstellerunabhängig alle gängigen Dentalinstrumente wie Scaler schärfen, Küretten schärfen, Raspatorien schärfen, Exkavatoren schleifen, scharfe Löffel schleifen, Knochenküretten schärfen, Meißel schleifen, Gingivalrandschräger schärfen, Schnitzinstrumente schärfen, Wurzelheber schärfen, Luxatoren schleifen, Scheren schärfen, Microscheren schleifen, Periotome schärfen oder schleifen und Tunnelierungsinstrumente schärfen oder schleifen. Bei speziellen Instrumenten beraten wir Sie gerne vorab über die Schärfbarkeit."
+      answer: "Wir schärfen herstellerunabhängig alle gängigen Dentalinstrumente wie Scaler, Küretten, Raspatorien, Exkavatoren, scharfe Löffel, Knochenküretten, Meißel, Gingivalrandschräger, Schnitzinstrumente, Wurzelheber, Luxatoren, Scheren, Microscheren, Periotome und Tunnelierungsinstrumente. Bei speziellen Instrumenten beraten wir Sie gerne vorab über die Schärfbarkeit."
     },
     {
       question: "Was kostet die Schärfung?",

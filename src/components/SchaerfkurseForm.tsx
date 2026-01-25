@@ -51,7 +51,7 @@ export default function SchaerfkurseForm() {
         grundpreis: '215€',
         zusaetzliche_teilnehmer: participantCount > 2 ? participantCount - 2 : 0,
         zusaetzliche_kosten: participantCount > 2 ? (participantCount - 2) * 45 : 0,
-        anfahrt_kosten: '0,30€ je Kilometer',
+        anfahrt_kosten: '0,35€ je Kilometer',
         
         // Website-Info
         website: 'www.dentalschleifen.de',
@@ -123,7 +123,7 @@ export default function SchaerfkurseForm() {
                       215€ Grundpreis (bis 2 Teilnehmer)
                     </div>
                     <div className="text-sm opacity-90 text-center">
-                      Jeder weitere Teilnehmer: +45€ • + 0,30€ je Kilometer Anfahrt
+                      Jeder weitere Teilnehmer: +45€ • + 0,35€ je Kilometer Anfahrt
                     </div>
                   </div>
                 </div>
@@ -168,7 +168,7 @@ export default function SchaerfkurseForm() {
                   </div>
                   <div className="text-center text-sm text-gray-500">
                     Gesamtpreis: {totalPrice}€
-                    <span className="ml-2 text-xs text-gray-400">(zzgl. 0,30€ je Kilometer Anfahrt)</span>
+                    <span className="ml-2 text-xs text-gray-400">(zzgl. 0,35€ je Kilometer Anfahrt)</span>
                   </div>
                 </div>
 

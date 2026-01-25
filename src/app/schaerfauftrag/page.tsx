@@ -25,16 +25,16 @@ export const metadata: Metadata = {
 
 // Instrumenten-Daten (Server-Side verfügbar für SEO)
 const instrumentRows = [
-  { name: "Scaler & Küretten ( Universal, Gracey )", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Exkavatoren", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Knochenküretten & scharfe Löffel", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Meißel & Gingivalrandschräger", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Messer & Schnitzinstrumente", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Microscheren", price: "€26,25", price7: "€24,41", price15: "€22,31" },
-  { name: "Periotome & Tunnelierungsinstr.", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Raspatorien", price: "€13,01", price7: "€12,10", price15: "€11,06" },
-  { name: "Scheren", price: "€17,10", price7: "€15,90", price15: "€14,54" },
-  { name: "Wurzelheber & Luxatoren", price: "€7,11", price7: "€6,61", price15: "€6,04" },
+  { name: "Scaler & Küretten ( Universal, Gracey )", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
+  { name: "Exkavatoren", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
+  { name: "Knochenküretten & scharfe Löffel", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
+  { name: "Meißel & Gingivalrandschräger", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
+  { name: "Messer & Schnitzinstrumente", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
+  { name: "Microscheren", price: "€26,25", price7: "€24,41", price15: "€22,31", price75: "€21,00" },
+  { name: "Periotome & Tunnelierungsinstr.", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
+  { name: "Raspatorien", price: "€13,01", price7: "€12,10", price15: "€11,06", price75: "€10,41" },
+  { name: "Scheren", price: "€17,10", price7: "€15,90", price15: "€14,54", price75: "€13,68" },
+  { name: "Wurzelheber & Luxatoren", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
 ];
 
 // Server-Component für bessere SEO und Performance
