@@ -19,6 +19,7 @@ export const blogPosts: BlogPost[] = [
     date: "15. März 2024",
     imageUrl: "/dental-schere-schaerfwinkel-berlin.jpg",
     imageAlt: "Optimaler Schärfwinkel bei Dentalscheren - Professionelle Schärfung Berlin Schärfservice Hartmann",
+    previewImages: ["/PHOTO-2026-01-25-10-50-08.jpg"],
   },
   {
     id: "schaerfwinkel-scaler-kueretten",
@@ -29,10 +30,9 @@ export const blogPosts: BlogPost[] = [
     imageUrl: "/kueretten.webp",
     imageAlt: "Schärfwinkel bei Scalern und Küretten - Professionelle Instrumentenschärfung Schärfservice Hartmann",
     downloadImages: [
-      { url: "/101108.JPG", name: "Scaler" },
-      { url: "/101138.JPG", name: "Küretten" }
+      { url: "/Scalerplatte.jpeg", name: "Scaler" },
+      { url: "/Kuerettenplatte.jpeg", name: "Küretten" }
     ],
-    previewImages: ["/PHOTO-2026-01-25-10-50-08.jpg"],
   },
   {
     id: "lagerung-pflege-raspatorien",
