@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
     date: "15. März 2024",
     imageUrl: "/dental-schere-schaerfwinkel-berlin.jpg",
     imageAlt: "Optimaler Schärfwinkel bei Dentalscheren - Professionelle Schärfung Berlin Schärfservice Hartmann",
-    previewImages: ["/PHOTO-2026-01-25-10-50-08.jpg"],
+    previewImages: ["/20260115_101012.jpg"],
   },
   {
     id: "schaerfwinkel-scaler-kueretten",

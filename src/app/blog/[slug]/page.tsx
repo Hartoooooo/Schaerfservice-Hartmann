@@ -74,6 +74,8 @@ export default async function BlogPostPage({ params }: Props) {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
               {post.previewImages && post.previewImages.length > 0 && (!post.downloadImages || post.downloadImages.length === 0) 
                 ? "Pflegeprodukte" 
+                : post.id === "schaerfwinkel-scaler-kueretten"
+                ? "Vorlage Schärfwinkel"
                 : "Schärfplatten"}
             </h2>
             
@@ -124,8 +126,14 @@ export default async function BlogPostPage({ params }: Props) {
                   
                   {/* Info über Pflegeprodukte */}
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <p className="text-gray-700 text-sm mb-2">
+                      Diese Pflegeprodukte sind bei uns erhältlich:
+                    </p>
+                    <ul className="text-gray-700 text-sm list-disc list-inside space-y-1 mb-3">
+                      <li>1. Schanierpflegespray</li>
+                      <li>2. Reinigungstücher - rostlösend</li>
+                    </ul>
                     <p className="text-gray-700 text-sm">
-                      Diese Pflegeprodukte sind bei uns erhältlich.{" "}
                       <Link href="/kontakt" className="text-blue-600 hover:text-blue-700 hover:underline font-medium">
                         Kontaktieren Sie uns für weitere Informationen
                       </Link>
