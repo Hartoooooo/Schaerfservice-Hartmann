@@ -71,6 +71,29 @@ export default async function BlogPostPage({ params }: Props) {
 
         {(post.downloadImages && post.downloadImages.length > 0) || (post.previewImages && post.previewImages.length > 0) ? (
           <div className="mt-10 space-y-4">
+            {/* PDF Download-Links */}
+            {post.downloadPdfs && post.downloadPdfs.length > 0 && (
+              <div className="mb-4">
+                <div className="flex flex-wrap gap-4">
+                  {post.downloadPdfs.map((pdfItem, pdfIndex) => {
+                    const fileName = pdfItem.url.split('/').pop() || pdfItem.name;
+                    return (
+                      <a
+                        key={pdfIndex}
+                        href={pdfItem.url}
+                        download={fileName}
+                        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                        <span className="font-medium">{pdfItem.name}</span>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
               {post.previewImages && post.previewImages.length > 0 && (!post.downloadImages || post.downloadImages.length === 0) 
                 ? "Pflegeprodukte" 
@@ -130,7 +153,7 @@ export default async function BlogPostPage({ params }: Props) {
                       Diese Pflegeprodukte sind bei uns erhältlich:
                     </p>
                     <ul className="text-gray-700 text-sm list-disc list-inside space-y-1 mb-3">
-                      <li>1. Schanierpflegespray</li>
+                      <li>1. Scharnierpflegespray</li>
                       <li>2. Reinigungstücher - rostlösend</li>
                     </ul>
                     <p className="text-gray-700 text-sm">

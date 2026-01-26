@@ -8,6 +8,7 @@ export type BlogPost = {
   imageAlt: string;
   downloadImages?: Array<string | { url: string; name: string }>;
   previewImages?: string[];
+  downloadPdfs?: Array<{ url: string; name: string }>;
 };
 
 export const blogPosts: BlogPost[] = [
@@ -20,6 +21,9 @@ export const blogPosts: BlogPost[] = [
     imageUrl: "/dental-schere-schaerfwinkel-berlin.jpg",
     imageAlt: "Optimaler Schärfwinkel bei Dentalscheren - Professionelle Schärfung Berlin Schärfservice Hartmann",
     previewImages: ["/20260115_101012.jpg"],
+    downloadPdfs: [
+      { url: "/Scherenprobleme.pdf", name: "häufige Scherenprobleme" }
+    ],
   },
   {
     id: "schaerfwinkel-scaler-kueretten",
