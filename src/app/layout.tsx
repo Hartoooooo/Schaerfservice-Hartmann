@@ -201,8 +201,8 @@ export default function RootLayout({
         <div className="fixed top-0 left-0 right-0 z-[70] bg-blue-600 text-white text-sm">
           <div className="container-page h-8 flex items-center justify-center">
             <span className="font-medium">
-              <span className="hidden md:inline">Neukundenangebot – ab 15 Instr. erhalten Sie 30€ Rabatt</span>
-              <span className="md:hidden">Neukundenangebot – ab 15 Instr. sparen Sie 30 €</span>
+              <span className="hidden md:inline">ab 15 Instr. sparen Sie 7%</span>
+              <span className="md:hidden">ab 15 Instr. sparen Sie 7%</span>
             </span>
           </div>
         </div>
