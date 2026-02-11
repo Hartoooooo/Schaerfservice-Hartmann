@@ -3,7 +3,7 @@
 import { Container } from "@/components/Container";
 import { analytics } from "@/components/GoogleAnalytics";
 import emailjs from '@emailjs/browser';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function SchaerfkurseForm() {
   const [participantCount, setParticipantCount] = useState(1);
@@ -17,6 +17,29 @@ export default function SchaerfkurseForm() {
     email: "",
     phone: ""
   });
+
+  // Auf Mobilgeräten Datum & Uhrzeit mit aktuellem Wert vorbelegen
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const isMobile = window.innerWidth < 768;
+    if (!isMobile) return;
+
+    setFormData(prev => {
+      // Nur setzen, wenn der Nutzer noch nichts eingetragen hat
+      if (prev.date || prev.time) return prev;
+
+      const now = new Date();
+      const dateStr = now.toISOString().slice(0, 10); // yyyy-mm-dd
+      const timeStr = now.toTimeString().slice(0, 5); // HH:MM
+
+      return {
+        ...prev,
+        date: dateStr,
+        time: timeStr,
+      };
+    });
+  }, []);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -198,8 +221,8 @@ export default function SchaerfkurseForm() {
                   <label className="block text-sm font-medium text-gray-800">
                     Wunschdatum &amp; Uhrzeit
                   </label>
-                  <div className="flex gap-4 justify-center">
-                    <div className="flex-1 max-w-[9rem] sm:max-w-none">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
                       <input
                         type="date"
                         placeholder="tt.mm.jjjj"
@@ -208,7 +231,7 @@ export default function SchaerfkurseForm() {
                         className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
                       />
                     </div>
-                    <div className="flex-1 max-w-[9rem] sm:max-w-none">
+                    <div>
                       <input
                         type="time"
                         placeholder="--:--"
