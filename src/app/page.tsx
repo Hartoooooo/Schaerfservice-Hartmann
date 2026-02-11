@@ -557,7 +557,7 @@ function HomeContent() {
             },
             "offers": {
               "@type": "Offer",
-              "price": "215",
+              "price": "285",
               "priceCurrency": "EUR",
               "availability": "https://schema.org/InStock"
             },

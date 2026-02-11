@@ -4,7 +4,7 @@ import SchaerfkurseForm from "@/components/SchaerfkurseForm";
 // SEO-Metadaten für Server-Side Rendering
 export const metadata: Metadata = {
   title: "Schärfkurse - Instrumente schärfen lernen Berlin",
-  description: "🎓 Schärfkurse Berlin: Instrumente schärfen & schleifen lernen ✅ Dental schärfen Schulung für Praxispersonal | Instrumente aufbereiten Kurs | 2h vor Ort ab 215€ | Hu-Friedy zertifiziert",
+  description: "🎓 Schärfkurse Berlin: Instrumente schärfen & schleifen lernen ✅ Dental schärfen Schulung für Praxispersonal | Instrumente aufbereiten Kurs | 2h vor Ort ab 285€ | Hu-Friedy zertifiziert",
   keywords: [
     "Schärfkurse",
     "instrumente schärfen lernen",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Schärfkurse | Schärfservice Hartmann",
-    description: "Professionelle Schärfkurse für Zahnärzte und Praxispersonal. 2-stündige Kurse vor Ort ab 215€. Hu-Friedy zertifizierte Schulung in Berlin.",
+    description: "Professionelle Schärfkurse für Zahnärzte und Praxispersonal. 2-stündige Kurse vor Ort ab 285€. Hu-Friedy zertifizierte Schulung in Berlin.",
   },
 };
 
@@ -82,10 +82,10 @@ export default function SchaerfkursePage() {
               "courseMode": "InPerson",
               "duration": "PT2H",
               "offers": {
-                "@type": "Offer",
-                "price": "215",
-                "priceCurrency": "EUR",
-                "description": "Grundpreis für bis zu 2 Teilnehmer, jeder weitere Teilnehmer +45€"
+              "@type": "Offer",
+              "price": "285",
+              "priceCurrency": "EUR",
+              "description": "Grundpreis für bis zu 2 Teilnehmer, jeder weitere Teilnehmer +45€"
               }
             }
           })
