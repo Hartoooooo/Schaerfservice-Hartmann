@@ -198,8 +198,8 @@ export default function SchaerfkurseForm() {
                   <label className="block text-sm font-medium text-gray-800">
                     Wunschdatum &amp; Uhrzeit
                   </label>
-                  <div className="flex gap-4">
-                    <div className="flex-1">
+                  <div className="flex gap-4 justify-center">
+                    <div className="flex-1 max-w-[9rem] sm:max-w-none">
                       <input
                         type="date"
                         placeholder="tt.mm.jjjj"
@@ -208,7 +208,7 @@ export default function SchaerfkurseForm() {
                         className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
                       />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 max-w-[9rem] sm:max-w-none">
                       <input
                         type="time"
                         placeholder="--:--"
