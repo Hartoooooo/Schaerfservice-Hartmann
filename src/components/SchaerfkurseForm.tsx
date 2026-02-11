@@ -222,7 +222,7 @@ export default function SchaerfkurseForm() {
                     Wunschdatum &amp; Uhrzeit
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
+                    <div className="w-full max-w-[260px] mx-auto sm:max-w-none sm:mx-0">
                       <input
                         type="date"
                         placeholder="tt.mm.jjjj"
@@ -231,7 +231,7 @@ export default function SchaerfkurseForm() {
                         className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
                       />
                     </div>
-                    <div>
+                    <div className="w-full max-w-[260px] mx-auto sm:max-w-none sm:mx-0">
                       <input
                         type="time"
                         placeholder="--:--"
