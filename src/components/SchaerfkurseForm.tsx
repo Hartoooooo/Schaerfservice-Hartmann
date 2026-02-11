@@ -221,7 +221,7 @@ export default function SchaerfkurseForm() {
                   <label className="block text-sm font-medium text-gray-800">
                     Wunschdatum &amp; Uhrzeit
                   </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="min-w-0">
                       <input
                         type="date"
