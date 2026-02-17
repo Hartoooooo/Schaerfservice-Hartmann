@@ -28,6 +28,9 @@ export type SchaerfauftragRow = {
   // Anzahl beauftragte Instrumente
   instrumente_anzahl: number;
 
+  // Detailliste: welche Instrumente, wie oft (formatierter Text)
+  instrumente_liste?: string;
+
   // Beträge (in Euro)
   betrag: number;
   versand: number;

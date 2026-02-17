@@ -141,30 +141,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     try {
       const anschrift = `${formData.praxisname}, ${formData.plz} ${formData.ort}`;
 
-      // In Supabase-Datenbank speichern (wenn konfiguriert)
-      if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-        const { error } = await supabase.from('schaerfauftraege').insert({
-          datum_auftrag: new Date().toISOString(),
-          ansprechpartner: formData.ansprechpartner,
-          telefon: formData.telefon || null,
-          email: formData.email,
-          anschrift,
-          instrumente_anzahl: totalQuantity,
-          betrag: Math.round(subtotalWithDiscount * 100) / 100,
-          versand: shipping,
-          steuern: Math.round(vat * 100) / 100,
-          gesamtbetrag: Math.round(totalGross * 100) / 100,
-          einwilligung_widerrufsrecht: checkboxes.widerrufsrecht,
-          einwilligung_agb: checkboxes.agbAkzeptiert,
-        });
-
-        if (error) {
-          console.error('Supabase Fehler:', error);
-          throw new Error(`Datenbank: ${error.message}`);
-        }
-      }
-
-      // Erstelle detaillierte Instrumentenliste
+      // Erstelle detaillierte Instrumentenliste (für DB und E-Mail)
       const selectedInstruments = rows
         .map((row, idx) => {
           let unitPrice = row.price;
@@ -181,10 +158,39 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         })
         .filter(item => item.quantity > 0);
 
-      // Formatiere Instrumentenliste für E-Mail
+      // Formatiere Instrumentenliste für E-Mail (mit Preisen)
       const instrumentsText = selectedInstruments
         .map(item => `${item.name}: ${item.quantity} Stück à ${item.unitPrice} = ${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(item.totalPrice)}`)
         .join('\n');
+
+      // Für Datenbank: nur Instrument + Menge, ohne Preise
+      const instrumentsTextForDb = selectedInstruments
+        .map(item => `${item.name}: ${item.quantity} Stück`)
+        .join('\n');
+
+      // In Supabase-Datenbank speichern (wenn konfiguriert) – inkl. Instrumentenliste
+      if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+        const { error } = await supabase.from('schaerfauftraege').insert({
+          datum_auftrag: new Date().toISOString(),
+          ansprechpartner: formData.ansprechpartner,
+          telefon: formData.telefon || null,
+          email: formData.email,
+          anschrift,
+          instrumente_anzahl: totalQuantity,
+          instrumente_liste: instrumentsTextForDb,
+          betrag: Math.round(subtotalWithDiscount * 100) / 100,
+          versand: shipping,
+          steuern: Math.round(vat * 100) / 100,
+          gesamtbetrag: Math.round(totalGross * 100) / 100,
+          einwilligung_widerrufsrecht: checkboxes.widerrufsrecht,
+          einwilligung_agb: checkboxes.agbAkzeptiert,
+        });
+
+        if (error) {
+          console.error('Supabase Fehler:', error);
+          throw new Error(`Datenbank: ${error.message}`);
+        }
+      }
 
       // E-Mail-Template-Parameter
       const templateParams = {

@@ -19,6 +19,9 @@ CREATE TABLE IF NOT EXISTS schaerfauftraege (
   -- Anzahl beauftragte Instrumente
   instrumente_anzahl INTEGER NOT NULL DEFAULT 0,
 
+  -- Detailliste: welche Instrumente, wie oft (z. B. "Scaler/Küretten: 5 Stück")
+  instrumente_liste TEXT,
+
   -- Beträge in Euro
   betrag NUMERIC(10, 2) NOT NULL,
   versand NUMERIC(10, 2) NOT NULL DEFAULT 0,
@@ -47,3 +50,6 @@ CREATE POLICY "Service Role kann alles"
   TO service_role
   USING (true)
   WITH CHECK (true);
+
+-- Falls die Tabelle schon existiert: Spalte nachträglich hinzufügen
+-- ALTER TABLE schaerfauftraege ADD COLUMN IF NOT EXISTS instrumente_liste TEXT;
