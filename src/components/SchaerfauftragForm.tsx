@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Stepper, { Step } from "@/components/Stepper";
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG, EMAILJS_TEMPLATES } from '@/lib/emailjs-config';
+import { supabase } from '@/lib/supabase';
 
 type Row = {
   name: string;
@@ -132,12 +133,37 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     return undefined;
   };
 
-  // EmailJS-Integration
+  // EmailJS-Integration + Supabase-Speicherung
   const sendEmail = async () => {
     setIsSubmitting(true);
     setSubmitError("");
 
     try {
+      const anschrift = `${formData.praxisname}, ${formData.plz} ${formData.ort}`;
+
+      // In Supabase-Datenbank speichern (wenn konfiguriert)
+      if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+        const { error } = await supabase.from('schaerfauftraege').insert({
+          datum_auftrag: new Date().toISOString(),
+          ansprechpartner: formData.ansprechpartner,
+          telefon: formData.telefon || null,
+          email: formData.email,
+          anschrift,
+          instrumente_anzahl: totalQuantity,
+          betrag: Math.round(subtotalWithDiscount * 100) / 100,
+          versand: shipping,
+          steuern: Math.round(vat * 100) / 100,
+          gesamtbetrag: Math.round(totalGross * 100) / 100,
+          einwilligung_widerrufsrecht: checkboxes.widerrufsrecht,
+          einwilligung_agb: checkboxes.agbAkzeptiert,
+        });
+
+        if (error) {
+          console.error('Supabase Fehler:', error);
+          throw new Error(`Datenbank: ${error.message}`);
+        }
+      }
+
       // Erstelle detaillierte Instrumentenliste
       const selectedInstruments = rows
         .map((row, idx) => {
