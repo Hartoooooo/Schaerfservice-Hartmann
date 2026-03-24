@@ -351,8 +351,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-4">
             <h2 className="text-2xl font-semibold">Ihr Schärfauftrag</h2>
             <a 
-              href="/Schärfpreisliste 2026 (2).pdf" 
-              download="Schärfpreisliste 2026.pdf"
+              href="/Schärfpreis2026.pdf" 
+              download="Schärfpreis2026.pdf"
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline transition-colors flex-shrink-0"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
