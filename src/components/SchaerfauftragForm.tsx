@@ -169,7 +169,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         .join('\n');
 
       // In Supabase-Datenbank speichern (wenn konfiguriert) – inkl. Instrumentenliste
-      if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+      if (supabase) {
         const { error } = await supabase.from('schaerfauftraege').insert({
           datum_auftrag: new Date().toISOString(),
           ansprechpartner: formData.ansprechpartner,
