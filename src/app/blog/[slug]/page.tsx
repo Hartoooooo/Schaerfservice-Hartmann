@@ -150,16 +150,23 @@ export default async function BlogPostPage({ params }: Props) {
                   {/* Info über Pflegeprodukte */}
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
                     <p className="text-gray-700 text-sm mb-2">
-                      Diese Pflegeprodukte sind bei uns erhältlich:
+                      Zu diesen Pflegeprodukten zählen unter anderem:
                     </p>
                     <ul className="text-gray-700 text-sm list-disc list-inside space-y-1 mb-3">
                       <li>1. Scharnierpflegespray</li>
                       <li>2. Reinigungstücher - rostlösend</li>
                     </ul>
                     <p className="text-gray-700 text-sm">
-                      <Link href="/kontakt" className="text-blue-600 hover:text-blue-700 hover:underline font-medium">
-                        Kontaktieren Sie uns für weitere Informationen
-                      </Link>
+                      Diese Pflegeprodukte erhalten Sie bei{" "}
+                      <a
+                        href="https://micro-dental.de/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-700 hover:underline font-medium"
+                      >
+                        Micro Dental
+                      </a>
+                      .
                     </p>
                   </div>
                 </div>
