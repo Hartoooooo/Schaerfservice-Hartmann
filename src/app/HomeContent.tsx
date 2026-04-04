@@ -664,7 +664,7 @@ function HomeContentInner() {
                 Stumpfe Instrumente kosten Sie Zeit, belasten Ihre Hände und machen die Arbeit unnötig schwer. Scaler, die nicht mehr greifen. Küretten, die über den Zahnstein gleiten, anstatt ihn zu entfernen. Beim Schärfservice Hartmann erhalten Sie Ihre Instrumente nach der Aufarbeitung mit voller Schärfe zurück, exakt ausgerichtet und ohne Verzögerung wieder im Einsatz.
               </p>
               <p className="text-lg text-gray-500 leading-relaxed">
-                Wir sind Spezialisten für zahnärztliche und chirurgische Instrumente, kein Allround-Schleifdienst, der alles ein bisschen kann, sondern ein Fachbetrieb, der genau das seit Jahren macht.
+                Wir sind Spezialisten für zahnärztliche und chirurgische Instrumente, kein Allround-Schleifdienst, der alles ein bisschen kann, sondern ein Fachbetrieb, der genau das seit 2004 macht.
               </p>
             </div>
             <div className="relative w-full aspect-[4/3] max-w-xl mx-auto lg:max-w-none lg:aspect-auto lg:h-full lg:min-h-0 min-h-[220px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 order-1 lg:order-2">
@@ -687,7 +687,7 @@ function HomeContentInner() {
             {[
               {title:"450+",subtitle:"Zufriedene Kunden", value: count1, suffix: "+"},
               {title:"10.000+",subtitle:"Instrumente geschärft", value: count2, suffix: "+"},
-              {title:"20 Jahre",subtitle:"Erfahrung", value: count3, suffix: " Jahre"}
+              {title:"erfahrung-20plus", subtitle:"Erfahrung", value: count3, suffix: "+ Jahre"}
             ].map((item) => (
               <div key={item.title} className="space-y-1 lg:space-y-2">
                 <div className="flex items-center justify-center gap-1 lg:gap-2">
