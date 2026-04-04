@@ -122,19 +122,9 @@ export default function SchaerfkurseForm() {
   const totalPrice = 285 + Math.max(0, participantCount - 2) * 45;
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-20">
+    <div className="bg-white pb-20">
       <Container>
-        <div className="max-w-6xl mx-auto">
-          {/* Header Section - bleibt über beiden Spalten */}
-          <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
-              Schärfkurse
-            </p>
-            <h1 className="mt-3 text-4xl sm:text-5xl font-semibold tracking-tight text-gray-900">
-              <span className="hidden lg:inline">Schärfkursanfrage</span>
-              <span className="lg:hidden">Schärfkurse anfragen</span>
-            </h1>
-          </div>
+        <div className="max-w-6xl mx-auto pt-12">
 
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start">
             {/* Left Column - Form */}
@@ -336,48 +326,48 @@ export default function SchaerfkurseForm() {
             <div className="space-y-6">
               <div className="rounded-3xl border border-gray-100 bg-white/80 px-6 sm:px-8 py-7 shadow-sm backdrop-blur">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                  Maßgeschneidert auf Ihre Praxis
+                  Was Sie im Kurs lernen
                 </h2>
                 
                 <p className="text-sm sm:text-base text-gray-700 mb-5 leading-relaxed">
-                  Die ultimative Schulung, um das optimale Schärfen Ihrer zahnmedizinischen Instrumente zu erlernen! Unser Team von qualifizierten Experten freut sich darauf, Sie in die Geheimnisse der präzisen Instrumentenschärfung einzuführen. In unserem intensiven, praxisorientierten Kurs erfahren Sie alles über die Techniken, die erforderlich sind, um Ihren Instrumenten die notwendige Schärfe zurückzugeben, diese in Bestform zu halten und deren Lebensdauer zu verlängern.
+                  Praxisnah, direkt bei Ihnen in der Praxis, auf Ihr Team und Ihre Instrumente zugeschnitten. Kein allgemeiner Frontalunterricht, sondern echtes Üben an Ihrem eigenen Instrumentenbestand.
                 </p>
 
                 <div className="space-y-4">
                   <div className="rounded-2xl border border-blue-100 bg-blue-50/80 p-4">
                     <h3 className="font-semibold text-blue-700 mb-1.5 text-sm sm:text-base">
-                      1. Erfahrene Instruktoren
+                      Stumpfe Instrumente sicher erkennen
                     </h3>
                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
-                      Unsere erfahrenen und sachkundigen Instruktoren führen Sie Schritt für Schritt durch den Schärfprozess. Sie vermitteln Ihnen ihr umfangreiches Fachwissen und geben wertvolle Tipps aus ihrer langjährigen Erfahrung weiter.
+                      Fingernagel-Test, Testplastik, Arbeitsgefühl: Wer das einmal verstanden hat, greift nie wieder unwissend zu einem stumpfen Instrument.
                     </p>
                   </div>
 
                   <div className="rounded-2xl border border-blue-100 bg-blue-50/80 p-4">
                     <h3 className="font-semibold text-blue-700 mb-1.5 text-sm sm:text-base">
-                      2. Praxisnahe Schulung
+                      Schärftechnik für jeden Instrumententyp
                     </h3>
                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
-                      Wir glauben daran, dass Lernen am besten in der Praxis stattfindet. Daher erhalten Sie ausreichend Gelegenheit, Ihre neu erlernten Fähigkeiten direkt an Ihren praxiseigenen Instrumenten zu üben.
+                      Gracey-Küretten, Universalküretten, Scaler, Scheren: Jeder Instrumententyp hat seinen eigenen Winkel und seine eigene Technik. Wir gehen genau die Typen durch, die in Ihrer Praxis täglich im Einsatz sind.
                     </p>
                   </div>
 
                   <div className="rounded-2xl border border-blue-100 bg-blue-50/80 p-4">
                     <h3 className="font-semibold text-blue-700 mb-1.5 text-sm sm:text-base">
-                      3. Individuelle Kursgestaltung
+                      Direktes Feedback &amp; ehrliche Einschätzung
                     </h3>
                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
-                      Inhalte und Schwerpunkte passen wir auf Wunsch an Ihre Praxis, Ihr Team und Ihre Instrumente an – für maximalen Nutzen im Alltag.
+                      Sie schärfen selbst, mit sofortigem Feedback unseres Technikers. Dazu eine ehrliche Einschätzung zu Schleifmitteln aus tausenden geschärften Instrumenten, ohne Provisionsinteresse.
                     </p>
                   </div>
                 </div>
 
                 <p className="text-sm sm:text-base text-gray-700 mt-5 leading-relaxed">
-                  Bei uns steht das optimale Schärfen Ihrer Instrumente im Mittelpunkt. Unser Schärfkurs ist speziell darauf ausgerichtet, Ihnen und Ihren Mitarbeitern das Schärfen herstellerunabhängiger Instrumente zu vermitteln - eine essentielle Fertigkeit für die Maximierung der Leistungsfähigkeit Ihrer Instrumente.
+                  Ihr Kursleiter ist derselbe Techniker, der täglich in unserer Werkstatt in Berlin Instrumente aufarbeitet. Sie lernen von jemandem, der jeden Tag schärft, nicht von jemandem, der nur darüber gelesen hat.
                 </p>
 
                 <p className="text-sm sm:text-base text-gray-700 mt-4 leading-relaxed">
-                  Unser Schärfkurs ist perfekt auf Zahnärzte, Chirurgen und das Praxispersonal zugeschnitten. Egal, ob Sie ein Neuling oder ein erfahrener Profi sind, unsere Schulung wird Ihnen die Werkzeuge und Kenntnisse vermitteln, um das Beste aus Ihren Instrumenten herauszuholen und eine erstklassige Patientenversorgung zu gewährleisten.
+                  Geeignet für ZFA, DH, ZMP, ZMF und Zahnärzte, ob als Einzelperson oder für das gesamte Praxisteam. Nach zwei Stunden wissen Sie, wie es geht. Und können es.
                 </p>
               </div>
             </div>

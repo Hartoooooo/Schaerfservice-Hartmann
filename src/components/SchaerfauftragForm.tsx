@@ -91,9 +91,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     setQuantities(prev => prev.map((q, i) => (i === rowIndex ? value : q)));
   };
 
-  // Gleicher Abstand zum Header wie auf der Startseite
   const getPaddingClass = () => {
-    return "pb-16"; // Nur unten Padding, oben wird durch main pt-20 geregelt
+    return "pb-16"; // Unten; oben pt-12 wie Schärfkurs-Formular nach Page-Header
   };
 
   // Dynamische Stepper-Höhe für Step 2 und 3
@@ -255,7 +254,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   };
 
   return (
-    <div className={`container-page ${getPaddingClass()} pt-20`}>
+    <div className={`container-page ${getPaddingClass()} pt-12`}>
       <Stepper
         initialStep={1}
         className={getStepperClass()}
@@ -306,10 +305,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
           return (
             <div className="mt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               {currentStep === 1 ? (
-                <>
-                  <p className="text-neutral-500 text-sm">
-                    Bearbeitungszeit ca. 5 Werktage
-                  </p>
+                <div className="flex w-full justify-end">
                   <button
                     onClick={handleNext}
                     disabled={isNextButtonDisabled()}
@@ -321,7 +317,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   >
                     {getCustomNextButtonText() || (isLastStep ? 'Abschließen' : 'Weiter')}
                   </button>
-                </>
+                </div>
               ) : (
                 <div className="flex w-full justify-between">
                   <button

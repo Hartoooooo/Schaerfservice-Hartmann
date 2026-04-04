@@ -36,7 +36,7 @@ export default function KontaktForm() {
         "E-Mail": formData.email,
         Telefon: formData.phone,
         Nachricht: formData.message,
-        _subject: "Neue Kontaktanfrage – Website",
+        _subject: "Neue Kontaktanfrage, Website",
         _captcha: "false", // AJAX ohne Redirect: CAPTCHA muss deaktiviert sein
       };
 
