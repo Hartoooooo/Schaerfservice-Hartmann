@@ -2,7 +2,6 @@
 
 import { Container } from "@/components/Container";
 import { analytics } from "@/components/GoogleAnalytics";
-import emailjs from '@emailjs/browser';
 import { useState, useEffect } from "react";
 
 export default function SchaerfkurseForm() {
@@ -13,7 +12,10 @@ export default function SchaerfkurseForm() {
     date: "",
     time: "",
     contactPerson: "",
-    address: "",
+    street: "",
+    practiceName: "",
+    postalCode: "",
+    city: "",
     email: "",
     phone: ""
   });
@@ -50,52 +52,81 @@ export default function SchaerfkurseForm() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
+    const formsubmitEmail = process.env.NEXT_PUBLIC_SCHAERFKURS_FORMSUBMIT_EMAIL?.trim();
+    if (!formsubmitEmail) {
+      console.error("NEXT_PUBLIC_SCHAERFKURS_FORMSUBMIT_EMAIL ist nicht gesetzt.");
+      setSubmitStatus("error");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      // EmailJS Template-Parameter
-      const templateParams = {
-        // Kurs-spezifische Daten
+      const computedTotal = 285 + Math.max(0, participantCount - 2) * 45;
+      const adresse = [
+        formData.street.trim(),
+        formData.practiceName.trim(),
+        `${formData.postalCode.trim()} ${formData.city.trim()}`.trim(),
+      ]
+        .filter(Boolean)
+        .join(", ");
+
+      const payload: Record<string, string | number | boolean> = {
+        _subject: `Schärfkurs-Anfrage – ${formData.practiceName || formData.contactPerson}`,
+        _replyto: formData.email,
+        _captcha: false,
+        kurs_typ: "Schärfkurs",
         kurs_datum: formData.date,
         kurs_uhrzeit: formData.time,
         teilnehmer_anzahl: participantCount,
-        gesamtpreis: totalPrice,
-        
-        // Kontaktdaten
+        gesamtpreis_eur: computedTotal,
         ansprechpartner: formData.contactPerson,
         email: formData.email,
         telefon: formData.phone,
-        adresse: formData.address,
-        
-        // Meta-Daten
-        kurs_typ: 'Schärfkurs',
-        anfrage_datum: new Date().toLocaleDateString('de-DE'),
-        anfrage_uhrzeit: new Date().toLocaleTimeString('de-DE'),
-        
-        // Berechnungen
-        grundpreis: '285€',
+        adresse,
+        grundpreis: "285€ bis 2 Teilnehmer",
         zusaetzliche_teilnehmer: participantCount > 2 ? participantCount - 2 : 0,
-        zusaetzliche_kosten: participantCount > 2 ? (participantCount - 2) * 45 : 0,
-        anfahrt_kosten: '0,35€ je Kilometer',
-        
-        // Website-Info
-        website: 'www.dentalschleifen.de',
-        kurs_dauer: '2 Stunden',
-        kurs_ort: 'Vor Ort in Ihrer Praxis'
+        zusaetzliche_kosten_eur: participantCount > 2 ? (participantCount - 2) * 45 : 0,
+        anfahrt: "0,35€ je Kilometer",
+        anfrage_datum: new Date().toLocaleDateString("de-DE"),
+        anfrage_uhrzeit: new Date().toLocaleTimeString("de-DE"),
+        website: "www.dentalschleifen.de",
+        kurs_dauer: "2 Stunden",
+        kurs_ort: "Vor Ort in Ihrer Praxis",
       };
 
-      // EmailJS senden
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!, // Service ID
-        process.env.NEXT_PUBLIC_EMAILJS_SCHAERFKURSE_TEMPLATE_ID || 'template_ycm070n', // Template ID
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! // Public Key
+      const res = await fetch(
+        `https://formsubmit.co/ajax/${encodeURIComponent(formsubmitEmail)}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
       );
 
+      const body = await res.text();
+      let parsed: { success?: string | boolean; message?: string } | null = null;
+      try {
+        parsed = JSON.parse(body) as { success?: string | boolean; message?: string };
+      } catch {
+        /* FormSubmit liefert ggf. kein JSON */
+      }
+
+      if (!res.ok) {
+        throw new Error(parsed?.message || body || res.statusText);
+      }
+      if (parsed?.success === false || parsed?.success === "false") {
+        throw new Error(parsed?.message || "FormSubmit hat die Anfrage abgelehnt.");
+      }
+
       // Analytics Event
-      analytics.schaerfkurs('form_submit', {
+      analytics.schaerfkurs("form_submit", {
         participant_count: participantCount,
-        total_price: totalPrice,
+        total_price: computedTotal,
         date: formData.date,
-        time: formData.time
+        time: formData.time,
       });
 
       setSubmitStatus('success');
@@ -105,15 +136,18 @@ export default function SchaerfkurseForm() {
         date: "",
         time: "",
         contactPerson: "",
-        address: "",
+        street: "",
+        practiceName: "",
+        postalCode: "",
+        city: "",
         email: "",
         phone: ""
       });
       setParticipantCount(1);
       
     } catch (error) {
-      console.error('EmailJS Error:', error);
-      setSubmitStatus('error');
+      console.error("FormSubmit Fehler:", error);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -247,53 +281,109 @@ export default function SchaerfkurseForm() {
                   />
                 </div>
 
-                {/* Adresse */}
+                {/* Adresse: Straße & Praxisname / PLZ & Ort */}
                 <div className="space-y-3">
                   <label className="block text-sm font-medium text-gray-800">
                     Adresse
                   </label>
-                  <input
-                    type="text"
-                    placeholder="Straße, Hausnummer, PLZ Ort"
-                    value={formData.address}
-                    onChange={(e) => handleInputChange("address", e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
-                  />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="min-w-0 space-y-1.5">
+                      <label className="block text-xs font-medium text-gray-600">
+                        Straße, Hausnr.
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="z. B. Hauptstraße 12"
+                        value={formData.street}
+                        onChange={(e) => handleInputChange("street", e.target.value)}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
+                      />
+                    </div>
+                    <div className="min-w-0 space-y-1.5">
+                      <label className="block text-xs font-medium text-gray-600">
+                        Praxisname
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="z. B. Zahnarztpraxis Dr. Müller"
+                        value={formData.practiceName}
+                        onChange={(e) => handleInputChange("practiceName", e.target.value)}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="min-w-0 space-y-1.5">
+                      <label className="block text-xs font-medium text-gray-600">
+                        PLZ
+                      </label>
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        placeholder="z. B. 10115"
+                        value={formData.postalCode}
+                        onChange={(e) => handleInputChange("postalCode", e.target.value)}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
+                      />
+                    </div>
+                    <div className="min-w-0 space-y-1.5">
+                      <label className="block text-xs font-medium text-gray-600">
+                        Ort
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="z. B. Berlin"
+                        value={formData.city}
+                        onChange={(e) => handleInputChange("city", e.target.value)}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                {/* E-Mail */}
+                {/* E-Mail & Telefon */}
                 <div className="space-y-3">
                   <label className="block text-sm font-medium text-gray-800">
-                    E-Mail
+                    E-Mail &amp; Telefon
                   </label>
-                  <input
-                    type="email"
-                    placeholder="ihre@email.de"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange("email", e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
-                  />
-                </div>
-
-                {/* Telefon */}
-                <div className="space-y-3">
-                  <label className="block text-sm font-medium text-gray-800">
-                    Telefon
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="Ihre Telefonnummer"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange("phone", e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
-                  />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="min-w-0">
+                      <input
+                        type="email"
+                        placeholder="ihre@email.de"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <input
+                        type="tel"
+                        placeholder="Ihre Telefonnummer"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange("phone", e.target.value)}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 {/* Submit Button */}
                 <div className="pt-2">
                   <button
                     type="submit"
-                    disabled={isSubmitting || !formData.date || !formData.time || !formData.contactPerson || !formData.email || !formData.phone || !formData.address}
+                    disabled={
+                      isSubmitting ||
+                      !formData.date ||
+                      !formData.time ||
+                      !formData.contactPerson ||
+                      !formData.street.trim() ||
+                      !formData.practiceName.trim() ||
+                      !formData.postalCode.trim() ||
+                      !formData.city.trim() ||
+                      !formData.email ||
+                      !formData.phone
+                    }
                     className={`w-full font-semibold py-3.5 px-6 rounded-2xl text-sm sm:text-base transition-all duration-150 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 ${
                       isSubmitting 
                         ? 'bg-gray-200 text-gray-400 cursor-not-allowed'

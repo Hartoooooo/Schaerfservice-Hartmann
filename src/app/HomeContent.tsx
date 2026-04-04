@@ -735,7 +735,7 @@ function HomeContentInner() {
             <div className="p-0 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden">
               <div className="relative w-full h-64 mb-0 rounded-t-2xl overflow-hidden">
                 <Image 
-                  src="/schleifen bild.JPG" 
+                  src="/schleifenblau.png" 
                   alt="Instrumente schärfen, professionelle Schärfung" 
                   fill
                   className="object-cover"

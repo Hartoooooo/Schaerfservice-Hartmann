@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import Stepper, { Step } from "@/components/Stepper";
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG, EMAILJS_TEMPLATES } from '@/lib/emailjs-config';
-import { supabase } from '@/lib/supabase';
-
 type Row = {
   name: string;
   price: string;
@@ -132,15 +130,13 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     return undefined;
   };
 
-  // EmailJS-Integration + Supabase-Speicherung
+  // EmailJS-Integration (Supabase-Speicherung derzeit deaktiviert)
   const sendEmail = async () => {
     setIsSubmitting(true);
     setSubmitError("");
 
     try {
-      const anschrift = `${formData.praxisname}, ${formData.plz} ${formData.ort}`;
-
-      // Erstelle detaillierte Instrumentenliste (für DB und E-Mail)
+      // Erstelle detaillierte Instrumentenliste (E-Mail)
       const selectedInstruments = rows
         .map((row, idx) => {
           let unitPrice = row.price;
@@ -161,35 +157,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
       const instrumentsText = selectedInstruments
         .map(item => `${item.name}: ${item.quantity} Stück à ${item.unitPrice} = ${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(item.totalPrice)}`)
         .join('\n');
-
-      // Für Datenbank: nur Instrument + Menge, ohne Preise
-      const instrumentsTextForDb = selectedInstruments
-        .map(item => `${item.name}: ${item.quantity} Stück`)
-        .join('\n');
-
-      // In Supabase-Datenbank speichern (wenn konfiguriert) – inkl. Instrumentenliste
-      if (supabase) {
-        const { error } = await supabase.from('schaerfauftraege').insert({
-          datum_auftrag: new Date().toISOString(),
-          ansprechpartner: formData.ansprechpartner,
-          telefon: formData.telefon || null,
-          email: formData.email,
-          anschrift,
-          instrumente_anzahl: totalQuantity,
-          instrumente_liste: instrumentsTextForDb,
-          betrag: Math.round(subtotalWithDiscount * 100) / 100,
-          versand: shipping,
-          steuern: Math.round(vat * 100) / 100,
-          gesamtbetrag: Math.round(totalGross * 100) / 100,
-          einwilligung_widerrufsrecht: checkboxes.widerrufsrecht,
-          einwilligung_agb: checkboxes.agbAkzeptiert,
-        });
-
-        if (error) {
-          console.error('Supabase Fehler:', error);
-          throw new Error(`Datenbank: ${error.message}`);
-        }
-      }
 
       // E-Mail-Template-Parameter
       const templateParams = {
