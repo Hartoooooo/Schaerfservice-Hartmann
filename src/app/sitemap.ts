@@ -1,84 +1,52 @@
-import { MetadataRoute } from 'next'
-import { blogPosts } from '@/lib/blogPosts'
+import { MetadataRoute } from "next"
+import { blogPosts } from "@/lib/blogPosts"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.dentalschleifen.de'
-  
-  // Aktuelles Datum für lastModified
-  const currentDate = new Date()
-  
-  return [
+  const baseUrl = "https://www.dentalschleifen.de"
+
+  // Build-Zeitstempel: signalisiert Crawlern „frisch generiert“, ohne jedes URL-Datum einzeln zu pflegen
+  const lastModified = new Date()
+
+  // Nur indexierbare Marketing-/Inhalts-URLs (keine noindex-Seiten: Impressum, Datenschutz, AGB, etc.)
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 1.0,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 1,
     },
     {
       url: `${baseUrl}/schaerfauftrag`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-      alternates: {
-        languages: {
-          'de': `${baseUrl}/schaerfauftrag`,
-        }
-      }
-    },
-    {
-      url: `${baseUrl}/schaerfkurse`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/kontakt`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/impressum`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/datenschutz`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/agb`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/widerrufsbelehrung`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/cookie-einstellungen`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.2,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.95,
     },
     {
       url: `${baseUrl}/express-schaerfen`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
-    // Blog-Artikel URLs (SSR Seiten)
-    ...blogPosts.map(post => ({
-      url: `${baseUrl}/blog/${post.id}`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    })),
+    {
+      url: `${baseUrl}/schaerfkurse`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/kontakt`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
   ]
+
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.id}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }))
+
+  return [...staticRoutes, ...blogRoutes]
 }
