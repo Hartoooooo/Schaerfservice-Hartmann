@@ -36,7 +36,7 @@ export default function ExpressSchaerfenContent() {
                   </Button>
                   <Button
                     variant="outline"
-                    href="tel:+491749342676"
+                    href="tel:+491749342576"
                     className="px-8 py-3 text-lg"
                   >
                     Jetzt anrufen
@@ -345,7 +345,7 @@ export default function ExpressSchaerfenContent() {
               Rufen Sie uns an oder nutzen Sie das Kontaktformular, wir melden uns innerhalb kürzester Zeit und koordinieren alles Weitere direkt mit Ihnen.
             </p>
             <p className="text-gray-500 mb-8 font-medium">
-              01749342676 &middot; Montag bis Freitag, Praxiszeiten
+              01749342576 &middot; Montag bis Freitag, Praxiszeiten
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -358,10 +358,10 @@ export default function ExpressSchaerfenContent() {
               </Button>
               <Button 
                 variant="outline" 
-                href="tel:+491749342676"
+                href="tel:+491749342576"
                 className="px-8 py-3 text-lg"
               >
-                01749342676
+                01749342576
               </Button>
             </div>
           </div>

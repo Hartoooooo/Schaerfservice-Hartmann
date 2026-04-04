@@ -121,7 +121,7 @@ export default function KontaktForm() {
                 </div>
                 <div>
                   <p className="font-semibold text-sm text-gray-900">Telefon</p>
-                  <a href="tel:+491749342676" className="text-blue-600 hover:text-blue-700 hover:underline">+49 174 9342676</a>
+                  <a href="tel:+491749342576" className="text-blue-600 hover:text-blue-700 hover:underline">+49 174 9342576</a>
                 </div>
               </div>
 
@@ -238,7 +238,7 @@ export default function KontaktForm() {
               <Button type="submit" className="flex-1" disabled={isSent}>
                 {isSent ? "Vielen Dank für Ihre Anfrage" : "Nachricht senden"}
               </Button>
-              <a href="tel:+491749342676" className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors">
+              <a href="tel:+491749342576" className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors">
                 Anrufen
               </a>
             </div>

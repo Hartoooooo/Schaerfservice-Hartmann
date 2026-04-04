@@ -363,11 +363,11 @@ export default function SchaerfkurseForm() {
                 </div>
 
                 <p className="text-sm sm:text-base text-gray-700 mt-5 leading-relaxed">
-                  Ihr Kursleiter ist derselbe Techniker, der täglich in unserer Werkstatt in Berlin Instrumente aufarbeitet. Sie lernen von jemandem, der jeden Tag schärft, nicht von jemandem, der nur darüber gelesen hat.
+                  Sie lernen vom selben Spezialisten, der in Berlin täglich Instrumente schärft und aufbereitet. Das ist Wissen aus der täglichen Praxis, nicht aus Theorie und Handbüchern.
                 </p>
 
                 <p className="text-sm sm:text-base text-gray-700 mt-4 leading-relaxed">
-                  Geeignet für ZFA, DH, ZMP, ZMF und Zahnärzte, ob als Einzelperson oder für das gesamte Praxisteam. Nach zwei Stunden wissen Sie, wie es geht. Und können es.
+                  Zielgruppe sind ZFA, DH, ZMP, ZMF und Zahnärzte, einzeln oder gemeinsam mit dem Praxisteam. Nach zwei Stunden sind Sie mit der Technik vertraut und können sie im Alltag selbstständig anwenden.
                 </p>
               </div>
             </div>
