@@ -101,6 +101,14 @@ export const metadata: Metadata = {
   },
   category: "Medical Services",
   classification: "Dental Instrument Sharpening Service",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   other: {
     "geo.region": "DE-BB",
     "geo.placename": "Schöneiche bei Berlin",
@@ -148,11 +156,11 @@ export default function RootLayout({
               "url": "https://www.dentalschleifen.de",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.dentalschleifen.de/dentalschleifen-logo-512.png",
-                "width": 512,
-                "height": 512
+                "url": "https://www.dentalschleifen.de/SHLogo.png",
+                "width": 5489,
+                "height": 5489
               },
-              "image": "https://www.dentalschleifen.de/dentalschleifen-logo-512.png",
+              "image": "https://www.dentalschleifen.de/SHLogo.png",
               "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung",
               "foundingDate": "2004",
               "founder": {

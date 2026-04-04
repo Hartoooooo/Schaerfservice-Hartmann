@@ -355,7 +355,7 @@ function HomeContentInner() {
             "@type": "Organization",
             "name": "Schärfservice Hartmann",
             "url": "https://www.dentalschleifen.de",
-            "logo": "https://www.dentalschleifen.de/dentalschleifen-logo-512.png",
+            "logo": "https://www.dentalschleifen.de/SHLogo.png",
             "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung",
             "foundingDate": "2004",
             "founder": {
@@ -397,7 +397,9 @@ function HomeContentInner() {
             "email": "hartmann-schaerfservice@web.de",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://www.dentalschleifen.de/dentalschleifen-logo-512.png"
+              "url": "https://www.dentalschleifen.de/SHLogo.png",
+              "width": 5489,
+              "height": 5489
             },
             "address": {
               "@type": "PostalAddress",
@@ -575,7 +577,9 @@ function HomeContentInner() {
                 "name": "Schärfservice Hartmann",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://www.dentalschleifen.de/dentalschleifen-logo-512.png"
+                  "url": "https://www.dentalschleifen.de/SHLogo.png",
+                  "width": 5489,
+                  "height": 5489
                 }
               },
               "image": {
