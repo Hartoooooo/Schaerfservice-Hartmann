@@ -374,7 +374,7 @@ function HomeContentInner() {
               "addressRegion": "Brandenburg",
               "addressCountry": "DE"
             },
-            "telephone": "+49-30-92376694",
+            "telephone": "+49-174-9342676",
             "email": "hartmann-schaerfservice@web.de",
             "sameAs": [
               "https://www.dentalschleifen.de"
@@ -393,7 +393,7 @@ function HomeContentInner() {
             "name": "Schärfservice Hartmann",
             "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung",
             "url": "https://www.dentalschleifen.de",
-            "telephone": "+49-30-92376694",
+            "telephone": "+49-174-9342676",
             "email": "hartmann-schaerfservice@web.de",
             "logo": {
               "@type": "ImageObject",

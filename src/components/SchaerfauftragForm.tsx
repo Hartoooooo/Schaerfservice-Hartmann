@@ -655,7 +655,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   className="form-input"
                   value={formData.telefon}
                   onChange={(e) => handleFormChange("telefon", e.target.value)}
-                  placeholder="z.B. 030 12345678"
+                  placeholder="z.B. 0174 1234567"
                 />
               </div>
             </div>

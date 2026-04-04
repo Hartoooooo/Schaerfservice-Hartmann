@@ -5,7 +5,7 @@ import { Suspense } from "react";
 // SEO-Metadaten für Server-Side Rendering
 export const metadata: Metadata = {
   title: "Kontakt - Instrumente schärfen Berlin",
-  description: "📞 Kontakt Instrumente schärfen Berlin ✅ Dental schärfen & schleifen Service | Björn Hartmann 030-92376694 | hartmann-schaerfservice@web.de | Schöneiche bei Berlin",
+  description: "📞 Kontakt Instrumente schärfen Berlin ✅ Dental schärfen & schleifen Service | Björn Hartmann +49 174 9342676 | hartmann-schaerfservice@web.de | Schöneiche bei Berlin",
   keywords: [
     "kontakt instrumente schärfen",
     "dental schärfen kontakt",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Kontakt | Schärfservice Hartmann",
-    description: "Kontaktieren Sie Schärfservice Hartmann. Inhaber Björn Hartmann, Ansprechpartnerin Carina Hartmann. Telefon 030-92376694 in Schöneiche bei Berlin.",
+    description: "Kontaktieren Sie Schärfservice Hartmann. Inhaber Björn Hartmann, Ansprechpartnerin Carina Hartmann. Telefon +49 174 9342676 in Schöneiche bei Berlin.",
   },
 };
 
@@ -76,7 +76,7 @@ export default function KontaktPage() {
               "postalCode": "15566",
               "addressCountry": "DE"
             },
-            "telephone": "+49-30-92376694",
+            "telephone": "+49-174-9342676",
             "email": "hartmann-schaerfservice@web.de",
             "taxID": "061/228/02750",
             "serviceArea": {

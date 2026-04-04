@@ -73,7 +73,7 @@ export default function SchaerfauftragPage() {
                 "postalCode": "15566",
                 "addressCountry": "DE"
               },
-              "telephone": "+49-30-92376694",
+              "telephone": "+49-174-9342676",
               "email": "hartmann-schaerfservice@web.de"
             },
             "serviceType": "Instrumentenschärfung",
