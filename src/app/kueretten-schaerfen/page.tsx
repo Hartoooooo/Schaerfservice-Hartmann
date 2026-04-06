@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { SeoImagePlaceholder } from "@/components/SeoImagePlaceholder";
@@ -106,11 +107,18 @@ export default function KuerettenSchaerfenPage() {
               Schärfservice Hartmann in Berlin lassen Sie Ihre Küretten professionell schärfen: handgeschärft, auf den
               korrekten Winkel, für beste Behandlungsergebnisse.
             </p>
-            <SeoImagePlaceholder
-              caption="Küretten & Parodontologie"
-              suggestedAlt="Mehrere Dental-Küretten sortiert auf sterilem Tray"
-              ideaHint="Idee: Sortiment Gracey-Nummern (7/8, 11/12 o. ä.) und Universal-Kürette auf Sterilfeld; Fokus auf die gebogenen Arbeitskanten, neutrale Praxisästhetik."
-            />
+            <figure className="w-full">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-gray-200 bg-slate-100 shadow-sm">
+                <Image
+                  src="/Kuerettenseite.png"
+                  alt="Nahaufnahme Dental-Küretten und Scaler vor klinischem Hintergrund mit Zahnmodell und Röntgenbild"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+              </div>
+            </figure>
           </div>
 
           <section className="mb-12">
