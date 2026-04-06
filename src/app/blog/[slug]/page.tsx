@@ -4,6 +4,27 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { blogPosts } from "@/lib/blogPosts";
 
+/** Interne Verlinkung zu Themenseiten (SEO) */
+const BLOG_TOPIC_LINKS: Record<string, { href: string; label: string }[]> = {
+  "schaerfwinkel-scaler-kueretten": [
+    { href: "/scaler-schaerfen", label: "Scaler schärfen lassen" },
+    { href: "/kueretten-schaerfen", label: "Küretten schärfen lassen" },
+  ],
+  "reinigung-dentalinstrumente": [
+    { href: "/scaler-schaerfen", label: "Scaler schärfen lassen" },
+    { href: "/kueretten-schaerfen", label: "Küretten schärfen lassen" },
+  ],
+  "lagerung-pflege-raspatorien": [
+    { href: "/chirurgische-instrumente-schaerfen", label: "Chirurgische Instrumente schärfen" },
+    { href: "/kueretten-schaerfen", label: "Küretten schärfen lassen" },
+  ],
+  "wann-geschaerft-werden": [
+    { href: "/scaler-schaerfen", label: "Scaler schärfen lassen" },
+    { href: "/kueretten-schaerfen", label: "Küretten schärfen lassen" },
+    { href: "/chirurgische-instrumente-schaerfen", label: "Chirurgische Instrumente schärfen" },
+  ],
+};
+
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -197,6 +218,21 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
             )}
           </div>
+        ) : null}
+
+        {BLOG_TOPIC_LINKS[post.id] && BLOG_TOPIC_LINKS[post.id].length > 0 ? (
+          <aside className="mt-12 rounded-2xl border border-gray-200 bg-gray-50 p-6">
+            <h2 className="text-base font-semibold text-gray-900 mb-3">Passende Leistungen</h2>
+            <ul className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-x-6">
+              {BLOG_TOPIC_LINKS[post.id].map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-blue-600 hover:text-blue-700 hover:underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
         ) : null}
 
         <div className="mt-10">

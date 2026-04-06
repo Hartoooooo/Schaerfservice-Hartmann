@@ -746,6 +746,21 @@ export default function HomeContent() {
               </div>
             </div>
           </div>
+
+          <div className="mt-12 pt-10 border-t border-gray-200 text-center max-w-3xl mx-auto">
+            <p className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">Instrumente im Detail</p>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-blue-600 text-sm sm:text-base">
+              <Link href="/scaler-schaerfen" className="hover:underline">
+                Scaler schärfen lassen
+              </Link>
+              <Link href="/kueretten-schaerfen" className="hover:underline">
+                Küretten schärfen lassen
+              </Link>
+              <Link href="/chirurgische-instrumente-schaerfen" className="hover:underline">
+                Chirurgische Instrumente schärfen
+              </Link>
+            </div>
+          </div>
         </Container>
       </section>
 

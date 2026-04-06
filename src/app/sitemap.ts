@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
 
   // Nur indexierbare Marketing-/Inhalts-URLs (keine noindex-Seiten: Impressum, Datenschutz, AGB, etc.)
-  const staticRoutes: MetadataRoute.Sitemap = [
+  const routes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified,
@@ -34,19 +34,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/scaler-schaerfen`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.88,
+    },
+    {
+      url: `${baseUrl}/kueretten-schaerfen`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.88,
+    },
+    {
+      url: `${baseUrl}/chirurgische-instrumente-schaerfen`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.88,
+    },
+    {
       url: `${baseUrl}/kontakt`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.85,
     },
+    ...blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.id}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
   ]
 
-  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.id}`,
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.75,
-  }))
-
-  return [...staticRoutes, ...blogRoutes]
+  // Absteigend nach priority (bei gleicher Priorität bleibt die Einfügereihenfolge erhalten)
+  return [...routes].sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0))
 }
