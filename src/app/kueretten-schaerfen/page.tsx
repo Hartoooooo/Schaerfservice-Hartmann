@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/Button";
-import { SeoImagePlaceholder } from "@/components/SeoImagePlaceholder";
 
 const canonical = "https://www.dentalschleifen.de/kueretten-schaerfen";
 
@@ -162,51 +161,44 @@ export default function KuerettenSchaerfenPage() {
             </ul>
           </section>
 
-          <section className="mb-12">
-            <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-6">
-              Küretten schärfen lassen statt selbst schärfen – lohnt sich das?
-            </h2>
-            <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
-              <div>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Selbstschärfen kostet Zeit, erfordert Übung und birgt das Risiko, den Schärfwinkel zu verändern oder zu viel
-                  Material abzutragen. Professionelles Schärfen durch den Schärfservice Hartmann ist:
-                </p>
-                <ul className="list-disc pl-6 space-y-2 text-gray-600 leading-relaxed">
-                  <li>
-                    <strong>Präziser</strong> – korrekte Winkel durch erfahrene Handschärfung
-                  </li>
-                  <li>
-                    <strong>Materialschonender</strong> – minimaler Materialabtrag
-                  </li>
-                  <li>
-                    <strong>Zeitsparender</strong> – kein Aufwand für die Praxis
-                  </li>
-                  <li>
-                    <strong>Günstiger als Neukauf</strong> – ab 6,04 € pro Instrument
-                  </li>
-                </ul>
-              </div>
-              <SeoImagePlaceholder
-                caption="Winkel & Handschärfung"
-                suggestedAlt="Handschärfung einer Kürette am Schleifstein mit korrektem Winkel"
-                ideaHint="Idee: Nahaufnahme Arbeitshand mit Kürette am (grob-/fein-)Schleifstein; oder Diagramm-Foto 70° vs. 90° als spätere Grafik — bis dahin authentische Werkstatt-Szene."
-              />
-            </div>
-          </section>
+          <div className="mb-10 grid gap-10 lg:grid-cols-2 lg:gap-12 lg:items-start">
+            <section>
+              <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-4">
+                Küretten schärfen lassen statt selbst schärfen – lohnt sich das?
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Selbstschärfen kostet Zeit, erfordert Übung und birgt das Risiko, den Schärfwinkel zu verändern oder zu viel
+                Material abzutragen. Professionelles Schärfen durch den Schärfservice Hartmann ist:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray-600 leading-relaxed">
+                <li>
+                  <strong>Präziser</strong> – korrekte Winkel durch erfahrene Handschärfung
+                </li>
+                <li>
+                  <strong>Materialschonender</strong> – minimaler Materialabtrag
+                </li>
+                <li>
+                  <strong>Zeitsparender</strong> – kein Aufwand für die Praxis
+                </li>
+                <li>
+                  <strong>Günstiger als Neukauf</strong> – ab 6,04 € pro Instrument
+                </li>
+              </ul>
+            </section>
 
-          <section className="mb-10">
-            <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-4">So einfach funktioniert der Auftrag</h2>
-            <ol className="list-decimal pl-6 space-y-3 text-gray-600 leading-relaxed">
-              <li>Auftrag online erteilen</li>
-              <li>Küretten sicher einsenden</li>
-              <li>Professionelles Schärfen &amp; Qualitätsprüfung</li>
-              <li>Schnelle Rücksendung – Express auf Wunsch</li>
-            </ol>
-            <p className="text-gray-600 leading-relaxed mt-6 font-medium">
-              Ab 15 Instrumenten 7&nbsp;% Rabatt | Preise ab 6,04 € pro Instrument
-            </p>
-          </section>
+            <section>
+              <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-4">So einfach funktioniert der Auftrag</h2>
+              <ol className="list-decimal pl-6 space-y-3 text-gray-600 leading-relaxed">
+                <li>Auftrag online erteilen</li>
+                <li>Küretten sicher einsenden</li>
+                <li>Professionelles Schärfen &amp; Qualitätsprüfung</li>
+                <li>Schnelle Rücksendung – Express auf Wunsch</li>
+              </ol>
+              <p className="text-gray-600 leading-relaxed mt-6 font-medium">
+                Ab 15 Instrumenten 7&nbsp;% Rabatt | Preise ab 6,04 € pro Instrument
+              </p>
+            </section>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift-sm">

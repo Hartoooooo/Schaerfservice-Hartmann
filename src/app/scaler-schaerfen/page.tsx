@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/Button";
-import { SeoImagePlaceholder } from "@/components/SeoImagePlaceholder";
 
 const canonical = "https://www.dentalschleifen.de/scaler-schaerfen";
 
@@ -99,19 +98,12 @@ export default function ScalerSchaerfenPage() {
             Scaler schärfen lassen – Professioneller Schärfservice in Berlin
           </h1>
 
-          <div className="mb-12 grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Scaler gehören zu den meistgenutzten Instrumenten in der Zahnarztpraxis und im Prophylaxe-Bereich. Durch den
-              täglichen Einsatz verlieren sie schnell ihre Schärfe – mit spürbaren Folgen für die Behandlungsqualität. Beim
-              Schärfservice Hartmann lassen Sie Ihre Scaler professionell schärfen und erhalten sie in neuwertigem Zustand
-              zurück.
-            </p>
-            <SeoImagePlaceholder
-              caption="Scaler & Prophylaxe"
-              suggestedAlt="Verschiedene Dental-Scaler auf sterilem Tray, Praxis-Prophylaxe"
-              ideaHint="Idee: Makro verschiedener Sichel- und Hue-Scaler auf Sterilfeld oder Cassette; neutraler Hintergrund, gutes Licht auf der Spitze."
-            />
-          </div>
+          <p className="text-lg text-gray-600 leading-relaxed mb-12">
+            Scaler gehören zu den meistgenutzten Instrumenten in der Zahnarztpraxis und im Prophylaxe-Bereich. Durch den
+            täglichen Einsatz verlieren sie schnell ihre Schärfe – mit spürbaren Folgen für die Behandlungsqualität. Beim
+            Schärfservice Hartmann lassen Sie Ihre Scaler professionell schärfen und erhalten sie in neuwertigem Zustand
+            zurück.
+          </p>
 
           <section className="mb-12">
             <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-4">Wann sollten Scaler geschärft werden?</h2>
@@ -132,68 +124,63 @@ export default function ScalerSchaerfenPage() {
           </section>
 
           <section className="mb-12">
-            <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-6">Wie schärfen wir Ihre Scaler?</h2>
-            <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
-              <div>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Beim Schärfservice Hartmann werden alle Scaler <strong>handgeschärft</strong> – mit dem richtigen Schärfwinkel für
-                  jeden Instrumententyp. Wir schärfen alle gängigen Scaler-Typen:
-                </p>
-                <ul className="list-disc pl-6 space-y-2 text-gray-600 leading-relaxed">
-                  <li>
-                    <strong>Sichel-Scaler</strong> (z.B. H6/H7, Jacquette)
-                  </li>
-                  <li>
-                    <strong>Hoe-Scaler</strong>
-                  </li>
-                  <li>
-                    <strong>Push-Scaler / File-Scaler</strong>
-                  </li>
-                  <li>Alle gängigen Hersteller wie Hu-Friedy, Deppeler, LM-Instruments u.v.m.</li>
-                </ul>
-                <p className="text-gray-600 leading-relaxed mt-4">
-                  Nach dem Schärfen wird jedes Instrument auf Schärfe und Geometrie geprüft, bevor es an Sie zurückgeht.
-                </p>
-              </div>
-              <SeoImagePlaceholder
-                caption="Handschärfung & Werkstatt"
-                suggestedAlt="Schleifstein und Dentalinstrument bei der manuellen Schärfung in der Werkstatt"
-                ideaHint="Idee: Nahaufnahme professioneller Handschärfung (Schleifstein, ruhiger Hintergrund); alternativ fertig bearbeitete Scaler auf weichem Pad sortiert."
-              />
-            </div>
-          </section>
-
-          <section className="mb-10">
-            <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-4">Scaler schärfen lassen – so einfach geht&apos;s</h2>
-            <ol className="list-decimal pl-6 space-y-3 text-gray-600 leading-relaxed">
+            <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-4">Wie schärfen wir Ihre Scaler?</h2>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              Beim Schärfservice Hartmann werden alle Scaler <strong>handgeschärft</strong> – mit dem richtigen Schärfwinkel für
+              jeden Instrumententyp. Wir schärfen alle gängigen Scaler-Typen:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 text-gray-600 leading-relaxed">
               <li>
-                <strong>Auftrag online erteilen</strong> – einfach über unser Auftragsformular
+                <strong>Sichel-Scaler</strong> (z.B. H6/H7, Jacquette)
               </li>
               <li>
-                <strong>Instrumente einsenden</strong> – sicher verpackt per Post oder Kurier
+                <strong>Hoe-Scaler</strong>
               </li>
               <li>
-                <strong>Schärfen &amp; Prüfen</strong> – professionelle Bearbeitung in Berlin
+                <strong>Push-Scaler / File-Scaler</strong>
               </li>
-              <li>
-                <strong>Zurücksenden</strong> – schnell und zuverlässig, optional als Express
-              </li>
-            </ol>
-            <p className="text-gray-600 leading-relaxed mt-6 font-medium">
-              Preise ab 6,04 € pro Instrument | Ab 15 Instrumenten sparen Sie 7&nbsp;%
+              <li>Alle gängigen Hersteller wie Hu-Friedy, Deppeler, LM-Instruments u.v.m.</li>
+            </ul>
+            <p className="text-gray-600 leading-relaxed mt-4">
+              Nach dem Schärfen wird jedes Instrument auf Schärfe und Geometrie geprüft, bevor es an Sie zurückgeht.
             </p>
           </section>
 
-          <section className="mb-10">
-            <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-4">Warum Schärfservice Hartmann?</h2>
-            <ul className="list-disc pl-6 space-y-2 text-gray-600 leading-relaxed">
-              <li>Jahrelange Erfahrung mit Dentalinstrumenten</li>
-              <li>Handschärfung für beste Ergebnisse</li>
-              <li>Schnelle Bearbeitung &amp; zuverlässige Rücksendung</li>
-              <li>Express-Service verfügbar</li>
-              <li>Günstige Preise – schärfen statt neu kaufen</li>
-            </ul>
-          </section>
+          <div className="mb-10 grid gap-10 lg:grid-cols-2 lg:gap-12 lg:items-start">
+            <section>
+              <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-4">
+                Scaler schärfen lassen – so einfach geht&apos;s
+              </h2>
+              <ol className="list-decimal pl-6 space-y-3 text-gray-600 leading-relaxed">
+                <li>
+                  <strong>Auftrag online erteilen</strong> – einfach über unser Auftragsformular
+                </li>
+                <li>
+                  <strong>Instrumente einsenden</strong> – sicher verpackt per Post oder Kurier
+                </li>
+                <li>
+                  <strong>Schärfen &amp; Prüfen</strong> – professionelle Bearbeitung in Berlin
+                </li>
+                <li>
+                  <strong>Zurücksenden</strong> – schnell und zuverlässig, optional als Express
+                </li>
+              </ol>
+              <p className="text-gray-600 leading-relaxed mt-6 font-medium">
+                Preise ab 6,04 € pro Instrument | Ab 15 Instrumenten sparen Sie 7&nbsp;%
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-4">Warum Schärfservice Hartmann?</h2>
+              <ul className="list-disc pl-6 space-y-2 text-gray-600 leading-relaxed">
+                <li>Jahrelange Erfahrung mit Dentalinstrumenten</li>
+                <li>Handschärfung für beste Ergebnisse</li>
+                <li>Schnelle Bearbeitung &amp; zuverlässige Rücksendung</li>
+                <li>Express-Service verfügbar</li>
+                <li>Günstige Preise – schärfen statt neu kaufen</li>
+              </ul>
+            </section>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3" hover="lift-sm">

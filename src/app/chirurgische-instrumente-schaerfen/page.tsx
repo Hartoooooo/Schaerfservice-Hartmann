@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/Button";
-import { SeoImagePlaceholder } from "@/components/SeoImagePlaceholder";
 
 const canonical = "https://www.dentalschleifen.de/chirurgische-instrumente-schaerfen";
 
@@ -106,48 +105,34 @@ export default function ChirurgischeInstrumentePage() {
             Chirurgische Instrumente schärfen – Professioneller Service in Berlin
           </h1>
 
-          <div className="mb-12 grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Chirurgische Instrumente müssen höchsten Ansprüchen genügen. Scheren, Nadelhalter und Pinzetten, die nicht mehr
-              einwandfrei funktionieren, beeinträchtigen die Präzision bei oralen Eingriffen. Beim Schärfservice Hartmann
-              schärfen und überholen wir chirurgische Dental-Instrumente professionell – damit Sie sich auf Ihre Arbeit
-              konzentrieren können.
-            </p>
-            <SeoImagePlaceholder
-              caption="OP-Set Dental"
-              suggestedAlt="Arrangement aus chirurgischen Dentalinstrumenten: Scheren, Nadelhalter und Pinzetten"
-              ideaHint="Idee: Hochwertiges Stillleben OP-Scheren (verschiedene Spitzen), Nadelhalter mit Mattierung, anatomische Pinzette; dunkelgrauer Stoffhintergrund, wenig Reflex."
-            />
-          </div>
+          <p className="text-lg text-gray-600 leading-relaxed mb-12">
+            Chirurgische Instrumente müssen höchsten Ansprüchen genügen. Scheren, Nadelhalter und Pinzetten, die nicht mehr
+            einwandfrei funktionieren, beeinträchtigen die Präzision bei oralen Eingriffen. Beim Schärfservice Hartmann
+            schärfen und überholen wir chirurgische Dental-Instrumente professionell – damit Sie sich auf Ihre Arbeit
+            konzentrieren können.
+          </p>
 
           <section className="mb-12">
-            <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-6">
+            <h2 className="text-xl font-semibold text-[var(--color-blue-600)] mb-4">
               Welche chirurgischen Instrumente schärfen wir?
             </h2>
-            <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
-              <ul className="list-disc pl-6 space-y-2 text-gray-600 leading-relaxed">
-                <li>
-                  <strong>Dentale Scheren</strong> – Weichgewebsscheren, Nahtscheren, Präparierscheren
-                </li>
-                <li>
-                  <strong>Nadelhalter</strong> – Prüfung und Aufarbeitung der Branchen
-                </li>
-                <li>
-                  <strong>Pinzetten</strong> – Anatomische und chirurgische Pinzetten
-                </li>
-                <li>
-                  <strong>Raspatorien &amp; Hebel</strong> – Aufarbeitung der Arbeitsflächen
-                </li>
-                <li>
-                  <strong>Luxationsinstrumente</strong> – Schärfen der Arbeitskanten
-                </li>
-              </ul>
-              <SeoImagePlaceholder
-                caption="Scheren, Halter, Pinzetten"
-                suggestedAlt="Detail mehrerer chirurgischer Instrumente mit Fokus auf Scherenblatt und Nadelhalter-Backen"
-                ideaHint="Idee: Makro Scherenblatt mit sauberer Schneidkante; zweites Bild optional Nadelhalter-Drucktest – hier genügt ein stimmiges Ensemble-Foto aus der Werkstatt- oder Praxislinie."
-              />
-            </div>
+            <ul className="list-disc pl-6 space-y-2 text-gray-600 leading-relaxed">
+              <li>
+                <strong>Dentale Scheren</strong> – Weichgewebsscheren, Nahtscheren, Präparierscheren
+              </li>
+              <li>
+                <strong>Nadelhalter</strong> – Prüfung und Aufarbeitung der Branchen
+              </li>
+              <li>
+                <strong>Pinzetten</strong> – Anatomische und chirurgische Pinzetten
+              </li>
+              <li>
+                <strong>Raspatorien &amp; Hebel</strong> – Aufarbeitung der Arbeitsflächen
+              </li>
+              <li>
+                <strong>Luxationsinstrumente</strong> – Schärfen der Arbeitskanten
+              </li>
+            </ul>
           </section>
 
           <section className="mb-12">

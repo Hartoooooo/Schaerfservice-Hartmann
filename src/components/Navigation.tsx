@@ -47,6 +47,8 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
   const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileLeistungenOpen, setMobileLeistungenOpen] = useState(false);
+  /** Nur Hover (ohne CSS focus-within), damit das Menü nach Klick auf einen Link wieder zuverlässig schließt */
+  const [desktopLeistungenOpen, setDesktopLeistungenOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const itemRefs = useRef<(HTMLElement | null)[]>([]);
@@ -58,6 +60,7 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setMobileLeistungenOpen(false);
+    setDesktopLeistungenOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -139,12 +142,14 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
           ref={(el) => {
             itemRefs.current[LEISTUNGEN_INDEX] = el;
           }}
-          className={`relative group/leist z-[1] ${isLeistungenActive && !footerPages.includes(pathname) ? "text-white" : ""}`}
+          className={`relative z-[1] ${isLeistungenActive && !footerPages.includes(pathname) ? "text-white" : ""}`}
+          onMouseEnter={() => setDesktopLeistungenOpen(true)}
+          onMouseLeave={() => setDesktopLeistungenOpen(false)}
         >
           <button
             type="button"
             className={`relative px-1 sm:px-3 py-2 rounded-full transition-colors duration-200 inline-flex items-center gap-0.5 text-left ${isLeistungenActive && !footerPages.includes(pathname) ? "text-white" : "hover:bg-[var(--color-blue-600)]/10"}`}
-            aria-expanded={false}
+            aria-expanded={desktopLeistungenOpen}
             aria-haspopup="true"
             aria-controls="desktop-leistungen-menu"
           >
@@ -155,7 +160,10 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
           </button>
           <div
             id="desktop-leistungen-menu"
-            className="absolute left-0 top-full pt-1 z-[100] opacity-0 invisible group-hover/leist:opacity-100 group-hover/leist:visible group-focus-within/leist:opacity-100 group-focus-within/leist:visible transition-[opacity,visibility] duration-200"
+            aria-hidden={!desktopLeistungenOpen}
+            className={`absolute left-0 top-full pt-1 z-[100] transition-[opacity,visibility] duration-200 ${
+              desktopLeistungenOpen ? "visible opacity-100" : "invisible opacity-0 pointer-events-none"
+            }`}
           >
             <div className="rounded-xl border border-gray-200 bg-white min-w-[17rem] shadow-[var(--shadow-strong)] py-2">
               {leistungenLinks.map((item) => (
