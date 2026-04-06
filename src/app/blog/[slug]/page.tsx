@@ -47,9 +47,9 @@ export default async function BlogPostPage({ params }: Props) {
     : "object-cover";
 
   return (
-    <article className="pb-12 -mt-8">
-      {/* Hero Bild mit Titel-Overlay - startet direkt am Ende des Headers */}
-      <div className="relative w-full h-[50vh] min-h-[360px] max-h-[640px] mt-[96px]">
+    <article className="pb-12">
+      {/* Hero Bild mit Titel-Overlay */}
+      <div className="relative w-full h-[50vh] min-h-[360px] max-h-[640px] -mt-2 sm:-mt-3">
         <Image src={post.imageUrl} alt={post.imageAlt} fill className={imageClassName} priority />
         {/* Gradient für bessere Lesbarkeit */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

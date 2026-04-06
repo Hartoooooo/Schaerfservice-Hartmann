@@ -110,7 +110,7 @@ export default function StepperDemo() {
   };
 
   return (
-    <div className={`container-page ${getPaddingClass()}`}>
+    <div className={`container-page pt-6 ${getPaddingClass()}`}>
       <Stepper
         initialStep={1}
         className={getStepperClass()}

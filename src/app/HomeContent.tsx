@@ -8,14 +8,12 @@ import { FAQ } from "@/components/FAQ";
 import { InteractiveHoverButton } from "@/components/InteractiveHoverButton";
 import { analytics } from "@/components/GoogleAnalytics";
 import Image from "next/image";
-import React, { useState, useRef, useEffect, useMemo, Suspense } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { blogPosts as blogPostsData } from "@/lib/blogPosts";
-import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 
-function HomeContentInner() {
-  const [expandedCard, setExpandedCard] = useState<number | null>(null);
+export default function HomeContent() {
   const [copiedArticleId, setCopiedArticleId] = useState<string | null>(null);
   const [statsVisible, setStatsVisible] = useState(false);
   const [count1, setCount1] = useState(0);
@@ -27,8 +25,6 @@ function HomeContentInner() {
   const h3Ref = useRef<HTMLHeadingElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLElement>(null);
-  const router = useRouter();
-  const searchParams = useSearchParams();
 
   const philosophyItems = useMemo(() => [
     {
@@ -75,67 +71,24 @@ function HomeContentInner() {
 
   const blogPosts = useMemo(() => blogPostsData, []);
 
+  /* Von Blog-Breadcrumb (Link zu /#expertentipps): zuverlässig zur Sektion scrollen */
   useEffect(() => {
-    const articleId = searchParams.get('article');
-    if (articleId) {
-      const article = blogPosts.find(post => post.id === articleId);
-      if (article) {
-        const articleIndex = blogPosts.findIndex(post => post.id === articleId);
-        setExpandedCard(articleIndex);
-        
-        document.title = `${article.title} | Schärfservice Hartmann`;
-        
-        let metaDescription = document.querySelector('meta[name="description"]');
-        if (!metaDescription) {
-          metaDescription = document.createElement('meta');
-          metaDescription.setAttribute('name', 'description');
-          document.head.appendChild(metaDescription);
-        }
-        metaDescription.setAttribute('content', article.excerpt);
-        
-        let ogTitle = document.querySelector('meta[property="og:title"]');
-        if (!ogTitle) {
-          ogTitle = document.createElement('meta');
-          ogTitle.setAttribute('property', 'og:title');
-          document.head.appendChild(ogTitle);
-        }
-        ogTitle.setAttribute('content', article.title);
-        
-        let ogDescription = document.querySelector('meta[property="og:description"]');
-        if (!ogDescription) {
-          ogDescription = document.createElement('meta');
-          ogDescription.setAttribute('property', 'og:description');
-          document.head.appendChild(ogDescription);
-        }
-        ogDescription.setAttribute('content', article.excerpt);
-        
-        let ogUrl = document.querySelector('meta[property="og:url"]');
-        if (!ogUrl) {
-          ogUrl = document.createElement('meta');
-          ogUrl.setAttribute('property', 'og:url');
-          document.head.appendChild(ogUrl);
-        }
-        ogUrl.setAttribute('content', `${window.location.origin}/blog/${articleId}`);
-        
-        setTimeout(() => {
-          const expertentippsSection = document.getElementById('expertentipps');
-          if (expertentippsSection) {
-            expertentippsSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-      }
-    }
-  }, [searchParams, blogPosts]);
-
-  const closeArticle = () => {
-    setExpandedCard(null);
-    const newUrl = new URL(window.location.href);
-    newUrl.searchParams.delete('article');
-    router.push(newUrl.pathname + newUrl.search, { scroll: false });
-  };
+    const scrollIfHash = () => {
+      const id = window.location.hash.replace(/^#/, "");
+      if (id !== "expertentipps") return;
+      const el = document.getElementById("expertentipps");
+      if (!el) return;
+      requestAnimationFrame(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    };
+    scrollIfHash();
+    window.addEventListener("hashchange", scrollIfHash);
+    return () => window.removeEventListener("hashchange", scrollIfHash);
+  }, []);
 
   const shareArticle = async (articleId: string) => {
-    const shareUrl = `${window.location.origin}/?article=${articleId}`;
+    const shareUrl = `${window.location.origin}/blog/${articleId}`;
     const article = blogPosts.find(post => post.id === articleId);
     const shareData = {
       title: article?.title || 'Expertentipp',
@@ -262,52 +215,6 @@ function HomeContentInner() {
 
   return (
     <>
-      {/* Modal Overlay für erweiterte Artikel */}
-      {expandedCard !== null && (
-        <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
-          <div 
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={closeArticle}
-          />
-          
-          <div className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <div className="text-sm text-blue-600 font-medium mb-2">
-                    {blogPosts[expandedCard].date}
-                  </div>
-                  <h3 className="text-2xl font-semibold text-gray-900">
-                    {blogPosts[expandedCard].title}
-                  </h3>
-                </div>
-                <button
-                  onClick={closeArticle}
-                  className="text-gray-400 hover:text-gray-600 ml-4 cursor-pointer hover:bg-gray-100 rounded-full p-1 transition-all duration-200"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-              
-              <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
-                <Image
-                  src={blogPosts[expandedCard].imageUrl}
-                  alt={blogPosts[expandedCard].imageAlt}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              
-              <p className="text-gray-600 leading-relaxed text-lg">
-                {blogPosts[expandedCard].fullText}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Breadcrumb Schema für Homepage */}
       <script
         type="application/ld+json"
@@ -955,7 +862,7 @@ function HomeContentInner() {
       </section>
 
       {/* Blog Section */}
-      <section id="expertentipps" className="py-20">
+      <section id="expertentipps" className="py-20 scroll-mt-28 md:scroll-mt-32">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-gray-900">
@@ -1058,13 +965,5 @@ function HomeContentInner() {
       </section>
     </div>
     </>
-  );
-}
-
-export default function HomeContent() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <HomeContentInner />
-    </Suspense>
   );
 }

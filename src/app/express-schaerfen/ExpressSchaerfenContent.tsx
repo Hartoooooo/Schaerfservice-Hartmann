@@ -12,7 +12,7 @@ export default function ExpressSchaerfenContent() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-20 pb-14 lg:pb-20 bg-white">
+      <section className="pt-6 pb-14 lg:pb-20 bg-white">
         <Container>
           <div className="max-w-6xl mx-auto">
             <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center text-gray-900 mb-8 lg:mb-10 max-w-4xl mx-auto">

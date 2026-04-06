@@ -84,7 +84,7 @@ export default function SchaerfkursePage() {
       {/* Page Header mit H1 */}
       <div>
         <Container>
-          <div className="max-w-3xl mx-auto pt-20 pb-10 text-center">
+          <div className="max-w-3xl mx-auto pt-6 pb-10 text-center">
             <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-3">
               Schärfkurs für Zahnarztpraxen
             </h1>

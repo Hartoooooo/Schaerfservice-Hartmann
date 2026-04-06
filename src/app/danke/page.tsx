@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export default function DankePage() {
   return (
-    <div className="container-page pt-20 pb-16">
+    <div className="container-page pt-6 pb-16">
       <div className="max-w-3xl mx-auto">
         <motion.div
           className="surface p-8 md:p-12"

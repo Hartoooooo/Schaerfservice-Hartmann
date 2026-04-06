@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
+import { PageBreadcrumbs } from "@/components/PageBreadcrumbs";
 import { Footer } from "@/components/Footer";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { MicrosoftClarity } from "@/components/MicrosoftClarity";
@@ -216,7 +217,10 @@ export default function RootLayout({
         </div>
 
         <Header />
-        <main className="flex-1 pt-8">{children}</main>
+        <main className="flex-1 pt-8">
+          <PageBreadcrumbs />
+          {children}
+        </main>
         <Footer />
         <CookieBanner />
         <FloatingActionButton />
