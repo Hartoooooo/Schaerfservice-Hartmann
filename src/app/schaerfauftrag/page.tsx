@@ -4,7 +4,7 @@ import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
   title: "Dentalinstrumente schärfen lassen, Online Auftrag starten | Schärfservice Hartmann",
-  description: "Zahnarztinstrumente einfach einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, ca. 5 Werktage Bearbeitungszeit, ab 6,04 € pro Instrument. Jetzt starten.",
+  description: "Zahnarztinstrumente einfach einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, ca. 5 Werktage Bearbeitungszeit, ab 5,69 € pro Instrument. Jetzt starten.",
   keywords: [
     "zahnarztinstrumente einschicken schärfen lassen",
     "instrumente schärfen lassen",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Dentalinstrumente schärfen lassen, Online Auftrag starten | Schärfservice Hartmann",
-    description: "Zahnarztinstrumente einfach einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, ca. 5 Werktage Bearbeitungszeit, ab 6,04 € pro Instrument. Jetzt starten.",
+    description: "Zahnarztinstrumente einfach einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, ca. 5 Werktage Bearbeitungszeit, ab 5,69 € pro Instrument. Jetzt starten.",
   },
 };
 
@@ -96,7 +96,7 @@ export default function SchaerfauftragPage() {
               Instrumente einschicken &amp; schärfen lassen
             </h1>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Online-Auftrag in 3&nbsp;Minuten &middot; ca. 5&nbsp;Werktage Bearbeitungszeit &middot; ab&nbsp;6,04&nbsp;€ pro Instrument
+              Online-Auftrag in 3&nbsp;Minuten &middot; ca. 5&nbsp;Werktage Bearbeitungszeit &middot; ab&nbsp;5,69&nbsp;€ pro Instrument
             </p>
           </div>
         </Container>

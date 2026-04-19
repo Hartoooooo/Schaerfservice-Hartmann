@@ -10,7 +10,7 @@ export const metadata: Metadata = {
       "Chirurgische Instrumente schärfen Berlin | Scheren, Pinzetten | Schärfservice Hartmann",
   },
   description:
-    "Chirurgische Instrumente schärfen lassen ✓ Scheren, Nadelhalter, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 6,04 € – Jetzt beauftragen",
+    "Chirurgische Instrumente schärfen lassen ✓ Scheren, Nadelhalter, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt beauftragen",
   keywords: [
     "chirurgische Instrumente schärfen",
     "OP-Instrumente schärfen",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title:
       "Chirurgische Instrumente schärfen Berlin | Scheren, Pinzetten | Schärfservice Hartmann",
     description:
-      "Chirurgische Instrumente schärfen lassen ✓ Scheren, Nadelhalter, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 6,04 € – Jetzt beauftragen",
+      "Chirurgische Instrumente schärfen lassen ✓ Scheren, Nadelhalter, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt beauftragen",
     url: canonical,
   },
 };
@@ -156,7 +156,7 @@ export default function ChirurgischeInstrumentePage() {
               die Lebensdauer erheblich und spart gegenüber dem Neukauf oft 80–90&nbsp;% der Kosten.
             </p>
             <p className="text-gray-600 leading-relaxed mt-4 font-medium">
-              Preise ab 6,04 € pro Instrument | Express-Service verfügbar | Ab 15 Instrumenten 7&nbsp;% Rabatt
+              Preise ab 5,69 € pro Instrument | Express-Service verfügbar | Ab 15 Instrumenten 7&nbsp;% Rabatt
             </p>
           </section>
 

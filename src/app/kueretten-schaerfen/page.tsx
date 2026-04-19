@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     absolute: "Küretten schärfen lassen Berlin | Gracey & Universal | Schärfservice Hartmann",
   },
   description:
-    "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 6,04 €",
+    "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 5,69 €",
   keywords: [
     "Küretten schärfen",
     "Küretten schärfen lassen",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Küretten schärfen lassen Berlin | Gracey & Universal | Schärfservice Hartmann",
     description:
-      "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 6,04 €",
+      "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 5,69 €",
     url: canonical,
   },
 };
@@ -181,7 +181,7 @@ export default function KuerettenSchaerfenPage() {
                   <strong>Zeitsparender</strong> – kein Aufwand für die Praxis
                 </li>
                 <li>
-                  <strong>Günstiger als Neukauf</strong> – ab 6,04 € pro Instrument
+                  <strong>Günstiger als Neukauf</strong> – ab 5,69 € pro Instrument
                 </li>
               </ul>
             </section>
@@ -195,7 +195,7 @@ export default function KuerettenSchaerfenPage() {
                 <li>Schnelle Rücksendung – Express auf Wunsch</li>
               </ol>
               <p className="text-gray-600 leading-relaxed mt-6 font-medium">
-                Ab 15 Instrumenten 7&nbsp;% Rabatt | Preise ab 6,04 € pro Instrument
+                Ab 15 Instrumenten 7&nbsp;% Rabatt | Preise ab 5,69 € pro Instrument
               </p>
             </section>
           </div>

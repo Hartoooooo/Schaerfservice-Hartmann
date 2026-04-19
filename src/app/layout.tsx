@@ -24,10 +24,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Schärfservice Hartmann: Dentalinstrumente schärfen & schleifen Berlin | Dentalinstrumente schärfen ab 6,04€",
+    default: "Schärfservice Hartmann: Dentalinstrumente schärfen & schleifen Berlin | Dentalinstrumente schärfen ab 5,69€",
     template: "%s | Schärfservice Hartmann",
   },
-  description: "🦷 Instrumente schärfen & schleifen ✅ Dentalinstrumente schärfen & aufbereiten ab 6,04€ ⭐ Professioneller Service für alle dentalen Instrumente | Express-Schärfung 150km | Schärfkurse in ihrer Praxis | 20+ Jahre Erfahrung",
+  description: "🦷 Instrumente schärfen & schleifen ✅ Dentalinstrumente schärfen & aufbereiten ab 5,69€ ⭐ Professioneller Service für alle dentalen Instrumente | Express-Schärfung 150km | Schärfkurse in ihrer Praxis | 20+ Jahre Erfahrung",
   keywords: [
     "instrumente schärfen",
     "instrumente schleifen", 
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Schärfservice Hartmann",
-    description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 6,04€, Schärfkurse in ihrer Praxis und Express-Service in Berlin.",
+    description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 5,69€, Schärfkurse in ihrer Praxis und Express-Service in Berlin.",
     url: "https://www.dentalschleifen.de",
     siteName: "Schärfservice Hartmann",
     locale: "de_DE",
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Schärfservice Hartmann",
-    description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 6,04€, Schärfkurse in ihrer Praxis, Express-Service Berlin.",
+    description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 5,69€, Schärfkurse in ihrer Praxis, Express-Service Berlin.",
     images: ["https://www.dentalschleifen.de/schaerfservice-werkstatt-berlin.jpg"],
   },
   robots: {
@@ -129,6 +129,59 @@ export default function RootLayout({
   
   return (
     <html lang="de" dir="ltr">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Schärfservice Hartmann",
+              "description": "Professionelles Schärfen von dentalen und chirurgischen Instrumenten. Scaler, Küretten, Raspatorien und mehr – seit 2004. Versand deutschlandweit, Express-Service in Berlin.",
+              "url": "https://www.dentalschleifen.de",
+              "telephone": "+49174934257",
+              "email": "hartmann-schaerfservice@web.de",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Petershagener Str. 27",
+                "addressLocality": "Schöneiche bei Berlin",
+                "postalCode": "15566",
+                "addressCountry": "DE"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "52.4894",
+                "longitude": "13.7071"
+              },
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                  "opens": "08:00",
+                  "closes": "19:00"
+                }
+              ],
+              "priceRange": "ab 5,69 €",
+              "areaServed": "Deutschland",
+              "foundingDate": "2004",
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Schärfservices",
+                "itemListElement": [
+                  {"@type": "Offer", "name": "Scaler schärfen"},
+                  {"@type": "Offer", "name": "Küretten schärfen"},
+                  {"@type": "Offer", "name": "Chirurgische Instrumente schärfen"},
+                  {"@type": "Offer", "name": "Express-Schärfen Berlin"},
+                  {"@type": "Offer", "name": "Schärfkurse für Praxisteams"}
+                ]
+              },
+              "sameAs": [
+                "https://share.google/2UDHc47s5uBG5MkH0"
+              ]
+            })
+          }}
+        />
+      </head>
       {/* Google tag (gtag.js) */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=AW-17687247253"
@@ -143,46 +196,6 @@ export default function RootLayout({
         `}
       </Script>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
-        {/* Organization Schema für Google Brand Name */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "@id": "https://www.dentalschleifen.de/#organization",
-              "name": "Schärfservice Hartmann",
-              "alternateName": "Schärfservice Hartmann",
-              "legalName": "Schärfservice Hartmann",
-              "url": "https://www.dentalschleifen.de",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://www.dentalschleifen.de/SHLogo.png",
-                "width": 5489,
-                "height": 5489
-              },
-              "image": "https://www.dentalschleifen.de/SHLogo.png",
-              "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung",
-              "foundingDate": "2004",
-              "founder": {
-                "@type": "Person",
-                "name": "Björn Hartmann"
-              },
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Petershagener Str. 27",
-                "addressLocality": "Schöneiche bei Berlin",
-                "postalCode": "15566",
-                "addressCountry": "DE"
-              },
-              "telephone": "+49-174-9342576",
-              "email": "hartmann-schaerfservice@web.de",
-              "sameAs": [
-                "https://www.dentalschleifen.de"
-              ]
-            })
-          }}
-        />
         
         {/* Preload Hero-Bild für schnelles Laden beim ersten Besuch */}
         <HeroImagePreload />

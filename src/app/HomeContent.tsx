@@ -275,7 +275,7 @@ export default function HomeContent() {
             },
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Petershagener Straße 29",
+              "streetAddress": "Petershagener Str. 27",
               "addressLocality": "Schöneiche bei Berlin",
               "postalCode": "15566",
               "addressRegion": "Brandenburg",
@@ -310,7 +310,7 @@ export default function HomeContent() {
             },
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Petershagener Straße 29",
+              "streetAddress": "Petershagener Str. 27",
               "addressLocality": "Schöneiche bei Berlin",
               "postalCode": "15566",
               "addressRegion": "Brandenburg",
@@ -318,8 +318,8 @@ export default function HomeContent() {
             },
             "geo": {
               "@type": "GeoCoordinates",
-              "latitude": "52.4667",
-              "longitude": "13.7833"
+              "latitude": "52.4894",
+              "longitude": "13.7071"
             },
             "openingHours": [
               "Mo-Fr 08:00-18:00"

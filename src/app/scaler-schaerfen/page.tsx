@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     absolute: "Scaler schärfen lassen Berlin | Professioneller Schärfservice | Hartmann",
   },
   description:
-    "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 6,04 € – Jetzt Auftrag erteilen",
+    "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt Auftrag erteilen",
   keywords: [
     "Scaler schärfen",
     "Scaler schärfen lassen",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Scaler schärfen lassen Berlin | Professioneller Schärfservice | Hartmann",
     description:
-      "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 6,04 € – Jetzt Auftrag erteilen",
+      "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt Auftrag erteilen",
     url: canonical,
   },
 };
@@ -166,7 +166,7 @@ export default function ScalerSchaerfenPage() {
                 </li>
               </ol>
               <p className="text-gray-600 leading-relaxed mt-6 font-medium">
-                Preise ab 6,04 € pro Instrument | Ab 15 Instrumenten sparen Sie 7&nbsp;%
+                Preise ab 5,69 € pro Instrument | Ab 15 Instrumenten sparen Sie 7&nbsp;%
               </p>
             </section>
 
