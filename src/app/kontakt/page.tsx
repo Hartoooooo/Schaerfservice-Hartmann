@@ -76,7 +76,7 @@ export default function KontaktPage() {
               "postalCode": "15566",
               "addressCountry": "DE"
             },
-            "telephone": "+49-174-9342576",
+            "telephone": "+49 174 9342576",
             "email": "hartmann-schaerfservice@web.de",
             "taxID": "061/228/02750",
             "serviceArea": {

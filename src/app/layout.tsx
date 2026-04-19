@@ -139,7 +139,7 @@ export default function RootLayout({
               "name": "Schärfservice Hartmann",
               "description": "Professionelles Schärfen von dentalen und chirurgischen Instrumenten. Scaler, Küretten, Raspatorien und mehr – seit 2004. Versand deutschlandweit, Express-Service in Berlin.",
               "url": "https://www.dentalschleifen.de",
-              "telephone": "+49174934257",
+              "telephone": "+49 174 9342576",
               "email": "hartmann-schaerfservice@web.de",
               "address": {
                 "@type": "PostalAddress",

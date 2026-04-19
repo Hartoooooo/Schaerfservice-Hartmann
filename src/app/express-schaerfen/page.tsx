@@ -50,7 +50,7 @@ export default function ExpressSchaerfenPage() {
             "provider": {
               "@type": "LocalBusiness",
               "name": "Schärfservice Hartmann",
-              "telephone": "+49-174-9342576"
+              "telephone": "+49 174 9342576"
             },
             "areaServed": {
               "@type": "GeoCircle",

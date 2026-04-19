@@ -60,7 +60,7 @@ export default function SchaerfkursePage() {
                 "postalCode": "15566",
                 "addressCountry": "DE"
               },
-              "telephone": "+49-174-9342576",
+              "telephone": "+49 174 9342576",
               "email": "hartmann-schaerfservice@web.de"
             },
             "course": {
