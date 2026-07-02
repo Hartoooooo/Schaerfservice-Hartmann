@@ -105,8 +105,8 @@ export default function ChirurgischeInstrumentePage() {
             <figure className="relative">
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-gray-200 shadow-[var(--shadow-strong)]">
                 <Image
-                  src="/instrument-chirurgie.svg"
-                  alt="Chirurgische Dental-Schere mit polierten Branchen in Nahaufnahme"
+                  src="/dental-schere-schaerfwinkel-berlin.jpg"
+                  alt="Chirurgische Dental-Schere mit Goldgriff in Nahaufnahme vor grauem Hintergrund"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
