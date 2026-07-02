@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Button } from "@/components/Button";
 
 const canonical = "https://www.dentalschleifen.de/scaler-schaerfen";
@@ -25,37 +24,6 @@ export const metadata: Metadata = {
     url: canonical,
   },
 };
-
-function RelatedLinks() {
-  return (
-    <section className="mt-14 pt-10 border-t border-gray-200">
-      <h2 className="text-lg font-semibold text-gray-900 mb-4">Auch interessant</h2>
-      <ul className="flex flex-col sm:flex-row sm:flex-wrap gap-3 text-blue-600">
-        <li>
-          <Link href="/kueretten-schaerfen" className="hover:underline">
-            Küretten schärfen lassen
-          </Link>
-        </li>
-        <li className="hidden sm:block text-gray-300 select-none" aria-hidden>
-          ·
-        </li>
-        <li>
-          <Link href="/chirurgische-instrumente-schaerfen" className="hover:underline">
-            Chirurgische Instrumente schärfen
-          </Link>
-        </li>
-        <li className="hidden sm:block text-gray-300 select-none" aria-hidden>
-          ·
-        </li>
-        <li>
-          <Link href="/schaerfauftrag" className="hover:underline">
-            Schärfauftrag starten
-          </Link>
-        </li>
-      </ul>
-    </section>
-  );
-}
 
 export default function ScalerSchaerfenPage() {
   return (
@@ -190,8 +158,6 @@ export default function ScalerSchaerfenPage() {
               Express-Service
             </Button>
           </div>
-
-          <RelatedLinks />
         </article>
       </div>
     </>
