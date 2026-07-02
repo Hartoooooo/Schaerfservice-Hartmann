@@ -66,11 +66,6 @@ export default function ScalerSchaerfenPage() {
           {/* Hero */}
           <section className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 mb-16">
             <div>
-              <div className="flex flex-wrap gap-2 mb-5">
-                <span className="badge text-sm">Handgeschärft</span>
-                <span className="badge text-sm">Korrekter Schärfwinkel</span>
-                <span className="badge text-sm">Express möglich</span>
-              </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-5">
                 Scaler schärfen lassen
                 <span className="block text-[var(--color-blue-600)] font-medium mt-1">
@@ -98,8 +93,8 @@ export default function ScalerSchaerfenPage() {
             <figure className="relative">
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-gray-200 shadow-[var(--shadow-strong)]">
                 <Image
-                  src="/instrument-scaler.svg"
-                  alt="Doppelendiger Dental-Scaler mit geriffeltem Griff in Nahaufnahme"
+                  src="/3 spitzen.JPG"
+                  alt="Dental-Scaler mit geriffeltem Griff in Nahaufnahme vor grauem Hintergrund"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -137,7 +132,7 @@ export default function ScalerSchaerfenPage() {
             </p>
           </section>
 
-          {/* Wie wir schärfen */}
+          {/* Wie wir schärfen – vorübergehend ausgeblendet
           <section className="mb-16">
             <div className="rounded-3xl bg-slate-50 border border-gray-200 p-8 sm:p-10">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">Wie schärfen wir Ihre Scaler?</h2>
@@ -163,6 +158,7 @@ export default function ScalerSchaerfenPage() {
               </p>
             </div>
           </section>
+          */}
 
           {/* Ablauf */}
           <section className="mb-16">

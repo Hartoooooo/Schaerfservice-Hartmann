@@ -66,11 +66,6 @@ export default function KuerettenSchaerfenPage() {
           {/* Hero */}
           <section className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 mb-16">
             <div>
-              <div className="flex flex-wrap gap-2 mb-5">
-                <span className="badge text-sm">Gracey &amp; Universal</span>
-                <span className="badge text-sm">Exakter Offset-Winkel</span>
-                <span className="badge text-sm">Materialschonend</span>
-              </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-5">
                 Küretten schärfen lassen
                 <span className="block text-[var(--color-blue-600)] font-medium mt-1">
@@ -98,8 +93,8 @@ export default function KuerettenSchaerfenPage() {
             <figure className="relative">
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-gray-200 shadow-[var(--shadow-strong)]">
                 <Image
-                  src="/instrument-kuerette.svg"
-                  alt="Doppelendige Dental-Kürette mit abgerundeter Arbeitskante in Nahaufnahme"
+                  src="/kueretten.webp"
+                  alt="Dental-Küretten mit farbigen Kennringen in Nahaufnahme vor grauem Hintergrund"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
