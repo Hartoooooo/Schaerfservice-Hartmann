@@ -20,7 +20,15 @@ export function Footer() {
         <div className="flex flex-col items-center sm:items-start gap-1 order-2 sm:order-1">
           <p className="text-xs sm:text-sm text-neutral-600">© {new Date().getFullYear()} Schärfservice Hartmann. Alle Rechte vorbehalten.</p>
             <p className="text-xs text-neutral-500">
-              Umsetzung von{" "}Neoklar
+              Umsetzung von{" "}
+              <a
+                href="https://www.neoklar.de"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-600 hover:text-[var(--color-blue-600)] transition-colors duration-200"
+              >
+                Neoklar
+              </a>
             </p>
         </div>
         {/* Desktop: Nav rechts, Mobile: Order 1 (oben) */}
