@@ -93,7 +93,7 @@ export default function ScalerSchaerfenPage() {
             <figure className="relative">
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-gray-200 shadow-[var(--shadow-strong)]">
                 <Image
-                  src="/3 spitzen.JPG"
+                  src="/scaler.webp"
                   alt="Dental-Scaler mit geriffeltem Griff in Nahaufnahme vor grauem Hintergrund"
                   fill
                   className="object-cover"
