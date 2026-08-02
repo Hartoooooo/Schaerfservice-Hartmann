@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Stepper, { Step } from "@/components/Stepper";
 import emailjs from '@emailjs/browser';
@@ -19,8 +19,21 @@ interface SchaerfauftragFormProps {
 
 export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   const router = useRouter();
+  const containerRef = useRef<HTMLDivElement>(null);
   const [quantities, setQuantities] = useState<number[]>(() => rows.map(() => 0));
   const [currentStep, setCurrentStep] = useState(1);
+
+  // Sanftes, einheitliches Hochscrollen zum Stepper bei jedem Schrittwechsel
+  const scrollToStepperTop = () => {
+    if (typeof window === "undefined") return;
+    const el = containerRef.current;
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 96; // Offset für fixe Navigation
+    // Nur hochscrollen, wenn der Nutzer bereits unterhalb der Zielposition ist
+    if (window.scrollY > top) {
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
   
   // Kontaktformular State
   const [formData, setFormData] = useState({
@@ -221,7 +234,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   };
 
   return (
-    <div className={`container-page ${getPaddingClass()} pt-12`}>
+    <div ref={containerRef} className={`container-page ${getPaddingClass()} pt-12 scroll-mt-24`}>
       <Stepper
         initialStep={1}
         className={getStepperClass()}
@@ -241,10 +254,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
 
           setCurrentStep(step);
 
-          // Beim Wechsel von Step 1 (Tabelle) zu Step 2 (Formular) nach oben scrollen
-          if (currentStep === 1 && step === 2) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
+          // Bei jedem Schrittwechsel einheitlich sanft zum Stepper hochscrollen
+          scrollToStepperTop();
           
           console.log(step);
         }}

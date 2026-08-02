@@ -202,7 +202,7 @@ function StepContentWrapper({
     <motion.div
       style={{ position: 'relative', overflow: 'hidden' }}
       animate={{ height: isCompleted ? 0 : parentHeight }}
-      transition={{ type: 'spring', duration: 0.4 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       <AnimatePresence initial={false} mode="sync" custom={direction}>
@@ -239,7 +239,7 @@ function SlideTransition({ children, direction, onHeightReady }: SlideTransition
       initial="enter"
       animate="center"
       exit="exit"
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       style={{ position: 'absolute', left: 0, right: 0, top: 0 }}
     >
       {children}
@@ -249,15 +249,15 @@ function SlideTransition({ children, direction, onHeightReady }: SlideTransition
 
 const stepVariants: Variants = {
   enter: (dir: number) => ({
-    x: dir >= 0 ? '-100%' : '100%',
+    x: dir >= 0 ? 40 : -40,
     opacity: 0
   }),
   center: {
-    x: '0%',
+    x: 0,
     opacity: 1
   },
   exit: (dir: number) => ({
-    x: dir >= 0 ? '50%' : '-50%',
+    x: dir >= 0 ? -40 : 40,
     opacity: 0
   })
 };
