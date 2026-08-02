@@ -66,6 +66,49 @@ export default function WiderrufsbelehrungPage() {
             </section>
 
             <section>
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
+                <h2 className="text-xl font-semibold mb-4 text-amber-800">Hinweis für Unternehmer (B2B)</h2>
+                <p className="text-amber-700 leading-relaxed">
+                  Das gesetzliche Widerrufsrecht besteht ausschließlich für Verbraucher im Sinne des § 13 BGB. Unternehmer
+                  im Sinne des § 14 BGB (z. B. Zahnarztpraxen, Kliniken, Universitäten, Institute und sonstige gewerbliche
+                  oder selbständig berufliche Auftraggeber) haben kein gesetzliches Widerrufsrecht. Für Verträge mit
+                  Unternehmern gelten die vorstehenden Ausführungen zum Widerrufsrecht daher nicht.
+                </p>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Muster-Widerrufsformular</h2>
+              <p className="text-neutral-600 leading-relaxed mb-4">
+                (Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es
+                zurück.)
+              </p>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <div className="text-neutral-700 leading-relaxed space-y-3">
+                  <p>An:</p>
+                  <p>
+                    Schärfservice-Hartmann<br />
+                    Björn Hartmann<br />
+                    Petershagener Str. 27<br />
+                    15566 Schöneiche bei Berlin<br />
+                    E-Mail: hartmann-schaerfservice@web.de
+                  </p>
+                  <p>
+                    Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über die Erbringung der
+                    folgenden Dienstleistung (*):
+                  </p>
+                  <p>_____________________________________________</p>
+                  <p>Bestellt am (*) / erhalten am (*): _____________</p>
+                  <p>Name des/der Verbraucher(s): _________________</p>
+                  <p>Anschrift des/der Verbraucher(s): _____________</p>
+                  <p>Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier): _____________</p>
+                  <p>Datum: _____________</p>
+                  <p className="text-sm text-gray-500">(*) Unzutreffendes streichen.</p>
+                </div>
+              </div>
+            </section>
+
+            <section>
               <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Ende der Widerrufsbelehrung</h2>
               <p className="text-neutral-600 leading-relaxed">
                 Diese Widerrufsbelehrung wurde erstellt gemäß den gesetzlichen Vorgaben des Bürgerlichen Gesetzbuches (BGB) 

@@ -22,8 +22,10 @@ export default function AgbPage() {
             <section>
               <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">1. Geltungsbereich</h2>
               <p className="text-neutral-600 leading-relaxed">
-                Diese AGB gelten für alle Verträge zwischen Schärfservice-Hartmann und Verbrauchern (§ 13 BGB), 
-                die Instrumente zum Schärfen einsenden oder unseren Schärfservice beauftragen.
+                Diese AGB gelten für alle Verträge zwischen Schärfservice-Hartmann und seinen Kunden – sowohl
+                Verbrauchern (§ 13 BGB) als auch Unternehmern (§ 14 BGB, z. B. Zahnarztpraxen, Kliniken, Universitäten
+                und Institute) –, die Instrumente zum Schärfen einsenden oder unseren Schärfservice beauftragen. Die
+                nachfolgenden Regelungen zum Widerrufsrecht gelten ausschließlich für Verbraucher.
               </p>
             </section>
 
@@ -54,7 +56,8 @@ export default function AgbPage() {
             <section>
               <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">4. Widerruf bei Dienstleistungen</h2>
               <p className="text-neutral-600 leading-relaxed mb-4">
-                Verbrauchern steht grundsätzlich ein Widerrufsrecht nach Maßgabe unserer Widerrufsbelehrung zu.
+                Verbrauchern (§ 13 BGB) steht grundsätzlich ein Widerrufsrecht nach Maßgabe unserer Widerrufsbelehrung
+                zu. Unternehmern (§ 14 BGB) steht kein gesetzliches Widerrufsrecht zu.
               </p>
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
                 <h3 className="font-medium text-yellow-800 mb-2">⚠️ Wichtiger Hinweis</h3>

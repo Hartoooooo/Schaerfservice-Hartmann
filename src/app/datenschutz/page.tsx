@@ -15,7 +15,7 @@ export default function DatenschutzPage() {
       <div className="max-w-4xl mx-auto">
         <div className="surface p-8">
           <h1 className="text-3xl font-semibold mb-4 text-center">Datenschutzerklärung</h1>
-          <p className="text-center text-sm text-gray-500 mb-8">Stand: 16.11.2025</p>
+          <p className="text-center text-sm text-gray-500 mb-8">Stand: 02.08.2026</p>
           
           <div className="space-y-8">
             <section>
@@ -44,7 +44,22 @@ export default function DatenschutzPage() {
               <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Server-Logfiles</h2>
               <p className="text-neutral-600 leading-relaxed">
                 Beim Besuch der Website werden automatisch Informationen erfasst (z. B. IP-Adresse, Datum und Uhrzeit,
-                aufgerufene Seite). Diese Daten dienen der Sicherstellung eines störungsfreien Betriebs.
+                aufgerufene Seite, übertragene Datenmenge, Browsertyp und Betriebssystem). Diese Daten dienen der
+                Sicherstellung eines störungsfreien Betriebs sowie der Sicherheit unserer informationstechnischen Systeme.
+                Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem technisch fehlerfreien und
+                sicheren Betrieb der Website).
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Hosting</h2>
+              <p className="text-neutral-600 leading-relaxed">
+                Unsere Website wird bei einem externen Dienstleister gehostet. Die auf dieser Website erfassten
+                personenbezogenen Daten werden auf den Servern des Hosters gespeichert. Der Einsatz des Hosters erfolgt
+                zum Zwecke der Vertragserfüllung gegenüber unseren Kunden sowie im Interesse einer sicheren, schnellen und
+                effizienten Bereitstellung unseres Online-Angebots (Art. 6 Abs. 1 lit. f DSGVO). Mit dem Hosting-Anbieter
+                besteht ein Vertrag über Auftragsverarbeitung gemäß Art. 28 DSGVO, der die datenschutzkonforme Verarbeitung
+                der Daten sicherstellt.
               </p>
             </section>
 
@@ -118,13 +133,27 @@ export default function DatenschutzPage() {
                     <strong>Zweck:</strong> Analyse der Website-Nutzung, Erstellung von Statistiken<br />
                     <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)<br />
                     <strong>Speicherdauer:</strong> 14 Monate<br />
-                    <strong>Opt-out:</strong> Sie können die Erfassung durch Google Analytics verhindern, 
+                    <strong>Opt-out:</strong> Sie können die Erfassung durch Google Analytics verhindern,
                     indem Sie das entsprechende Cookie in den Einstellungen deaktivieren.
                   </p>
                 </div>
-                
+
                 <p className="text-neutral-600 leading-relaxed">
-                  Weitere Informationen zum Datenschutz bei Google Analytics finden Sie in der 
+                  <strong>Datenübermittlung in die USA:</strong> Bei der Nutzung von Google Analytics können
+                  personenbezogene Daten an Server der Google LLC in die USA übermittelt werden. Google ist unter dem
+                  EU-US Data Privacy Framework zertifiziert, wodurch ein angemessenes Datenschutzniveau gewährleistet
+                  wird. Ergänzend hat Google Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c DSGVO)
+                  als Garantie für die Datenübermittlung in Drittländer (Art. 44 ff. DSGVO) abgeschlossen.
+                </p>
+
+                <p className="text-neutral-600 leading-relaxed">
+                  Ihre einmal erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen
+                  (Art. 7 Abs. 3 DSGVO), indem Sie Ihre Cookie-Einstellungen anpassen. Die Rechtmäßigkeit der bis zum
+                  Widerruf erfolgten Verarbeitung bleibt davon unberührt.
+                </p>
+
+                <p className="text-neutral-600 leading-relaxed">
+                  Weitere Informationen zum Datenschutz bei Google Analytics finden Sie in der
                   <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" 
                      className="text-blue-600 hover:text-blue-700 underline">
                     Datenschutzerklärung von Google
@@ -148,13 +177,28 @@ export default function DatenschutzPage() {
                     <strong>Zweck:</strong> Analyse der Website-Nutzung, Verbesserung der Benutzererfahrung<br />
                     <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)<br />
                     <strong>Datenspeicherung:</strong> Daten werden von Microsoft auf Azure-Servern verarbeitet<br />
-                    <strong>Opt-out:</strong> Sie können die Erfassung durch Microsoft Clarity verhindern, 
+                    <strong>Opt-out:</strong> Sie können die Erfassung durch Microsoft Clarity verhindern,
                     indem Sie das entsprechende Cookie in den Einstellungen deaktivieren.
                   </p>
                 </div>
-                
+
                 <p className="text-neutral-600 leading-relaxed">
-                  Weitere Informationen zum Datenschutz bei Microsoft Clarity finden Sie in den 
+                  <strong>Datenübermittlung in die USA:</strong> Bei der Nutzung von Microsoft Clarity können
+                  personenbezogene Daten an Server der Microsoft Corporation in die USA übermittelt werden. Microsoft ist
+                  unter dem EU-US Data Privacy Framework zertifiziert, wodurch ein angemessenes Datenschutzniveau
+                  gewährleistet wird. Ergänzend hat Microsoft Standardvertragsklauseln der EU-Kommission
+                  (Art. 46 Abs. 2 lit. c DSGVO) als Garantie für die Datenübermittlung in Drittländer
+                  (Art. 44 ff. DSGVO) abgeschlossen.
+                </p>
+
+                <p className="text-neutral-600 leading-relaxed">
+                  Ihre einmal erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen
+                  (Art. 7 Abs. 3 DSGVO), indem Sie Ihre Cookie-Einstellungen anpassen. Die Rechtmäßigkeit der bis zum
+                  Widerruf erfolgten Verarbeitung bleibt davon unberührt.
+                </p>
+
+                <p className="text-neutral-600 leading-relaxed">
+                  Weitere Informationen zum Datenschutz bei Microsoft Clarity finden Sie in den
                   <a href="https://clarity.microsoft.com/faq" target="_blank" rel="noopener noreferrer" 
                      className="text-blue-600 hover:text-blue-700 underline">
                     Microsoft Clarity FAQ
@@ -193,10 +237,22 @@ export default function DatenschutzPage() {
 
             <section>
               <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Ihre Rechte</h2>
-              <div className="bg-blue-50 rounded-lg p-6">
+              <div className="bg-blue-50 rounded-lg p-6 space-y-4">
                 <p className="text-neutral-600 leading-relaxed">
-                  Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit
-                  sowie Widerspruch gegen die Verarbeitung Ihrer Daten.
+                  Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO),
+                  Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie Widerspruch
+                  gegen die Verarbeitung Ihrer Daten (Art. 21 DSGVO).
+                </p>
+                <p className="text-neutral-600 leading-relaxed">
+                  Soweit die Verarbeitung auf Ihrer Einwilligung beruht, haben Sie das Recht, diese jederzeit mit Wirkung
+                  für die Zukunft zu widerrufen (Art. 7 Abs. 3 DSGVO). Die Rechtmäßigkeit der bis zum Widerruf erfolgten
+                  Verarbeitung bleibt davon unberührt.
+                </p>
+                <p className="text-neutral-600 leading-relaxed">
+                  Unabhängig davon steht Ihnen ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu
+                  (Art. 77 DSGVO), wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer personenbezogenen Daten gegen
+                  die DSGVO verstößt. Zuständig ist unter anderem die Aufsichtsbehörde Ihres gewöhnlichen Aufenthaltsorts,
+                  Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.
                 </p>
               </div>
             </section>

@@ -35,7 +35,7 @@ export default function ImpressumPage() {
               <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Verantwortlich für den Inhalt</h2>
               <p className="text-neutral-600 leading-relaxed">
                 Björn Hartmann, Petershagener Str. 27, 15566 Schöneiche bei Berlin<br />
-                <span className="text-sm text-neutral-500">nach § 55 Abs. 2 RStV</span>
+                <span className="text-sm text-neutral-500">nach § 18 Abs. 2 MStV</span>
               </p>
             </section>
 
@@ -56,26 +56,10 @@ export default function ImpressumPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Online-Streitbeilegung</h2>
-              <div className="space-y-4">
-                <p className="text-neutral-600 leading-relaxed">
-                  Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: {" "}
-                  <a
-                    href="https://ec.europa.eu/consumers/odr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-700 underline"
-                  >
-                    https://ec.europa.eu/consumers/odr
-                  </a>.
-                </p>
-                <p className="text-neutral-600 leading-relaxed">
-                  Unsere E-Mail-Adresse finden Sie oben im Impressum.
-                </p>
-                <p className="text-neutral-600 leading-relaxed">
-                  Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-                </p>
-              </div>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Verbraucherstreitbeilegung</h2>
+              <p className="text-neutral-600 leading-relaxed">
+                Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+              </p>
             </section>
           </div>
         </div>
