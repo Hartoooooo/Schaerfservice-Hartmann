@@ -34,10 +34,10 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     const distance = targetY - startY;
     if (Math.abs(distance) < 2) return;
 
-    const duration = 600; // ms – ruhiges, aber zügiges Wandern nach oben
+    const duration = 450; // ms – synchron zur Höhen-Animation des Step-Containers (0.45s)
     const startTime = performance.now();
-    // easeInOutCubic für ein sanftes Beschleunigen und Abbremsen
-    const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    // easeOutCubic – passt zur Ease-Out-Kurve des Containers (schneller Start, sanftes Ausklingen)
+    const ease = (t: number) => 1 - Math.pow(1 - t, 3);
 
     const step = (now: number) => {
       const elapsed = now - startTime;
