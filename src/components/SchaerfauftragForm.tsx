@@ -29,10 +29,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     const el = containerRef.current;
     if (!el) return;
     const top = el.getBoundingClientRect().top + window.scrollY - 96; // Offset für fixe Navigation
-    // Nur hochscrollen, wenn der Nutzer bereits unterhalb der Zielposition ist
-    if (window.scrollY > top) {
-      window.scrollTo({ top, behavior: "smooth" });
-    }
+    // Jeden Schritt zuverlässig an den oberen Rand holen, damit kein manuelles Scrollen nötig ist
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
   };
   
   // Kontaktformular State
