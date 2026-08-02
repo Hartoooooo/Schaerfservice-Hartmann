@@ -93,30 +93,30 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     return "pb-16"; // Unten; oben pt-12 wie Schärfkurs-Formular nach Page-Header
   };
 
-  // Dynamische Stepper-Höhe für Step 2 und 3
+  // Dynamische Stepper-Höhe für Step 1 (Tabelle) und Step 2 (Formular)
   const getStepperClass = () => {
-    if (currentStep === 2 || currentStep === 3) {
-      return "min-h-[700px]"; // Feste Höhe für Step 2 und 3
+    if (currentStep === 1 || currentStep === 2) {
+      return "min-h-[700px]"; // Feste Höhe für Instrumentenauswahl und Kontaktdaten
     }
     return ""; // Normale Höhe für andere Steps
   };
 
   // Prüfe ob "Weiter" Button deaktiviert werden soll
   const isNextButtonDisabled = () => {
-    // Step 2: Prüfe ob mindestens 1 Instrument ausgewählt wurde
-    if (currentStep === 2) {
+    // Step 1: Prüfe ob mindestens 1 Instrument ausgewählt wurde
+    if (currentStep === 1) {
       return totalQuantity === 0;
     }
-    // Step 3: Prüfe ob alle Pflichtfelder ausgefüllt sind
-    if (currentStep === 3) {
-      return !formData.ansprechpartner.trim() || 
-             !formData.email.trim() || 
-             !formData.praxisname.trim() || 
-             !formData.plz.trim() || 
+    // Step 2: Prüfe ob alle Pflichtfelder ausgefüllt sind
+    if (currentStep === 2) {
+      return !formData.ansprechpartner.trim() ||
+             !formData.email.trim() ||
+             !formData.praxisname.trim() ||
+             !formData.plz.trim() ||
              !formData.ort.trim();
     }
-    // Step 4: Prüfe ob Checkboxes aktiviert sind
-    if (currentStep === 4) {
+    // Step 3: Prüfe ob Checkboxes aktiviert sind
+    if (currentStep === 3) {
       return !checkboxes.widerrufsrecht || !checkboxes.agbAkzeptiert;
     }
     return false;
@@ -124,7 +124,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
 
   // Custom Button-Text basierend auf aktuellem Step
   const getCustomNextButtonText = () => {
-    if (currentStep === 4) {
+    if (currentStep === 3) {
       return isSubmitting ? "Wird gesendet..." : "Abschließen";
     }
     return undefined;
@@ -229,7 +229,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         customNextButtonText={getCustomNextButtonText()}
         onStepChange={async (step) => {
           // Beim Abschluss von Step 4 E-Mail im Hintergrund senden und sofort zur Danke-Seite weiterleiten
-          if (currentStep === 4 && step > 4) {
+          if (currentStep === 3 && step > 3) {
             // E-Mail im Hintergrund senden (ohne await, damit Weiterleitung sofort erfolgt)
             sendEmail().catch(err => {
               console.error('E-Mail konnte nicht gesendet werden:', err);
@@ -238,19 +238,19 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
             router.push('/danke');
             return; // Verhindere den Schritt-Wechsel, da wir weiterleiten
           }
-          
+
           setCurrentStep(step);
-          
-          // Beim Wechsel von Step 2 zu Step 3 nach oben scrollen
-          if (currentStep === 2 && step === 3) {
+
+          // Beim Wechsel von Step 1 (Tabelle) zu Step 2 (Formular) nach oben scrollen
+          if (currentStep === 1 && step === 2) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }
           
           console.log(step);
         }}
         onFinalStepCompleted={async () => {
-          // Wenn Step 4 abgeschlossen ist, E-Mail im Hintergrund senden und sofort zur Danke-Seite weiterleiten
-          if (currentStep === 4) {
+          // Wenn Step 3 abgeschlossen ist, E-Mail im Hintergrund senden und sofort zur Danke-Seite weiterleiten
+          if (currentStep === 3) {
             // E-Mail im Hintergrund senden (ohne await, damit Weiterleitung sofort erfolgt)
             sendEmail().catch(err => {
               console.error('E-Mail konnte nicht gesendet werden:', err);
@@ -343,13 +343,12 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               Vielen Dank für Ihr Verständnis.
             </p>
           </div>
-        </Step>
-        <Step>
-          <h2 className="text-2xl font-semibold mb-4">
+
+          <h2 className="text-2xl font-semibold mb-4 mt-8">
             <span className="hidden md:inline">Instrumente auswählen</span>
             <span className="md:hidden">Instrumente wählen</span>
           </h2>
-          
+
           {/* Rabattübersicht für Mobile */}
           <div className="md:hidden text-sm text-gray-600 mb-4">
             <p>ab 15 Instrumenten <span className="font-bold">7%</span> Rabatt</p>
