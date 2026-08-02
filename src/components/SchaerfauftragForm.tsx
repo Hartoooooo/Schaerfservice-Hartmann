@@ -106,12 +106,9 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     return "pb-16"; // Unten; oben pt-12 wie Schärfkurs-Formular nach Page-Header
   };
 
-  // Dynamische Stepper-Höhe für Step 1 (Tabelle) und Step 2 (Formular)
+  // Einheitliche Mindesthöhe für alle Schritte, damit die Übergänge ruhig wirken
   const getStepperClass = () => {
-    if (currentStep === 1 || currentStep === 2) {
-      return "min-h-[700px]"; // Feste Höhe für Instrumentenauswahl und Kontaktdaten
-    }
-    return ""; // Normale Höhe für andere Steps
+    return "min-h-[700px]";
   };
 
   // Prüfe ob "Weiter" Button deaktiviert werden soll
