@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/Button";
 
 const canonical = "https://www.dentalschleifen.de/chirurgische-instrumente-schaerfen";
@@ -74,9 +75,9 @@ export default function ChirurgischeInstrumentePage() {
           <section className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 mb-16">
             <div>
               <div className="flex flex-wrap gap-2 mb-5">
-                <span className="badge text-sm">Scheren &amp; Nadelhalter</span>
-                <span className="badge text-sm">Aufarbeitung inklusive</span>
-                <span className="badge text-sm">Express möglich</span>
+                <Link href="/schaerfauftrag" className="badge text-sm transition hover:bg-blue-50 hover:text-blue-700 cursor-pointer">Scheren &amp; Nadelhalter</Link>
+                <Link href="/schaerfauftrag" className="badge text-sm transition hover:bg-blue-50 hover:text-blue-700 cursor-pointer">Aufarbeitung inklusive</Link>
+                <Link href="/schaerfauftrag" className="badge text-sm transition hover:bg-blue-50 hover:text-blue-700 cursor-pointer">Express möglich</Link>
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-5">
                 Chirurgische Instrumente schärfen
