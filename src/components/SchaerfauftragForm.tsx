@@ -34,7 +34,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     const distance = targetY - startY;
     if (Math.abs(distance) < 2) return;
 
-    const duration = 450; // ms – synchron zur Höhen-Animation des Step-Containers (0.45s)
+    const duration = 500; // ms – abgestimmt auf die Höhen-Animation des Step-Containers
     const startTime = performance.now();
     // easeOutCubic – passt zur Ease-Out-Kurve des Containers (schneller Start, sanftes Ausklingen)
     const ease = (t: number) => 1 - Math.pow(1 - t, 3);
