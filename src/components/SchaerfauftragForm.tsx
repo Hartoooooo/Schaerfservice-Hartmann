@@ -23,14 +23,32 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   const [quantities, setQuantities] = useState<number[]>(() => rows.map(() => 0));
   const [currentStep, setCurrentStep] = useState(1);
 
-  // Sanftes, einheitliches Hochscrollen zum Stepper bei jedem Schrittwechsel
+  // Sanftes, einheitliches und bewusst langsames Hochscrollen zum Stepper bei jedem Schrittwechsel
   const scrollToStepperTop = () => {
     if (typeof window === "undefined") return;
     const el = containerRef.current;
     if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY - 96; // Offset für fixe Navigation
-    // Jeden Schritt zuverlässig an den oberen Rand holen, damit kein manuelles Scrollen nötig ist
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+
+    const startY = window.scrollY;
+    const targetY = Math.max(0, el.getBoundingClientRect().top + startY - 96); // Offset für fixe Navigation
+    const distance = targetY - startY;
+    if (Math.abs(distance) < 2) return;
+
+    const duration = 900; // ms – bewusst langsam für ein ruhiges Wandern
+    const startTime = performance.now();
+    // easeInOutCubic für ein sanftes Beschleunigen und Abbremsen
+    const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / duration);
+      window.scrollTo(0, startY + distance * ease(progress));
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
   };
   
   // Kontaktformular State
