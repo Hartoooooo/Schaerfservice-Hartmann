@@ -34,7 +34,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     const distance = targetY - startY;
     if (Math.abs(distance) < 2) return;
 
-    const duration = 900; // ms – bewusst langsam für ein ruhiges Wandern
+    const duration = 600; // ms – ruhiges, aber zügiges Wandern nach oben
     const startTime = performance.now();
     // easeInOutCubic für ein sanftes Beschleunigen und Abbremsen
     const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
