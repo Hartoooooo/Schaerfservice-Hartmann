@@ -11,12 +11,11 @@ export const metadata: Metadata = {
       "Chirurgische Instrumente schärfen Berlin | Scheren, Pinzetten | Schärfservice Hartmann",
   },
   description:
-    "Chirurgische Instrumente schärfen lassen ✓ Scheren, Nadelhalter, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt beauftragen",
+    "Chirurgische Instrumente schärfen lassen ✓ Scheren, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt beauftragen",
   keywords: [
     "chirurgische Instrumente schärfen",
     "OP-Instrumente schärfen",
     "Scheren schärfen Dental",
-    "Needle holder schärfen",
     "chirurgische Instrumente schärfen Berlin",
   ],
   alternates: { canonical: "/chirurgische-instrumente-schaerfen" },
@@ -24,7 +23,7 @@ export const metadata: Metadata = {
     title:
       "Chirurgische Instrumente schärfen Berlin | Scheren, Pinzetten | Schärfservice Hartmann",
     description:
-      "Chirurgische Instrumente schärfen lassen ✓ Scheren, Nadelhalter, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt beauftragen",
+      "Chirurgische Instrumente schärfen lassen ✓ Scheren, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt beauftragen",
     url: canonical,
   },
 };
@@ -58,7 +57,7 @@ export default function ChirurgischeInstrumentePage() {
             "@type": "Service",
             name: "Chirurgische Instrumente schärfen Berlin",
             description:
-              "Professionelle Schärfung und Aufarbeitung dentaler OP-Instrumente wie Scheren, Nadelhalter und Pinzetten.",
+              "Professionelle Schärfung und Aufarbeitung dentaler OP-Instrumente wie Scheren und Pinzetten.",
             provider: {
               "@type": "LocalBusiness",
               name: "Schärfservice Hartmann",
@@ -75,7 +74,7 @@ export default function ChirurgischeInstrumentePage() {
           <section className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 mb-16">
             <div>
               <div className="flex flex-wrap gap-2 mb-5">
-                <Link href="/schaerfauftrag" className="badge text-sm transition hover:bg-blue-50 hover:text-blue-700 cursor-pointer">Scheren &amp; Nadelhalter</Link>
+                <Link href="/schaerfauftrag" className="badge text-sm transition hover:bg-blue-50 hover:text-blue-700 cursor-pointer">Scheren &amp; Pinzetten</Link>
                 <Link href="/schaerfauftrag" className="badge text-sm transition hover:bg-blue-50 hover:text-blue-700 cursor-pointer">Aufarbeitung inklusive</Link>
                 <Link href="/schaerfauftrag" className="badge text-sm transition hover:bg-blue-50 hover:text-blue-700 cursor-pointer">Express möglich</Link>
               </div>
@@ -86,7 +85,7 @@ export default function ChirurgischeInstrumentePage() {
                 </span>
               </h1>
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                Chirurgische Instrumente müssen höchsten Ansprüchen genügen. Scheren, Nadelhalter und Pinzetten, die nicht
+                Chirurgische Instrumente müssen höchsten Ansprüchen genügen. Scheren und Pinzetten, die nicht
                 mehr einwandfrei funktionieren, beeinträchtigen die Präzision bei oralen Eingriffen. Wir schärfen und
                 überholen chirurgische Dental-Instrumente professionell.
               </p>
@@ -123,7 +122,6 @@ export default function ChirurgischeInstrumentePage() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 { t: "Dentale Scheren", d: "Weichgewebs-, Naht- und Präparierscheren" },
-                { t: "Nadelhalter", d: "Prüfung und Aufarbeitung der Branchen" },
                 { t: "Pinzetten", d: "Anatomische und chirurgische Pinzetten" },
                 { t: "Raspatorien & Hebel", d: "Aufarbeitung der Arbeitsflächen" },
                 { t: "Luxationsinstrumente", d: "Schärfen der Arbeitskanten" },
@@ -145,7 +143,7 @@ export default function ChirurgischeInstrumentePage() {
               <div className="grid gap-4 sm:grid-cols-2">
                 {[
                   "Scheren schneiden nicht mehr sauber oder reißen das Gewebe",
-                  "Nadelhalter halten die Nadel nicht mehr sicher",
+                  "Pinzetten greifen nicht mehr präzise",
                   "Erhöhter Kraftaufwand bei der Anwendung",
                   "Sichtbare Abnutzung, Korrosion oder beschädigte Kanten",
                 ].map((text) => (
