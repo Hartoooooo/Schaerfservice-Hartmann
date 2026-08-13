@@ -143,7 +143,6 @@ export default function ChirurgischeInstrumentePage() {
               <div className="grid gap-4 sm:grid-cols-2">
                 {[
                   "Scheren schneiden nicht mehr sauber oder reißen das Gewebe",
-                  "Pinzetten greifen nicht mehr präzise",
                   "Erhöhter Kraftaufwand bei der Anwendung",
                   "Sichtbare Abnutzung, Korrosion oder beschädigte Kanten",
                 ].map((text) => (
