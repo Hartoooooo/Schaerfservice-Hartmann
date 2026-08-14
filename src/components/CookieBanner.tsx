@@ -94,7 +94,7 @@ export function CookieBanner() {
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                🍪 Cookie-Einstellungen
+                Cookie-Einstellungen
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten. 
