@@ -220,6 +220,42 @@ export default function DatenschutzPage() {
             </section>
 
             <section>
+              <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Anfahrtsberechnung im Schärfkurs-Formular</h2>
+              <p className="text-neutral-600 leading-relaxed">
+                Im Anfrageformular für unsere Schärfkurse können Sie Ihre Praxisadresse angeben. Zur Schätzung der
+                voraussichtlichen Anfahrtskosten wird die von Ihnen eingegebene Adresse (Straße, Postleitzahl und Ort)
+                in geografische Koordinaten umgewandelt und die Entfernung zu unserem Standort in Schöneiche bei Berlin
+                berechnet.
+              </p>
+              <p className="text-neutral-600 leading-relaxed mt-4">
+                Die Umwandlung der Adresse in Koordinaten (Geocoding) erfolgt über den Dienst <strong>Nominatim</strong>,
+                betrieben von der OpenStreetMap Foundation (OSMF), St John&apos;s Innovation Centre, Cowley Road,
+                Cambridge, CB4 0WS, Vereinigtes Königreich. Für das Vereinigte Königreich liegt ein
+                Angemessenheitsbeschluss der EU-Kommission vor.
+              </p>
+              <p className="text-neutral-600 leading-relaxed mt-4">
+                Die Anfrage an diesen Dienst wird ausschließlich über unseren Server ausgeführt. Ihre IP-Adresse wird
+                dabei <strong>nicht</strong> an OpenStreetMap übermittelt. Es werden ausschließlich die genannten
+                Adressdaten zur Standortbestimmung übertragen; weitere Angaben wie Name, E-Mail oder Telefonnummer werden
+                hierfür nicht verwendet. Die Adressdaten werden im Rahmen der Berechnung nicht dauerhaft gespeichert.
+              </p>
+              <p className="text-neutral-600 leading-relaxed mt-4">
+                Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, da die Anfahrtsschätzung Teil der von Ihnen angefragten
+                Angebotsstellung (vorvertragliche Maßnahme) ist. Weitere Informationen finden Sie in der
+                Datenschutzerklärung von OpenStreetMap unter{" "}
+                <a
+                  href="https://wiki.osmfoundation.org/wiki/Privacy_Policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--color-blue-600)] underline"
+                >
+                  wiki.osmfoundation.org/wiki/Privacy_Policy
+                </a>
+                .
+              </p>
+            </section>
+
+            <section>
               <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">Rechtsgrundlagen</h2>
               <p className="text-neutral-600 leading-relaxed">
                 Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertrag/Anbahnung) und

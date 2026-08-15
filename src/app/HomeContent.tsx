@@ -12,6 +12,8 @@ import React, { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { blogPosts as blogPostsData } from "@/lib/blogPosts";
 import { motion, AnimatePresence } from "motion/react";
+import StackingCards, { ServiceCardData } from "@/components/ui/stacking-card";
+import AiBadge from "@/components/ui/AiBadge";
 
 export default function HomeContent() {
   const [copiedArticleId, setCopiedArticleId] = useState<string | null>(null);
@@ -70,6 +72,59 @@ export default function HomeContent() {
   ], []);
 
   const blogPosts = useMemo(() => blogPostsData, []);
+
+  const serviceCards = useMemo<ServiceCardData[]>(() => [
+    {
+      title: "Instrumente schärfen",
+      description: (
+        <>
+          Professionelles <strong>Schärfen und Aufarbeiten</strong> <strong>aller dentalen und chirurgischen Instrumente</strong>. Höchste Qualität für optimale Behandlungsergebnisse durch präzise Handarbeit.
+        </>
+      ),
+      imageUrl: "/schleifenblau.png",
+      imageAlt: "Instrumente schärfen, professionelle Schärfung",
+      badgeIcon: (
+        <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
+        </svg>
+      ),
+      badgeText: "Herstellerunabhängig",
+      href: "/schaerfauftrag",
+      linkTitle: "Dentalinstrumente schärfen lassen, Online Auftrag",
+      buttonText: "Jetzt schärfen lassen",
+    },
+    {
+      title: "Express-Schärfen in Berlin",
+      description: "Wir kommen zu Ihnen in die Praxis und gehen erst, wenn alle Instrumente ihre ursprüngliche Schärfe wiedererlangt haben.",
+      imageUrl: "/3 spitzen.JPG",
+      imageAlt: "Express-Service Berlin, Vor-Ort-Schärfung",
+      badgeIcon: (
+        <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+      ),
+      badgeText: "Nur in Berlin & Umgebung",
+      href: "/express-schaerfen",
+      linkTitle: "Express Schärfung Berlin, Vor-Ort-Service",
+      buttonText: "Express-Service",
+    },
+    {
+      title: "Schärfkurs in Ihrer Praxis",
+      description: "Erlernen Sie die richtige Schärftechnik. Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.",
+      imageUrl: "/schaerfkursbild.png",
+      imageAlt: "Schärfkurse, professionelle Schulung",
+      aiImage: true,
+      badgeIcon: (
+        <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+        </svg>
+      ),
+      badgeText: "2h | 1-4 Teilnehmer",
+      href: "/schaerfkurs",
+      linkTitle: "Schärfkurse für Dentalinstrumente, professionelle Schulung",
+      buttonText: "Kurse entdecken",
+    },
+  ], []);
 
   /* Von Blog-Breadcrumb (Link zu /#expertentipps): zuverlässig zur Sektion scrollen */
   useEffect(() => {
@@ -548,7 +603,7 @@ export default function HomeContent() {
                 <span className="hidden lg:inline">Schärfauftrag starten</span>
               </Button>
               <WhiteButton 
-                href="/schaerfkurse" 
+                href="/schaerfkurs" 
                 className="text-base lg:text-lg flex-1 lg:flex-none"
                 hover="lift"
                 onClick={() => analytics.buttonClick('schaerfkurse_hero', 'homepage')}
@@ -641,7 +696,13 @@ export default function HomeContent() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Desktop: Stacking Cards */}
+          <div className="hidden lg:block">
+            <StackingCards services={serviceCards} />
+          </div>
+
+          {/* Mobil/Tablet: klassisches Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:hidden">
             {/* 1. Instrumenten schärfen */}
             <div className="p-0 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden">
               <div className="relative w-full h-64 mb-0 rounded-t-2xl overflow-hidden">
@@ -721,6 +782,7 @@ export default function HomeContent() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <AiBadge className="top-3 right-3" align="right" />
                 <div className="absolute bottom-0 left-0 right-0 px-8 pb-4">
                   <h3 ref={h3Ref} className="text-2xl font-semibold text-white">
                     Schärfkurs in Ihrer Praxis
@@ -739,7 +801,7 @@ export default function HomeContent() {
                   </svg>
                   <p className="text-sm text-blue-600 font-medium">2h | 1-4 Teilnehmer</p>
                 </div>
-                <Link href="/schaerfkurse" title="Schärfkurse für Dentalinstrumente, professionelle Schulung">
+                <Link href="/schaerfkurs" title="Schärfkurse für Dentalinstrumente, professionelle Schulung">
                   <InteractiveHoverButton className="w-full" text="Kurse entdecken" />
                 </Link>
               </div>

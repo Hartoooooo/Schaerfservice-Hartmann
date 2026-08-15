@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 const navItems = [
   { href: "/", label: "Startseite", mobileLabel: "Startseite" },
   { href: "/schaerfauftrag", label: "Schärfauftrag", mobileLabel: "Schärfauftrag" },
-  { href: "/schaerfkurse", label: "Schärfkurse", mobileLabel: "Schärfkurse" },
+  { href: "/schaerfkurs", label: "Schärfkurs", mobileLabel: "Schärfkurs" },
   { href: "/express-schaerfen", label: "Express", mobileLabel: "Express Schärfen" },
   { href: "/kontakt", label: "Kontakt", mobileLabel: "Kontakt" },
 ] as const;

@@ -14,7 +14,7 @@ export function FloatingActionButton() {
     "/impressum",
     "/datenschutz",
     "/schaerfauftrag",
-    "/schaerfkurse",
+    "/schaerfkurs",
     "/express-schaerfen",
     "/kontakt",
     "/cookie-einstellungen",

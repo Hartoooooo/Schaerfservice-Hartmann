@@ -17,6 +17,7 @@ const SEGMENT_LABELS: Record<string, string> = {
   schaerfauftrag: "Schärfauftrag",
   "express-schaerfen": "Express-Schärfen",
   schaerfkurse: "Schärfkurse",
+  schaerfkurs: "Schärfkurs",
   "scaler-schaerfen": "Scaler schärfen",
   "kueretten-schaerfen": "Küretten schärfen",
   "chirurgische-instrumente-schaerfen": "Chirurgische Instrumente",
