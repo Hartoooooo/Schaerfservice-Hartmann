@@ -384,7 +384,7 @@ export default function SchaerfkursForm() {
           </div>
           {travelCost != null && (
             <div className="flex items-center justify-between gap-4 text-sm text-gray-600">
-              <span>Anfahrt (ca. {distanceKm} km, hin &amp; zurück)</span>
+              <span>Anfahrt (ca. {distanceKm} km)</span>
               <span>ca. {travelCost}€</span>
             </div>
           )}
