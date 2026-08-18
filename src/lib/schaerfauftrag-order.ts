@@ -82,6 +82,13 @@ export async function buildFilledPdf(order: OrderPayload): Promise<Buffer> {
     }
   });
 
+  // Schnellstmögliche Bearbeitung immer ankreuzen
+  try {
+    form.getCheckBox("rs_schnell").check();
+  } catch {
+    // Feld existiert nicht – ignorieren
+  }
+
   // Kundendaten
   trySet("ansprechpartner", order.ansprechpartner);
   trySet("praxis", order.praxisname);
@@ -127,8 +134,7 @@ function totalsHtml(order: OrderPayload): string {
 }
 
 const BRAND = "#2563eb";
-const SITE_URL = process.env.MAIL_SITE_URL || "https://www.dentalschleifen.de";
-const SHIPPING_ADDRESS = "Schärfservice Hartmann, Petershagener Str. 27, 15566 Schöneiche bei Berlin";
+const SHIPPING_ADDRESS = "Schärfservice Hartmann · Petershagener Str. 27 · 15566 Schöneiche bei Berlin";
 
 function shell(title: string, inner: string): string {
   return `<!DOCTYPE html>
@@ -146,7 +152,7 @@ function shell(title: string, inner: string): string {
                 <div style="color:#dbeafe;font-size:13px;margin-top:2px;">${escapeHtml(title)}</div>
               </td>
               <td style="vertical-align:middle;text-align:right;width:96px;">
-                <img src="${SITE_URL}/SHLogo.png" alt="Schärfservice Hartmann Logo" width="72" style="width:72px;height:auto;display:inline-block;background:#ffffff;border-radius:8px;padding:6px;">
+                <img src="cid:sh-logo" alt="Schärfservice Hartmann Logo" width="72" style="width:72px;height:auto;display:inline-block;background:#ffffff;border-radius:8px;padding:6px;">
               </td>
             </tr>
           </table>
@@ -193,9 +199,16 @@ export function customerConfirmationHtml(order: OrderPayload): string {
     <p style="font-size:16px;margin:0 0 4px;">Vielen Dank für Ihren Auftrag!</p>
     <p style="font-size:14px;color:#4b5563;line-height:1.6;margin:0 0 24px;">
       Guten Tag ${escapeHtml(order.ansprechpartner)},<br>
-      wir haben Ihren Schärfauftrag erhalten und bestätigen diesen hiermit. Bitte senden Sie Ihre
-      Instrumente an <strong>${escapeHtml(SHIPPING_ADDRESS)}</strong>. Nach Eingang beginnen wir mit
-      der Bearbeitung (in der Regel ca. 5 Werktage).
+      wir haben Ihren Schärfauftrag erhalten und bestätigen diesen hiermit.
+      Bitte senden Sie Ihre Instrumente an folgende Adresse:
+    </p>
+
+    <p style="font-size:15px;font-weight:700;color:#111;text-align:center;margin:20px 0;padding:14px 16px;background:#eff6ff;border-radius:12px;line-height:1.6;">
+      ${escapeHtml(SHIPPING_ADDRESS)}
+    </p>
+
+    <p style="font-size:14px;color:#4b5563;line-height:1.6;margin:0 0 24px;">
+      Nach Eingang beginnen wir mit der Bearbeitung (in der Regel ca. 5 Werktage).
     </p>
 
     <h3 style="font-size:15px;margin:0 0 8px;color:#111;">Ihre Kontaktdaten</h3>

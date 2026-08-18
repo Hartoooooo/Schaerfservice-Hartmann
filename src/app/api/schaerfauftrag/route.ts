@@ -1,3 +1,4 @@
+import path from "path";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import {
@@ -63,6 +64,11 @@ export async function POST(request: Request) {
           filename: "Schaerfauftrag.pdf",
           content: pdfBuffer,
           contentType: "application/pdf",
+        },
+        {
+          filename: "SHLogo.png",
+          path: path.join(process.cwd(), "public", "SHLogo-email.png"),
+          cid: "sh-logo", // referenziert im HTML als src="cid:sh-logo"
         },
       ],
     });
