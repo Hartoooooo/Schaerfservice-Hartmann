@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { PDFDocument } from "pdf-lib";
+import { PDFDocument, TextAlignment } from "pdf-lib";
 
 // Datenstruktur, die vom Formular an die API-Route geschickt wird
 export interface OrderItem {
@@ -73,7 +73,13 @@ export async function buildFilledPdf(order: OrderPayload): Promise<Buffer> {
   order.allItemNames.forEach((name, idx) => {
     const item = order.items.find((i) => i.name === name);
     const qty = item ? item.quantity : 0;
-    trySet(`menge_${idx}`, qty > 0 ? String(qty) : "");
+    try {
+      const field = form.getTextField(`menge_${idx}`);
+      field.setAlignment(TextAlignment.Center);
+      field.setText(qty > 0 ? String(qty) : "");
+    } catch {
+      // Feld existiert nicht – ignorieren
+    }
   });
 
   // Kundendaten
@@ -121,6 +127,8 @@ function totalsHtml(order: OrderPayload): string {
 }
 
 const BRAND = "#2563eb";
+const SITE_URL = process.env.MAIL_SITE_URL || "https://www.dentalschleifen.de";
+const SHIPPING_ADDRESS = "Schärfservice Hartmann, Petershagener Str. 27, 15566 Schöneiche bei Berlin";
 
 function shell(title: string, inner: string): string {
   return `<!DOCTYPE html>
@@ -131,8 +139,17 @@ function shell(title: string, inner: string): string {
     <tr><td align="center">
       <table role="presentation" style="width:100%;max-width:640px;border-collapse:collapse;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
         <tr><td style="background:${BRAND};padding:24px 32px;">
-          <div style="color:#ffffff;font-size:18px;font-weight:700;">Schärfservice Hartmann</div>
-          <div style="color:#dbeafe;font-size:13px;margin-top:2px;">${escapeHtml(title)}</div>
+          <table role="presentation" style="width:100%;border-collapse:collapse;">
+            <tr>
+              <td style="vertical-align:middle;">
+                <div style="color:#ffffff;font-size:18px;font-weight:700;">Schärfservice Hartmann</div>
+                <div style="color:#dbeafe;font-size:13px;margin-top:2px;">${escapeHtml(title)}</div>
+              </td>
+              <td style="vertical-align:middle;text-align:right;width:96px;">
+                <img src="${SITE_URL}/SHLogo.png" alt="Schärfservice Hartmann Logo" width="72" style="width:72px;height:auto;display:inline-block;background:#ffffff;border-radius:8px;padding:6px;">
+              </td>
+            </tr>
+          </table>
         </td></tr>
         <tr><td style="padding:32px;">
           ${inner}
@@ -177,8 +194,8 @@ export function customerConfirmationHtml(order: OrderPayload): string {
     <p style="font-size:14px;color:#4b5563;line-height:1.6;margin:0 0 24px;">
       Guten Tag ${escapeHtml(order.ansprechpartner)},<br>
       wir haben Ihren Schärfauftrag erhalten und bestätigen diesen hiermit. Bitte senden Sie Ihre
-      Instrumente an unsere unten stehende Adresse. Nach Eingang beginnen wir mit der Bearbeitung
-      (in der Regel ca. 5 Werktage).
+      Instrumente an <strong>${escapeHtml(SHIPPING_ADDRESS)}</strong>. Nach Eingang beginnen wir mit
+      der Bearbeitung (in der Regel ca. 5 Werktage).
     </p>
 
     <h3 style="font-size:15px;margin:0 0 8px;color:#111;">Ihre Kontaktdaten</h3>
@@ -195,12 +212,7 @@ export function customerConfirmationHtml(order: OrderPayload): string {
         : ""
     }
 
-    <div style="margin-top:28px;padding:16px;background:#eff6ff;border-radius:12px;font-size:13px;color:#1e40af;line-height:1.6;">
-      <strong>Versandadresse für Ihre Instrumente:</strong><br>
-      Schärfservice Hartmann · Petershagener Str. 27 · 15566 Schöneiche bei Berlin
-    </div>
-
-    <p style="font-size:13px;color:#6b7280;line-height:1.6;margin:24px 0 0;">
+    <p style="font-size:13px;color:#6b7280;line-height:1.6;margin:28px 0 0;">
       Bei Rückfragen erreichen Sie uns unter +49 174 9342576 oder per Antwort auf diese E-Mail.
     </p>`;
   return shell("Ihre Auftragsbestätigung", inner);
