@@ -234,6 +234,37 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
       );
 
       console.log('E-Mail erfolgreich gesendet');
+
+      // Auftragsbestätigung (inkl. ausgefülltem PDF) an den Kunden senden
+      try {
+        await fetch('/api/schaerfauftrag', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            praxisname: formData.praxisname,
+            ansprechpartner: formData.ansprechpartner,
+            email: formData.email,
+            telefon: formData.telefon,
+            plz: formData.plz,
+            ort: formData.ort,
+            nachricht: formData.nachricht,
+            items: selectedInstruments,
+            totalQuantity,
+            subtotal: subtotalWithDiscount,
+            shipping,
+            totalNet,
+            vat,
+            totalGross,
+            discountInfo: templateParams.discount_info,
+            widerrufsrecht: checkboxes.widerrufsrecht,
+            agb: checkboxes.agbAkzeptiert,
+            allItemNames: rows.map(r => r.name),
+          }),
+        });
+      } catch (confirmError) {
+        // Bestätigungsmail scheitert nicht den gesamten Auftrag
+        console.error('Auftragsbestätigung an Kunden fehlgeschlagen:', confirmError);
+      }
       
     } catch (error) {
       console.error('Fehler beim Senden der E-Mail:', error);
