@@ -170,7 +170,7 @@ function shell(title: string, inner: string): string {
 <body style="margin:0;padding:0;background:#f4f5f7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1f2937;">
   <table role="presentation" style="width:100%;border-collapse:collapse;background:#f4f5f7;padding:24px 0;">
     <tr><td align="center">
-      <table role="presentation" style="width:100%;max-width:640px;border-collapse:collapse;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+      <table role="presentation" style="width:100%;max-width:640px;border-collapse:collapse;background:#ffffff;border:1px solid #e5e7eb;">
         <tr><td style="background:${BRAND};padding:24px 32px;">
           <table role="presentation" style="width:100%;border-collapse:collapse;">
             <tr>
