@@ -179,7 +179,7 @@ function shell(title: string, inner: string): string {
                 <div style="color:#dbeafe;font-size:13px;margin-top:2px;">${escapeHtml(title)}</div>
               </td>
               <td style="vertical-align:middle;text-align:right;width:96px;">
-                <img src="cid:sh-logo" alt="Schärfservice Hartmann Logo" width="72" style="width:72px;height:auto;display:inline-block;background:#ffffff;border-radius:8px;padding:6px;">
+                <img src="cid:sh-logo" alt="Schärfservice Hartmann Logo" width="72" style="width:72px;height:auto;display:inline-block;">
               </td>
             </tr>
           </table>
