@@ -1,6 +1,13 @@
 import fs from "fs";
 import path from "path";
-import { PDFDocument, TextAlignment } from "pdf-lib";
+import {
+  PDFDocument,
+  TextAlignment,
+  StandardFonts,
+  PDFName,
+  PDFArray,
+  PDFNumber,
+} from "pdf-lib";
 
 // Datenstruktur, die vom Formular an die API-Route geschickt wird
 export interface OrderItem {
@@ -59,6 +66,24 @@ export async function buildFilledPdf(order: OrderPayload): Promise<Buffer> {
   const bytes = fs.readFileSync(pdfPath);
   const pdfDoc = await PDFDocument.load(bytes);
   const form = pdfDoc.getForm();
+  const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+  // Blaue Feld-Hintergründe entfernen (weiß), damit sie beim Drucken nicht sichtbar sind
+  for (const field of form.getFields()) {
+    for (const widget of field.acroField.getWidgets()) {
+      const mk = widget.dict.lookup(PDFName.of("MK"));
+      if (mk && typeof (mk as { set?: unknown }).set === "function") {
+        const white = PDFArray.withContext(pdfDoc.context);
+        white.push(PDFNumber.of(1));
+        white.push(PDFNumber.of(1));
+        white.push(PDFNumber.of(1));
+        (mk as unknown as { set: (k: PDFName, v: PDFArray) => void }).set(
+          PDFName.of("BG"),
+          white
+        );
+      }
+    }
+  }
 
   const trySet = (fieldName: string, value: string) => {
     try {
@@ -96,6 +121,8 @@ export async function buildFilledPdf(order: OrderPayload): Promise<Buffer> {
   trySet("plzort", `${order.plz} ${order.ort}`.trim());
   trySet("datum", new Date().toLocaleDateString("de-DE"));
 
+  // Appearance neu generieren, damit die weißen Hintergründe greifen
+  form.updateFieldAppearances(font);
   form.flatten();
   const out = await pdfDoc.save();
   return Buffer.from(out);
