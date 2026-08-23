@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "motion/react";
+import ConversionTracking from "./ConversionTracking";
 
 export default function DankePage() {
   return (
     <div className="container-page pt-6 pb-16">
+      <ConversionTracking />
       <div className="max-w-3xl mx-auto">
         <motion.div
           className="surface p-8 md:p-12"

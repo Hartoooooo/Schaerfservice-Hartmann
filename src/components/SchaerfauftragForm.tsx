@@ -277,6 +277,24 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     return true;
   };
 
+  // Conversion-Wert (netto, ohne MwSt.) für Google Ads zwischenspeichern und zur Danke-Seite wechseln.
+  // Wert als Number mit Punkt-Dezimaltrennung, transaction_id verhindert Doppelzählung bei Reload.
+  const goToDanke = () => {
+    try {
+      sessionStorage.setItem(
+        'sa_conversion',
+        JSON.stringify({
+          value: Number(totalNet.toFixed(2)),
+          currency: 'EUR',
+          transaction_id: `SA-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        })
+      );
+    } catch {
+      // sessionStorage nicht verfügbar – Conversion wird dann ohne Wert nicht gefeuert
+    }
+    router.push('/danke');
+  };
+
   return (
     <div ref={containerRef} className={`container-page ${getPaddingClass()} pt-12 scroll-mt-24`}>
       <Stepper
@@ -292,7 +310,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               console.error('E-Mail konnte nicht gesendet werden:', err);
             });
             // Sofort zur Danke-Seite weiterleiten
-            router.push('/danke');
+            goToDanke();
             return; // Verhindere den Schritt-Wechsel, da wir weiterleiten
           }
 
@@ -311,7 +329,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               console.error('E-Mail konnte nicht gesendet werden:', err);
             });
             // Sofort zur Danke-Seite weiterleiten
-            router.push('/danke');
+            goToDanke();
           }
         }}
         backButtonText="Zurück"
@@ -321,7 +339,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
             sendEmail().catch(err => {
               console.error('E-Mail konnte nicht gesendet werden:', err);
             });
-            router.push('/danke');
+            goToDanke();
           };
 
           return (
