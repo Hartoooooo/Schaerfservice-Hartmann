@@ -3,8 +3,6 @@
 import { useState, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Stepper, { Step } from "@/components/Stepper";
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG, EMAILJS_TEMPLATES } from '@/lib/emailjs-config';
 type Row = {
   name: string;
   price: string;
@@ -156,7 +154,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     return undefined;
   };
 
-  // EmailJS-Integration (Supabase-Speicherung derzeit deaktiviert)
+  // Auftrag serverseitig per SMTP versenden (Kundenbestätigung inkl. BCC an den Betreiber)
   const sendEmail = async () => {
     setIsSubmitting(true);
     setSubmitError("");
@@ -255,19 +253,6 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
 
       if (!response.ok) {
         throw new Error(`Serverantwort ${response.status}`);
-      }
-
-      // Zusätzliche EmailJS-Benachrichtigung (best effort). Der Auftrag gilt bereits als
-      // erfolgreich, da der Server ihn bestätigt hat – ein Fehler hier blockiert nichts.
-      try {
-        await emailjs.send(
-          EMAILJS_CONFIG.SERVICE_ID,
-          EMAILJS_TEMPLATES.SCHAERFAUFTRAG,
-          templateParams,
-          EMAILJS_CONFIG.PUBLIC_KEY
-        );
-      } catch (emailjsError) {
-        console.error('EmailJS-Benachrichtigung fehlgeschlagen (unkritisch):', emailjsError);
       }
 
     } catch (error) {
