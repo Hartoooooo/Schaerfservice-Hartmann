@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 import {
   buildFilledPdf,
   customerConfirmationHtml,
+  ownerNotificationHtml,
   type OrderPayload,
 } from "@/lib/schaerfauftrag-order";
 
@@ -34,6 +35,8 @@ export async function POST(request: Request) {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   const from = process.env.MAIL_FROM || user;
+  // Betreiber-Adresse (Empfänger der internen Auftragsbenachrichtigung)
+  const ownerTo = process.env.MAIL_TO || "hartmann-schaerfservice@web.de";
 
   if (!host || !user || !pass) {
     console.error("SMTP-Konfiguration fehlt (SMTP_HOST/SMTP_USER/SMTP_PASS)");
@@ -53,31 +56,61 @@ export async function POST(request: Request) {
       auth: { user, pass },
     });
 
+    // Verbindung/Anmeldung vorab prüfen, damit Konfigurationsfehler klar erkennbar sind
+    await transporter.verify();
+
+    const logoAttachment = {
+      filename: "SHLogo.png",
+      path: path.join(process.cwd(), "public", "SHLogo-email.png"),
+      cid: "sh-logo", // referenziert im HTML als src="cid:sh-logo"
+    };
+
+    // 1) Interne Benachrichtigung an den Betreiber (kritisch – darf nicht verloren gehen)
     await transporter.sendMail({
       from: `"Schärfservice Hartmann" <${from}>`,
-      to: order.email,
-      replyTo: "hartmann-schaerfservice@web.de",
-      subject: "Ihre Auftragsbestätigung – Schärfservice Hartmann",
-      html: customerConfirmationHtml(order),
+      to: ownerTo,
+      replyTo: order.email,
+      subject: `Neuer Schärfauftrag – ${order.praxisname || order.ansprechpartner || order.email}`,
+      html: ownerNotificationHtml(order),
       attachments: [
         {
           filename: "Schaerfauftrag.pdf",
           content: pdfBuffer,
           contentType: "application/pdf",
         },
-        {
-          filename: "SHLogo.png",
-          path: path.join(process.cwd(), "public", "SHLogo-email.png"),
-          cid: "sh-logo", // referenziert im HTML als src="cid:sh-logo"
-        },
+        logoAttachment,
       ],
     });
 
-    return NextResponse.json({ ok: true });
+    // 2) Auftragsbestätigung an den Kunden (best effort – Fehler blockiert den Auftrag nicht,
+    //    da die Betreiber-Benachrichtigung bereits sicher raus ist)
+    let customerMailSent = true;
+    try {
+      await transporter.sendMail({
+        from: `"Schärfservice Hartmann" <${from}>`,
+        to: order.email,
+        replyTo: "hartmann-schaerfservice@web.de",
+        subject: "Ihre Auftragsbestätigung – Schärfservice Hartmann",
+        html: customerConfirmationHtml(order),
+        attachments: [
+          {
+            filename: "Schaerfauftrag.pdf",
+            content: pdfBuffer,
+            contentType: "application/pdf",
+          },
+          logoAttachment,
+        ],
+      });
+    } catch (customerError) {
+      customerMailSent = false;
+      console.error("Kundenbestätigung konnte nicht versendet werden:", customerError);
+    }
+
+    return NextResponse.json({ ok: true, customerMailSent });
   } catch (error) {
-    console.error("Fehler beim Versand der Auftragsbestätigung:", error);
+    console.error("Fehler beim Versand des Schärfauftrags:", error);
     return NextResponse.json(
-      { error: "Auftragsbestätigung konnte nicht versendet werden." },
+      { error: "Auftrag konnte nicht versendet werden." },
       { status: 500 }
     );
   }

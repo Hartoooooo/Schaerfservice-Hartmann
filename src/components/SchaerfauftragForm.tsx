@@ -225,50 +225,57 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         full_address: `${formData.praxisname}, ${formData.plz} ${formData.ort}`,
       };
 
-      // E-Mail senden
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_TEMPLATES.SCHAERFAUFTRAG,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
+      // Auftrag serverseitig verarbeiten: Betreiber-Benachrichtigung + Kundenbestätigung
+      // (inkl. ausgefülltem PDF). Dieser Aufruf ist die verbindliche Quelle der Wahrheit –
+      // er wird abgewartet, bevor zur Danke-Seite weitergeleitet wird.
+      const response = await fetch('/api/schaerfauftrag', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          praxisname: formData.praxisname,
+          ansprechpartner: formData.ansprechpartner,
+          email: formData.email,
+          telefon: formData.telefon,
+          plz: formData.plz,
+          ort: formData.ort,
+          nachricht: formData.nachricht,
+          items: selectedInstruments,
+          totalQuantity,
+          subtotal: subtotalWithDiscount,
+          shipping,
+          totalNet,
+          vat,
+          totalGross,
+          discountInfo: templateParams.discount_info,
+          widerrufsrecht: checkboxes.widerrufsrecht,
+          agb: checkboxes.agbAkzeptiert,
+          allItemNames: rows.map(r => r.name),
+        }),
+      });
 
-      console.log('E-Mail erfolgreich gesendet');
-
-      // Auftragsbestätigung (inkl. ausgefülltem PDF) an den Kunden senden
-      try {
-        await fetch('/api/schaerfauftrag', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            praxisname: formData.praxisname,
-            ansprechpartner: formData.ansprechpartner,
-            email: formData.email,
-            telefon: formData.telefon,
-            plz: formData.plz,
-            ort: formData.ort,
-            nachricht: formData.nachricht,
-            items: selectedInstruments,
-            totalQuantity,
-            subtotal: subtotalWithDiscount,
-            shipping,
-            totalNet,
-            vat,
-            totalGross,
-            discountInfo: templateParams.discount_info,
-            widerrufsrecht: checkboxes.widerrufsrecht,
-            agb: checkboxes.agbAkzeptiert,
-            allItemNames: rows.map(r => r.name),
-          }),
-        });
-      } catch (confirmError) {
-        // Bestätigungsmail scheitert nicht den gesamten Auftrag
-        console.error('Auftragsbestätigung an Kunden fehlgeschlagen:', confirmError);
+      if (!response.ok) {
+        throw new Error(`Serverantwort ${response.status}`);
       }
-      
+
+      // Zusätzliche EmailJS-Benachrichtigung (best effort). Der Auftrag gilt bereits als
+      // erfolgreich, da der Server ihn bestätigt hat – ein Fehler hier blockiert nichts.
+      try {
+        await emailjs.send(
+          EMAILJS_CONFIG.SERVICE_ID,
+          EMAILJS_TEMPLATES.SCHAERFAUFTRAG,
+          templateParams,
+          EMAILJS_CONFIG.PUBLIC_KEY
+        );
+      } catch (emailjsError) {
+        console.error('EmailJS-Benachrichtigung fehlgeschlagen (unkritisch):', emailjsError);
+      }
+
     } catch (error) {
-      console.error('Fehler beim Senden der E-Mail:', error);
-      setSubmitError('Fehler beim Senden des Auftrags. Bitte versuchen Sie es erneut.');
+      console.error('Fehler beim Senden des Auftrags:', error);
+      setSubmitError(
+        'Ihr Auftrag konnte nicht übermittelt werden. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut. ' +
+        'Falls das Problem bestehen bleibt, erreichen Sie uns telefonisch unter +49 174 9342576 oder per E-Mail an hartmann-schaerfservice@web.de.'
+      );
       setIsSubmitting(false);
       return false;
     }
@@ -295,6 +302,18 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     router.push('/danke');
   };
 
+  // Auftrag abschließen: Erst den (serverbestätigten) Versand ABWARTEN, dann weiterleiten.
+  // Nur bei Erfolg geht es zur Danke-Seite; bei Fehler bleibt der Nutzer auf der Seite und
+  // sieht die Fehlermeldung. Verhindert die frühere Race-Condition (Navigation bricht den
+  // laufenden Mail-Request ab – u.a. in Opera), bei der Aufträge ohne Mail verloren gingen.
+  const submitAndRedirect = async () => {
+    if (isSubmitting) return; // Doppelklick / Mehrfachabsenden verhindern
+    const success = await sendEmail();
+    if (success) {
+      goToDanke();
+    }
+  };
+
   return (
     <div ref={containerRef} className={`container-page ${getPaddingClass()} pt-12 scroll-mt-24`}>
       <Stepper
@@ -305,13 +324,9 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         onStepChange={async (step) => {
           // Beim Abschluss von Step 4 E-Mail im Hintergrund senden und sofort zur Danke-Seite weiterleiten
           if (currentStep === 3 && step > 3) {
-            // E-Mail im Hintergrund senden (ohne await, damit Weiterleitung sofort erfolgt)
-            sendEmail().catch(err => {
-              console.error('E-Mail konnte nicht gesendet werden:', err);
-            });
-            // Sofort zur Danke-Seite weiterleiten
-            goToDanke();
-            return; // Verhindere den Schritt-Wechsel, da wir weiterleiten
+            // Versand abwarten und nur bei Erfolg weiterleiten (kein Schritt-Wechsel)
+            submitAndRedirect();
+            return;
           }
 
           setCurrentStep(step);
@@ -322,24 +337,17 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
           console.log(step);
         }}
         onFinalStepCompleted={async () => {
-          // Wenn Step 3 abgeschlossen ist, E-Mail im Hintergrund senden und sofort zur Danke-Seite weiterleiten
+          // Wenn Step 3 abgeschlossen ist: Versand abwarten und nur bei Erfolg weiterleiten
           if (currentStep === 3) {
-            // E-Mail im Hintergrund senden (ohne await, damit Weiterleitung sofort erfolgt)
-            sendEmail().catch(err => {
-              console.error('E-Mail konnte nicht gesendet werden:', err);
-            });
-            // Sofort zur Danke-Seite weiterleiten
-            goToDanke();
+            submitAndRedirect();
           }
         }}
         backButtonText="Zurück"
         nextButtonText="Weiter"
         renderFooter={({ currentStep, isLastStep, handleBack, handleNext, handleComplete }) => {
           const handleCompleteWithEmail = () => {
-            sendEmail().catch(err => {
-              console.error('E-Mail konnte nicht gesendet werden:', err);
-            });
-            goToDanke();
+            // Versand abwarten und nur bei Erfolg weiterleiten
+            submitAndRedirect();
           };
 
           return (

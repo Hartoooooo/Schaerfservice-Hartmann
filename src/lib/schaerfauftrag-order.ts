@@ -220,6 +220,36 @@ const contactBlock = (order: OrderPayload) => `
     <tr><td style="padding:2px 0;color:#6b7280;">Telefon</td><td style="padding:2px 0;">${escapeHtml(order.telefon || "–")}</td></tr>
   </table>`;
 
+/** HTML-Benachrichtigung an den Betreiber (Schärfservice Hartmann) */
+export function ownerNotificationHtml(order: OrderPayload): string {
+  const inner = `
+    <p style="font-size:16px;margin:0 0 4px;">Neuer Schärfauftrag eingegangen</p>
+    <p style="font-size:14px;color:#4b5563;line-height:1.6;margin:0 0 24px;">
+      Eingegangen am ${escapeHtml(new Date().toLocaleString("de-DE"))}.
+    </p>
+
+    <h3 style="font-size:15px;margin:0 0 8px;color:#111;">Kontaktdaten</h3>
+    ${contactBlock(order)}
+
+    <h3 style="font-size:15px;margin:24px 0 8px;color:#111;">Auftragsübersicht</h3>
+    ${itemsTable(order)}
+    ${totalsHtml(order)}
+
+    <p style="font-size:13px;color:#6b7280;line-height:1.6;margin:16px 0 0;">
+      Rabatt: ${escapeHtml(order.discountInfo || "Kein Rabatt")} ·
+      Widerrufsrecht: ${order.widerrufsrecht ? "Ja" : "Nein"} ·
+      AGB: ${order.agb ? "Ja" : "Nein"}
+    </p>
+
+    ${
+      order.nachricht
+        ? `<h3 style="font-size:15px;margin:24px 0 8px;color:#111;">Nachricht des Kunden</h3>
+           <p style="font-size:14px;color:#4b5563;line-height:1.6;margin:0;">${escapeHtml(order.nachricht)}</p>`
+        : ""
+    }`;
+  return shell("Neuer Schärfauftrag", inner);
+}
+
 /** HTML-Auftragsbestätigung an den Kunden */
 export function customerConfirmationHtml(order: OrderPayload): string {
   const inner = `
