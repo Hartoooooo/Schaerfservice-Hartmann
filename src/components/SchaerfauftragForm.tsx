@@ -223,12 +223,18 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         full_address: `${formData.praxisname}, ${formData.plz} ${formData.ort}`,
       };
 
-      // Auftrag serverseitig verarbeiten: Betreiber-Benachrichtigung + Kundenbestätigung
-      // (inkl. ausgefülltem PDF). Dieser Aufruf ist die verbindliche Quelle der Wahrheit –
-      // er wird abgewartet, bevor zur Danke-Seite weitergeleitet wird.
-      const response = await fetch('/api/schaerfauftrag', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      // Auftrag serverseitig verarbeiten: Auftragsbestätigung an den Kunden inkl. BCC an
+      // den Betreiber (mit ausgefülltem PDF). Dieser Aufruf ist die verbindliche Quelle der
+      // Wahrheit – er wird abgewartet, bevor zur Danke-Seite weitergeleitet wird.
+      // Timeout, damit ein hängender Versand zur Fehlermeldung wird statt ewig zu laden.
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 30000);
+      let response: Response;
+      try {
+        response = await fetch('/api/schaerfauftrag', {
+          signal: controller.signal,
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           praxisname: formData.praxisname,
           ansprechpartner: formData.ansprechpartner,
@@ -249,7 +255,10 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
           agb: checkboxes.agbAkzeptiert,
           allItemNames: rows.map(r => r.name),
         }),
-      });
+        });
+      } finally {
+        clearTimeout(timeout);
+      }
 
       if (!response.ok) {
         throw new Error(`Serverantwort ${response.status}`);
@@ -341,7 +350,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                 <div className="flex w-full justify-end">
                   <button
                     onClick={handleNext}
-                    disabled={isNextButtonDisabled()}
+                    disabled={isNextButtonDisabled() || isSubmitting}
                     className={`duration-350 flex items-center justify-center rounded-full py-1.5 px-3.5 font-medium tracking-tight transition ${
                       isNextButtonDisabled()
                         ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -361,7 +370,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   </button>
                   <button
                     onClick={isLastStep ? handleCompleteWithEmail : handleNext}
-                    disabled={isNextButtonDisabled()}
+                    disabled={isNextButtonDisabled() || isSubmitting}
                     className={`duration-350 flex items-center justify-center rounded-full py-1.5 px-3.5 font-medium tracking-tight transition ${
                       isNextButtonDisabled()
                         ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
