@@ -293,6 +293,12 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     } catch {
       // sessionStorage nicht verfügbar – Conversion wird dann ohne Wert nicht gefeuert
     }
+    // Zugriffs-Flag: erlaubt den Aufruf der Danke-Seite nur nach echtem Auftragsabschluss.
+    try {
+      sessionStorage.setItem('sa_order_completed', '1');
+    } catch {
+      // ignorieren
+    }
     router.push('/danke');
   };
 

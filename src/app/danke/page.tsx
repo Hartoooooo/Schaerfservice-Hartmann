@@ -1,9 +1,33 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 import ConversionTracking from "./ConversionTracking";
 
 export default function DankePage() {
+  const router = useRouter();
+  const [allowed, setAllowed] = useState(false);
+
+  // Zugriffsschutz: Die Danke-Seite darf nur nach einem echten Auftragsabschluss
+  // erreicht werden. Fehlt das Flag (Direktaufruf, Bookmark, geteilter Link),
+  // wird auf die Startseite umgeleitet.
+  useEffect(() => {
+    let ok = false;
+    try {
+      ok = sessionStorage.getItem("sa_order_completed") === "1";
+    } catch {
+      ok = false;
+    }
+    if (ok) {
+      setAllowed(true);
+    } else {
+      router.replace("/");
+    }
+  }, [router]);
+
+  if (!allowed) return null;
+
   return (
     <div className="container-page pt-6 pb-16">
       <ConversionTracking />
