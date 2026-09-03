@@ -208,7 +208,10 @@ export default function SchaerfkursForm() {
     <div id="anfrage" className="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden scroll-mt-28">
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-3 sm:px-10 py-6 flex items-start justify-between gap-1 sm:gap-4">
         <div className="min-w-0">
-          <h2 className="text-2xl font-semibold text-white whitespace-nowrap leading-none">Kurs anfragen</h2>
+          <h2 className="text-2xl font-semibold text-white whitespace-nowrap leading-none">
+            <span className="sm:hidden">Schärfkurs</span>
+            <span className="hidden sm:inline">Kurs anfragen</span>
+          </h2>
           <p className="hidden sm:block text-sm text-blue-100 mt-1">Unverbindlich, Antwort meist innerhalb von 24h</p>
         </div>
         <div className="shrink-0 text-right">
