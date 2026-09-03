@@ -11,7 +11,7 @@ type Row = {
 };
 
 const rows: Row[] = [
-  { name: "Scaler & Küretten ( Universal, Gracey )", price: "€7,11", price7: "€6,61", price15: "€6,04" },
+  { name: "Scaler & Küretten", price: "€7,11", price7: "€6,61", price15: "€6,04" },
   { name: "Exkavatoren", price: "€7,11", price7: "€6,61", price15: "€6,04" },
   { name: "Knochenküretten & scharfe Löffel", price: "€7,11", price7: "€6,61", price15: "€6,04" },
   { name: "Meißel & Gingivalrandschräger", price: "€7,11", price7: "€6,61", price15: "€6,04" },

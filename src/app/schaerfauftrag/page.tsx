@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import SchaerfauftragForm from "@/components/SchaerfauftragForm";
 import { Container } from "@/components/Container";
 
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 };
 
 const instrumentRows = [
-  { name: "Scaler & Küretten ( Universal, Gracey )", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
+  { name: "Scaler & Küretten", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
   { name: "Exkavatoren", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
   { name: "Knochenküretten & scharfe Löffel", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
   { name: "Meißel & Gingivalrandschräger", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
@@ -89,7 +90,29 @@ export default function SchaerfauftragPage() {
       />
 
       {/* Page Header */}
-      <div>
+      <section className="relative h-[50svh] min-h-[360px] sm:hidden">
+        <Image
+          src="/schleifen bild.JPG"
+          alt="Dentalinstrument wird auf einer Schärfplatte geschärft"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/45" />
+        <div className="relative z-10 flex h-full items-end px-6 pb-10 text-white">
+          <div>
+            <h1 className="text-[1.625rem] leading-tight font-semibold mb-3">
+              Instrumente einschicken &amp; schärfen lassen
+            </h1>
+            <p className="text-base leading-relaxed text-white/90">
+              Online-Auftrag in 3&nbsp;Minuten &middot; ca. 5&nbsp;Werktage Bearbeitungszeit &middot; ab&nbsp;5,69&nbsp;€ pro Instrument
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="hidden sm:block">
         <Container>
           <div className="max-w-3xl mx-auto pt-6 pb-10 text-center">
             <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-3">

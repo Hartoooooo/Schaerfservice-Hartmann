@@ -86,6 +86,8 @@ export default function SchaerfkursForm() {
 
     try {
       const computedTotal = 285 + Math.max(0, participantCount - 2) * 45;
+      const travelKm = distanceKm;
+      const computedTravelCost = travelKm != null ? Math.round(travelKm * PRICE_PER_KM) : null;
       const adresse = [
         formData.street.trim(),
         formData.practiceName.trim(),
@@ -110,10 +112,11 @@ export default function SchaerfkursForm() {
         grundpreis: "285€ bis 2 Teilnehmer",
         zusaetzliche_teilnehmer: participantCount > 2 ? participantCount - 2 : 0,
         zusaetzliche_kosten_eur: participantCount > 2 ? (participantCount - 2) * 45 : 0,
-        anfahrt: "0,35€ je Kilometer (hin & zurück)",
-        anfahrt_km_einfach: distanceKm ?? "nicht ermittelt",
-        anfahrt_kosten_eur: distanceKm != null ? Math.round(distanceKm * 2 * PRICE_PER_KM) : "nicht ermittelt",
-        gesamt_inkl_anfahrt_eur: distanceKm != null ? computedTotal + Math.round(distanceKm * 2 * PRICE_PER_KM) : computedTotal,
+        anfahrt: "0,35€ je Kilometer (einfache Strecke)",
+        anfahrt_km_einfach: travelKm ?? "nicht ermittelt",
+        anfahrt_km_gesamt: travelKm ?? "nicht ermittelt",
+        anfahrt_kosten_eur: computedTravelCost ?? "nicht ermittelt",
+        gesamt_inkl_anfahrt_eur: computedTravelCost != null ? computedTotal + computedTravelCost : computedTotal,
         anfrage_datum: new Date().toLocaleDateString("de-DE"),
         anfrage_uhrzeit: new Date().toLocaleTimeString("de-DE"),
         website: "www.dentalschleifen.de",
@@ -179,8 +182,8 @@ export default function SchaerfkursForm() {
   };
 
   const totalPrice = 285 + Math.max(0, participantCount - 2) * 45;
-  // Anfahrt hin & zurück -> doppelte Strecke.
-  const travelCost = distanceKm != null ? Math.round(distanceKm * 2 * PRICE_PER_KM) : null;
+  const travelKm = distanceKm;
+  const travelCost = travelKm != null ? Math.round(travelKm * PRICE_PER_KM) : null;
   const isValid =
     formData.date &&
     formData.time &&
@@ -203,14 +206,14 @@ export default function SchaerfkursForm() {
 
   return (
     <div id="anfrage" className="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden scroll-mt-28">
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 sm:px-10 py-6 flex items-center justify-between gap-4 flex-wrap">
-        <div>
-          <h2 className="text-xl sm:text-2xl font-semibold text-white">Kurs anfragen</h2>
-          <p className="text-sm text-blue-100 mt-1">Unverbindlich, Antwort meist innerhalb von 24h</p>
+      <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-3 sm:px-10 py-6 flex items-start justify-between gap-1 sm:gap-4">
+        <div className="min-w-0">
+          <h2 className="text-2xl font-semibold text-white whitespace-nowrap leading-none">Kurs anfragen</h2>
+          <p className="hidden sm:block text-sm text-blue-100 mt-1">Unverbindlich, Antwort meist innerhalb von 24h</p>
         </div>
-        <div className="text-right">
-          <div className="text-2xl sm:text-3xl font-semibold text-white">{totalPrice}€</div>
-          <div className="text-xs text-blue-100">zzgl. MwSt. &amp; 0,35€/km Anfahrt</div>
+        <div className="shrink-0 text-right">
+          <div className="text-2xl sm:text-3xl font-semibold text-white leading-none">{totalPrice}€</div>
+          <div className="mt-1 whitespace-nowrap text-[10px] sm:text-xs leading-tight text-blue-100">zzgl. MwSt. &amp; 0,35€/km Anfahrt</div>
         </div>
       </div>
 
@@ -384,7 +387,7 @@ export default function SchaerfkursForm() {
           </div>
           {travelCost != null && (
             <div className="flex items-center justify-between gap-4 text-sm text-gray-600">
-              <span>Anfahrt (ca. {distanceKm} km)</span>
+              <span>Anfahrt (ca. {travelKm} km)</span>
               <span>ca. {travelCost}€</span>
             </div>
           )}
