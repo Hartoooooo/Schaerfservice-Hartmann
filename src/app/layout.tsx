@@ -9,6 +9,7 @@ import { MicrosoftClarity } from "@/components/MicrosoftClarity";
 import { CookieBanner } from "@/components/CookieBanner";
 import { FloatingActionButton } from "@/components/FloatingActionButton";
 import { HeroImagePreload } from "@/components/HeroImagePreload";
+import { LanguageTranslator } from "@/components/LanguageTranslator";
 import Image from "next/image";
 import Script from "next/script";
 
@@ -59,6 +60,7 @@ export const metadata: Metadata = {
     languages: {
       'de-DE': '/',
       'de': '/',
+      'en': '/en',
     },
   },
   openGraph: {
@@ -196,6 +198,7 @@ export default function RootLayout({
         `}
       </Script>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+        <LanguageTranslator />
         
         {/* Preload Hero-Bild für schnelles Laden beim ersten Besuch */}
         <HeroImagePreload />

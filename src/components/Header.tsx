@@ -7,9 +7,11 @@ import { Navigation } from "./Navigation";
 
 export function Header() {
   const pathname = usePathname();
+  const isEnglish = pathname === "/en" || pathname.startsWith("/en/");
+  const basePath = isEnglish ? pathname.replace(/^\/en(?=\/|$)/, "") || "/" : pathname;
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isHomePage = pathname === "/";
+  const isHomePage = basePath === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,20 +36,18 @@ export function Header() {
       }`}
     >
       <div className="container-page flex items-center justify-between h-16">
-        <Link href="/" className="relative z-[70]">
+        <Link href={isEnglish ? "/en" : "/"} className="relative z-[70]">
           <span className={`text-xl sm:text-2xl font-semibold tracking-tight transition-colors duration-300 ${
             isTransparentMobile ? 'text-white md:text-gray-900' : 'text-gray-900'
           }`}>
             Schärfservice Hartmann
           </span>
         </Link>
-        <Navigation 
-          isTransparentMobile={isTransparentMobile} 
+        <Navigation
+          isTransparentMobile={isTransparentMobile}
           onMenuToggle={setIsMobileMenuOpen}
         />
       </div>
     </header>
   );
 }
-
-

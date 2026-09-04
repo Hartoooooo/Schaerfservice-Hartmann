@@ -36,7 +36,9 @@ function humanizeSegment(segment: string): string {
 }
 
 export function PageBreadcrumbs() {
-  const pathname = usePathname();
+  const rawPathname = usePathname();
+  const isEnglish = rawPathname === "/en" || rawPathname.startsWith("/en/");
+  const pathname = isEnglish ? rawPathname.replace(/^\/en(?=\/|$)/, "") || "/" : rawPathname;
   if (!pathname || pathname === "/" || LEGAL_PATHS.has(pathname)) {
     return null;
   }
@@ -44,7 +46,8 @@ export function PageBreadcrumbs() {
   const segments = pathname.split("/").filter(Boolean);
   if (segments.length === 0) return null;
 
-  const items: { href: string; label: string }[] = [{ href: "/", label: "Startseite" }];
+  const localize = (href: string) => isEnglish ? (href === "/" ? "/en" : `/en${href}`) : href;
+  const items: { href: string; label: string }[] = [{ href: localize("/"), label: "Startseite" }];
 
   let acc = "";
   for (let i = 0; i < segments.length; i++) {
@@ -56,7 +59,7 @@ export function PageBreadcrumbs() {
     } else {
       label = humanizeSegment(segments[i]);
     }
-    const href = acc === "/blog" ? "/#expertentipps" : acc;
+    const href = localize(acc === "/blog" ? "/#expertentipps" : acc);
     items.push({ href, label });
   }
 
