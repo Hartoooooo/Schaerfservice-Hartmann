@@ -794,6 +794,18 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               </div>
             </div>
 
+            {/* Hinweis zu Betriebsferien */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <h3 className="text-lg font-medium mb-2 text-gray-900">Hinweis zu unseren Betriebsferien</h3>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Im Zeitraum vom 19.10. bis 30.10.2026 sind wir aufgrund unserer versetzten Betriebsferien nur teilweise für Sie erreichbar.
+                Wir bitten um Ihr Verständnis, dass es daher gegebenenfalls zu längeren Bearbeitungszeiten kommen kann.
+              </p>
+              <p className="text-sm text-gray-700 leading-relaxed mt-2">
+                Ab dem 02.11.2026 sind wir wieder vollumfänglich und wie gewohnt für Sie da.
+              </p>
+            </div>
+
             {/* Fehlermeldung anzeigen */}
             {submitError && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-4 mt-6">
