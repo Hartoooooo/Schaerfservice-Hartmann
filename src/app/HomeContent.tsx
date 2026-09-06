@@ -648,7 +648,7 @@ export default function HomeContent() {
 
       {/* Stats Section */}
       <section ref={statsRef} className="py-8 lg:py-20 bg-gray-50">
-        <Container>
+        <Container className="max-sm:px-3">
           <div className="grid grid-cols-3 gap-2 sm:gap-8 text-center">
             {[
               {title:"450+",subtitle:"Zufriedene Kunden", value: count1, suffix: "+"},
@@ -657,7 +657,7 @@ export default function HomeContent() {
             ].map((item) => (
               <div key={item.title} className="space-y-1 lg:space-y-2">
                 <div className="flex items-center justify-center gap-1 lg:gap-2">
-                  <div className="text-2xl sm:text-4xl lg:text-5xl font-bold text-blue-600">
+                  <div className="whitespace-nowrap text-2xl sm:text-4xl lg:text-5xl font-bold text-blue-600">
                     {item.value.toLocaleString('de-DE')}{item.suffix}
                   </div>
                   {item.title === "450+" && (
