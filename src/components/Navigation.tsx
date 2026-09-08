@@ -256,10 +256,10 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
             </svg>
           </summary>
           <div className="absolute right-0 top-full mt-1 min-w-36 overflow-hidden rounded-xl border border-gray-200 bg-white py-1 text-sm text-gray-900 shadow-[var(--shadow-strong)]">
-            <a href={pathname} data-no-localize onClick={() => { document.cookie = "site-language=de; path=/; SameSite=Lax"; }} hrefLang="de" className={`flex items-center gap-2 px-3 py-2.5 hover:bg-gray-50 ${!isEnglish ? "font-semibold text-blue-700" : ""}`}>
+            <a href={pathname} data-no-localize hrefLang="de" className={`flex items-center gap-2 px-3 py-2.5 hover:bg-gray-50 ${!isEnglish ? "font-semibold text-blue-700" : ""}`}>
               <FlagIcon country="de" /> Deutsch
             </a>
-            <a href={englishHref} hrefLang="en" className={`flex items-center gap-2 px-3 py-2.5 hover:bg-gray-50 ${isEnglish ? "font-semibold text-blue-700" : ""}`}>
+            <a href={englishHref} hrefLang="en" rel="nofollow" className={`flex items-center gap-2 px-3 py-2.5 hover:bg-gray-50 ${isEnglish ? "font-semibold text-blue-700" : ""}`}>
               <FlagIcon country="gb" /> English
             </a>
           </div>
@@ -396,10 +396,10 @@ export function Navigation({ isTransparentMobile = false, onMenuToggle }: Naviga
                   </svg>
                 </summary>
                 <div className="border-t border-gray-100 bg-gray-50 py-2">
-                  <a href={pathname} data-no-localize onClick={() => { document.cookie = "site-language=de; path=/; SameSite=Lax"; }} hrefLang="de" className="flex items-center gap-3 px-6 py-3 text-base font-medium text-gray-700">
+                  <a href={pathname} data-no-localize hrefLang="de" className="flex items-center gap-3 px-6 py-3 text-base font-medium text-gray-700">
                     <FlagIcon country="de" className="h-6 w-6" /> Deutsch
                   </a>
-                  <a href={englishHref} hrefLang="en" className="flex items-center gap-3 px-6 py-3 text-base font-medium text-gray-700">
+                  <a href={englishHref} hrefLang="en" rel="nofollow" className="flex items-center gap-3 px-6 py-3 text-base font-medium text-gray-700">
                     <FlagIcon country="gb" className="h-6 w-6" /> English
                   </a>
                 </div>

@@ -60,7 +60,6 @@ export const metadata: Metadata = {
     languages: {
       'de-DE': '/',
       'de': '/',
-      'en': '/en',
     },
   },
   openGraph: {

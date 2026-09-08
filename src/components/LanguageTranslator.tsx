@@ -30,8 +30,7 @@ export function LanguageTranslator() {
   useEffect(() => {
     const isEnglish =
       window.location.pathname === "/en" ||
-      window.location.pathname.startsWith("/en/") ||
-      document.cookie.includes("site-language=en");
+      window.location.pathname.startsWith("/en/");
     if (!isEnglish) return;
 
     document.documentElement.lang = "en";

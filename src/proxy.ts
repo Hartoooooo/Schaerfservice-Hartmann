@@ -9,23 +9,14 @@ export function proxy(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = pathname.replace(/^\/en(?=\/|$)/, "") || "/";
     const response = NextResponse.rewrite(url);
-    response.cookies.set("site-language", "en", { path: "/", sameSite: "lax" });
+    response.headers.set("Content-Language", "en");
+    response.headers.set("X-Robots-Tag", "noindex, follow");
     return response;
   }
 
-  const languagePreference = request.cookies.get("site-language")?.value;
-  if (languagePreference === "de") return NextResponse.next();
-
-  const country =
-    request.headers.get("x-vercel-ip-country") ??
-    request.headers.get("cf-ipcountry");
-  const hasForeignCountry = country !== null && country !== "DE" && country !== "XX";
-  const useEnglish = languagePreference === "en" || hasForeignCountry;
-  if (!useEnglish) return NextResponse.next();
-
-  const redirectUrl = request.nextUrl.clone();
-  redirectUrl.pathname = pathname === "/" ? "/en" : `/en${pathname}`;
-  return NextResponse.redirect(redirectUrl);
+  const response = NextResponse.next();
+  response.headers.set("Content-Language", "de");
+  return response;
 }
 
 export const config = {
