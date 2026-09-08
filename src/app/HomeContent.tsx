@@ -563,7 +563,7 @@ export default function HomeContent() {
     
     <div>
       {/* Hero Section */}
-      <section className="relative h-[75vh] lg:h-screen flex items-center overflow-hidden">
+      <section className="relative h-[75vh] min-h-[560px] lg:h-screen lg:min-h-0 flex items-stretch lg:items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/schaerfservice-werkstatt-berlin.jpg" 
@@ -579,23 +579,25 @@ export default function HomeContent() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" style={{background: 'linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 50%, transparent 80%)'}}></div>
         </div>
         
-        <Container className="relative z-10 pt-20 w-full">
-          <div className="text-left">
+        <Container className="relative z-10 h-full lg:h-auto pt-28 pb-6 sm:pb-8 lg:pt-20 lg:pb-0 w-full">
+          <div className="text-left h-full lg:h-auto flex flex-col justify-end lg:block">
             {/* Visuelle Überschrift – H1 liegt im SEO-Textblock weiter unten */}
-            <p className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight mb-8 text-white">
-              <span className="text-blue-600">Schärfe</span> in Perfektion
+            <p className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight mb-4 lg:mb-8 text-white">
+              <span className="text-blue-600">Schärfe</span>
+              <br className="sm:hidden" />
+              <span className="hidden sm:inline"> </span>in Perfektion
             </p>
             
-            <p className="hidden lg:block text-xl sm:text-2xl text-white/90 leading-relaxed mb-12 max-w-4xl">
-              <strong>Dentale/Chirurgische Instrumente schärfen & schleifen</strong><br />
-              <strong>Präzisionsinstrumente aufarbeiten</strong><br />
-              <strong>Schärfkurse</strong> in ihrer Praxis.
+            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-white/90 leading-relaxed mb-8 lg:mb-12 max-w-4xl">
+              <strong>Dentale/Chirurgische Instrumente</strong> schärfen<br />
+              <strong>Präzisionsinstrumente</strong> aufarbeiten<br />
+              <strong>Scaler & Küretten</strong> fachgerecht schärfen.
             </p>
             
-            <div className="flex flex-row gap-4 w-full lg:w-auto">
+            <div className="flex flex-row gap-3 sm:gap-4 w-full lg:w-auto">
               <Button 
                 href="/schaerfauftrag" 
-                className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 text-base lg:text-lg font-medium flex-1 lg:flex-none"
+                className="bg-blue-600 text-white hover:bg-blue-700 px-4 sm:px-8 py-4 text-sm sm:text-base lg:text-lg font-medium whitespace-nowrap flex-1 lg:flex-none"
                 hover="lift"
                 onClick={() => analytics.buttonClick('schaerfauftrag_hero', 'homepage')}
               >
@@ -604,7 +606,7 @@ export default function HomeContent() {
               </Button>
               <WhiteButton 
                 href="/schaerfkurs" 
-                className="text-base lg:text-lg flex-1 lg:flex-none"
+                className="px-4 py-4 text-sm sm:text-base lg:text-lg whitespace-nowrap flex-1 lg:flex-none"
                 hover="lift"
                 onClick={() => analytics.buttonClick('schaerfkurse_hero', 'homepage')}
               >
