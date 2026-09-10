@@ -16,6 +16,10 @@ export default function DankePage() {
     let ok = false;
     try {
       ok = sessionStorage.getItem("sa_order_completed") === "1";
+      // Flag sofort verbrauchen: Die Danke-Seite ist genau einmal erreichbar.
+      // Ein Reload findet das Flag nicht mehr und wird auf die Startseite
+      // umgeleitet – dadurch entsteht in Analytics kein zweiter /danke-Aufruf.
+      sessionStorage.removeItem("sa_order_completed");
     } catch {
       ok = false;
     }
