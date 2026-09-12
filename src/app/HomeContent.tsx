@@ -21,13 +21,42 @@ export default function HomeContent() {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
+  const [activeBlogIndex, setActiveBlogIndex] = useState(0);
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const h2Ref = useRef<HTMLHeadingElement>(null);
   const h3Ref = useRef<HTMLHeadingElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLElement>(null);
+  const blogCarouselRef = useRef<HTMLDivElement>(null);
 
   const blogPosts = useMemo(() => blogPostsData, []);
+
+  const updateActiveBlog = () => {
+    const carousel = blogCarouselRef.current;
+    if (!carousel) return;
+
+    const cards = Array.from(carousel.children) as HTMLElement[];
+    const carouselCenter = carousel.scrollLeft + carousel.clientWidth / 2;
+    const closestIndex = cards.reduce((closest, card, index) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const closestCard = cards[closest];
+      const closestCenter = closestCard.offsetLeft + closestCard.offsetWidth / 2;
+      return Math.abs(cardCenter - carouselCenter) < Math.abs(closestCenter - carouselCenter)
+        ? index
+        : closest;
+    }, 0);
+
+    setActiveBlogIndex(closestIndex);
+  };
+
+  const scrollToBlog = (index: number) => {
+    const carousel = blogCarouselRef.current;
+    const card = carousel?.children[index] as HTMLElement | undefined;
+    if (!carousel || !card) return;
+
+    carousel.scrollTo({ left: card.offsetLeft - carousel.offsetLeft, behavior: "smooth" });
+    setActiveBlogIndex(index);
+  };
 
   const serviceCards = useMemo<ServiceCardData[]>(() => [
     {
@@ -784,12 +813,21 @@ export default function HomeContent() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            ref={blogCarouselRef}
+            onScroll={updateActiveBlog}
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-8 md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:pb-0 lg:grid-cols-4"
+          >
             {blogPosts.map((post, index) => (
-              <Card key={index} imageUrl={post.imageUrl} imageAlt={post.imageAlt}>
+              <Card
+                key={index}
+                imageUrl={post.imageUrl}
+                imageAlt={post.imageAlt}
+                className="w-[88%] shrink-0 snap-start sm:w-[72%] md:w-auto md:shrink"
+              >
                 <div className="text-sm text-blue-600 font-medium mb-2">{post.date}</div>
                 <h3 className="text-xl font-semibold mb-3 text-gray-900">{post.title}</h3>
-<div className="relative mb-4">
+                <div className="relative mb-4">
                   <p className="text-gray-600 leading-relaxed">{post.excerpt}</p>
                   <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none"></div>
                 </div>
@@ -824,6 +862,21 @@ export default function HomeContent() {
                   </button>
                 </div>
               </Card>
+            ))}
+          </div>
+
+          <div className="mt-2 flex items-center justify-center gap-2 md:hidden" aria-label="Blogbeiträge auswählen">
+            {blogPosts.map((post, index) => (
+              <button
+                key={post.id}
+                type="button"
+                onClick={() => scrollToBlog(index)}
+                aria-label={`Blogbeitrag ${index + 1} anzeigen`}
+                aria-current={activeBlogIndex === index ? "true" : undefined}
+                className={`size-2.5 rounded-full transition-all duration-200 ${
+                  activeBlogIndex === index ? "scale-110 bg-blue-600" : "bg-gray-300"
+                }`}
+              />
             ))}
           </div>
         </Container>
