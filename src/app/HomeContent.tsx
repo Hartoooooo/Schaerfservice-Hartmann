@@ -8,12 +8,12 @@ import { FAQ } from "@/components/FAQ";
 import { InteractiveHoverButton } from "@/components/InteractiveHoverButton";
 import { analytics } from "@/components/GoogleAnalytics";
 import Image from "next/image";
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { blogPosts as blogPostsData } from "@/lib/blogPosts";
-import { motion, AnimatePresence } from "motion/react";
 import StackingCards, { ServiceCardData } from "@/components/ui/stacking-card";
 import AiBadge from "@/components/ui/AiBadge";
+import HowItWorks09 from "@/components/ui/how-it-works-09";
 
 export default function HomeContent() {
   const [copiedArticleId, setCopiedArticleId] = useState<string | null>(null);
@@ -21,55 +21,11 @@ export default function HomeContent() {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
-  const [philosophyActiveIndex, setPhilosophyActiveIndex] = useState(0);
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const h2Ref = useRef<HTMLHeadingElement>(null);
   const h3Ref = useRef<HTMLHeadingElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLElement>(null);
-
-  const philosophyItems = useMemo(() => [
-    {
-      h:"Qualifiziert", 
-      points:[
-        "20+ Jahre Schärferfahrung mit hunderten zufriedenen Kunden und langjähriger Expertise",
-        "Hu-Friedy Schulung in Chicago für höchste Qualitätsstandards und international anerkannte Techniken",
-        "Höchste Qualitätsstandards durch zertifizierte Expertise und regelmäßige Weiterbildungen"
-      ],
-      icon: (
-        <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-        </svg>
-      )
-    },
-    {
-      h:"Langlebig", 
-      points:[
-        "Exakte Präzisionsschärfe für optimale Behandlungsergebnisse und längere Lebensdauer Ihrer Instrumente",
-        "Fachgerechte Instrumentenpflege durch schonende Bearbeitung und Erhaltung der Materialqualität",
-        "Längere Nutzungsdauer durch präzise Schärfung, die die ursprüngliche Funktionalität wiederherstellt"
-      ],
-      icon: (
-        <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
-      )
-    },
-    {
-      h:"Nachhaltig", 
-      points:[
-        "Emissionsfreie Bearbeitung durch umweltfreundliche Schärfprozesse ohne schädliche Chemikalien",
-        "Nachhaltige Arbeitsweise mit ressourcenschonenden Prozessen und wiederverwendbaren Materialien",
-        "Umweltfreundliche Verpackung und CO2-neutraler Versand für einen nachhaltigen Beitrag"
-      ],
-      icon: (
-        <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      )
-    }
-  ], []);
 
   const blogPosts = useMemo(() => blogPostsData, []);
 
@@ -211,7 +167,7 @@ export default function HomeContent() {
 
     const duration = 2000;
     const target1 = 450;
-    const target2 = 10000;
+    const target2 = 15000;
     const target3 = 20;
     const fps = 60;
     const totalFrames = (duration / 1000) * fps;
@@ -654,7 +610,7 @@ export default function HomeContent() {
           <div className="grid grid-cols-3 gap-2 sm:gap-8 text-center">
             {[
               {title:"450+",subtitle:"Zufriedene Kunden", value: count1, suffix: "+"},
-              {title:"10.000+",subtitle:"Instrumente geschärft", value: count2, suffix: "+"},
+              {title:"15.000+",subtitle:"Instrumente geschärft", value: count2, suffix: "+"},
               {title:"erfahrung-20plus", subtitle:"Erfahrung", value: count3, suffix: "+ Jahre"}
             ].map((item) => (
               <div key={item.title} className="space-y-1 lg:space-y-2">
@@ -716,13 +672,13 @@ export default function HomeContent() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 px-8 pb-4">
-                  <h3 ref={h1Ref} className="text-2xl font-semibold text-white">
+                  <h3 ref={h1Ref} className="text-2xl leading-8 font-semibold text-white sm:text-[28px] sm:leading-9">
                     Instrumente schärfen
                   </h3>
                 </div>
               </div>
               <div className="px-8 pb-8 pt-6 flex flex-col flex-grow">
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <p className="text-base text-gray-600 leading-relaxed mb-6 sm:text-lg">
                 Professionelles <strong>Schärfen und Aufarbeiten</strong> <strong>aller dentalen und chirurgischen Instrumente</strong>. Höchste Qualität für optimale Behandlungsergebnisse durch präzise Handarbeit.
               </p>
               <div className="mt-auto space-y-6">
@@ -750,13 +706,13 @@ export default function HomeContent() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 px-8 pb-4">
-                  <h3 ref={h2Ref} className="text-2xl font-semibold text-white">
+                  <h3 ref={h2Ref} className="text-2xl leading-8 font-semibold text-white sm:text-[28px] sm:leading-9">
                     Express-Schärfen in Berlin
                   </h3>
                 </div>
               </div>
               <div className="px-8 pb-8 pt-6 flex flex-col flex-grow">
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <p className="text-base text-gray-600 leading-relaxed mb-6 sm:text-lg">
                 Wir kommen zu Ihnen in die Praxis und gehen erst, wenn alle Instrumente
                 ihre ursprüngliche Schärfe wiedererlangt haben.
               </p>
@@ -786,13 +742,13 @@ export default function HomeContent() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <AiBadge className="top-3 right-3" align="right" />
                 <div className="absolute bottom-0 left-0 right-0 px-8 pb-4">
-                  <h3 ref={h3Ref} className="text-2xl font-semibold text-white">
+                  <h3 ref={h3Ref} className="text-2xl leading-8 font-semibold text-white sm:text-[28px] sm:leading-9">
                     Schärfkurs in Ihrer Praxis
                   </h3>
                 </div>
               </div>
               <div className="px-8 pb-8 pt-6 flex flex-col flex-grow">
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <p className="text-base text-gray-600 leading-relaxed mb-6 sm:text-lg">
                 Erlernen Sie die richtige Schärftechnik. 
                 Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.
               </p>
@@ -813,117 +769,8 @@ export default function HomeContent() {
         </Container>
       </section>
 
-      {/* Philosophy Section */}
-      <section className="py-20 bg-gray-50">
-        <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-gray-900">
-              Unsere Philosophie
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Qualität, Zuverlässigkeit, Präzision, Langlebigkeit und Nachhaltigkeit stehen im Mittelpunkt unserer Arbeit
-            </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 items-stretch">
-            <div className="flex lg:flex-col gap-2 lg:gap-3 justify-center lg:justify-between h-full">
-            {philosophyItems.map((item, index) => (
-                <button
-                  key={index}
-                  onClick={() => setPhilosophyActiveIndex(index)}
-                  className="relative group text-left flex-1 lg:flex-none cursor-pointer"
-                >
-                  <motion.div
-                    className={`relative px-3 py-2 lg:px-6 lg:py-4 rounded-xl border-2 transition-all duration-300 h-full flex items-center justify-center cursor-pointer ${
-                      philosophyActiveIndex === index
-                        ? 'border-blue-600 bg-blue-50 shadow-md'
-                        : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="flex items-center gap-4 w-full lg:w-auto">
-                      <div className={`hidden lg:flex w-12 h-12 rounded-lg items-center justify-center transition-colors duration-300 ${
-                        philosophyActiveIndex === index
-                          ? 'bg-blue-600'
-                          : 'bg-gray-100 group-hover:bg-gray-200'
-                      }`}>
-                        {React.cloneElement(item.icon as React.ReactElement<React.SVGProps<SVGSVGElement>>, {
-                          className: `w-8 h-8 ${philosophyActiveIndex === index ? 'text-white' : 'text-gray-600'}`
-                        })}
-                </div>
-                      <h3 className={`text-xs lg:text-lg font-semibold transition-colors duration-300 text-center lg:text-left ${
-                        philosophyActiveIndex === index
-                          ? 'text-blue-600'
-                          : 'text-gray-700 group-hover:text-gray-900'
-                      }`}>
-                        {item.h}
-                      </h3>
-                    </div>
-                    {philosophyActiveIndex === index && (
-                      <motion.div
-                        className="hidden lg:block absolute left-0 top-0 bottom-0 w-1 bg-blue-600 rounded-l-xl"
-                        layoutId="activeIndicator"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      />
-                    )}
-                  </motion.div>
-                </button>
-              ))}
-            </div>
-
-            <div className="relative flex items-stretch">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={philosophyActiveIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="w-full"
-                >
-                  <Card className="p-6 lg:p-8 h-full flex flex-col">
-                    <div className="flex items-center gap-4 mb-6">
-                      <motion.div
-                        className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0"
-                        initial={{ scale: 0.8, rotate: -10 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
-                      >
-                        {philosophyItems[philosophyActiveIndex].icon}
-                      </motion.div>
-                      <motion.h3
-                        className="text-2xl font-semibold text-gray-900"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        {philosophyItems[philosophyActiveIndex].h}
-                      </motion.h3>
-                    </div>
-                    <ul className="space-y-3 flex-1">
-                      {philosophyItems[philosophyActiveIndex].points.map((point, pointIndex) => (
-                        <motion.li
-                          key={pointIndex}
-                          className="flex items-start gap-3 text-gray-600"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.3 + pointIndex * 0.1 }}
-                        >
-                          <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                          <span>{point}</span>
-                        </motion.li>
-                  ))}
-                </ul>
-              </Card>
-                </motion.div>
-              </AnimatePresence>
-          </div>
-          </div>
-        </Container>
-      </section>
+      {/* Instrument sharpness journey */}
+      <HowItWorks09 />
 
       {/* Blog Section */}
       <section id="expertentipps" className="py-20 scroll-mt-28 md:scroll-mt-32">
@@ -993,7 +840,7 @@ export default function HomeContent() {
               Antworten auf die wichtigsten Fragen zu unserem Schärfservice
             </p>
           </div>
-          <FAQ items={faqItems} />
+          <FAQ items={faqItems} className="mx-auto max-w-4xl" />
         </Container>
       </section>
 
@@ -1001,7 +848,7 @@ export default function HomeContent() {
       <section className="py-20">
         <Container>
           <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-6 text-gray-900">
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-gray-900">
               Bereit für perfekte Schärfe?
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">

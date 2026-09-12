@@ -63,14 +63,16 @@ const Card = ({
           scale,
           top: `calc(-5vh + ${i * 28}px)`,
         }}
-        className="relative flex flex-col h-[440px] w-full max-w-5xl rounded-2xl bg-white border border-gray-100 shadow-xl p-10 origin-top overflow-hidden"
+        className="relative flex h-[440px] w-full max-w-7xl origin-top flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white p-10 shadow-xl"
       >
         <div className="flex h-full gap-10">
           <div className="w-[45%] flex flex-col justify-center">
-            <h3 className="text-3xl font-semibold text-gray-900 mb-5">
+            <h3 className="mb-5 text-2xl leading-8 font-semibold text-gray-900 sm:text-[28px] sm:leading-9">
               {title}
             </h3>
-            <p className="text-gray-600 leading-relaxed mb-6">{description}</p>
+            <p className="text-base text-gray-600 leading-relaxed mb-6 sm:text-lg">
+              {description}
+            </p>
             <div className="flex items-center gap-2 mb-8">
               {badgeIcon}
               <p className="text-sm text-blue-600 font-medium">{badgeText}</p>
