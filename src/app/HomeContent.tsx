@@ -385,11 +385,6 @@ export default function HomeContent() {
               "@type": "Person",
               "name": "Carina Hartmann"
             },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "127"
-            },
             "review": [
               {
                 "@type": "Review",
