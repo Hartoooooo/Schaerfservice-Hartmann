@@ -120,6 +120,9 @@ export function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
                 ${hasConsent ? `
                 'page_title': document.title,
                 'page_location': window.location.href,
+                /* Kein automatischer Pageview, wenn der Guard im Dokumentkopf
+                   einen unerlaubten Direktaufruf der Danke-Seite abgefangen hat. */
+                'send_page_view': !window.__saSuppressPageView,
                 ` : `
                 'client_storage': 'none',
                 'send_page_view': false

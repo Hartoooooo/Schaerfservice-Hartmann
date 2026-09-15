@@ -131,6 +131,24 @@ export default function RootLayout({
   return (
     <html lang="de" dir="ltr">
       <head>
+        {/*
+          Zugriffsschutz der Danke-Seite, synchron beim Laden des Dokuments.
+
+          Läuft garantiert VOR allen Analytics-Skripten (die erst "afterInteractive"
+          geladen werden) und vor der React-Hydration. Wird /danke direkt aufgerufen
+          (Bookmark, geteilter Link, Reload, Bot), ohne dass zuvor ein Auftrag
+          abgeschlossen wurde, wird sofort umgeleitet und der automatische Pageview
+          unterdrückt. Sonst würde jeder Direktaufruf einen /danke-Aufruf in
+          Analytics erzeugen, obwohl die Seite nie angezeigt wird.
+
+          Das Flag wird hier NICHT verbraucht – das übernimmt weiterhin die
+          Danke-Seite selbst, damit sie genau einmal erreichbar bleibt.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var p=location.pathname;if(p!=='/danke'&&p!=='/danke/')return;var ok=false;try{ok=sessionStorage.getItem('sa_order_completed')==='1';}catch(e){ok=false;}if(!ok){window.__saSuppressPageView=true;location.replace('/');}}catch(e){}})();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -193,7 +211,12 @@ export default function RootLayout({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'AW-17687247253');
+          /* Kein automatischer Pageview, wenn der Guard oben einen unerlaubten
+             Direktaufruf der Danke-Seite abgefangen hat. Conversion-Events sind
+             davon nicht betroffen, sie werden separat gesendet. */
+          gtag('config', 'AW-17687247253', {
+            'send_page_view': !window.__saSuppressPageView
+          });
         `}
       </Script>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
