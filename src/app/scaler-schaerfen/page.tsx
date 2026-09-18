@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     absolute: "Scaler schärfen lassen Berlin | Professioneller Schärfservice | Hartmann",
   },
   description:
-    "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt Auftrag erteilen",
+    "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 6,04 € – Jetzt Auftrag erteilen",
   keywords: [
     "Scaler schärfen",
     "Scaler schärfen lassen",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Scaler schärfen lassen Berlin | Professioneller Schärfservice | Hartmann",
     description:
-      "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt Auftrag erteilen",
+      "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 6,04 € – Jetzt Auftrag erteilen",
     url: canonical,
   },
 };
@@ -50,7 +50,7 @@ const warum = [
 ];
 
 const eckdaten = [
-  { label: "ab 5,69 €", sub: "pro Instrument" },
+  { label: "ab 6,04 €", sub: "pro Instrument" },
   { label: "7 % Rabatt", sub: "ab 15 Instrumenten" },
   { label: "Handgeschärft", sub: "korrekter Schärfwinkel" },
   { label: "Express", sub: "in Berlin & Umgebung" },
@@ -216,7 +216,7 @@ export default function ScalerSchaerfenPage() {
             <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-8 sm:p-10 text-white shadow-xl">
               <h2 className="text-2xl sm:text-3xl font-semibold mb-3">Bereit, Ihre Scaler schärfen zu lassen?</h2>
               <p className="text-blue-50 leading-relaxed mb-6">
-                Erteilen Sie Ihren Auftrag online in wenigen Minuten – ab 5,69 € pro Instrument.
+                Erteilen Sie Ihren Auftrag online in wenigen Minuten – ab 6,04 € pro Instrument.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button href="/schaerfauftrag" className="bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 font-medium" hover="lift-sm">

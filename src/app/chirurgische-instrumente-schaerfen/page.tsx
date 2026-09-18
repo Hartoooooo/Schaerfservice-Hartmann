@@ -11,7 +11,7 @@ export const metadata: Metadata = {
       "Chirurgische Instrumente schärfen Berlin | Scheren, Pinzetten | Schärfservice Hartmann",
   },
   description:
-    "Chirurgische Instrumente schärfen lassen ✓ Scheren, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt beauftragen",
+    "Chirurgische Instrumente schärfen lassen ✓ Scheren, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 6,04 € – Jetzt beauftragen",
   keywords: [
     "chirurgische Instrumente schärfen",
     "OP-Instrumente schärfen",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title:
       "Chirurgische Instrumente schärfen Berlin | Scheren, Pinzetten | Schärfservice Hartmann",
     description:
-      "Chirurgische Instrumente schärfen lassen ✓ Scheren, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 5,69 € – Jetzt beauftragen",
+      "Chirurgische Instrumente schärfen lassen ✓ Scheren, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 6,04 € – Jetzt beauftragen",
     url: canonical,
   },
 };
@@ -42,7 +42,7 @@ const anzeichen = [
 ];
 
 const eckdaten = [
-  { label: "ab 5,69 €", sub: "pro Instrument" },
+  { label: "ab 6,04 €", sub: "pro Instrument" },
   { label: "7 % Rabatt", sub: "ab 15 Instrumenten" },
   { label: "Aufarbeitung", sub: "inklusive Prüfung" },
   { label: "Express", sub: "in Berlin & Umgebung" },
@@ -202,7 +202,7 @@ export default function ChirurgischeInstrumentePage() {
                 verlängert die Lebensdauer erheblich und spart gegenüber dem Neukauf oft 80–90&nbsp;% der Kosten.
               </p>
               <p className="text-gray-700 leading-relaxed font-medium">
-                Preise ab 5,69 € pro Instrument · Express-Service verfügbar · ab 15 Instrumenten 7&nbsp;% Rabatt.
+                Preise ab 6,04 € pro Instrument · Express-Service verfügbar · ab 15 Instrumenten 7&nbsp;% Rabatt.
               </p>
             </div>
             <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-8 sm:p-10 text-white shadow-xl">

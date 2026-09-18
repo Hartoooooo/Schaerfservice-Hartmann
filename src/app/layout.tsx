@@ -25,10 +25,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Schärfservice Hartmann: Dentalinstrumente schärfen & schleifen Berlin | Dentalinstrumente schärfen ab 5,69€",
+    default: "Schärfservice Hartmann: Dentalinstrumente schärfen & schleifen Berlin | Dentalinstrumente schärfen ab 6,04€",
     template: "%s | Schärfservice Hartmann",
   },
-  description: "🦷 Instrumente schärfen & schleifen ✅ Dentalinstrumente schärfen & aufbereiten ab 5,69€ ⭐ Professioneller Service für alle dentalen Instrumente | Express-Schärfung 150km | Schärfkurse in ihrer Praxis | 20+ Jahre Erfahrung",
+  description: "🦷 Instrumente schärfen & schleifen ✅ Dentalinstrumente schärfen & aufbereiten ab 6,04€ ⭐ Professioneller Service für alle dentalen Instrumente | Express-Schärfung 150km | Schärfkurse in ihrer Praxis | 20+ Jahre Erfahrung",
   keywords: [
     "instrumente schärfen",
     "instrumente schleifen", 
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Schärfservice Hartmann",
-    description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 5,69€, Schärfkurse in ihrer Praxis und Express-Service in Berlin.",
+    description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 6,04€, Schärfkurse in ihrer Praxis und Express-Service in Berlin.",
     url: "https://www.dentalschleifen.de",
     siteName: "Schärfservice Hartmann",
     locale: "de_DE",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Schärfservice Hartmann",
-    description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 5,69€, Schärfkurse in ihrer Praxis, Express-Service Berlin.",
+    description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 6,04€, Schärfkurse in ihrer Praxis, Express-Service Berlin.",
     images: ["https://www.dentalschleifen.de/schaerfservice-werkstatt-berlin.jpg"],
   },
   robots: {
@@ -180,7 +180,7 @@ export default function RootLayout({
                   "closes": "19:00"
                 }
               ],
-              "priceRange": "ab 5,69 €",
+              "priceRange": "ab 6,04 €",
               "areaServed": "Deutschland",
               "foundingDate": "2004",
               "hasOfferCatalog": {
