@@ -384,33 +384,7 @@ export default function HomeContent() {
             "employee": {
               "@type": "Person",
               "name": "Carina Hartmann"
-            },
-            "review": [
-              {
-                "@type": "Review",
-                "reviewRating": {
-                  "@type": "Rating",
-                  "ratingValue": "5"
-                },
-                "author": {
-                  "@type": "Person",
-                  "name": "Verifizierter Auftraggeber"
-                },
-                "reviewBody": "Hervorragende Qualität und schnelle Bearbeitung. Unsere Instrumente sind wie neu."
-              },
-              {
-                "@type": "Review",
-                "reviewRating": {
-                  "@type": "Rating",
-                  "ratingValue": "5"
-                },
-                "author": {
-                  "@type": "Person",
-                  "name": "Verifizierter Auftraggeber"
-                },
-                "reviewBody": "Professioneller Service mit überzeugender Expertise. Sehr empfehlenswert!"
-              }
-            ]
+            }
           })
         }}
       />
