@@ -265,7 +265,7 @@ export function customerConfirmationHtml(order: OrderPayload): string {
     </p>
 
     <p style="font-size:14px;color:#4b5563;line-height:1.6;margin:0 0 24px;">
-      Nach Eingang beginnen wir mit der Bearbeitung (in der Regel ca. 5 Werktage).
+      Nach Eingang beginnen wir mit der Bearbeitung (in der Regel 3-5 Werktage).
     </p>
 
     <h3 style="font-size:15px;margin:0 0 8px;color:#111;">Ihre Kontaktdaten</h3>
