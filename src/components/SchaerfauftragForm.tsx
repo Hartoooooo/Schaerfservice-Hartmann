@@ -318,6 +318,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     <div ref={containerRef} className={`container-page ${getPaddingClass()} pt-12 scroll-mt-24`}>
       <Stepper
         initialStep={1}
+        disableStepIndicators
         className={getStepperClass()}
         isNextDisabled={isNextButtonDisabled()}
         customNextButtonText={getCustomNextButtonText()}
