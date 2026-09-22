@@ -111,6 +111,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   const totalNet = totalQuantity > 0 ? subtotalWithDiscount + shipping : 0; // Gesamtbetrag Netto (mit Rabatt)
   const vat = totalQuantity > 0 ? totalNet * 0.19 : 0; // MwSt. 19%
   const totalGross = totalQuantity > 0 ? totalNet + vat : 0; // Gesamtbetrag Brutto
+  const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim());
 
   const handleQtyChange = (rowIndex: number, value: number) => {
     setQuantities(prev => prev.map((q, i) => (i === rowIndex ? value : q)));
@@ -134,7 +135,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     // Step 2: Prüfe ob alle Pflichtfelder ausgefüllt sind
     if (currentStep === 2) {
       return !formData.ansprechpartner.trim() ||
-             !formData.email.trim() ||
+             !emailIsValid ||
              !formData.praxisname.trim() ||
              !formData.plz.trim() ||
              !formData.ort.trim();
@@ -156,6 +157,10 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
 
   // Auftrag serverseitig per SMTP versenden (Kundenbestätigung inkl. BCC an den Betreiber)
   const sendEmail = async () => {
+    if (totalQuantity < 1 || !emailIsValid) {
+      setSubmitError("Bitte wählen Sie mindestens ein Instrument und prüfen Sie Ihre E-Mail-Adresse.");
+      return false;
+    }
     setIsSubmitting(true);
     setSubmitError("");
 
@@ -187,7 +192,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         // Kontaktdaten
         praxisname: formData.praxisname,
         ansprechpartner: formData.ansprechpartner,
-        email: formData.email,
+        email: formData.email.trim(),
         telefon: formData.telefon || 'Nicht angegeben',
         praxisanschrift: formData.praxisname,
         plz: formData.plz,
@@ -238,7 +243,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         body: JSON.stringify({
           praxisname: formData.praxisname,
           ansprechpartner: formData.ansprechpartner,
-          email: formData.email,
+          email: formData.email.trim(),
           telefon: formData.telefon,
           plz: formData.plz,
           ort: formData.ort,
@@ -261,14 +266,21 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
       }
 
       if (!response.ok) {
-        throw new Error(`Serverantwort ${response.status}`);
+        const result = await response.json().catch(() => null);
+        throw new Error(
+          response.status === 400 && typeof result?.error === "string"
+            ? result.error
+            : `Serverantwort ${response.status}`
+        );
       }
 
     } catch (error) {
       console.error('Fehler beim Senden des Auftrags:', error);
+      const reason = error instanceof Error ? error.message : "";
       setSubmitError(
-        'Ihr Auftrag konnte nicht übermittelt werden. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut. ' +
-        'Falls das Problem bestehen bleibt, erreichen Sie uns telefonisch unter +49 174 9342576 oder per E-Mail an hartmann-schaerfservice@web.de.'
+        reason === "Ungültige E-Mail-Adresse" || reason === "Keine Auftragspositionen"
+          ? `${reason}. Bitte prüfen Sie Ihre Eingaben.`
+          : 'Ihr Auftrag konnte nicht übermittelt werden. Bitte versuchen Sie es erneut. Falls das Problem bestehen bleibt, erreichen Sie uns telefonisch unter +49 174 9342576 oder per E-Mail an hartmann-schaerfservice@web.de.'
       );
       setIsSubmitting(false);
       return false;
@@ -707,6 +719,9 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                 required
                 placeholder="z.B. praxis@beispiel.de"
               />
+              {formData.email.trim() && !emailIsValid && (
+                <p className="text-sm text-red-700 mt-1">Bitte gültige E-Mail-Adresse eingeben.</p>
+              )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_2fr] gap-4">

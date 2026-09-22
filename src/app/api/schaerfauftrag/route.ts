@@ -19,13 +19,17 @@ export async function POST(request: Request) {
   try {
     order = (await request.json()) as OrderPayload;
   } catch {
+    console.warn("Schärfauftrag abgelehnt: ungültiges JSON");
     return NextResponse.json({ error: "Ungültige Anfrage" }, { status: 400 });
   }
 
-  if (!order?.email || !isValidEmail(order.email)) {
+  if (typeof order?.email !== "string" || !isValidEmail(order.email.trim())) {
+    console.warn("Schärfauftrag abgelehnt: ungültige E-Mail-Adresse");
     return NextResponse.json({ error: "Ungültige E-Mail-Adresse" }, { status: 400 });
   }
+  order.email = order.email.trim();
   if (!Array.isArray(order.items) || order.items.length === 0) {
+    console.warn("Schärfauftrag abgelehnt: keine Auftragspositionen");
     return NextResponse.json({ error: "Keine Auftragspositionen" }, { status: 400 });
   }
 
