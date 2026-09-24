@@ -60,9 +60,11 @@ export async function POST(request: Request) {
       auth: { user, pass },
     });
 
-    // Verbindung/Anmeldung vorab prüfen, damit Konfigurationsfehler klar erkennbar sind
-    await transporter.verify();
-
+    // Kein transporter.verify() vor dem Versand: Das baute eine komplette
+    // SMTP-Verbindung samt TLS-Handshake und Anmeldung auf, die sendMail danach
+    // ein zweites Mal aufbauen musste – der Kunde wartete dadurch doppelt so lange
+    // auf die Danke-Seite. Fehlerhafte Zugangsdaten fallen unverändert auf, weil
+    // sendMail dann wirft und die Route 500 meldet.
     const logoAttachment = {
       filename: "SHLogo.png",
       path: path.join(process.cwd(), "public", "SHLogo-email.png"),
