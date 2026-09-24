@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     absolute: "Küretten schärfen lassen Berlin | Gracey & Universal | Schärfservice Hartmann",
   },
   description:
-    "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 5,69 €",
+    "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 6,04 €",
   keywords: [
     "Küretten schärfen",
     "Küretten schärfen lassen",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Küretten schärfen lassen Berlin | Gracey & Universal | Schärfservice Hartmann",
     description:
-      "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 5,69 €",
+      "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 6,04 €",
     url: canonical,
   },
 };
@@ -45,11 +45,11 @@ const vorteile: [string, string][] = [
   ["Präziser", "korrekte Winkel durch erfahrene Handschärfung"],
   ["Materialschonender", "minimaler Materialabtrag"],
   ["Zeitsparender", "kein Aufwand für die Praxis"],
-  ["Günstiger als Neukauf", "ab 5,69 € pro Instrument"],
+  ["Günstiger als Neukauf", "ab 6,04 € pro Instrument"],
 ];
 
 const eckdaten = [
-  { label: "ab 5,69 €", sub: "pro Instrument" },
+  { label: "ab 6,04 €", sub: "pro Instrument" },
   { label: "7 % Rabatt", sub: "ab 15 Instrumenten" },
   { label: "Gracey & Universal", sub: "alle gängigen Hersteller" },
   { label: "Express", sub: "in Berlin & Umgebung" },
@@ -257,7 +257,7 @@ export default function KuerettenSchaerfenPage() {
             <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-8 sm:p-10 text-white shadow-xl">
               <h2 className="text-2xl sm:text-3xl font-semibold mb-3">Küretten schärfen lassen leicht gemacht</h2>
               <p className="text-blue-50 leading-relaxed mb-6">
-                Ab 15 Instrumenten 7&nbsp;% Rabatt · Preise ab 5,69 € pro Instrument.
+                Ab 15 Instrumenten 7&nbsp;% Rabatt · Preise ab 6,04 € pro Instrument.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button href="/schaerfauftrag" className="bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 font-medium" hover="lift-sm">
