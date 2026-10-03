@@ -445,11 +445,11 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
             </div>
             <div>
               <p>40–69 Instr.</p>
-              <p><span className="font-bold text-gray-900">15%</span> Rabatt</p>
+              <p><span className="font-bold text-gray-900">14%</span> Rabatt</p>
             </div>
             <div>
               <p>70+ Instr.</p>
-              <p><span className="font-bold text-gray-900">20%</span> Rabatt</p>
+              <p><span className="font-bold text-gray-900">21%</span> Rabatt</p>
             </div>
           </div>
           
@@ -642,8 +642,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                 <tr>
                   <td className="text-neutral-600">
                     Zwischensumme
-                    {totalQuantity >= 70 && <span className="block text-blue-600">(20% Rabatt)</span>}
-                    {totalQuantity >= 40 && totalQuantity < 70 && <span className="block text-blue-600">(15% Rabatt)</span>}
+                    {totalQuantity >= 70 && <span className="block text-blue-600">(21% Rabatt)</span>}
+                    {totalQuantity >= 40 && totalQuantity < 70 && <span className="block text-blue-600">(14% Rabatt)</span>}
                     {totalQuantity >= 15 && totalQuantity < 40 && <span className="block text-blue-600">(7% Rabatt)</span>}
                   </td>
                   <td colSpan={2} className="table-number font-medium">
