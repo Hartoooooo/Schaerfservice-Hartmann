@@ -11,16 +11,16 @@ type Row = {
 };
 
 const rows: Row[] = [
-  { name: "Scaler & Küretten", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Exkavatoren", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Knochenküretten & scharfe Löffel", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Meißel & Gingivalrandschräger", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Messer & Schnitzinstrumente", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Microscheren", price: "€26,25", price7: "€24,41", price15: "€22,31" },
-  { name: "Periotome & Tunnelierungsinstr.", price: "€7,11", price7: "€6,61", price15: "€6,04" },
-  { name: "Raspatorien", price: "€13,01", price7: "€12,10", price15: "€11,06" },
-  { name: "Scheren", price: "€17,10", price7: "€15,90", price15: "€14,54" },
-  { name: "Wurzelheber & Luxatoren", price: "€7,11", price7: "€6,61", price15: "€6,04" },
+  { name: "Scaler & Küretten", price: "€7,00", price7: "€6,50", price15: "€6,00" },
+  { name: "Exkavatoren", price: "€7,00", price7: "€6,50", price15: "€6,00" },
+  { name: "Knochenküretten & scharfe Löffel", price: "€7,00", price7: "€6,50", price15: "€6,00" },
+  { name: "Meißel & Gingivalrandschräger", price: "€7,00", price7: "€6,50", price15: "€6,00" },
+  { name: "Messer & Schnitzinstrumente", price: "€7,00", price7: "€6,50", price15: "€6,00" },
+  { name: "Microscheren", price: "€26,00", price7: "€24,50", price15: "€22,00" },
+  { name: "Periotome & Tunnelierungsinstr.", price: "€7,00", price7: "€6,50", price15: "€6,00" },
+  { name: "Raspatorien", price: "€13,00", price7: "€12,00", price15: "€11,00" },
+  { name: "Scheren", price: "€17,00", price7: "€16,00", price15: "€14,50" },
+  { name: "Wurzelheber & Luxatoren", price: "€7,00", price7: "€6,50", price15: "€6,00" },
 ];
 
 export default function StepperDemo() {

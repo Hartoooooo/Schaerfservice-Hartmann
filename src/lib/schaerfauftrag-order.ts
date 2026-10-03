@@ -13,7 +13,7 @@ import {
 export interface OrderItem {
   name: string;
   quantity: number;
-  unitPrice: string; // z.B. "€6,61"
+  unitPrice: string; // z.B. "€6,50"
   totalPrice: number; // z.B. 13.22
 }
 

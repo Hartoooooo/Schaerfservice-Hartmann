@@ -422,7 +422,7 @@ export default function HomeContent() {
                     "@type": "Service",
                     "name": "Scaler & Küretten Schärfung"
                   },
-                  "price": "6.04",
+                  "price": "6.00",
                   "priceCurrency": "EUR"
                 },
                 {
@@ -431,7 +431,7 @@ export default function HomeContent() {
                     "@type": "Service",
                     "name": "Raspatorien Schärfung"
                   },
-                  "price": "11.06",
+                  "price": "11.00",
                   "priceCurrency": "EUR"
                 }
               ]

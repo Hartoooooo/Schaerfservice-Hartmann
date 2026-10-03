@@ -5,7 +5,7 @@ import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
   title: "Dentalinstrumente schärfen lassen, Online Auftrag starten | Schärfservice Hartmann",
-  description: "Zahnarztinstrumente einfach einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, 3-5 Werktage Bearbeitungszeit, ab 6,04 € pro Instrument. Jetzt starten.",
+  description: "Zahnarztinstrumente einfach einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, 3-5 Werktage Bearbeitungszeit, ab 6 € pro Instrument. Jetzt starten.",
   keywords: [
     "zahnarztinstrumente einschicken schärfen lassen",
     "instrumente schärfen lassen",
@@ -22,21 +22,21 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Dentalinstrumente schärfen lassen, Online Auftrag starten | Schärfservice Hartmann",
-    description: "Zahnarztinstrumente einfach einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, 3-5 Werktage Bearbeitungszeit, ab 6,04 € pro Instrument. Jetzt starten.",
+    description: "Zahnarztinstrumente einfach einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, 3-5 Werktage Bearbeitungszeit, ab 6 € pro Instrument. Jetzt starten.",
   },
 };
 
 const instrumentRows = [
-  { name: "Scaler & Küretten", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
-  { name: "Exkavatoren", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
-  { name: "Knochenküretten & scharfe Löffel", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
-  { name: "Meißel & Gingivalrandschräger", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
-  { name: "Messer & Schnitzinstrumente", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
-  { name: "Microscheren", price: "€26,25", price7: "€24,41", price15: "€22,31", price75: "€21,00" },
-  { name: "Periotome & Tunnelierungsinstr.", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
-  { name: "Raspatorien", price: "€13,01", price7: "€12,10", price15: "€11,06", price75: "€10,41" },
-  { name: "Scheren", price: "€17,10", price7: "€15,90", price15: "€14,54", price75: "€13,68" },
-  { name: "Wurzelheber & Luxatoren", price: "€7,11", price7: "€6,61", price15: "€6,04", price75: "€5,69" },
+  { name: "Scaler & Küretten", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
+  { name: "Exkavatoren", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
+  { name: "Knochenküretten & scharfe Löffel", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
+  { name: "Meißel & Gingivalrandschräger", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
+  { name: "Messer & Schnitzinstrumente", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
+  { name: "Microscheren", price: "€26,00", price7: "€24,50", price15: "€22,00", price75: "€21,00" },
+  { name: "Periotome & Tunnelierungsinstr.", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
+  { name: "Raspatorien", price: "€13,00", price7: "€12,00", price15: "€11,00", price75: "€10,50" },
+  { name: "Scheren", price: "€17,00", price7: "€16,00", price15: "€14,50", price75: "€13,50" },
+  { name: "Wurzelheber & Luxatoren", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
 ];
 
 export default function SchaerfauftragPage() {
@@ -82,7 +82,7 @@ export default function SchaerfauftragPage() {
             "offers": instrumentRows.map(row => ({
               "@type": "Offer",
               "name": row.name,
-              "price": row.price.replace('€', ''),
+              "price": row.price.replace('€', '').replace(',', '.'),
               "priceCurrency": "EUR"
             }))
           })
@@ -106,7 +106,7 @@ export default function SchaerfauftragPage() {
               Instrumente einschicken &amp; schärfen lassen
             </h1>
             <p className="text-base leading-relaxed text-white/90">
-              Online-Auftrag in 3&nbsp;Minuten &middot; 3-5&nbsp;Werktage Bearbeitungszeit &middot; ab&nbsp;6,04&nbsp;€ pro Instrument
+              Online-Auftrag in 3&nbsp;Minuten &middot; 3-5&nbsp;Werktage Bearbeitungszeit &middot; ab&nbsp;6&nbsp;€ pro Instrument
             </p>
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function SchaerfauftragPage() {
               Instrumente einschicken &amp; schärfen lassen
             </h1>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Online-Auftrag in 3&nbsp;Minuten &middot; 3-5&nbsp;Werktage Bearbeitungszeit &middot; ab&nbsp;6,04&nbsp;€ pro Instrument
+              Online-Auftrag in 3&nbsp;Minuten &middot; 3-5&nbsp;Werktage Bearbeitungszeit &middot; ab&nbsp;6&nbsp;€ pro Instrument
             </p>
           </div>
         </Container>

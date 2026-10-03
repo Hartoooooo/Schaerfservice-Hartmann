@@ -259,7 +259,7 @@ body {
   display: inline-block;
   text-align: right;
   font-variant-numeric: tabular-nums;
-  min-width: 7ch; /* genug Platz für €26,25* etc. */
+  min-width: 7ch; /* genug Platz für €26,00* etc. */
 }
 
 /* Variante: blauer Header (seitenblau) */
