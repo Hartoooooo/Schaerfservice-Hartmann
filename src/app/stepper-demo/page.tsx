@@ -79,7 +79,7 @@ export default function StepperDemo() {
     }, 0);
   }, [quantities, totalQuantity]);
 
-  const shipping = 5.90; // Versandkosten
+  const shipping = totalQuantity >= 30 ? 0 : 5.90; // Ab 30 Instrumenten versandfrei
   const totalNet = totalQuantity > 0 ? subtotalWithDiscount + shipping : 0; // Gesamtbetrag Netto (mit Rabatt)
   const vat = totalQuantity > 0 ? totalNet * 0.19 : 0; // MwSt. 19%
   const totalGross = totalQuantity > 0 ? totalNet + vat : 0; // Gesamtbetrag Brutto

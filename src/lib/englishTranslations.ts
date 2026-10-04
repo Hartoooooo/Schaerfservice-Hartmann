@@ -3,6 +3,7 @@ import generatedTranslations from "./englishTranslations.generated.json";
 const curatedTranslations: Record<string, string> = {
   "Schärfservice Hartmann": "Schärfservice Hartmann",
   "ab 15 Instr. sparen Sie 7%": "Save 7% on 15+ instruments",
+  "Ab 30 Instr. gratis Versand": "Free shipping from 30 instruments",
   "Startseite": "Home",
   "Leistungen": "Services",
   "Schärfauftrag": "Sharpening order",

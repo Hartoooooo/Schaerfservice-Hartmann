@@ -107,7 +107,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     }, 0);
   }, [quantities, totalQuantity, rows]);
 
-  const shipping = 5.90; // Versandkosten
+  const shipping = totalQuantity >= 30 ? 0 : 5.90; // Ab 30 Instrumenten versandfrei
   const totalNet = totalQuantity > 0 ? subtotalWithDiscount + shipping : 0; // Gesamtbetrag Netto (mit Rabatt)
   const vat = totalQuantity > 0 ? totalNet * 0.19 : 0; // MwSt. 19%
   const totalGross = totalQuantity > 0 ? totalNet + vat : 0; // Gesamtbetrag Brutto
@@ -433,12 +433,17 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
             für langlebige Schärfe und präzise Ergebnisse
           </p>
           
-          <h2 className="hidden md:block text-2xl font-semibold mb-4 mt-8">
-            Instrumente auswählen
-          </h2>
+          <div className="hidden md:flex items-center justify-between gap-4 mb-4 mt-8">
+            <h2 className="text-2xl font-semibold">
+              Instrumente auswählen
+            </h2>
+            <p className="text-sm font-semibold text-gray-900">
+              Ab <span className="text-blue-600">30</span> Instr. <span className="text-blue-600">gratis Versand</span>
+            </p>
+          </div>
 
           {/* Rabattübersicht für Mobile */}
-          <div className="md:hidden grid grid-cols-3 gap-2 mb-4 text-center text-sm text-gray-600">
+          <div className="md:hidden grid grid-cols-3 gap-2 mb-2 text-center text-sm text-gray-600">
             <div>
               <p>15–39 Instr.</p>
               <p><span className="font-bold text-gray-900">7%</span> Rabatt</p>
@@ -452,6 +457,9 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               <p><span className="font-bold text-gray-900">20%</span> Rabatt</p>
             </div>
           </div>
+          <p className="md:hidden mb-4 text-center text-sm font-semibold text-gray-900">
+            Ab <span className="text-blue-600">30</span> Instr. <span className="text-blue-600">gratis Versand</span>
+          </p>
           
           {/* Desktop Tabelle */}
           <div className="table-wrapper hidden md:block">
