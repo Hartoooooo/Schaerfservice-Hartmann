@@ -7,7 +7,7 @@ const canonical = "https://www.dentalschleifen.de/kueretten-schaerfen";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Küretten schärfen lassen Berlin | Gracey & Universal | Schärfservice Hartmann",
+    absolute: "Küretten schleifen & schärfen lassen | Bundesweiter Einsendeservice",
   },
   description:
     "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 6 €",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/kueretten-schaerfen" },
   openGraph: {
-    title: "Küretten schärfen lassen Berlin | Gracey & Universal | Schärfservice Hartmann",
+    title: "Küretten schleifen & schärfen lassen | Bundesweiter Einsendeservice",
     description:
       "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 6 €",
     url: canonical,

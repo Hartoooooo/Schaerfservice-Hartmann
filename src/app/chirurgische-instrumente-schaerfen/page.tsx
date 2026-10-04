@@ -8,7 +8,7 @@ const canonical = "https://www.dentalschleifen.de/chirurgische-instrumente-schae
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Chirurgische Instrumente schärfen Berlin | Scheren, Pinzetten | Schärfservice Hartmann",
+      "Chirurgische Instrumente & Scheren schleifen | Bundesweiter Einsendeservice",
   },
   description:
     "Chirurgische Instrumente schärfen lassen ✓ Scheren, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 6 € – Jetzt beauftragen",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/chirurgische-instrumente-schaerfen" },
   openGraph: {
     title:
-      "Chirurgische Instrumente schärfen Berlin | Scheren, Pinzetten | Schärfservice Hartmann",
+      "Chirurgische Instrumente & Scheren schleifen | Bundesweiter Einsendeservice",
     description:
       "Chirurgische Instrumente schärfen lassen ✓ Scheren, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 6 € – Jetzt beauftragen",
     url: canonical,

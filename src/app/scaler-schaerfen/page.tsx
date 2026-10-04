@@ -7,7 +7,7 @@ const canonical = "https://www.dentalschleifen.de/scaler-schaerfen";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Scaler schärfen lassen Berlin | Professioneller Schärfservice | Hartmann",
+    absolute: "Scaler schleifen & schärfen lassen | Bundesweiter Einsendeservice",
   },
   description:
     "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 6 € – Jetzt Auftrag erteilen",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/scaler-schaerfen" },
   openGraph: {
-    title: "Scaler schärfen lassen Berlin | Professioneller Schärfservice | Hartmann",
+    title: "Scaler schleifen & schärfen lassen | Bundesweiter Einsendeservice",
     description:
       "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 6 € – Jetzt Auftrag erteilen",
     url: canonical,
