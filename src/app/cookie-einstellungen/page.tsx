@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { CookieManager } from "@/components/CookieManager";
 
 export const metadata: Metadata = {
-  title: "Cookies - Instrumente schärfen Berlin",
-  description: "Cookie-Einstellungen Schärfservice Hartmann - Instrumente schärfen & Dental schleifen Berlin. Verwalten Sie Ihre Cookie-Präferenzen für unsere Website.",
+  title: "Cookie-Einstellungen | Schärfservice Hartmann",
+  description: "Cookie-Einstellungen Schärfservice Hartmann – Schleifservice für Dentalinstrumente. Verwalten Sie Ihre Cookie-Präferenzen für unsere Website.",
   robots: {
     index: false,
     follow: false,

@@ -67,8 +67,8 @@ export default function StepperDemo() {
       let price = toNumber(row.price);
       
       // Rabattlogik basierend auf Gesamtmenge
-      if (totalQuantity >= 40) {
-        // 15% Rabatt bei 40+ Instrumenten
+      if (totalQuantity >= 30) {
+        // 15% Rabatt bei 30+ Instrumenten
         price = toNumber(row.price15);
       } else if (totalQuantity >= 15) {
         // 7% Rabatt bei 15+ Instrumenten
@@ -154,11 +154,11 @@ export default function StepperDemo() {
                   <th className={`table-number ${totalQuantity < 15 ? 'font-bold' : 'text-gray-400'}`}>
                     Preis
                   </th>
-                  <th className={`table-number ${totalQuantity >= 15 && totalQuantity < 40 ? 'font-bold' : 'text-gray-400'}`}>
+                  <th className={`table-number ${totalQuantity >= 15 && totalQuantity < 30 ? 'font-bold' : 'text-gray-400'}`}>
                     ab 15 Instr.
                   </th>
-                  <th className={`table-number ${totalQuantity >= 40 ? 'font-bold' : 'text-gray-400'}`}>
-                    ab 40 Instr.
+                  <th className={`table-number ${totalQuantity >= 30 ? 'font-bold' : 'text-gray-400'}`}>
+                    ab 30 Instr.
                   </th>
                   <th className="table-number">Menge</th>
                 </tr>
@@ -170,10 +170,10 @@ export default function StepperDemo() {
                     <td className={`table-number ${totalQuantity < 15 ? 'font-bold' : 'text-gray-400'}`}>
                       <span className="cell-right">{row.price}</span>
                     </td>
-                    <td className={`table-number ${totalQuantity >= 15 && totalQuantity < 40 ? 'font-bold' : 'text-gray-400'}`}>
+                    <td className={`table-number ${totalQuantity >= 15 && totalQuantity < 30 ? 'font-bold' : 'text-gray-400'}`}>
                       <span className="cell-right">{row.price7}</span>
                     </td>
-                    <td className={`table-number ${totalQuantity >= 40 ? 'font-bold' : 'text-gray-400'}`}>
+                    <td className={`table-number ${totalQuantity >= 30 ? 'font-bold' : 'text-gray-400'}`}>
                       <span className="cell-right">{row.price15}</span>
                     </td>
                     <td className="table-number">
@@ -217,8 +217,8 @@ export default function StepperDemo() {
                 <tr>
                   <td colSpan={4} className="text-neutral-600">
                     Zwischensumme Nettobetrag
-                    {totalQuantity >= 40 && <span className="text-blue-600 ml-2">(15% Rabatt)</span>}
-                    {totalQuantity >= 15 && totalQuantity < 40 && <span className="text-blue-600 ml-2">(7% Rabatt)</span>}
+                    {totalQuantity >= 30 && <span className="text-blue-600 ml-2">(15% Rabatt)</span>}
+                    {totalQuantity >= 15 && totalQuantity < 30 && <span className="text-blue-600 ml-2">(7% Rabatt)</span>}
                   </td>
                   <td className="table-number font-medium">
                     <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(subtotalWithDiscount)}</span>
@@ -378,8 +378,8 @@ export default function StepperDemo() {
                     className="mt-1 w-4 h-4 text-[var(--color-blue-600)] border-gray-300 rounded focus:ring-[var(--color-blue-600)]"
                   />
                   <span className="text-sm text-gray-700 leading-relaxed">
-                    Ich verlange ausdrücklich, dass Sie ab Erhalt meiner Sendung mit den Schärfarbeiten beginnen. 
-                    Mir ist bekannt, dass mein Widerrufsrecht ab Beginn der Schärfarbeiten erlischt.
+                    Ich verlange ausdrücklich, dass Sie ab Erhalt meiner Sendung mit den Schleifarbeiten beginnen.
+                    Mir ist bekannt, dass mein Widerrufsrecht ab Beginn der Schleifarbeiten erlischt.
                   </span>
                 </label>
                 

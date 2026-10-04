@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AGB - Instrumente schärfen Berlin",
-  description: "AGB Schärfservice Hartmann - Instrumente schärfen & Dental schleifen Berlin. Geltungsbereich, Vertragsschluss, Leistungen, Preise, Haftung und Gewährleistung für Instrumentenschärfung.",
+  title: "AGB | Schärfservice Hartmann",
+  description: "AGB Schärfservice Hartmann – Schleifservice für Dentalinstrumente. Geltungsbereich, Vertragsschluss, Leistungen, Preise, Haftung und Gewährleistung.",
   robots: {
     index: false,
     follow: false,
@@ -15,7 +15,7 @@ export default function AgbPage() {
       <div className="max-w-4xl mx-auto">
         <div className="surface p-8">
           <h1 className="text-3xl font-semibold mb-4 text-center">Allgemeine Geschäftsbedingungen</h1>
-          <p className="text-center text-lg text-gray-600 mb-8">Schärfservice-Hartmann · Professionelle Schärfdienstleistungen</p>
+          <p className="text-center text-lg text-gray-600 mb-8">Schärfservice Hartmann · Professionelle Schleifdienstleistungen</p>
           <p className="text-center text-sm text-gray-500 mb-12">Stand: 16.11.2025</p>
           
           <div className="space-y-8">
@@ -24,7 +24,7 @@ export default function AgbPage() {
               <p className="text-neutral-600 leading-relaxed">
                 Diese AGB gelten für alle Verträge zwischen Schärfservice-Hartmann und seinen Kunden – sowohl
                 Verbrauchern (§ 13 BGB) als auch Unternehmern (§ 14 BGB, z. B. Zahnarztpraxen, Kliniken, Universitäten
-                und Institute) –, die Instrumente zum Schärfen einsenden oder unseren Schärfservice beauftragen. Die
+                und Institute) –, die Instrumente zum Schärfen einsenden oder unseren Schleifservice beauftragen. Die
                 nachfolgenden Regelungen zum Widerrufsrecht gelten ausschließlich für Verbraucher.
               </p>
             </section>
@@ -33,14 +33,14 @@ export default function AgbPage() {
               <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">2. Vertragsgegenstand & Ablauf</h2>
               <p className="text-neutral-600 leading-relaxed mb-4">
                 Der Kunde sendet eigene Instrumente (z. B. Messer, Scheren, Werkzeuge) ein. Wir erbringen daran eine 
-                Werkleistung (Schärfen) und senden die Instrumente anschließend zurück. Es kommt kein Kaufvertrag über Waren zustande.
+                Werkleistung (fachgerechtes Schleifen zur Wiederherstellung der Schärfe) und senden die Instrumente anschließend zurück. Es kommt kein Kaufvertrag über Waren zustande.
               </p>
               <div className="bg-gray-50 rounded-lg p-4">
                 <h3 className="font-medium mb-2">Vertragsablauf:</h3>
                 <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
                   <li>Beauftragung über Shop/Bestellformular, E-Mail oder Telefon</li>
                   <li>Einsendung der Instrumente an unsere Anschrift</li>
-                  <li>Prüfung, Schärfarbeiten, Rückversand</li>
+                  <li>Prüfung, Schleifarbeiten, Rückversand</li>
                 </ol>
               </div>
             </section>
@@ -64,7 +64,7 @@ export default function AgbPage() {
                 <p className="text-sm text-yellow-700">
                   Wir beginnen mit der Dienstleistung vor Ablauf der Widerrufsfrist nur, wenn der Kunde ausdrücklich zustimmt 
                   und seine Kenntnis vom Erlöschen des Widerrufsrechts bei vollständiger Vertragserfüllung bestätigt (§ 356 Abs. 4 BGB). 
-                  Das Widerrufsrecht erlischt ab Beginn der Schärfarbeiten, wenn die vollständige Leistung auf ausdrücklichen Wunsch des Kunden erbracht wird.
+                  Das Widerrufsrecht erlischt ab Beginn der Schleifarbeiten, wenn die vollständige Leistung auf ausdrücklichen Wunsch des Kunden erbracht wird.
                 </p>
               </div>
               <p className="text-sm text-blue-600">
@@ -83,7 +83,7 @@ export default function AgbPage() {
             <section>
               <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">6. Leistungszeit & Rückversand</h2>
               <p className="text-neutral-600 leading-relaxed">
-                Die Bearbeitungszeit richtet sich nach Auftragslage und Umfang. Nach Abschluss der Schärfarbeiten 
+                Die Bearbeitungszeit richtet sich nach Auftragslage und Umfang. Nach Abschluss der Schleifarbeiten
                 versenden wir an die vom Kunden angegebene Adresse zurück.
               </p>
             </section>
@@ -137,5 +137,3 @@ export default function AgbPage() {
     </div>
   );
 }
-
-

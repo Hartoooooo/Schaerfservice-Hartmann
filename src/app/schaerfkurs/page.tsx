@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "schärfkurs berlin",
     "instrumentenschärfung lernen",
     "dental fortbildung berlin",
-    "schärftechnik schulung",
+    "schleiftechnik schulung",
     "instrumente schleifen kurs",
     "schärfkurs praxis",
   ],
@@ -33,7 +33,7 @@ const kursInhalte = [
     text: "Fingernagel-Test, Testplastik, Arbeitsgefühl: Wer das einmal verstanden hat, greift nie wieder unwissend zu einem stumpfen Instrument.",
   },
   {
-    title: "Schärftechnik für jeden Instrumententyp",
+    title: "Schleiftechnik für jeden Instrumententyp",
     text: "Gracey-Küretten, Universalküretten, Scaler, Scheren: Jeder Typ hat seinen eigenen Winkel. Wir üben genau die Instrumente, die in Ihrer Praxis täglich im Einsatz sind.",
   },
   {
@@ -131,7 +131,7 @@ export default function SchaerfkursPage() {
             "course": {
               "@type": "Course",
               "name": "Schärfkurs für Dentalinstrumente",
-              "description": "2-stündiger Kurs zur professionellen Schärfung von dentalen Instrumenten",
+              "description": "2-stündiger Schärfkurs zur professionellen Schleiftechnik für dentale Instrumente",
               "provider": "Schärfservice Hartmann",
               "courseMode": "InPerson",
               "duration": "PT2H",
@@ -224,7 +224,7 @@ export default function SchaerfkursPage() {
                 ))}
               </div>
               <p className="text-sm text-gray-500 leading-relaxed">
-                Sie lernen vom selben Spezialisten, der in Berlin täglich Instrumente schärft und aufbereitet. Wissen aus der täglichen Praxis, nicht aus Handbüchern.
+                Sie lernen vom selben Spezialisten, der in Berlin täglich Instrumente schleift, prüft und aufbereitet. Wissen aus der täglichen Praxis, nicht aus Handbüchern.
               </p>
             </div>
           </div>

@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import HomeContent from "./HomeContent";
 
 export const metadata: Metadata = {
-  title: "Dentalinstrumente schärfen lassen, ab 6 € | Schärfservice Hartmann Berlin",
-  description: "Zahnärztliche Instrumente schärfen lassen: schnell, präzise und günstig ab 6 €. Einsende-Service deutschlandweit, Express-Schärfung in Berlin. Jetzt Auftrag starten.",
+  title: {
+    absolute: "Dentalinstrumente schärfen lassen – ab 30 Instrumenten ab 6 € | Schärfservice Hartmann",
+  },
+  description: "Dentalinstrumente schärfen lassen: professioneller Schleifservice, deutschlandweiter Einsendeservice. Ab 30 Instrumenten ab 6 € pro Instrument.",
   keywords: [
     "dentalinstrumente schärfen lassen",
     "instrumente schärfen",
@@ -21,8 +23,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Dentalinstrumente schärfen lassen, ab 6 € | Schärfservice Hartmann Berlin",
-    description: "Zahnärztliche Instrumente schärfen lassen: schnell, präzise und günstig ab 6 €. Einsende-Service deutschlandweit, Express-Schärfung in Berlin. Jetzt Auftrag starten.",
+    title: "Dentalinstrumente schärfen lassen – ab 30 Instrumenten ab 6 € | Schärfservice Hartmann",
+    description: "Dentalinstrumente schärfen lassen: professioneller Schleifservice, deutschlandweiter Einsendeservice. Ab 30 Instrumenten ab 6 € pro Instrument.",
     url: "https://www.dentalschleifen.de",
   },
 };

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Datenschutz - Instrumente schärfen Berlin",
-  description: "Datenschutzerklärung Schärfservice Hartmann - Instrumente schärfen & Dental schleifen Berlin. Informationen zum Umgang mit personenbezogenen Daten gemäß DSGVO.",
+  title: "Datenschutz | Schärfservice Hartmann",
+  description: "Datenschutzerklärung Schärfservice Hartmann – Schleifservice für Dentalinstrumente. Informationen zum Umgang mit personenbezogenen Daten gemäß DSGVO.",
   robots: {
     index: false,
     follow: false,
@@ -298,5 +298,3 @@ export default function DatenschutzPage() {
     </div>
   );
 }
-
-

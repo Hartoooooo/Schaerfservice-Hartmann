@@ -1,28 +1,31 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ClipboardList, Package, ScanSearch, Truck } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 
-const canonical = "https://www.dentalschleifen.de/kueretten-schaerfen";
+const canonical = "https://www.dentalschleifen.de/kueretten-schleifen";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Küretten schleifen & schärfen lassen | Bundesweiter Einsendeservice",
+    absolute: "Küretten schärfen lassen | Deutschlandweiter Einsendeservice",
   },
   description:
-    "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 6 €",
+    "Küretten schärfen lassen: Schleifservice für Gracey- und Universalküretten. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
   keywords: [
     "Küretten schärfen",
     "Küretten schärfen lassen",
+    "Küretten schleifen",
+    "Küretten Schleifservice",
     "Gracey Küretten schärfen",
     "Universal Küretten schärfen",
     "Küretten schärfen Berlin",
   ],
-  alternates: { canonical: "/kueretten-schaerfen" },
+  alternates: { canonical: "/kueretten-schleifen" },
   openGraph: {
-    title: "Küretten schleifen & schärfen lassen | Bundesweiter Einsendeservice",
+    title: "Küretten schärfen lassen | Deutschlandweiter Einsendeservice",
     description:
-      "Küretten schärfen lassen vom Profi ✓ Gracey-Küretten & Universal-Küretten ✓ Handgeschärft auf korrekten Winkel ✓ Express-Service Berlin ✓ Ab 6 €",
+      "Küretten schärfen lassen: Schleifservice für Gracey- und Universalküretten. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
     url: canonical,
   },
 };
@@ -35,21 +38,21 @@ const anzeichen = [
 ];
 
 const ablauf = [
-  { n: "1", t: "Auftrag erteilen", d: "Einfach online über unser Auftragsformular" },
-  { n: "2", t: "Küretten einsenden", d: "Sicher verpackt per Post oder Kurier" },
-  { n: "3", t: "Schärfen & Prüfen", d: "Handschärfung und Qualitätsprüfung in Berlin" },
-  { n: "4", t: "Zurücksenden", d: "Schnelle Rücksendung – Express auf Wunsch" },
+  { icon: ClipboardList, t: "Auftrag erteilen", d: "Einfach online über unser Auftragsformular" },
+  { icon: Package, t: "Küretten einsenden", d: "Sicher verpackt per Post oder Kurier" },
+  { icon: ScanSearch, t: "Schleifen & Prüfen", d: "Präziser Handschliff und Qualitätsprüfung in Berlin" },
+  { icon: Truck, t: "Zurücksenden", d: "Schnelle Rücksendung – Express auf Wunsch" },
 ];
 
 const vorteile: [string, string][] = [
-  ["Präziser", "korrekte Winkel durch erfahrene Handschärfung"],
+  ["Präziser", "korrekte Winkel durch erfahrenen Handschliff"],
   ["Materialschonender", "minimaler Materialabtrag"],
   ["Zeitsparender", "kein Aufwand für die Praxis"],
-  ["Günstiger als Neukauf", "ab 6 € pro Instrument"],
+  ["Günstiger als Neukauf", "ab 30 Instrumenten ab 6 € pro Instrument"],
 ];
 
 const eckdaten = [
-  { label: "ab 6 €", sub: "pro Instrument" },
+  { label: "ab 6 €", sub: "pro Instrument ab 30" },
   { label: "7 % Rabatt", sub: "ab 15 Instrumenten" },
   { label: "Gracey & Universal", sub: "alle gängigen Hersteller" },
   { label: "Express", sub: "in Berlin & Umgebung" },
@@ -72,7 +75,7 @@ export default function KuerettenSchaerfenPage() {
             "@type": "BreadcrumbList",
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Startseite", item: "https://www.dentalschleifen.de" },
-              { "@type": "ListItem", position: 2, name: "Küretten schärfen", item: canonical },
+              { "@type": "ListItem", position: 2, name: "Küretten schärfen lassen", item: canonical },
             ],
           }),
         }}
@@ -83,9 +86,9 @@ export default function KuerettenSchaerfenPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            name: "Küretten schärfen lassen Berlin",
+            name: "Küretten schärfen lassen | Schleifservice Hartmann",
             description:
-              "Professionelles Handschärfen von Gracey- und Universal-Küretten mit exakten Schärfwinkeln.",
+              "Deutschlandweiter Schleifservice für Gracey- und Universal-Küretten, präzise geschliffen für volle Schärfe.",
             provider: {
               "@type": "LocalBusiness",
               name: "Schärfservice Hartmann",
@@ -114,13 +117,13 @@ export default function KuerettenSchaerfenPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-5">
               Küretten schärfen lassen
               <span className="block text-blue-400 text-2xl sm:text-3xl font-medium mt-2">
-                Experten-Service für Gracey &amp; Universal
+                Schleifservice für Gracey &amp; Universal
               </span>
             </h1>
             <p className="text-lg sm:text-xl text-white/85 leading-relaxed mb-8">
               Küretten sind das wichtigste Instrument in der Parodontitistherapie und professionellen Zahnreinigung.
-              Präzise, schonend und effektiv – dafür ist regelmäßiges Schärfen unerlässlich. Beim Schärfservice Hartmann
-              werden Ihre Küretten handgeschärft, auf den korrekten Winkel.
+              Präzise, schonend und effektiv – dafür ist regelmäßiges Schärfen unerlässlich. Unser Schleifservice
+              bearbeitet Gracey- und Universal-Küretten materialschonend im korrekten Winkel.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 text-base lg:text-lg font-medium" hover="lift">
@@ -156,7 +159,7 @@ export default function KuerettenSchaerfenPage() {
               Gracey-Küretten vs. Universal-Küretten schärfen
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Beide Kürettentypen stellen beim Schärfen unterschiedliche Anforderungen – und genau hier liegt der
+              Beide Kürettentypen stellen beim Schleifen unterschiedliche Anforderungen – und genau hier liegt der
               Unterschied zum Selbstschärfen.
             </p>
           </div>
@@ -168,7 +171,7 @@ export default function KuerettenSchaerfenPage() {
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Gracey-Küretten schärfen</h3>
               <p className="text-gray-600 leading-relaxed">
                 Gracey-Küretten haben eine einseitig angeschliffene Arbeitskante mit einem spezifischen Offset-Winkel von
-                70°. Beim Schärfen muss dieser Winkel exakt eingehalten werden – sonst verliert das Instrument seine
+                70°. Beim Schleifen muss dieser Winkel exakt eingehalten werden – sonst verliert das Instrument seine
                 charakteristischen Eigenschaften für die bereichsspezifische Parodontalbehandlung.
               </p>
             </div>
@@ -178,7 +181,7 @@ export default function KuerettenSchaerfenPage() {
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Universal-Küretten schärfen</h3>
               <p className="text-gray-600 leading-relaxed">
-                Universal-Küretten besitzen zwei Arbeitskanten und einen Anschliffwinkel von 90°. Beim Schärfen müssen
+                Universal-Küretten besitzen zwei Arbeitskanten und einen Anschliffwinkel von 90°. Beim Schleifen müssen
                 beide Kanten gleichmäßig bearbeitet werden, damit die Balance des Instruments erhalten bleibt.
               </p>
             </div>
@@ -219,9 +222,9 @@ export default function KuerettenSchaerfenPage() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {ablauf.map((step) => (
-              <div key={step.n} className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white font-semibold mb-4">
-                  {step.n}
+              <div key={step.t} className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white">
+                  <step.icon className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <h3 className="text-base font-semibold text-gray-900 mb-1">{step.t}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">{step.d}</p>
@@ -240,8 +243,8 @@ export default function KuerettenSchaerfenPage() {
                 Küretten schärfen lassen statt selbst schärfen – lohnt sich das?
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Selbstschärfen kostet Zeit, erfordert Übung und birgt das Risiko, den Schärfwinkel zu verändern oder zu
-                viel Material abzutragen. Professionelles Schärfen durch den Schärfservice Hartmann ist:
+                Selbstschärfen kostet Zeit, erfordert Übung und birgt das Risiko, den Schleifwinkel zu verändern oder zu
+                viel Material abzutragen. Professioneller Handschliff durch Schärfservice Hartmann ist:
               </p>
               <ul className="space-y-4">
                 {vorteile.map(([t, d]) => (
@@ -257,7 +260,7 @@ export default function KuerettenSchaerfenPage() {
             <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-8 sm:p-10 text-white shadow-xl">
               <h2 className="text-2xl sm:text-3xl font-semibold mb-3">Küretten schärfen lassen leicht gemacht</h2>
               <p className="text-blue-50 leading-relaxed mb-6">
-                Ab 15 Instrumenten 7&nbsp;% Rabatt · Preise ab 6 € pro Instrument.
+                Ab 15 Instrumenten 7&nbsp;% Rabatt · ab 30 Instrumenten ab 6 € pro Instrument.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button href="/schaerfauftrag" className="bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 font-medium" hover="lift-sm">

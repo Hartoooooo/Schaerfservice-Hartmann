@@ -13,9 +13,9 @@ const navItems = [
 ] as const;
 
 const leistungenLinks = [
-  { href: "/scaler-schaerfen", label: "Scaler schärfen" },
-  { href: "/kueretten-schaerfen", label: "Küretten schärfen" },
-  { href: "/chirurgische-instrumente-schaerfen", label: "Chirurgische Instrumente" },
+  { href: "/scaler-schleifen", label: "Scaler schärfen" },
+  { href: "/kueretten-schleifen", label: "Küretten schärfen" },
+  { href: "/chirurgische-instrumente-schleifen", label: "Chirurgische Instrumente schärfen" },
 ] as const;
 
 const leistungenPaths: Set<string> = new Set(leistungenLinks.map((l) => l.href));

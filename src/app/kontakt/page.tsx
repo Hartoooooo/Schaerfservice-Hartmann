@@ -5,7 +5,7 @@ import { Suspense } from "react";
 // SEO-Metadaten für Server-Side Rendering
 export const metadata: Metadata = {
   title: "Kontakt - Instrumente schärfen Berlin",
-  description: "📞 Kontakt Instrumente schärfen Berlin ✅ Dental schärfen & schleifen Service | Björn Hartmann +49 174 9342576 | hartmann-schaerfservice@web.de | Schöneiche bei Berlin",
+  description: "Kontakt zu Schärfservice Hartmann: Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Telefon +49 174 9342576, Schöneiche bei Berlin.",
   keywords: [
     "kontakt instrumente schärfen",
     "dental schärfen kontakt",
@@ -59,7 +59,7 @@ export default function KontaktPage() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "Schärfservice Hartmann",
-            "description": "Professioneller Schärfservice für dentale und chirurgische Instrumente",
+            "description": "Professioneller Schleifservice für dentale und chirurgische Instrumente",
             "owner": {
               "@type": "Person",
               "name": "Björn Hartmann"
@@ -85,14 +85,14 @@ export default function KontaktPage() {
             },
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
-              "name": "Schärfservice Angebote",
+              "name": "Schleifservice Leistungen",
               "itemListElement": [
                 {
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
-                    "name": "Instrumentenschärfung",
-                    "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten"
+                    "name": "Instrumente schärfen lassen",
+                    "description": "Professioneller Schleifservice für dentale und chirurgische Instrumente"
                   }
                 },
                 {
@@ -100,7 +100,7 @@ export default function KontaktPage() {
                   "itemOffered": {
                     "@type": "Course",
                     "name": "Schärfkurse",
-                    "description": "Schulungen zur professionellen Instrumentenschärfung"
+                    "description": "Schulungen zur professionellen Schleiftechnik für scharfe Instrumente"
                   }
                 }
               ]

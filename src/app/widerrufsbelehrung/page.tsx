@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Widerruf - Instrumente schärfen Berlin", 
-  description: "Widerrufsbelehrung Schärfservice Hartmann - Instrumente schärfen & Dental schleifen Berlin. Informationen zu Ihrem Widerrufsrecht bei Verträgen und Dienstleistungen.",
+  title: "Widerrufsbelehrung | Schärfservice Hartmann",
+  description: "Widerrufsbelehrung Schärfservice Hartmann – Schleifservice für Dentalinstrumente. Informationen zu Ihrem Widerrufsrecht bei Dienstleistungen.",
   robots: {
     index: false,
     follow: false,
@@ -56,9 +56,9 @@ export default function WiderrufsbelehrungPage() {
 
             <section>
               <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                <h2 className="text-xl font-semibold mb-4 text-green-800">✅ Wichtiger Hinweis für Schärfdienstleistungen</h2>
+                <h2 className="text-xl font-semibold mb-4 text-green-800">✅ Wichtiger Hinweis für Schleifdienstleistungen</h2>
                 <p className="text-green-700 leading-relaxed">
-                  Da Sie ausdrücklich zustimmen, dass wir mit den Schärfarbeiten sofort nach Erhalt Ihrer Instrumente beginnen, 
+                  Da Sie ausdrücklich zustimmen, dass wir mit den Schleifarbeiten sofort nach Erhalt Ihrer Instrumente beginnen,
                   erlischt Ihr Widerrufsrecht ab Beginn der Bearbeitung. Ein Widerruf ist dann nicht mehr möglich. 
                   Dies ist in Ihrem Interesse, um eine schnelle Bearbeitung zu gewährleisten.
                 </p>
@@ -132,5 +132,3 @@ export default function WiderrufsbelehrungPage() {
     </div>
   );
 }
-
-

@@ -4,13 +4,15 @@ import SchaerfauftragForm from "@/components/SchaerfauftragForm";
 import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
-  title: "Dentalinstrumente schärfen lassen, Online Auftrag starten | Schärfservice Hartmann",
-  description: "Zahnarztinstrumente einfach einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, 3-5 Werktage Bearbeitungszeit, ab 6 € pro Instrument. Jetzt starten.",
+  title: {
+    absolute: "Dentalinstrumente schärfen lassen, Online-Auftrag starten | Schärfservice Hartmann",
+  },
+  description: "Zahnarztinstrumente einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, 3-5 Werktage Bearbeitungszeit, ab 30 Instrumenten ab 6 € pro Instrument.",
   keywords: [
     "zahnarztinstrumente einschicken schärfen lassen",
     "instrumente schärfen lassen",
     "dental schärfen auftrag",
-    "instrumente schleifen lassen",
+    "instrumente schleifen",
     "online schärfauftrag",
     "scaler schärfen lassen",
     "küretten schärfen lassen",
@@ -21,8 +23,8 @@ export const metadata: Metadata = {
     canonical: "/schaerfauftrag",
   },
   openGraph: {
-    title: "Dentalinstrumente schärfen lassen, Online Auftrag starten | Schärfservice Hartmann",
-    description: "Zahnarztinstrumente einfach einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, 3-5 Werktage Bearbeitungszeit, ab 6 € pro Instrument. Jetzt starten.",
+    title: "Dentalinstrumente schärfen lassen, Online-Auftrag starten | Schärfservice Hartmann",
+    description: "Zahnarztinstrumente einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, 3-5 Werktage Bearbeitungszeit, ab 30 Instrumenten ab 6 € pro Instrument.",
   },
 };
 
@@ -62,8 +64,8 @@ export default function SchaerfauftragPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Schärfservice für Dentalinstrumente",
-            "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten",
+            "name": "Dentalinstrumente schärfen lassen",
+            "description": "Professioneller Schleifservice für dentale und chirurgische Instrumente",
             "provider": {
               "@type": "LocalBusiness",
               "name": "Schärfservice Hartmann",
@@ -77,7 +79,7 @@ export default function SchaerfauftragPage() {
               "telephone": "+49 174 9342576",
               "email": "hartmann-schaerfservice@web.de"
             },
-            "serviceType": "Instrumentenschärfung",
+            "serviceType": "Schleifservice für Dentalinstrumente",
             "areaServed": { "@type": "Country", "name": "Deutschland" },
             "offers": instrumentRows.map(row => ({
               "@type": "Offer",
@@ -93,7 +95,7 @@ export default function SchaerfauftragPage() {
       <section className="relative h-[50svh] min-h-[360px] sm:hidden">
         <Image
           src="/schleifen bild.JPG"
-          alt="Dentalinstrument wird auf einer Schärfplatte geschärft"
+          alt="Dentalinstrument wird auf einer Schleifplatte geschliffen"
           fill
           priority
           sizes="100vw"
@@ -106,7 +108,7 @@ export default function SchaerfauftragPage() {
               Instrumente einschicken &amp; schärfen lassen
             </h1>
             <p className="text-base leading-relaxed text-white/90">
-              Online-Auftrag in 3&nbsp;Minuten &middot; 3-5&nbsp;Werktage Bearbeitungszeit &middot; ab&nbsp;6&nbsp;€ pro Instrument
+              Online-Auftrag in 3&nbsp;Minuten &middot; 3-5&nbsp;Werktage Bearbeitungszeit &middot; ab 30 Instrumenten ab&nbsp;6&nbsp;€ pro Instrument
             </p>
           </div>
         </div>
@@ -119,7 +121,7 @@ export default function SchaerfauftragPage() {
               Instrumente einschicken &amp; schärfen lassen
             </h1>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Online-Auftrag in 3&nbsp;Minuten &middot; 3-5&nbsp;Werktage Bearbeitungszeit &middot; ab&nbsp;6&nbsp;€ pro Instrument
+              Online-Auftrag in 3&nbsp;Minuten &middot; 3-5&nbsp;Werktage Bearbeitungszeit &middot; ab 30 Instrumenten ab&nbsp;6&nbsp;€ pro Instrument
             </p>
           </div>
         </Container>

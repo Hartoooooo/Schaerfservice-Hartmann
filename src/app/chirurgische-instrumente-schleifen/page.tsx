@@ -3,27 +3,27 @@ import Image from "next/image";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 
-const canonical = "https://www.dentalschleifen.de/chirurgische-instrumente-schaerfen";
+const canonical = "https://www.dentalschleifen.de/chirurgische-instrumente-schleifen";
 
 export const metadata: Metadata = {
   title: {
-    absolute:
-      "Chirurgische Instrumente & Scheren schleifen | Bundesweiter Einsendeservice",
+    absolute: "Chirurgische Instrumente schärfen lassen | Einsendeservice",
   },
   description:
-    "Chirurgische Instrumente schärfen lassen ✓ Scheren, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 6 € – Jetzt beauftragen",
+    "Chirurgische Instrumente schärfen lassen: Schleifservice für Scheren, Raspatorien und Hebel. Ab 30 Instrumenten ab 6 €, deutschlandweiter Einsendeservice.",
   keywords: [
     "chirurgische Instrumente schärfen",
     "OP-Instrumente schärfen",
     "Scheren schärfen Dental",
     "chirurgische Instrumente schärfen Berlin",
+    "chirurgische Instrumente schleifen",
+    "Schleifservice chirurgische Instrumente",
   ],
-  alternates: { canonical: "/chirurgische-instrumente-schaerfen" },
+  alternates: { canonical: "/chirurgische-instrumente-schleifen" },
   openGraph: {
-    title:
-      "Chirurgische Instrumente & Scheren schleifen | Bundesweiter Einsendeservice",
+    title: "Chirurgische Instrumente schärfen lassen | Einsendeservice",
     description:
-      "Chirurgische Instrumente schärfen lassen ✓ Scheren, Pinzetten ✓ Professionelle Bearbeitung ✓ Express-Service Berlin ✓ Ab 6 € – Jetzt beauftragen",
+      "Chirurgische Instrumente schärfen lassen: Schleifservice für Scheren, Raspatorien und Hebel. Ab 30 Instrumenten ab 6 €, deutschlandweiter Einsendeservice.",
     url: canonical,
   },
 };
@@ -32,7 +32,7 @@ const instrumente = [
   { t: "Dentale Scheren", d: "Weichgewebs-, Naht- und Präparierscheren" },
   { t: "Pinzetten", d: "Anatomische und chirurgische Pinzetten" },
   { t: "Raspatorien & Hebel", d: "Aufarbeitung der Arbeitsflächen" },
-  { t: "Luxationsinstrumente", d: "Schärfen der Arbeitskanten" },
+  { t: "Luxationsinstrumente", d: "Schleifen der Arbeitskanten" },
 ];
 
 const anzeichen = [
@@ -42,7 +42,7 @@ const anzeichen = [
 ];
 
 const eckdaten = [
-  { label: "ab 6 €", sub: "pro Instrument" },
+  { label: "ab 6 €", sub: "pro Instrument ab 30" },
   { label: "7 % Rabatt", sub: "ab 15 Instrumenten" },
   { label: "Aufarbeitung", sub: "inklusive Prüfung" },
   { label: "Express", sub: "in Berlin & Umgebung" },
@@ -68,7 +68,7 @@ export default function ChirurgischeInstrumentePage() {
               {
                 "@type": "ListItem",
                 position: 2,
-                name: "Chirurgische Instrumente schärfen",
+                name: "Chirurgische Instrumente schärfen lassen",
                 item: canonical,
               },
             ],
@@ -81,9 +81,9 @@ export default function ChirurgischeInstrumentePage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            name: "Chirurgische Instrumente schärfen Berlin",
+            name: "Chirurgische Instrumente schärfen lassen | Schleifservice Hartmann",
             description:
-              "Professionelle Schärfung und Aufarbeitung dentaler OP-Instrumente wie Scheren und Pinzetten.",
+              "Deutschlandweiter Schleifservice zum präzisen Schleifen und Aufarbeiten dentaler OP-Instrumente.",
             provider: {
               "@type": "LocalBusiness",
               name: "Schärfservice Hartmann",
@@ -110,15 +110,15 @@ export default function ChirurgischeInstrumentePage() {
         <Container className="relative z-10">
           <div className="py-24 sm:py-32 max-w-2xl">
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-5">
-              Chirurgische Instrumente schärfen
+              Chirurgische Instrumente schärfen lassen
               <span className="block text-blue-400 text-2xl sm:text-3xl font-medium mt-2">
-                Professioneller Service in Berlin
+                Professioneller Schleifservice, deutschlandweit
               </span>
             </h1>
             <p className="text-lg sm:text-xl text-white/85 leading-relaxed mb-8">
               Chirurgische Instrumente müssen höchsten Ansprüchen genügen. Scheren und Pinzetten, die nicht
-              mehr einwandfrei funktionieren, beeinträchtigen die Präzision bei oralen Eingriffen. Wir schärfen und
-              überholen chirurgische Dental-Instrumente professionell.
+              mehr einwandfrei funktionieren, beeinträchtigen die Präzision bei oralen Eingriffen. Unser Schleifservice
+              schärft und überholt chirurgische Dental-Instrumente professionell.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 text-base lg:text-lg font-medium" hover="lift">
@@ -198,17 +198,17 @@ export default function ChirurgischeInstrumentePage() {
                 Professionelle Aufarbeitung statt Neukauf
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Hochwertige chirurgische Instrumente sind eine Investition. Professionelles Schärfen und Aufarbeiten
+                Hochwertige chirurgische Instrumente sind eine Investition. Professionelles Schleifen und Aufarbeiten
                 verlängert die Lebensdauer erheblich und spart gegenüber dem Neukauf oft 80–90&nbsp;% der Kosten.
               </p>
               <p className="text-gray-700 leading-relaxed font-medium">
-                Preise ab 6 € pro Instrument · Express-Service verfügbar · ab 15 Instrumenten 7&nbsp;% Rabatt.
+                Ab 30 Instrumenten ab 6 € pro Instrument · Express-Service verfügbar · ab 15 Instrumenten 7&nbsp;% Rabatt.
               </p>
             </div>
             <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-8 sm:p-10 text-white shadow-xl">
               <h2 className="text-2xl sm:text-3xl font-semibold mb-3">Instrumente aufarbeiten lassen</h2>
               <p className="text-blue-50 leading-relaxed mb-6">
-                Erteilen Sie Ihren Auftrag online – wir kümmern uns um Schärfung, Prüfung und Rücksendung.
+                Erteilen Sie Ihren Auftrag online – wir kümmern uns um Schleifen, Prüfung und Rücksendung.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button href="/schaerfauftrag" className="bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 font-medium" hover="lift-sm">

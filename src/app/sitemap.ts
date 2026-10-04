@@ -34,19 +34,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/scaler-schaerfen`,
+      url: `${baseUrl}/scaler-schleifen`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.88,
     },
     {
-      url: `${baseUrl}/kueretten-schaerfen`,
+      url: `${baseUrl}/kueretten-schleifen`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.88,
     },
     {
-      url: `${baseUrl}/chirurgische-instrumente-schaerfen`,
+      url: `${baseUrl}/chirurgische-instrumente-schleifen`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.88,

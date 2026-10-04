@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/Button";
 import { WhiteButton } from "@/components/WhiteButton";
-import { Card } from "@/components/Card";
+import { StandardCard } from "@/components/StandardCard";
 import { Container } from "@/components/Container";
 import { FAQ } from "@/components/FAQ";
 import { InteractiveHoverButton } from "@/components/InteractiveHoverButton";
@@ -14,13 +14,18 @@ import { blogPosts as blogPostsData } from "@/lib/blogPosts";
 import StackingCards, { ServiceCardData } from "@/components/ui/stacking-card";
 import AiBadge from "@/components/ui/AiBadge";
 import HowItWorks09 from "@/components/ui/how-it-works-09";
+import Testimonials from "@/components/ui/testimonial";
+
+const CUSTOMER_COUNT = 600;
+const INSTRUMENT_COUNT = 20000;
+const EXPERIENCE_YEARS = 20;
 
 export default function HomeContent() {
   const [copiedArticleId, setCopiedArticleId] = useState<string | null>(null);
   const [statsVisible, setStatsVisible] = useState(false);
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
-  const [count3, setCount3] = useState(0);
+  const [count1, setCount1] = useState(CUSTOMER_COUNT);
+  const [count2, setCount2] = useState(INSTRUMENT_COUNT);
+  const [count3, setCount3] = useState(EXPERIENCE_YEARS);
   const [activeBlogIndex, setActiveBlogIndex] = useState(0);
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const h2Ref = useRef<HTMLHeadingElement>(null);
@@ -63,11 +68,11 @@ export default function HomeContent() {
       title: "Instrumente schärfen",
       description: (
         <>
-          Professionelles <strong>Schärfen und Aufarbeiten</strong> <strong>aller dentalen und chirurgischen Instrumente</strong>. Höchste Qualität für optimale Behandlungsergebnisse durch präzise Handarbeit.
+          Professioneller <strong>Schleifservice</strong> zum <strong>Schärfen und Aufarbeiten aller dentalen und chirurgischen Instrumente</strong>. Höchste Qualität durch präzise Handarbeit.
         </>
       ),
       imageUrl: "/schleifenblau.png",
-      imageAlt: "Instrumente schärfen, professionelle Schärfung",
+      imageAlt: "Instrumente schärfen lassen, professioneller Schleifservice",
       badgeIcon: (
         <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
           <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
@@ -79,10 +84,10 @@ export default function HomeContent() {
       buttonText: "Jetzt schärfen lassen",
     },
     {
-      title: "Express-Schärfen in Berlin",
-      description: "Wir kommen zu Ihnen in die Praxis und gehen erst, wenn alle Instrumente ihre ursprüngliche Schärfe wiedererlangt haben.",
+      title: "Express-Schleifservice in Berlin",
+      description: "In 24h wieder scharfe und einsatzbereite Instrumente. Alternativ Inhouse-Service: Wir kommen zu Ihnen und schärfen direkt vor Ort.",
       imageUrl: "/3 spitzen.JPG",
-      imageAlt: "Express-Service Berlin, Vor-Ort-Schärfung",
+      imageAlt: "Express-Schleifservice Berlin, Instrumente vor Ort schärfen lassen",
       badgeIcon: (
         <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -90,12 +95,12 @@ export default function HomeContent() {
       ),
       badgeText: "Nur in Berlin & Umgebung",
       href: "/express-schaerfen",
-      linkTitle: "Express Schärfung Berlin, Vor-Ort-Service",
+      linkTitle: "Express-Schleifservice Berlin, Vor-Ort-Service",
       buttonText: "Express-Service",
     },
     {
       title: "Schärfkurs in Ihrer Praxis",
-      description: "Erlernen Sie die richtige Schärftechnik. Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.",
+      description: "Erlernen Sie die richtige Schleiftechnik. Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.",
       imageUrl: "/schaerfkursbild.png",
       imageAlt: "Schärfkurse, professionelle Schulung",
       aiImage: true,
@@ -195,9 +200,9 @@ export default function HomeContent() {
     if (!statsVisible) return;
 
     const duration = 2000;
-    const target1 = 450;
-    const target2 = 15000;
-    const target3 = 20;
+    const target1 = CUSTOMER_COUNT;
+    const target2 = INSTRUMENT_COUNT;
+    const target3 = EXPERIENCE_YEARS;
     const fps = 60;
     const totalFrames = (duration / 1000) * fps;
     
@@ -249,7 +254,7 @@ export default function HomeContent() {
     },
     {
       question: "Wie werden die Instrumente verpackt & versendet?",
-      answer: "Alle von Ihnen eingeschickten Instrumente müssen sterilisiert und sicher verpackt zu uns verschickt werden. Sollten die Instrumente nicht sterilisiert sein, wird eine Reinigungspauschale von 20€ erhoben. Nach dem Schärfprozess werden Ihre Instrumente gut verpackt und versichert an Sie zurück geschickt."
+      answer: "Alle von Ihnen eingeschickten Instrumente müssen sterilisiert und sicher verpackt zu uns verschickt werden. Sollten die Instrumente nicht sterilisiert sein, wird eine Reinigungspauschale von 20€ erhoben. Nach dem Schleifprozess werden Ihre Instrumente gut verpackt und versichert an Sie zurückgeschickt."
     }
   ];
 
@@ -303,7 +308,7 @@ export default function HomeContent() {
             "name": "Schärfservice Hartmann",
             "url": "https://www.dentalschleifen.de",
             "logo": "https://www.dentalschleifen.de/SHLogo.png",
-            "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung",
+            "description": "Professioneller Schleifservice für dentale und chirurgische Instrumente mit über 20 Jahren Erfahrung",
             "foundingDate": "2004",
             "founder": {
               "@type": "Person",
@@ -338,7 +343,7 @@ export default function HomeContent() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "Schärfservice Hartmann",
-            "description": "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung",
+            "description": "Professioneller Schleifservice für dentale und chirurgische Instrumente mit über 20 Jahren Erfahrung",
             "url": "https://www.dentalschleifen.de",
             "telephone": "+49 174 9342576",
             "email": "hartmann-schaerfservice@web.de",
@@ -396,8 +401,8 @@ export default function HomeContent() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Instrumente schärfen & schleifen Berlin",
-            "description": "Professionelles Dental schärfen, Instrumente schleifen und aufbereiten von dentalen und chirurgischen Instrumenten in Berlin",
+            "name": "Dentalinstrumente schärfen lassen",
+            "description": "Professioneller Schleifservice für dentale und chirurgische Instrumente, deutschlandweit per Einsendeservice",
             "alternateName": ["dental schleifen", "dental schärfen", "instrumente aufbereiten", "instrumente schärfen berlin"],
             "provider": {
               "@type": "LocalBusiness",
@@ -414,13 +419,13 @@ export default function HomeContent() {
             },
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
-              "name": "Schärfservice Preisliste",
+              "name": "Schleifservice Preisliste",
               "itemListElement": [
                 {
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
-                    "name": "Scaler & Küretten Schärfung"
+                    "name": "Scaler & Küretten schleifen"
                   },
                   "price": "6.00",
                   "priceCurrency": "EUR"
@@ -429,7 +434,7 @@ export default function HomeContent() {
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
-                    "name": "Raspatorien Schärfung"
+                    "name": "Raspatorien schleifen"
                   },
                   "price": "11.00",
                   "priceCurrency": "EUR"
@@ -448,7 +453,7 @@ export default function HomeContent() {
             "@context": "https://schema.org",
             "@type": "Course",
             "name": "Schärfkurse für Dentalinstrumente",
-            "description": "Professionelle Schulung zur richtigen Schärftechnik für dentale Instrumente",
+            "description": "Professionelle Schulung zur richtigen Schleiftechnik für dentale Instrumente",
             "provider": {
               "@type": "Organization",
               "name": "Schärfservice Hartmann"
@@ -475,7 +480,7 @@ export default function HomeContent() {
             "@context": "https://schema.org",
             "@type": "Blog",
             "name": "Schärfservice Hartmann Blog",
-            "description": "Tipps und Ratgeber zur Instrumentenpflege und Schärfung",
+            "description": "Tipps zu Schärfe, Instrumentenpflege und fachgerechten Schleifverfahren",
             "blogPost": blogPosts.map((post) => ({
               "@type": "BlogPosting",
               "headline": post.title,
@@ -521,7 +526,7 @@ export default function HomeContent() {
         <div className="absolute inset-0 z-0">
           <Image 
             src="/schaerfservice-werkstatt-berlin.jpg" 
-            alt="Schärfservice Hartmann Werkstatt in Berlin, professionelle Instrumentenschärfung für dentale und chirurgische Instrumente" 
+            alt="Schärfservice Hartmann Werkstatt in Berlin, professioneller Schleifservice für dentale und chirurgische Instrumente"
             fill
             className="object-cover object-[15%_center] lg:object-center scale-x-[-1]"
             priority
@@ -592,7 +597,7 @@ export default function HomeContent() {
             <div className="relative w-full aspect-[4/3] max-w-xl mx-auto lg:max-w-none lg:aspect-auto lg:h-full lg:min-h-0 min-h-[220px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 order-1 lg:order-2">
               <Image
                 src="/schleifen bild.JPG"
-                alt="Instrumente schärfen, professionelle Schärfung im Schärfservice Hartmann"
+                alt="Instrumente schärfen lassen, professioneller Schleifservice Hartmann"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -607,16 +612,16 @@ export default function HomeContent() {
         <Container className="max-sm:px-3">
           <div className="grid grid-cols-3 gap-2 sm:gap-8 text-center">
             {[
-              {title:"450+",subtitle:"Zufriedene Kunden", value: count1, suffix: "+"},
-              {title:"15.000+",subtitle:"Instrumente geschärft", value: count2, suffix: "+"},
+              {title:"600+",subtitle:"Zufriedene Kunden", value: count1, suffix: "+"},
+              {title:"20.000+",subtitle:"Instrumente geschärft", value: count2, suffix: "+"},
               {title:"erfahrung-20plus", subtitle:"Erfahrung", value: count3, suffix: "+ Jahre"}
             ].map((item) => (
               <div key={item.title} className="space-y-1 lg:space-y-2">
                 <div className="flex items-center justify-center gap-1 lg:gap-2">
-                  <div className="whitespace-nowrap text-2xl sm:text-4xl lg:text-5xl font-bold text-blue-600">
+                  <div className="whitespace-nowrap text-xl sm:text-4xl lg:text-5xl font-bold text-blue-600">
                     {item.value.toLocaleString('de-DE')}{item.suffix}
                   </div>
-                  {item.title === "450+" && (
+                  {item.title === "600+" && (
                     <div className="relative group inline-flex items-center">
                       <span
                         className="inline-flex items-center justify-center w-4 h-4 lg:w-6 lg:h-6 rounded-full bg-blue-100 text-blue-700 text-xs lg:text-sm font-bold cursor-help"
@@ -664,7 +669,7 @@ export default function HomeContent() {
               <div className="relative w-full h-64 mb-0 rounded-t-2xl overflow-hidden">
                 <Image 
                   src="/schleifenblau.png" 
-                  alt="Instrumente schärfen, professionelle Schärfung" 
+                  alt="Instrumente schärfen lassen, professioneller Schleifservice"
                   fill
                   className="object-cover"
                 />
@@ -677,7 +682,7 @@ export default function HomeContent() {
               </div>
               <div className="px-8 pb-8 pt-6 flex flex-col flex-grow">
               <p className="text-base text-gray-600 leading-relaxed mb-6 sm:text-lg">
-                Professionelles <strong>Schärfen und Aufarbeiten</strong> <strong>aller dentalen und chirurgischen Instrumente</strong>. Höchste Qualität für optimale Behandlungsergebnisse durch präzise Handarbeit.
+                Professioneller <strong>Schleifservice</strong> zum <strong>Schärfen und Aufarbeiten aller dentalen und chirurgischen Instrumente</strong>. Höchste Qualität durch präzise Handarbeit.
               </p>
               <div className="mt-auto space-y-6">
                 <div className="flex items-center gap-2">
@@ -698,21 +703,21 @@ export default function HomeContent() {
               <div className="relative w-full h-64 mb-0 rounded-t-2xl overflow-hidden">
                 <Image 
                   src="/3 spitzen.JPG" 
-                  alt="Express-Service Berlin, Vor-Ort-Schärfung" 
+                  alt="Express-Schleifservice Berlin, Instrumente vor Ort schärfen lassen"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 px-8 pb-4">
                   <h3 ref={h2Ref} className="text-2xl leading-8 font-semibold text-white sm:text-[28px] sm:leading-9">
-                    Express-Schärfen in Berlin
+                    Express-Schleifservice in Berlin
                   </h3>
                 </div>
               </div>
               <div className="px-8 pb-8 pt-6 flex flex-col flex-grow">
               <p className="text-base text-gray-600 leading-relaxed mb-6 sm:text-lg">
-                Wir kommen zu Ihnen in die Praxis und gehen erst, wenn alle Instrumente
-                ihre ursprüngliche Schärfe wiedererlangt haben.
+                In 24h wieder scharfe und einsatzbereite Instrumente. Alternativ Inhouse-Service: Wir kommen zu Ihnen
+                und schärfen direkt vor Ort.
               </p>
               <div className="mt-auto space-y-6">
                 <div className="flex items-center gap-2">
@@ -721,7 +726,7 @@ export default function HomeContent() {
                   </svg>
                   <p className="text-sm text-blue-600 font-medium">Nur in Berlin & Umgebung</p>
                 </div>
-                <Link href="/express-schaerfen" title="Express Schärfung Berlin, Vor-Ort-Service">
+                <Link href="/express-schaerfen" title="Express-Schleifservice Berlin, Vor-Ort-Service">
                   <InteractiveHoverButton className="w-full" text="Express-Service" />
                 </Link>
               </div>
@@ -747,7 +752,7 @@ export default function HomeContent() {
               </div>
               <div className="px-8 pb-8 pt-6 flex flex-col flex-grow">
               <p className="text-base text-gray-600 leading-relaxed mb-6 sm:text-lg">
-                Erlernen Sie die richtige Schärftechnik. 
+                Erlernen Sie die richtige Schleiftechnik.
                 Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.
               </p>
               <div className="mt-auto space-y-6">
@@ -767,6 +772,37 @@ export default function HomeContent() {
         </Container>
       </section>
 
+      {/* Google Reviews */}
+      <section className="py-20 bg-gray-50" aria-labelledby="kundenstimmen-title">
+        <Container>
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <h2 id="kundenstimmen-title" className="text-3xl font-semibold text-gray-900 sm:text-4xl">
+              Das sagen unsere Kunden
+            </h2>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-lg text-gray-600">
+              <span className="font-semibold text-gray-900">5/5</span>
+              <span className="text-amber-400" aria-label="5 von 5 Sternen">
+                <svg className="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="m10 1.6 2.5 5.07 5.6.81-4.05 3.95.96 5.58L10 14.37 5 17l.95-5.58L1.9 7.48l5.6-.81L10 1.6Z" />
+                </svg>
+              </span>
+              <span>Google-Rezensionen für Schärfservice Hartmann.</span>
+            </div>
+          </div>
+          <Testimonials />
+          <div className="mt-8 text-center">
+            <a
+              href="https://share.google/2UDHc47s5uBG5MkH0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-blue-600 underline-offset-4 transition hover:text-blue-700 hover:underline"
+            >
+              Alle Google-Rezensionen ansehen
+            </a>
+          </div>
+        </Container>
+      </section>
+
       {/* Instrument sharpness journey */}
       <HowItWorks09 />
 
@@ -778,7 +814,7 @@ export default function HomeContent() {
               Expertentipps
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Wissenswertes rund um die Pflege und Schärfung Ihrer Instrumente
+              Wissenswertes rund um Schärfe, Pflege und fachgerechte Schleifverfahren
             </p>
           </div>
 
@@ -788,49 +824,59 @@ export default function HomeContent() {
             className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-8 md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:pb-0 lg:grid-cols-4"
           >
             {blogPosts.map((post, index) => (
-              <Card
+              <StandardCard
                 key={index}
-                imageUrl={post.imageUrl}
-                imageAlt={post.imageAlt}
-                className="w-[88%] shrink-0 snap-start sm:w-[72%] md:w-auto md:shrink"
+                className="h-full w-[88%] shrink-0 snap-start sm:w-[72%] md:w-auto md:shrink"
               >
-                <div className="text-sm text-blue-600 font-medium mb-2">{post.date}</div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">{post.title}</h3>
-                <div className="relative mb-4">
-                  <p className="text-gray-600 leading-relaxed">{post.excerpt}</p>
-                  <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none"></div>
+                <div className="relative h-48 min-h-[180px] shrink-0">
+                  <Image
+                    src={post.imageUrl}
+                    alt={post.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 88vw"
+                    className="object-cover"
+                  />
                 </div>
-                <div className="flex items-center justify-between gap-3">
-                  <Link
-                    href={`/blog/${post.id}`}
-                    className="text-blue-600 hover:text-blue-700 font-medium cursor-pointer hover:underline transition-all duration-200"
-                  >
-                    Mehr lesen
-                  </Link>
-                  
-                  <button
-                    onClick={() => shareArticle(post.id)}
-                    className="flex items-center gap-1 text-blue-600 hover:text-blue-700 font-medium cursor-pointer hover:underline transition-all duration-200 group"
-                    title="Artikel teilen"
-                  >
-                    {copiedArticleId === post.id ? (
-                      <>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-green-600">Kopiert!</span>
-                      </>
-                    ) : (
-                      <>
-                        <svg className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
-                        </svg>
-                        <span>Teilen</span>
-                      </>
-                    )}
-                  </button>
+                <div className="flex h-full flex-col p-6">
+                  <div className="mb-2 text-sm font-medium text-blue-600">{post.date}</div>
+                  <h3 className="mb-3 min-h-14 line-clamp-2 text-xl font-semibold leading-7 text-gray-900">
+                    {post.title}
+                  </h3>
+                  <div className="relative mb-5 h-[4.5rem] overflow-hidden">
+                    <p className="line-clamp-3 leading-6 text-gray-600">{post.excerpt}</p>
+                  </div>
+                  <div className="mt-auto flex items-center justify-between gap-3">
+                    <Link
+                      href={`/blog/${post.id}`}
+                      className="text-blue-600 hover:text-blue-700 font-medium cursor-pointer hover:underline transition-all duration-200"
+                    >
+                      Mehr lesen
+                    </Link>
+
+                    <button
+                      onClick={() => shareArticle(post.id)}
+                      className="flex items-center gap-1 text-blue-600 hover:text-blue-700 font-medium cursor-pointer hover:underline transition-all duration-200 group"
+                      title="Artikel teilen"
+                    >
+                      {copiedArticleId === post.id ? (
+                        <>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="text-green-600">Kopiert!</span>
+                        </>
+                      ) : (
+                        <>
+                          <svg className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                          </svg>
+                          <span>Teilen</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </div>
-              </Card>
+              </StandardCard>
             ))}
           </div>
 
@@ -859,7 +905,7 @@ export default function HomeContent() {
               Häufige Fragen
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Antworten auf die wichtigsten Fragen zu unserem Schärfservice
+              Antworten auf die wichtigsten Fragen zu unserem Schleifservice
             </p>
           </div>
           <FAQ items={faqItems} className="mx-auto max-w-4xl" />

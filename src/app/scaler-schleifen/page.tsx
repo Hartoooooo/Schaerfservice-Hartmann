@@ -1,28 +1,30 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ClipboardList, Package, ScanSearch, Truck } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 
-const canonical = "https://www.dentalschleifen.de/scaler-schaerfen";
+const canonical = "https://www.dentalschleifen.de/scaler-schleifen";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Scaler schleifen & schärfen lassen | Bundesweiter Einsendeservice",
+    absolute: "Scaler schärfen lassen | Deutschlandweiter Einsendeservice",
   },
   description:
-    "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 6 € – Jetzt Auftrag erteilen",
+    "Scaler schärfen lassen: professioneller Schleifservice für alle Scaler-Typen. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
   keywords: [
     "Scaler schärfen",
     "Scaler schärfen lassen",
     "Scaler schleifen",
+    "Scaler Schleifservice",
     "Scaler schärfen Berlin",
     "Dental Scaler schärfen",
   ],
-  alternates: { canonical: "/scaler-schaerfen" },
+  alternates: { canonical: "/scaler-schleifen" },
   openGraph: {
-    title: "Scaler schleifen & schärfen lassen | Bundesweiter Einsendeservice",
+    title: "Scaler schärfen lassen | Deutschlandweiter Einsendeservice",
     description:
-      "Scaler schärfen lassen vom Experten ✓ Alle Scaler-Typen ✓ Korrekter Schärfwinkel garantiert ✓ Express-Service Berlin ✓ Ab 6 € – Jetzt Auftrag erteilen",
+      "Scaler schärfen lassen: professioneller Schleifservice für alle Scaler-Typen. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
     url: canonical,
   },
 };
@@ -35,24 +37,23 @@ const anzeichen = [
 ];
 
 const ablauf = [
-  { n: "1", t: "Auftrag erteilen", d: "Einfach online über unser Auftragsformular" },
-  { n: "2", t: "Instrumente einsenden", d: "Sicher verpackt per Post oder Kurier" },
-  { n: "3", t: "Schärfen & Prüfen", d: "Professionelle Handbearbeitung in Berlin" },
-  { n: "4", t: "Zurücksenden", d: "Schnell und zuverlässig, optional als Express" },
+  { icon: ClipboardList, t: "Auftrag erteilen", d: "Einfach online über unser Auftragsformular" },
+  { icon: Package, t: "Instrumente einsenden", d: "Sicher verpackt per Post oder Kurier" },
+  { icon: ScanSearch, t: "Schleifen & Prüfen", d: "Präziser Handschliff in Berlin" },
+  { icon: Truck, t: "Zurücksenden", d: "Schnell und zuverlässig, optional als Express" },
 ];
 
 const warum = [
   "Jahrelange Erfahrung mit Dentalinstrumenten",
-  "Handschärfung für beste Ergebnisse",
+  "Präziser Handschliff für beste Ergebnisse",
   "Schnelle Bearbeitung & zuverlässige Rücksendung",
   "Express-Service verfügbar",
-  "Günstige Preise – schärfen statt neu kaufen",
 ];
 
 const eckdaten = [
-  { label: "ab 6 €", sub: "pro Instrument" },
+  { label: "ab 6 €", sub: "pro Instrument ab 30" },
   { label: "7 % Rabatt", sub: "ab 15 Instrumenten" },
-  { label: "Handgeschärft", sub: "korrekter Schärfwinkel" },
+  { label: "Handgeschärft", sub: "korrekter Schleifwinkel" },
   { label: "Express", sub: "in Berlin & Umgebung" },
 ];
 
@@ -73,7 +74,7 @@ export default function ScalerSchaerfenPage() {
             "@type": "BreadcrumbList",
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Startseite", item: "https://www.dentalschleifen.de" },
-              { "@type": "ListItem", position: 2, name: "Scaler schärfen", item: canonical },
+              { "@type": "ListItem", position: 2, name: "Scaler schärfen lassen", item: canonical },
             ],
           }),
         }}
@@ -84,9 +85,9 @@ export default function ScalerSchaerfenPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            name: "Scaler schärfen lassen Berlin",
+            name: "Scaler schärfen lassen | Schleifservice Hartmann",
             description:
-              "Professionelles Handschärfen von Dental-Scaler aller gängigen Typen mit korrektem Schärfwinkel.",
+              "Deutschlandweiter Schleifservice für Dental-Scaler aller gängigen Typen, präzise geschliffen für volle Schärfe.",
             provider: {
               "@type": "LocalBusiness",
               name: "Schärfservice Hartmann",
@@ -115,13 +116,13 @@ export default function ScalerSchaerfenPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-5">
               Scaler schärfen lassen
               <span className="block text-blue-400 text-2xl sm:text-3xl font-medium mt-2">
-                Professioneller Schärfservice in Berlin
+                Professioneller Schleifservice, deutschlandweit
               </span>
             </h1>
             <p className="text-lg sm:text-xl text-white/85 leading-relaxed mb-8">
               Scaler gehören zu den meistgenutzten Instrumenten in Zahnarztpraxis und Prophylaxe. Durch den täglichen
-              Einsatz verlieren sie schnell ihre Schärfe. Beim Schärfservice Hartmann erhalten Sie Ihre Scaler
-              handgeschärft und in neuwertigem Zustand zurück.
+              Einsatz verlieren sie schnell ihre Schärfe. Unser Schleifservice bearbeitet jede Arbeitskante präzise.
+              Beim Schärfservice Hartmann erhalten Sie Ihre Scaler handgeschärft und einsatzbereit zurück.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 text-base lg:text-lg font-medium" hover="lift">
@@ -186,9 +187,9 @@ export default function ScalerSchaerfenPage() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {ablauf.map((step) => (
-              <div key={step.n} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white font-semibold mb-4">
-                  {step.n}
+              <div key={step.t} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white">
+                  <step.icon className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <h3 className="text-base font-semibold text-gray-900 mb-1">{step.t}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">{step.d}</p>
@@ -216,7 +217,7 @@ export default function ScalerSchaerfenPage() {
             <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-8 sm:p-10 text-white shadow-xl">
               <h2 className="text-2xl sm:text-3xl font-semibold mb-3">Bereit, Ihre Scaler schärfen zu lassen?</h2>
               <p className="text-blue-50 leading-relaxed mb-6">
-                Erteilen Sie Ihren Auftrag online in wenigen Minuten – ab 6 € pro Instrument.
+                Erteilen Sie Ihren Auftrag online in wenigen Minuten – ab 30 Instrumenten ab 6 € pro Instrument.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button href="/schaerfauftrag" className="bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 font-medium" hover="lift-sm">

@@ -95,8 +95,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
       if (totalQuantity >= 70) {
         // 20% Rabatt bei 70+ Instrumenten
         price = toNumber(row.price75);
-      } else if (totalQuantity >= 40) {
-        // 15% Rabatt bei 40+ Instrumenten
+      } else if (totalQuantity >= 30) {
+        // 15% Rabatt bei 30+ Instrumenten
         price = toNumber(row.price15);
       } else if (totalQuantity >= 15) {
         // 7% Rabatt bei 15+ Instrumenten
@@ -170,7 +170,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         .map((row, idx) => {
           let unitPrice = row.price;
           if (totalQuantity >= 70) unitPrice = row.price75;
-          else if (totalQuantity >= 40) unitPrice = row.price15;
+          else if (totalQuantity >= 30) unitPrice = row.price15;
           else if (totalQuantity >= 15) unitPrice = row.price7;
           
           return {
@@ -212,7 +212,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         
         // Rabattinformation
         discount_info: totalQuantity >= 70 ? '20% Rabatt (ab 70 Instrumente)' :
-                      totalQuantity >= 40 ? '15% Rabatt (ab 40 Instrumente)' : 
+                      totalQuantity >= 30 ? '15% Rabatt (ab 30 Instrumente)' :
                       totalQuantity >= 15 ? '7% Rabatt (ab 15 Instrumente)' : 
                       'Kein Rabatt',
         
@@ -478,11 +478,11 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   <th className={`table-number ${totalQuantity < 15 ? 'font-bold' : 'text-gray-400'}`}>
                     Preis
                   </th>
-                  <th className={`table-number ${totalQuantity >= 15 && totalQuantity < 40 ? 'font-bold' : 'text-gray-400'}`}>
+                  <th className={`table-number ${totalQuantity >= 15 && totalQuantity < 30 ? 'font-bold' : 'text-gray-400'}`}>
                     ab 15 Instr.
                   </th>
-                  <th className={`table-number ${totalQuantity >= 40 && totalQuantity < 70 ? 'font-bold' : 'text-gray-400'}`}>
-                    ab 40 Instr.
+                  <th className={`table-number ${totalQuantity >= 30 && totalQuantity < 70 ? 'font-bold' : 'text-gray-400'}`}>
+                    ab 30 Instr.
                   </th>
                   <th className={`table-number ${totalQuantity >= 70 ? 'font-bold' : 'text-gray-400'}`}>
                     ab 70 Instr.
@@ -497,10 +497,10 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                     <td className={`table-number ${totalQuantity < 15 ? 'font-bold' : 'text-gray-400'}`}>
                       <span className="cell-right">{row.price}</span>
                     </td>
-                    <td className={`table-number ${totalQuantity >= 15 && totalQuantity < 40 ? 'font-bold' : 'text-gray-400'}`}>
+                    <td className={`table-number ${totalQuantity >= 15 && totalQuantity < 30 ? 'font-bold' : 'text-gray-400'}`}>
                       <span className="cell-right">{row.price7}</span>
                     </td>
-                    <td className={`table-number ${totalQuantity >= 40 && totalQuantity < 70 ? 'font-bold' : 'text-gray-400'}`}>
+                    <td className={`table-number ${totalQuantity >= 30 && totalQuantity < 70 ? 'font-bold' : 'text-gray-400'}`}>
                       <span className="cell-right">{row.price15}</span>
                     </td>
                     <td className={`table-number ${totalQuantity >= 70 ? 'font-bold' : 'text-gray-400'}`}>
@@ -548,8 +548,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   <td colSpan={5} className="text-neutral-600">
                     Zwischensumme Nettobetrag
                     {totalQuantity >= 70 && <span className="text-blue-600 ml-2">(20% Rabatt)</span>}
-                    {totalQuantity >= 40 && totalQuantity < 70 && <span className="text-blue-600 ml-2">(15% Rabatt)</span>}
-                    {totalQuantity >= 15 && totalQuantity < 40 && <span className="text-blue-600 ml-2">(7% Rabatt)</span>}
+                    {totalQuantity >= 30 && totalQuantity < 70 && <span className="text-blue-600 ml-2">(15% Rabatt)</span>}
+                    {totalQuantity >= 15 && totalQuantity < 30 && <span className="text-blue-600 ml-2">(7% Rabatt)</span>}
                   </td>
                   <td className="table-number font-medium">
                     <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(subtotalWithDiscount)}</span>
@@ -605,7 +605,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   // Berechne aktuellen Preis basierend auf Gesamtmenge
                   const getCurrentPrice = () => {
                     if (totalQuantity >= 70) return row.price75;
-                    if (totalQuantity >= 40) return row.price15;
+                    if (totalQuantity >= 30) return row.price15;
                     if (totalQuantity >= 15) return row.price7;
                     return row.price;
                   };
@@ -651,8 +651,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   <td className="text-neutral-600">
                     Zwischensumme
                     {totalQuantity >= 70 && <span className="block text-blue-600">(20% Rabatt)</span>}
-                    {totalQuantity >= 40 && totalQuantity < 70 && <span className="block text-blue-600">(15% Rabatt)</span>}
-                    {totalQuantity >= 15 && totalQuantity < 40 && <span className="block text-blue-600">(7% Rabatt)</span>}
+                    {totalQuantity >= 30 && totalQuantity < 70 && <span className="block text-blue-600">(15% Rabatt)</span>}
+                    {totalQuantity >= 15 && totalQuantity < 30 && <span className="block text-blue-600">(7% Rabatt)</span>}
                   </td>
                   <td colSpan={2} className="table-number font-medium">
                     <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(subtotalWithDiscount)}</span>
@@ -806,8 +806,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                     className="mt-1 w-4 h-4 text-[var(--color-blue-600)] border-gray-300 rounded focus:ring-[var(--color-blue-600)]"
                   />
                   <span className="text-sm text-gray-700 leading-relaxed">
-                    Hiermit beauftrage ich Sie ausdrücklich, ab Erhalt meiner Sendung mit dem Schärfen der Instrumente beginnen zu dürfen. 
-                    Mir ist bekannt, dass mein Widerrufsrecht ab Beginn der Schärfarbeiten erlischt.
+                    Hiermit beauftrage ich Sie ausdrücklich, ab Erhalt meiner Sendung mit dem Schleifen der Instrumente beginnen zu dürfen.
+                    Mir ist bekannt, dass mein Widerrufsrecht ab Beginn der Schleifarbeiten erlischt.
                   </span>
                 </label>
                 

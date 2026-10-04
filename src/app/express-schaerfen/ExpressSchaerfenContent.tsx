@@ -16,12 +16,12 @@ export default function ExpressSchaerfenContent() {
         <Container>
           <div className="max-w-6xl mx-auto">
             <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center text-gray-900 mb-8 lg:mb-10 max-w-4xl mx-auto">
-              Express-Schärfservice Berlin
+              Express-Schleifservice Berlin
             </h1>
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 lg:items-center">
               <div className="text-center lg:text-left lg:min-h-0">
                 <p className="text-xl text-gray-600 leading-relaxed mb-4 max-w-2xl mx-auto lg:mx-0">
-                  Manchmal ist keine Zeit für tagelange Wartezeit. Volle Terminkalender, ein kurzfristiger Ausfall, eine Lieferung, die nicht kam, und plötzlich fehlen die einsatzbereiten Instrumente. Genau für diese Situationen gibt es unseren Express-Schärfservice.
+                  Manchmal ist keine Zeit für tagelange Wartezeit. Volle Terminkalender, ein kurzfristiger Ausfall, eine Lieferung, die nicht kam, und plötzlich fehlen die einsatzbereiten Instrumente. Genau für diese Situationen gibt es unseren Express-Schleifservice.
                 </p>
                 <p className="text-lg text-gray-500 leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
                   In Berlin und einem Umkreis von 75&nbsp;km schärfen wir Ihre Instrumente direkt vor Ort, oder wir holen sie ab und bringen sie innerhalb von 24&nbsp;Stunden frisch geschärft zurück. Kein Versandrisiko, keine Wartezeit.
@@ -63,10 +63,10 @@ export default function ExpressSchaerfenContent() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="text-3xl font-semibold mb-4 text-gray-900">
-              Warum Express-Schärfen?
+              Warum Express-Schleifservice?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Die Vorteile unseres Express Schärfservices
+              Vorteile unseres Express-Schleifservices
             </p>
           </div>
           
@@ -87,7 +87,7 @@ export default function ExpressSchaerfenContent() {
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                Mobiles Schärfen (ab 75 Instr.)
+                Mobiler Schleifservice (ab 75 Instr.)
               </button>
               <button
                 onClick={() => setActiveService('24h')}
@@ -97,7 +97,7 @@ export default function ExpressSchaerfenContent() {
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                24h Schärfservice (ab 75 Instr.)
+                24h Schleifservice (ab 75 Instr.)
               </button>
             </div>
           </div>
@@ -111,9 +111,9 @@ export default function ExpressSchaerfenContent() {
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900">Vor-Ort-Schärfung in Ihrer Praxis</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900">Vor-Ort-Schleifen in Ihrer Praxis</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Unser Techniker kommt mit dem nötigen Equipment zu Ihnen. Die Instrumente werden direkt bei Ihnen geschärft, ohne Verlustrisiko und ohne Unterbrechung Ihrer Versorgung.
+                    Unser Techniker kommt mit benötigtem Equipment zu Ihnen. Instrumente werden direkt bei Ihnen geschliffen und erhalten volle Schärfe zurück – ohne Verlustrisiko oder Versorgungsunterbrechung.
                   </p>
                 </Card>
 
@@ -125,7 +125,7 @@ export default function ExpressSchaerfenContent() {
                   </div>
                   <h3 className="text-xl font-semibold mb-4 text-gray-900">Sofort wieder einsatzbereit</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Ihre Instrumente werden direkt in Ihrer Praxis geschärft und sind anschließend sofort nutzbar. Kein Hin- und Herschicken, keine Wartezeit.
+                    Ihre Instrumente werden direkt in Ihrer Praxis geschliffen, geprüft und sind anschließend sofort scharf und nutzbar. Kein Hin- und Herschicken, keine Wartezeit.
                   </p>
                 </Card>
 
@@ -193,7 +193,7 @@ export default function ExpressSchaerfenContent() {
                 Service-Gebiet
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Unser 24h &amp; vor Ort Schärfservice
+                Unser 24h- und Vor-Ort-Schleifservice
               </p>
             </div>
             
@@ -202,7 +202,7 @@ export default function ExpressSchaerfenContent() {
                 <div>
                   <h3 className="text-xl font-semibold mb-4 text-gray-900">Berlin & Umgebung</h3>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    Unser Express 24h & vor Ort Schärfservice ist verfügbar in Berlin und im Umkreis von 75 km, nur vor Ort Service. 
+                    Unser Express-Schleifservice ist vor Ort oder als 24h-Abholservice in Berlin und im Umkreis von 75 km verfügbar.
                     Bei größeren Entfernungen beraten wir Sie gerne über alternative Lösungen.
                   </p>
                   
@@ -281,9 +281,9 @@ export default function ExpressSchaerfenContent() {
               <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">
                 3
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">Schärfung</h3>
+              <h3 className="text-lg font-semibold mb-3 text-gray-900">Schleifen</h3>
               <p className="text-gray-600 text-sm">
-                Wir kommen in Ihre Praxis: Schärfen vor Ort oder 24h Abhol-/Bringservice
+                Wir kommen in Ihre Praxis: Schleifen vor Ort oder 24h-Abhol- und Bringservice
               </p>
             </div>
 
@@ -308,7 +308,7 @@ export default function ExpressSchaerfenContent() {
               Für wen ist der Express-Service geeignet?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Der Express-Schärfservice richtet sich an Praxen, die keine langen Wartezeiten in Kauf nehmen können
+              Express-Schleifservice für Praxen ohne lange Ausfallzeiten
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -318,7 +318,7 @@ export default function ExpressSchaerfenContent() {
               { title: "Chirurgische Praxen & OP-Zentren", text: "Ambulante OP-Zentren mit täglichem Instrumentenbedarf, bei denen jede Stunde zählt." },
               { title: "Kurzfristiger Bedarf", text: "Plötzlich aufgefallen, dass Instrumente stumpf sind? Wir kommen schnell, ohne aufwändige Vorlaufzeit." },
               { title: "Persönliche Übergabe", text: "Für alle, die den Versandweg lieber vermeiden und Instrumente lieber direkt in gute Hände geben." },
-              { title: "Express 24h Abhol-Service", text: "Wir holen ab, schärfen über Nacht und liefern am nächsten Werktag zurück, ab 75 Instrumenten." },
+              { title: "Express 24h Abhol-Service", text: "Wir holen ab, schleifen über Nacht und liefern am nächsten Werktag scharf zurück, ab 75 Instrumenten." },
             ].map(({ title, text }) => (
               <div key={title} className="bg-white rounded-2xl border border-gray-200 p-6">
                 <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mb-4">

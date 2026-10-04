@@ -25,10 +25,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Schärfservice Hartmann: Dentalinstrumente schärfen & schleifen Berlin | Dentalinstrumente schärfen ab 6 €",
+    default: "Schärfservice Hartmann | Dentalinstrumente schärfen lassen",
     template: "%s | Schärfservice Hartmann",
   },
-  description: "🦷 Instrumente schärfen & schleifen ✅ Dentalinstrumente schärfen & aufbereiten ab 6 € ⭐ Professioneller Service für alle dentalen Instrumente | Express-Schärfung 150km | Schärfkurse in ihrer Praxis | 20+ Jahre Erfahrung",
+  description: "Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
   keywords: [
     "instrumente schärfen",
     "instrumente schleifen", 
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Schärfservice Hartmann",
-    description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 6 €, Schärfkurse in ihrer Praxis und Express-Service in Berlin.",
+    description: "Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
     url: "https://www.dentalschleifen.de",
     siteName: "Schärfservice Hartmann",
     locale: "de_DE",
@@ -74,14 +74,14 @@ export const metadata: Metadata = {
         url: "https://www.dentalschleifen.de/schaerfservice-werkstatt-berlin.jpg",
         width: 1200,
         height: 630,
-        alt: "Schärfservice Hartmann Werkstatt in Berlin, professionelle Instrumentenschärfung",
+        alt: "Schärfservice Hartmann Werkstatt in Berlin, professioneller Schleifservice",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Schärfservice Hartmann",
-    description: "Professionelle Schärfung von dentalen und chirurgischen Instrumenten mit über 20 Jahren Erfahrung. Schärfaufträge ab 6 €, Schärfkurse in ihrer Praxis, Express-Service Berlin.",
+    description: "Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
     images: ["https://www.dentalschleifen.de/schaerfservice-werkstatt-berlin.jpg"],
   },
   robots: {
@@ -156,7 +156,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "Schärfservice Hartmann",
-              "description": "Professionelles Schärfen von dentalen und chirurgischen Instrumenten. Scaler, Küretten, Raspatorien und mehr – seit 2004. Versand deutschlandweit, Express-Service in Berlin.",
+              "description": "Professioneller Schleifservice für dentale und chirurgische Instrumente. Scaler, Küretten, Raspatorien und mehr schärfen lassen – seit 2004, deutschlandweit.",
               "url": "https://www.dentalschleifen.de",
               "telephone": "+49 174 9342576",
               "email": "hartmann-schaerfservice@web.de",
@@ -180,17 +180,17 @@ export default function RootLayout({
                   "closes": "19:00"
                 }
               ],
-              "priceRange": "ab 6 €",
+              "priceRange": "ab 6 € pro Instrument bei Aufträgen ab 30 Instrumenten",
               "areaServed": "Deutschland",
               "foundingDate": "2004",
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
-                "name": "Schärfservices",
+                "name": "Schleifservice Leistungen",
                 "itemListElement": [
-                  {"@type": "Offer", "name": "Scaler schärfen"},
-                  {"@type": "Offer", "name": "Küretten schärfen"},
-                  {"@type": "Offer", "name": "Chirurgische Instrumente schärfen"},
-                  {"@type": "Offer", "name": "Express-Schärfen Berlin"},
+                  {"@type": "Offer", "name": "Scaler schärfen lassen"},
+                  {"@type": "Offer", "name": "Küretten schärfen lassen"},
+                  {"@type": "Offer", "name": "Chirurgische Instrumente schärfen lassen"},
+                  {"@type": "Offer", "name": "Express-Schleifservice Berlin"},
                   {"@type": "Offer", "name": "Schärfkurse für Praxisteams"}
                 ]
               },

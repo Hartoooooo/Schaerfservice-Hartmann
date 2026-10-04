@@ -7,21 +7,21 @@ import { blogPosts } from "@/lib/blogPosts";
 /** Interne Verlinkung zu Themenseiten (SEO) */
 const BLOG_TOPIC_LINKS: Record<string, { href: string; label: string }[]> = {
   "schaerfwinkel-scaler-kueretten": [
-    { href: "/scaler-schaerfen", label: "Scaler schärfen lassen" },
-    { href: "/kueretten-schaerfen", label: "Küretten schärfen lassen" },
+    { href: "/scaler-schleifen", label: "Scaler schärfen lassen" },
+    { href: "/kueretten-schleifen", label: "Küretten schärfen lassen" },
   ],
   "reinigung-dentalinstrumente": [
-    { href: "/scaler-schaerfen", label: "Scaler schärfen lassen" },
-    { href: "/kueretten-schaerfen", label: "Küretten schärfen lassen" },
+    { href: "/scaler-schleifen", label: "Scaler schärfen lassen" },
+    { href: "/kueretten-schleifen", label: "Küretten schärfen lassen" },
   ],
   "lagerung-pflege-raspatorien": [
-    { href: "/chirurgische-instrumente-schaerfen", label: "Chirurgische Instrumente schärfen" },
-    { href: "/kueretten-schaerfen", label: "Küretten schärfen lassen" },
+    { href: "/chirurgische-instrumente-schleifen", label: "Chirurgische Instrumente schärfen lassen" },
+    { href: "/kueretten-schleifen", label: "Küretten schärfen lassen" },
   ],
   "wann-geschaerft-werden": [
-    { href: "/scaler-schaerfen", label: "Scaler schärfen lassen" },
-    { href: "/kueretten-schaerfen", label: "Küretten schärfen lassen" },
-    { href: "/chirurgische-instrumente-schaerfen", label: "Chirurgische Instrumente schärfen" },
+    { href: "/scaler-schleifen", label: "Scaler schärfen lassen" },
+    { href: "/kueretten-schleifen", label: "Küretten schärfen lassen" },
+    { href: "/chirurgische-instrumente-schleifen", label: "Chirurgische Instrumente schärfen lassen" },
   ],
 };
 
@@ -119,8 +119,8 @@ export default async function BlogPostPage({ params }: Props) {
               {post.previewImages && post.previewImages.length > 0 && (!post.downloadImages || post.downloadImages.length === 0) 
                 ? "Pflegeprodukte" 
                 : post.id === "schaerfwinkel-scaler-kueretten"
-                ? "Vorlage Schärfwinkel"
-                : "Schärfplatten"}
+                ? "Vorlage Schleifwinkel"
+                : "Schleifplatten"}
             </h2>
             
             {/* Bildvorschau nebeneinander */}
@@ -242,5 +242,3 @@ export default async function BlogPostPage({ params }: Props) {
     </article>
   );
 }
-
-

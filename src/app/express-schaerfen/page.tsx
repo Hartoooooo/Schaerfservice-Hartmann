@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import ExpressSchaerfenContent from "./ExpressSchaerfenContent";
 
 export const metadata: Metadata = {
-  title: "Express-Schärfservice Berlin, Vor-Ort & 24h | Schärfservice Hartmann",
+  title: {
+    absolute: "Express-Schleifservice Berlin | Vor Ort & in 24h",
+  },
   description: "Dentalinstrumente dringend schärfen lassen? Unser Express-Service kommt direkt in Ihre Berliner Praxis oder holt Instrumente ab, 24h, ab 75 Stück, ohne Versandrisiko.",
   keywords: [
+    "express schleifservice berlin",
     "express schärfservice berlin",
     "express zahnarzt schärfen",
     "instrumente schärfen vor ort berlin",
@@ -17,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "/express-schaerfen",
   },
   openGraph: {
-    title: "Express-Schärfservice Berlin, Vor-Ort & 24h | Schärfservice Hartmann",
+    title: "Express-Schleifservice Berlin | Vor Ort & in 24h",
     description: "Dentalinstrumente dringend schärfen lassen? Unser Express-Service kommt direkt in Ihre Berliner Praxis oder holt Instrumente ab, 24h, ab 75 Stück, ohne Versandrisiko.",
   },
 };
@@ -45,8 +48,8 @@ export default function ExpressSchaerfenPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Express-Schärfservice Berlin",
-            "description": "Express-Schärfung von Dentalinstrumenten in Berlin, Vor-Ort-Service und 24h-Abhol-/Bringservice im Umkreis von 75 km",
+            "name": "Express-Schleifservice Berlin",
+            "description": "Dentalinstrumente schnell schärfen lassen: Schleifservice vor Ort oder als 24h-Abhol- und Bringservice im Umkreis von 75 km",
             "provider": {
               "@type": "LocalBusiness",
               "name": "Schärfservice Hartmann",
