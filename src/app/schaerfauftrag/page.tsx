@@ -84,7 +84,7 @@ export default function SchaerfauftragPage() {
             "offers": instrumentRows.map(row => ({
               "@type": "Offer",
               "name": row.name,
-              "price": row.price.replace('€', '').replace(',', '.'),
+              "price": row.price15.replace('€', '').replace(',', '.'),
               "priceCurrency": "EUR"
             }))
           })
