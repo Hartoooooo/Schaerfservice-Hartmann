@@ -47,20 +47,20 @@ function Stars() {
 
 export default function Testimonials() {
   return (
-    <div className="-mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 text-left [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:snap-none md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0">
+    <div className="flex snap-x snap-mandatory items-stretch gap-5 overflow-x-auto pb-4 text-left [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
       {reviews.map((review) => (
         <StandardCard
           key={review.name}
-          className="min-h-64 w-[85%] shrink-0 snap-center p-6 sm:w-[60%] md:w-auto md:shrink"
+          className="!h-80 w-[85%] shrink-0 snap-start p-6 md:!h-full md:min-h-64 md:w-auto"
         >
           <div className="flex items-center justify-between gap-4">
             <Stars />
             <GoogleLogo />
           </div>
-          <blockquote className="mt-5 flex-1 text-base leading-7 text-gray-600">
+          <blockquote className="mt-4 flex-1 text-base leading-6 text-gray-600 md:mt-5 md:leading-7">
             <p>„{review.text}“</p>
           </blockquote>
-          <footer className="mt-6 flex items-center gap-3 border-t border-gray-100 pt-5">
+          <footer className="mt-4 flex items-center gap-3 border-t border-gray-100 pt-4 md:mt-6 md:pt-5">
             <Image
               src={review.image}
               alt={`Google-Profilbild von ${review.name}`}
