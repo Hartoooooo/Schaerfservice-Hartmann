@@ -47,11 +47,11 @@ function Stars() {
 
 export default function Testimonials() {
   return (
-    <div className="grid gap-5 text-left md:grid-cols-3">
+    <div className="-mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 text-left [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:snap-none md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0">
       {reviews.map((review) => (
         <StandardCard
           key={review.name}
-          className="min-h-64 p-6"
+          className="min-h-64 w-[85%] shrink-0 snap-center p-6 sm:w-[60%] md:w-auto md:shrink"
         >
           <div className="flex items-center justify-between gap-4">
             <Stars />
