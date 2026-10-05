@@ -83,8 +83,10 @@ export default function AgbPage() {
             <section>
               <h2 className="text-xl font-semibold mb-4 text-[var(--color-blue-600)]">6. Leistungszeit & Rückversand</h2>
               <p className="text-neutral-600 leading-relaxed">
-                Die Bearbeitungszeit richtet sich nach Auftragslage und Umfang. Nach Abschluss der Schleifarbeiten
-                versenden wir an die vom Kunden angegebene Adresse zurück.
+                Die Bearbeitungsdauer beträgt in der Regel 48 Stunden ab Eingang der Instrumente. Sie kann sich je
+                nach Auftragslage und Umfang verlängern. Zeiten für Hin- und Rückversand sind nicht Teil der
+                Bearbeitungsdauer und kommen zusätzlich hinzu. Nach Abschluss der Schleifarbeiten versenden wir an
+                die vom Kunden angegebene Adresse zurück.
               </p>
             </section>
 

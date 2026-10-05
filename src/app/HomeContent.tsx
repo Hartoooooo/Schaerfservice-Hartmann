@@ -231,14 +231,14 @@ export default function HomeContent() {
       question: "Wie lange dauert die Schärfung meiner Instrumente?",
       answer: (
         <>
-          Die Bearbeitungszeit beträgt in der Regel 3-5 Werktage. In dringenden Fällen können wir auch unseren{" "}
+          Die Bearbeitungsdauer beträgt in der Regel 48 Stunden ab Eingang Ihrer Instrumente. Zeiten für Hin- und Rückversand kommen zusätzlich hinzu. In dringenden Fällen können wir auch unseren{" "}
           <a href="/express-schaerfen" className="text-blue-600 hover:text-blue-700 underline font-medium">
             Express-Service
           </a>{" "}
-          anbieten. Sie erhalten eine detaillierte Zeitangabe bei der Auftragserteilung.
+          anbieten.
         </>
       ),
-      answerText: "Die Bearbeitungszeit beträgt in der Regel 3-5 Werktage. In dringenden Fällen können wir auch unseren Express-Service anbieten. Sie erhalten eine detaillierte Zeitangabe bei der Auftragserteilung."
+      answerText: "Die Bearbeitungsdauer beträgt in der Regel 48 Stunden ab Eingang Ihrer Instrumente. Zeiten für Hin- und Rückversand kommen zusätzlich hinzu. In dringenden Fällen können wir auch unseren Express-Service anbieten."
     },
     {
       question: "Welche Instrumente können Sie schärfen?",

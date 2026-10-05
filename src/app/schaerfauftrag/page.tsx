@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: {
     absolute: "Dentalinstrumente schärfen lassen, Online-Auftrag starten | Schärfservice Hartmann",
   },
-  description: "Zahnarztinstrumente einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, 3-5 Werktage Bearbeitungszeit, ab 30 Instrumenten ab 6 € pro Instrument.",
+  description: "Zahnarztinstrumente einschicken und schärfen lassen: 48 Stunden Bearbeitungsdauer ab Eingang, Versandzeit zusätzlich, ab 30 Instrumenten ab 6 € pro Instrument.",
   keywords: [
     "zahnarztinstrumente einschicken schärfen lassen",
     "instrumente schärfen lassen",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Dentalinstrumente schärfen lassen, Online-Auftrag starten | Schärfservice Hartmann",
-    description: "Zahnarztinstrumente einschicken und schärfen lassen: Online-Auftrag in 3 Minuten, 3-5 Werktage Bearbeitungszeit, ab 30 Instrumenten ab 6 € pro Instrument.",
+    description: "Zahnarztinstrumente einschicken und schärfen lassen: 48 Stunden Bearbeitungsdauer ab Eingang, Versandzeit zusätzlich, ab 30 Instrumenten ab 6 € pro Instrument.",
   },
 };
 
@@ -108,7 +108,7 @@ export default function SchaerfauftragPage() {
               Instrumente einschicken &amp; schärfen lassen
             </h1>
             <p className="text-base leading-relaxed text-white/90">
-              Online-Auftrag in 3&nbsp;Minuten &middot; 3-5&nbsp;Werktage Bearbeitungszeit &middot; ab 30 Instrumenten ab&nbsp;6&nbsp;€ pro Instrument
+              Online-Auftrag in 3&nbsp;Minuten &middot; in der Regel 48&nbsp;Stunden Bearbeitungsdauer ab Eingang &middot; Versandzeit zusätzlich
             </p>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function SchaerfauftragPage() {
               Instrumente einschicken &amp; schärfen lassen
             </h1>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Online-Auftrag in 3&nbsp;Minuten &middot; 3-5&nbsp;Werktage Bearbeitungszeit &middot; ab 30 Instrumenten ab&nbsp;6&nbsp;€ pro Instrument
+              Online-Auftrag in 3&nbsp;Minuten &middot; in der Regel 48&nbsp;Stunden Bearbeitungsdauer ab Eingang &middot; Versandzeit zusätzlich
             </p>
           </div>
         </Container>
@@ -146,7 +146,7 @@ export default function SchaerfauftragPage() {
             {[
               {
                 q: "Wie lange dauert die Bearbeitung?",
-                a: "In der Regel 3-5 Werktage nach Eingang Ihrer Sendung. Bei Urlaubszeiten oder besonders hohem Aufkommen kommunizieren wir das transparent auf der Seite."
+                a: "Die Bearbeitungsdauer beträgt in der Regel 48 Stunden ab Eingang Ihrer Instrumente. Zeiten für Hin- und Rückversand kommen zusätzlich hinzu. Bei Urlaubszeiten oder besonders hohem Aufkommen kommunizieren wir Abweichungen transparent auf der Seite."
               },
               {
                 q: "Muss ich einen Mindestauftrag einschicken?",

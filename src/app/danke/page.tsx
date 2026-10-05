@@ -93,11 +93,11 @@ export default function DankePage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[var(--color-blue-600)] mt-0.5">3.</span>
-                  Wir beginnen sofort nach Erhalt mit der Bearbeitung
+                  Nach Eingang: Bearbeitungsdauer in der Regel 48 Stunden
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[var(--color-blue-600)] mt-0.5">4.</span>
-                  Ihre geschärften Instrumente werden schnellstmöglich zurückgesendet
+                  Danach Rückversand – Versandzeit kommt zusätzlich hinzu
                 </li>
               </ul>
             </div>
