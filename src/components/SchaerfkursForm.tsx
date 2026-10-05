@@ -2,6 +2,7 @@
 
 import { analytics } from "@/components/GoogleAnalytics";
 import DatePicker from "@/components/ui/DatePicker";
+import { Building2, CalendarClock, UsersRound } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const PRICE_PER_KM = 0.35;
@@ -198,9 +199,9 @@ export default function SchaerfkursForm() {
   const inputClass =
     "w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-sm sm:text-base focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15 transition-all duration-150 text-gray-900 placeholder-gray-400 outline-none";
 
-  const stepBadge = (n: number) => (
+  const stepBadge = (icon: React.ReactNode) => (
     <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-semibold flex items-center justify-center">
-      {n}
+      {icon}
     </span>
   );
 
@@ -224,7 +225,7 @@ export default function SchaerfkursForm() {
         {/* Schritt 1: Teilnehmer */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            {stepBadge(1)}
+            {stepBadge(<UsersRound className="h-4 w-4" aria-hidden="true" />)}
             <h3 className="text-base sm:text-lg font-semibold text-gray-900">Teilnehmeranzahl wählen</h3>
           </div>
           <div className="grid grid-cols-4 gap-3">
@@ -256,7 +257,7 @@ export default function SchaerfkursForm() {
         {/* Schritt 2: Termin */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            {stepBadge(2)}
+            {stepBadge(<CalendarClock className="h-4 w-4" aria-hidden="true" />)}
             <h3 className="text-base sm:text-lg font-semibold text-gray-900">Wunschtermin</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -283,7 +284,7 @@ export default function SchaerfkursForm() {
         {/* Schritt 3: Praxis & Kontakt */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            {stepBadge(3)}
+            {stepBadge(<Building2 className="h-4 w-4" aria-hidden="true" />)}
             <h3 className="text-base sm:text-lg font-semibold text-gray-900">Praxis &amp; Kontakt</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
