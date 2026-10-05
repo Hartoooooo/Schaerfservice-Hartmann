@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "instrumentenschärfung",
     "instrumentenschleifung"
   ],
-  authors: [{ name: "Björn Hartmann", url: "https://schaerfservice-hartmann.de" }],
+  authors: [{ name: "Björn Hartmann", url: "https://www.dentalschleifen.de" }],
   creator: "Schärfservice Hartmann",
   publisher: "Schärfservice Hartmann",
   metadataBase: new URL("https://www.dentalschleifen.de"),

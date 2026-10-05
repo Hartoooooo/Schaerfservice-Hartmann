@@ -104,9 +104,9 @@ export default function SchaerfauftragPage() {
         <div className="absolute inset-0 bg-black/45" />
         <div className="relative z-10 flex h-full items-end px-6 pb-10 text-white">
           <div>
-            <h1 className="text-[1.625rem] leading-tight font-semibold mb-3">
+            <h2 className="text-[1.625rem] leading-tight font-semibold mb-3">
               Instrumente einschicken &amp; schärfen lassen
-            </h1>
+            </h2>
             <p className="text-base leading-relaxed text-white/90">
               Online-Auftrag in 3&nbsp;Minuten &middot; in der Regel 48&nbsp;Stunden Bearbeitungsdauer ab Eingang &middot; Versandzeit zusätzlich
             </p>

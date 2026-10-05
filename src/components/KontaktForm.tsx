@@ -74,7 +74,7 @@ export default function KontaktForm() {
   return (
     <div className="container-page space-y-8 pt-6 pb-20">
       <header className="surface p-8">
-        <h1 className="text-3xl font-semibold tracking-tight">Kontakt</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">Haben Sie Fragen zum Schleifen Ihrer Küretten und Scaler?</h1>
         <p className="text-neutral-600 mt-2 max-w-2xl">
           Wir freuen uns auf Ihre Nachricht. Nutzen Sie die Kontaktdaten oder das Formular.
         </p>
