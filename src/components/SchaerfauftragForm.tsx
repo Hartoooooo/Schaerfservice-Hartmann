@@ -15,6 +15,53 @@ interface SchaerfauftragFormProps {
   rows: Row[];
 }
 
+const FREE_SHIPPING_QUANTITY = 30;
+const MID_TIER_QUANTITY = 40;
+
+function FreeShippingProgress({ quantity }: { quantity: number }) {
+  const remaining = Math.max(0, FREE_SHIPPING_QUANTITY - quantity);
+  const progress = Math.min(100, (quantity / FREE_SHIPPING_QUANTITY) * 100);
+  const freeShippingUnlocked = remaining === 0;
+
+  return (
+    <div className="border-b border-gray-200 bg-white px-4 py-3 sm:flex sm:items-center sm:gap-6">
+      <p className="mb-2 text-sm font-normal text-[#1f2937] sm:mb-0 sm:min-w-0 sm:flex-1 sm:text-base" aria-live="polite">
+        {freeShippingUnlocked ? (
+          "Gratis-Versand freigeschaltet"
+        ) : (
+          <>
+            Noch{" "}
+            <span className="font-semibold text-[var(--color-blue-600)]">
+              {remaining}
+            </span>{" "}
+            <span className="sm:hidden">Instr.</span>
+            <span className="hidden sm:inline">{remaining === 1 ? "Instrument" : "Instrumente"}</span>{" "}
+            bis zum Gratis-Versand
+          </>
+        )}
+      </p>
+      <div className="flex w-full items-center gap-2 sm:w-80 sm:shrink-0 lg:w-[26rem]">
+        <div
+          className="h-2 flex-1 overflow-hidden rounded-full bg-blue-100"
+          role="progressbar"
+          aria-label="Fortschritt bis zum kostenlosen Versand"
+          aria-valuemin={0}
+          aria-valuemax={FREE_SHIPPING_QUANTITY}
+          aria-valuenow={Math.min(quantity, FREE_SHIPPING_QUANTITY)}
+        >
+          <div
+            className="h-full rounded-full bg-[var(--color-blue-600)] transition-[width] duration-300 ease-out motion-reduce:transition-none"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        <span className="shrink-0 text-[11px] font-semibold tabular-nums text-[var(--color-blue-700)] sm:text-xs">
+          {Math.min(quantity, FREE_SHIPPING_QUANTITY)}/{FREE_SHIPPING_QUANTITY}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -95,8 +142,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
       if (totalQuantity >= 70) {
         // 20% Rabatt bei 70+ Instrumenten
         price = toNumber(row.price75);
-      } else if (totalQuantity >= 30) {
-        // 15% Rabatt bei 30+ Instrumenten
+      } else if (totalQuantity >= MID_TIER_QUANTITY) {
+        // 15% Rabatt bei 40+ Instrumenten
         price = toNumber(row.price15);
       } else if (totalQuantity >= 15) {
         // 7% Rabatt bei 15+ Instrumenten
@@ -170,7 +217,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         .map((row, idx) => {
           let unitPrice = row.price;
           if (totalQuantity >= 70) unitPrice = row.price75;
-          else if (totalQuantity >= 30) unitPrice = row.price15;
+          else if (totalQuantity >= MID_TIER_QUANTITY) unitPrice = row.price15;
           else if (totalQuantity >= 15) unitPrice = row.price7;
           
           return {
@@ -212,7 +259,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         
         // Rabattinformation
         discount_info: totalQuantity >= 70 ? '20% Rabatt (ab 70 Instrumente)' :
-                      totalQuantity >= 30 ? '15% Rabatt (ab 30 Instrumente)' :
+                      totalQuantity >= MID_TIER_QUANTITY ? '15% Rabatt (ab 40 Instrumente)' :
                       totalQuantity >= 15 ? '7% Rabatt (ab 15 Instrumente)' : 
                       'Kein Rabatt',
         
@@ -433,13 +480,10 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
             für langlebige Schärfe und präzise Ergebnisse
           </p>
           
-          <div className="hidden md:flex items-center justify-between gap-4 mb-4 mt-8">
+          <div className="hidden md:block mb-4 mt-8">
             <h2 className="text-2xl font-semibold">
               Instrumente auswählen
             </h2>
-            <p className="text-sm font-semibold text-gray-900">
-              Ab <span className="text-blue-600">30</span> Instr. <span className="text-blue-600">gratis Versand</span>
-            </p>
           </div>
 
           {/* Rabattübersicht für Mobile */}
@@ -457,10 +501,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               <p><span className="font-bold text-gray-900">20%</span> Rabatt</p>
             </div>
           </div>
-          <p className="md:hidden mb-4 text-center text-sm font-semibold text-gray-900">
-            Ab <span className="text-blue-600">30</span> Instr. <span className="text-blue-600">gratis Versand</span>
-          </p>
-          
+
           {/* Desktop Tabelle */}
           <div className="table-wrapper hidden md:block">
             <table className="table-apple table-primary-header" style={{ tableLayout: 'fixed', width: '100%' }}>
@@ -478,11 +519,11 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   <th className={`table-number ${totalQuantity < 15 ? 'font-bold' : 'text-gray-400'}`}>
                     Preis
                   </th>
-                  <th className={`table-number ${totalQuantity >= 15 && totalQuantity < 30 ? 'font-bold' : 'text-gray-400'}`}>
+                  <th className={`table-number ${totalQuantity >= 15 && totalQuantity < MID_TIER_QUANTITY ? 'font-bold' : 'text-gray-400'}`}>
                     ab 15 Instr.
                   </th>
-                  <th className={`table-number ${totalQuantity >= 30 && totalQuantity < 70 ? 'font-bold' : 'text-gray-400'}`}>
-                    ab 30 Instr.
+                  <th className={`table-number ${totalQuantity >= MID_TIER_QUANTITY && totalQuantity < 70 ? 'font-bold' : 'text-gray-400'}`}>
+                    ab 40 Instr.
                   </th>
                   <th className={`table-number ${totalQuantity >= 70 ? 'font-bold' : 'text-gray-400'}`}>
                     ab 70 Instr.
@@ -497,10 +538,10 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                     <td className={`table-number ${totalQuantity < 15 ? 'font-bold' : 'text-gray-400'}`}>
                       <span className="cell-right">{row.price}</span>
                     </td>
-                    <td className={`table-number ${totalQuantity >= 15 && totalQuantity < 30 ? 'font-bold' : 'text-gray-400'}`}>
+                    <td className={`table-number ${totalQuantity >= 15 && totalQuantity < MID_TIER_QUANTITY ? 'font-bold' : 'text-gray-400'}`}>
                       <span className="cell-right">{row.price7}</span>
                     </td>
-                    <td className={`table-number ${totalQuantity >= 30 && totalQuantity < 70 ? 'font-bold' : 'text-gray-400'}`}>
+                    <td className={`table-number ${totalQuantity >= MID_TIER_QUANTITY && totalQuantity < 70 ? 'font-bold' : 'text-gray-400'}`}>
                       <span className="cell-right">{row.price15}</span>
                     </td>
                     <td className={`table-number ${totalQuantity >= 70 ? 'font-bold' : 'text-gray-400'}`}>
@@ -545,11 +586,16 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               </tbody>
               <tfoot>
                 <tr>
+                  <td colSpan={6} className="!p-0">
+                    <FreeShippingProgress quantity={totalQuantity} />
+                  </td>
+                </tr>
+                <tr>
                   <td colSpan={5} className="text-neutral-600">
                     Zwischensumme Nettobetrag
                     {totalQuantity >= 70 && <span className="text-blue-600 ml-2">(20% Rabatt)</span>}
-                    {totalQuantity >= 30 && totalQuantity < 70 && <span className="text-blue-600 ml-2">(15% Rabatt)</span>}
-                    {totalQuantity >= 15 && totalQuantity < 30 && <span className="text-blue-600 ml-2">(7% Rabatt)</span>}
+                    {totalQuantity >= MID_TIER_QUANTITY && totalQuantity < 70 && <span className="text-blue-600 ml-2">(15% Rabatt)</span>}
+                    {totalQuantity >= 15 && totalQuantity < MID_TIER_QUANTITY && <span className="text-blue-600 ml-2">(7% Rabatt)</span>}
                   </td>
                   <td className="table-number font-medium">
                     <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(subtotalWithDiscount)}</span>
@@ -605,7 +651,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                   // Berechne aktuellen Preis basierend auf Gesamtmenge
                   const getCurrentPrice = () => {
                     if (totalQuantity >= 70) return row.price75;
-                    if (totalQuantity >= 30) return row.price15;
+                    if (totalQuantity >= MID_TIER_QUANTITY) return row.price15;
                     if (totalQuantity >= 15) return row.price7;
                     return row.price;
                   };
@@ -648,11 +694,16 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               </tbody>
               <tfoot>
                 <tr>
+                  <td colSpan={3} className="!p-0">
+                    <FreeShippingProgress quantity={totalQuantity} />
+                  </td>
+                </tr>
+                <tr>
                   <td className="text-neutral-600">
                     Zwischensumme
                     {totalQuantity >= 70 && <span className="block text-blue-600">(20% Rabatt)</span>}
-                    {totalQuantity >= 30 && totalQuantity < 70 && <span className="block text-blue-600">(15% Rabatt)</span>}
-                    {totalQuantity >= 15 && totalQuantity < 30 && <span className="block text-blue-600">(7% Rabatt)</span>}
+                    {totalQuantity >= MID_TIER_QUANTITY && totalQuantity < 70 && <span className="block text-blue-600">(15% Rabatt)</span>}
+                    {totalQuantity >= 15 && totalQuantity < MID_TIER_QUANTITY && <span className="block text-blue-600">(7% Rabatt)</span>}
                   </td>
                   <td colSpan={2} className="table-number font-medium">
                     <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(subtotalWithDiscount)}</span>
@@ -669,7 +720,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                 {totalQuantity > 0 && (
                   <>
                     <tr>
-                      <td className="text-neutral-600 font-semibold">Gesamtbetrag Netto</td>
+                      <td className="whitespace-nowrap text-neutral-600 font-semibold">Gesamtbetrag Netto</td>
                       <td colSpan={2} className="table-number font-semibold">
                         <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalNet)}</span>
                       </td>
@@ -681,7 +732,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                       </td>
                     </tr>
                     <tr>
-                      <td className="text-neutral-900 font-bold text-lg">Gesamtbetrag Brutto</td>
+                      <td className="whitespace-nowrap text-neutral-900 font-bold text-lg">Gesamtbetrag Brutto</td>
                       <td colSpan={2} className="table-number font-bold text-lg">
                         <span className="cell-right">{new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalGross)}</span>
                       </td>
@@ -691,6 +742,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               </tfoot>
             </table>
           </div>
+          <div className="h-4" aria-hidden="true" />
         </Step>
         <Step>
           <h2 className="text-2xl font-semibold mb-6">Kontaktdaten</h2>
