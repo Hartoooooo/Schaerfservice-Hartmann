@@ -118,6 +118,7 @@ const curatedTranslations: Record<string, string> = {
   "Schärfkurse ansehen": "View sharpening courses",
   "Dentalinstrumente schärfen lassen, präzise Aufarbeitung": "Professional dental instrument sharpening and precision restoration",
   "Wir sind spezialisiert auf zahnärztliche und chirurgische Instrumente und sind seit 2004 für Sie da.": "We specialise in dental and surgical instruments and have served practices since 2004.",
+  "Seit 2004 Ihr Dental Schärfservice": "Your dental sharpening service since 2004",
   "Zufriedene Kunden": "Satisfied customers",
   "Instrumente geschärft": "Instruments sharpened",
   "Erfahrung": "Experience",

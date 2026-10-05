@@ -547,10 +547,15 @@ export default function HomeContent() {
               <span className="hidden sm:inline"> </span>in Perfektion
             </p>
             
-            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-white/90 leading-relaxed mb-8 lg:mb-12 max-w-4xl">
+            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-white/90 leading-relaxed mb-5 lg:mb-7 max-w-4xl">
               <strong>Dentale/Chirurgische Instrumente</strong> schärfen<br />
               <strong>Präzisionsinstrumente</strong> aufarbeiten<br />
               <strong>Scaler & Küretten</strong> fachgerecht schärfen.
+            </p>
+
+            <p className="mb-5 lg:mb-7 flex items-center gap-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.12em] text-white/85">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-blue-500" aria-hidden="true" />
+              Seit 2004 Ihr Dental Schärfservice
             </p>
             
             <div className="flex flex-row gap-3 sm:gap-4 w-full lg:w-auto">
