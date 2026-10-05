@@ -95,12 +95,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "google-site-verification=schaerfservice-hartmann-verification",
-    other: {
-      "msvalidate.01": "bing-verification-code",
-    },
-  },
+  // Google & Bing sind über die Domain (DNS / GSC-Import) verifiziert – keine Meta-Tags nötig.
   category: "Medical Services",
   classification: "Dental Instrument Sharpening Service",
   icons: {
