@@ -369,7 +369,7 @@ export default function HomeContent() {
             "openingHours": [
               "Mo-Fr 08:00-18:00"
             ],
-            "priceRange": "€€",
+            "priceRange": "ab 6 € pro Instrument bei Aufträgen ab 30 Instrumenten",
             "paymentAccepted": ["Cash", "Credit Card", "Bank Transfer"],
             "currenciesAccepted": "EUR",
             "areaServed": {
