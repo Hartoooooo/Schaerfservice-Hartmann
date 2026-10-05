@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 // SEO-Metadaten für Server-Side Rendering
 export const metadata: Metadata = {
-  title: "Kontakt - Instrumente schärfen Berlin",
+  title: "Kontakt - Instrumente schärfen lassen",
   description: "Kontakt zu Schärfservice Hartmann: Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Telefon +49 174 9342576, Schöneiche bei Berlin.",
   keywords: [
     "kontakt instrumente schärfen",

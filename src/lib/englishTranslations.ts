@@ -22,7 +22,7 @@ const curatedTranslations: Record<string, string> = {
   "Scaler schärfen lassen | Deutschlandweiter Einsendeservice": "Have scalers sharpened | Nationwide mail-in service",
   "Küretten schärfen lassen | Deutschlandweiter Einsendeservice": "Have curettes sharpened | Nationwide mail-in service",
   "Chirurgische Instrumente schärfen lassen | Einsendeservice": "Have surgical instruments sharpened | Mail-in service",
-  "Express-Schleifservice Berlin | Vor Ort & in 24h": "Express sharpening service Berlin | On-site & within 24h",
+  "Express-Schleifservice | Vor Ort & in 24h": "Express sharpening service | On-site & within 24h",
   "Express-Schleifservice in Berlin": "Express sharpening service in Berlin",
   "Express-Schleifservice Berlin": "Express sharpening service Berlin",
   "Menü öffnen": "Open menu",

@@ -3,7 +3,7 @@ import ExpressSchaerfenContent from "./ExpressSchaerfenContent";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Express-Schleifservice Berlin | Vor Ort & in 24h",
+    absolute: "Express-Schleifservice | Vor Ort & in 24h",
   },
   description: "Dentalinstrumente dringend schärfen lassen? Unser Express-Service kommt direkt in Ihre Berliner Praxis oder holt Instrumente ab, 24h, ab 75 Stück, ohne Versandrisiko.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "/express-schaerfen",
   },
   openGraph: {
-    title: "Express-Schleifservice Berlin | Vor Ort & in 24h",
+    title: "Express-Schleifservice | Vor Ort & in 24h",
     description: "Dentalinstrumente dringend schärfen lassen? Unser Express-Service kommt direkt in Ihre Berliner Praxis oder holt Instrumente ab, 24h, ab 75 Stück, ohne Versandrisiko.",
   },
 };
