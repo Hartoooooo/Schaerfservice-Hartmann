@@ -389,58 +389,7 @@ export default function HomeContent() {
             "employee": {
               "@type": "Person",
               "name": "Carina Hartmann"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5",
-              "bestRating": "5",
-              "worstRating": "1",
-              "reviewCount": "3"
-            },
-            "review": [
-              {
-                "@type": "Review",
-                "author": {
-                  "@type": "Person",
-                  "name": "Ina Albrecht"
-                },
-                "reviewRating": {
-                  "@type": "Rating",
-                  "ratingValue": "5",
-                  "bestRating": "5",
-                  "worstRating": "1"
-                },
-                "reviewBody": "Sehr schnelle Bearbeitung der Instrumente und super scharf. Vielen Dank"
-              },
-              {
-                "@type": "Review",
-                "author": {
-                  "@type": "Person",
-                  "name": "Anke Wulfes"
-                },
-                "reviewRating": {
-                  "@type": "Rating",
-                  "ratingValue": "5",
-                  "bestRating": "5",
-                  "worstRating": "1"
-                },
-                "reviewBody": "Immer sehr freundliche, zuverlässige und zügige Erledigung aller Wünsche und Aufträge. Sehr empfehlenswert"
-              },
-              {
-                "@type": "Review",
-                "author": {
-                  "@type": "Person",
-                  "name": "Janin"
-                },
-                "reviewRating": {
-                  "@type": "Rating",
-                  "ratingValue": "5",
-                  "bestRating": "5",
-                  "worstRating": "1"
-                },
-                "reviewBody": "Zuverlässig und sehr guter Service. Vielen Dank"
-              }
-            ]
+            }
           })
         }}
       />
