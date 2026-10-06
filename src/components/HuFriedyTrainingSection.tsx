@@ -3,11 +3,17 @@ import { Container } from "@/components/Container";
 
 type HuFriedyTrainingSectionProps = {
   detail: string;
+  variant?: "blue" | "gray";
 };
 
-export function HuFriedyTrainingSection({ detail }: HuFriedyTrainingSectionProps) {
+export function HuFriedyTrainingSection({ detail, variant = "blue" }: HuFriedyTrainingSectionProps) {
+  const sectionClass =
+    variant === "gray"
+      ? "border-y border-gray-100 bg-gray-50 py-5 sm:py-6"
+      : "border-y border-blue-100 bg-blue-50/70 py-5 sm:py-6";
+
   return (
-    <section className="border-y border-blue-100 bg-blue-50/70 py-5 sm:py-6">
+    <section className={sectionClass}>
       <Container>
         <div className="mx-auto flex max-w-6xl items-center gap-4 sm:gap-5">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-blue-200 bg-white text-blue-700 shadow-sm sm:h-12 sm:w-12">

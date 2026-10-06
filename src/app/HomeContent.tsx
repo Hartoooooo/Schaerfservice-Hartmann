@@ -613,7 +613,7 @@ export default function HomeContent() {
         </Container>
       </section>
 
-      <HuFriedyTrainingSection detail="Unsere Qualifikation umfasst eine Schulung im professionellen Handschärfen dentaler Instrumente." />
+      <HuFriedyTrainingSection variant="gray" detail="Unsere Qualifikation umfasst eine Schulung im professionellen Handschärfen dentaler Instrumente." />
 
       {/* Stats Section */}
       <section ref={statsRef} className="py-8 lg:py-20 bg-gray-50">
