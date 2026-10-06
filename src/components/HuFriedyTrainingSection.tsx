@@ -9,7 +9,7 @@ type HuFriedyTrainingSectionProps = {
 export function HuFriedyTrainingSection({ detail, variant = "blue" }: HuFriedyTrainingSectionProps) {
   const sectionClass =
     variant === "gray"
-      ? "border-y border-gray-100 bg-gray-50 py-5 sm:py-6"
+      ? "bg-gray-50 pt-8 pb-5 sm:pb-6 lg:pt-20"
       : "border-y border-blue-100 bg-blue-50/70 py-5 sm:py-6";
 
   return (
