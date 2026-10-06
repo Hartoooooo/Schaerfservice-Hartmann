@@ -25,8 +25,7 @@ export function HuFriedyTrainingSection({ detail }: HuFriedyTrainingSectionProps
             </p>
           </div>
           <div className="hidden shrink-0 border-l border-blue-200 pl-5 text-right md:block">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">Schulungsort</p>
-            <p className="mt-1 text-sm font-medium text-gray-800">Chicago, 2001</p>
+            <p className="text-sm font-medium text-gray-800">Chicago, 2001</p>
           </div>
         </div>
       </Container>
