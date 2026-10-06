@@ -362,7 +362,7 @@ const curatedTranslations: Record<string, string> = {
   "Dentale/Chirurgische Instrumente": "Dental/surgical instruments",
   "Präzisionsinstrumente": "Precision instruments",
   "fachgerecht schärfen.": "sharpen professionally.",
-  "Als einer der wenigen Anbieter im deutschen Raum haben wir das Schärfen direkt bei Hu-Friedy in Chicago gelernt.": "As one of the few providers in the German-speaking region, we learned sharpening directly at Hu-Friedy in Chicago.",
+  "Als einer der wenigen Anbieter im deutschen Raum haben wir das Schärfen per Hand direkt bei Hu-Friedy in Chicago gelernt.": "As one of the few providers in the German-speaking region, we learned hand sharpening directly at Hu-Friedy in Chicago.",
   "zum": "for",
   "Schärfen und Aufarbeiten aller dentalen und chirurgischen Instrumente": "Sharpening and refurbishing all dental and surgical instruments",
   ". Höchste Qualität durch präzise Handarbeit.": ". Highest quality through precise handwork.",

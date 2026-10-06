@@ -26,8 +26,8 @@ export function HuFriedyTrainingSection({ detail, variant = "blue" }: HuFriedyTr
             <h2 className="text-lg font-semibold leading-snug text-gray-900 sm:text-xl">
               Im Handschärfen bei Hu-Friedy in Chicago geschult
             </h2>
-            <p className="mt-1 text-sm leading-relaxed text-gray-600 sm:text-base">
-              Als einer der wenigen Anbieter im deutschen Raum haben wir das Schärfen direkt bei Hu-Friedy in Chicago gelernt. {detail}
+            <p className="mt-1 text-xl leading-relaxed text-gray-600">
+              Als einer der wenigen Anbieter im deutschen Raum haben wir das Schärfen per Hand direkt bei Hu-Friedy in Chicago gelernt.{detail ? ` ${detail}` : ""}
             </p>
           </div>
           <div className="hidden shrink-0 border-l border-blue-200 pl-5 text-right md:block">
