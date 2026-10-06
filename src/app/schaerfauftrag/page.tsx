@@ -149,8 +149,8 @@ export default function SchaerfauftragPage() {
                 a: "Die Bearbeitungsdauer beträgt in der Regel 48 Stunden ab Eingang Ihrer Instrumente. Zeiten für Hin- und Rückversand kommen zusätzlich hinzu. Bei Urlaubszeiten oder besonders hohem Aufkommen kommunizieren wir Abweichungen transparent auf der Seite."
               },
               {
-                q: "Muss ich einen Mindestauftrag einschicken?",
-                a: "Nein. Es gibt keine Mindestanzahl. Ab 15 Instrumenten greift jedoch der 7-%-Mengenrabatt, gebündeltes Einschicken lohnt sich also."
+                q: "Wie viel erspart Schärfen gegenüber dem Neukauf?",
+                a: "Nachschärfen erspart rund 90 % der Kosten gegenüber einem Neukauf. Durch materialschonendes Handschärfen mit geringem Abtrag übersteht ein Scaler oder eine Kürette viele Schärfzyklen, so können selbst Instrumente aus dem Jahr 2015 noch heute einwandfrei im Einsatz sein."
               },
               {
                 q: "Was wird geschärft und was nicht?",
