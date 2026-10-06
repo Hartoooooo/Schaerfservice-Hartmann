@@ -3,15 +3,16 @@ import Image from "next/image";
 import { ClipboardList, Package, ScanSearch, Truck } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
+import { HuFriedyTrainingSection } from "@/components/HuFriedyTrainingSection";
 
 const canonical = "https://www.dentalschleifen.de/kueretten-schleifen";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Küretten schärfen lassen | Deutschlandweiter Einsendeservice",
+    absolute: "Küretten schärfen lassen | Einsendeservice – Schärfservice Hartmann",
   },
   description:
-    "Küretten schärfen lassen: Schleifservice für Gracey- und Universalküretten. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
+    "Küretten schärfen lassen: Handschliff für Gracey- und Universalküretten, geschult bei Hu-Friedy in Chicago. Einsendeservice für alle gängigen Hersteller.",
   keywords: [
     "Küretten schärfen",
     "Küretten schärfen lassen",
@@ -23,9 +24,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/kueretten-schleifen" },
   openGraph: {
-    title: "Küretten schärfen lassen | Deutschlandweiter Einsendeservice",
+    title: "Küretten schärfen lassen | Einsendeservice – Schärfservice Hartmann",
     description:
-      "Küretten schärfen lassen: Schleifservice für Gracey- und Universalküretten. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
+      "Küretten schärfen lassen: Handschliff für Gracey- und Universalküretten, geschult bei Hu-Friedy in Chicago. Einsendeservice für alle gängigen Hersteller.",
     url: canonical,
   },
 };
@@ -121,9 +122,9 @@ export default function KuerettenSchaerfenPage() {
               </span>
             </h1>
             <p className="text-lg sm:text-xl text-white/85 leading-relaxed mb-8">
-              Küretten sind das wichtigste Instrument in der Parodontitistherapie und professionellen Zahnreinigung.
-              Präzise, schonend und effektiv – dafür ist regelmäßiges Schärfen unerlässlich. Unser Schleifservice
-              bearbeitet Gracey- und Universal-Küretten materialschonend im korrekten Winkel.
+              Küretten sind zentrale Instrumente in Parodontitistherapie und professioneller Zahnreinigung. Wir
+              schleifen Gracey- und Universalküretten per Hand, erhalten den jeweiligen Winkel und tragen dabei so wenig
+              Material wie möglich ab.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 text-base lg:text-lg font-medium" hover="lift">
@@ -150,6 +151,8 @@ export default function KuerettenSchaerfenPage() {
           </div>
         </Container>
       </section>
+
+      <HuFriedyTrainingSection detail="Das dort vermittelte Wissen setzen wir beim materialschonenden Nachschärfen von Gracey- und Universalküretten ein." />
 
       {/* Gracey vs Universal */}
       <section className="py-20">
@@ -198,7 +201,7 @@ export default function KuerettenSchaerfenPage() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-gray-900">
-              Anzeichen für stumpfe Küretten
+              Wann Küretten geschärft werden sollten
             </h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 max-w-4xl mx-auto">

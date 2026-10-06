@@ -6,6 +6,9 @@ import { Suspense } from "react";
 export const metadata: Metadata = {
   title: "Kontakt - Instrumente schärfen lassen",
   description: "Kontakt zu Schärfservice Hartmann: Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Telefon +49 174 9342576, Schöneiche bei Berlin.",
+  alternates: {
+    canonical: "/kontakt",
+  },
   keywords: [
     "kontakt instrumente schärfen",
     "dental schärfen kontakt",
@@ -19,6 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Kontakt | Schärfservice Hartmann",
     description: "Kontaktieren Sie Schärfservice Hartmann. Inhaber Björn Hartmann, Ansprechpartnerin Carina Hartmann. Telefon +49 174 9342576 in Schöneiche bei Berlin.",
+    url: "https://www.dentalschleifen.de/kontakt",
   },
 };
 

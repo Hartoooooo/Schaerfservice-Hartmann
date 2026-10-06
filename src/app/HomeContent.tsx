@@ -4,6 +4,7 @@ import { Button } from "@/components/Button";
 import { WhiteButton } from "@/components/WhiteButton";
 import { StandardCard } from "@/components/StandardCard";
 import { Container } from "@/components/Container";
+import { HuFriedyTrainingSection } from "@/components/HuFriedyTrainingSection";
 import { FAQ } from "@/components/FAQ";
 import { InteractiveHoverButton } from "@/components/InteractiveHoverButton";
 import { analytics } from "@/components/GoogleAnalytics";
@@ -611,6 +612,8 @@ export default function HomeContent() {
           </div>
         </Container>
       </section>
+
+      <HuFriedyTrainingSection detail="Unsere Qualifikation umfasst eine Schulung im professionellen Handschärfen dentaler Instrumente." />
 
       {/* Stats Section */}
       <section ref={statsRef} className="py-8 lg:py-20 bg-gray-50">

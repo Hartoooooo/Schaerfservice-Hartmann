@@ -3,15 +3,16 @@ import Image from "next/image";
 import { ClipboardList, Package, ScanSearch, Truck } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
+import { HuFriedyTrainingSection } from "@/components/HuFriedyTrainingSection";
 
 const canonical = "https://www.dentalschleifen.de/scaler-schleifen";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Scaler schärfen lassen | Deutschlandweiter Einsendeservice",
+    absolute: "Scaler schärfen lassen | Einsendeservice – Schärfservice Hartmann",
   },
   description:
-    "Scaler schärfen lassen: professioneller Schleifservice für alle Scaler-Typen. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
+    "Scaler schärfen lassen: präziser Handschliff, geschult bei Hu-Friedy in Chicago. Einsendeservice für Dental-Scaler aller gängigen Hersteller.",
   keywords: [
     "Scaler schärfen",
     "Scaler schärfen lassen",
@@ -22,9 +23,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/scaler-schleifen" },
   openGraph: {
-    title: "Scaler schärfen lassen | Deutschlandweiter Einsendeservice",
+    title: "Scaler schärfen lassen | Einsendeservice – Schärfservice Hartmann",
     description:
-      "Scaler schärfen lassen: professioneller Schleifservice für alle Scaler-Typen. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
+      "Scaler schärfen lassen: präziser Handschliff, geschult bei Hu-Friedy in Chicago. Einsendeservice für Dental-Scaler aller gängigen Hersteller.",
     url: canonical,
   },
 };
@@ -45,9 +46,9 @@ const ablauf = [
 
 const warum = [
   "Jahrelange Erfahrung mit Dentalinstrumenten",
-  "Präziser Handschliff für beste Ergebnisse",
+  "Alle gängigen Scaler-Typen und Hersteller",
+  "Präziser Handschliff mit geringem Materialabtrag",
   "Schnelle Bearbeitung & zuverlässige Rücksendung",
-  "Express-Service verfügbar",
 ];
 
 const eckdaten = [
@@ -121,8 +122,8 @@ export default function ScalerSchaerfenPage() {
             </h1>
             <p className="text-lg sm:text-xl text-white/85 leading-relaxed mb-8">
               Scaler gehören zu den meistgenutzten Instrumenten in Zahnarztpraxis und Prophylaxe. Durch den täglichen
-              Einsatz verlieren sie schnell ihre Schärfe. Unser Schleifservice bearbeitet jede Arbeitskante präzise.
-              Beim Schärfservice Hartmann erhalten Sie Ihre Scaler handgeschärft und einsatzbereit zurück.
+              Einsatz verlieren sie schnell ihre Schärfe. Wir schleifen Scaler per Hand, richten die Arbeitskante
+              präzise aus und tragen dabei so wenig Material wie möglich ab.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button href="/schaerfauftrag" className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 text-base lg:text-lg font-medium" hover="lift">
@@ -149,6 +150,8 @@ export default function ScalerSchaerfenPage() {
           </div>
         </Container>
       </section>
+
+      <HuFriedyTrainingSection detail="Das dort vermittelte Wissen nutzen wir, um Form und Schleifwinkel der Scaler beim Nachschärfen gezielt zu erhalten." />
 
       {/* Anzeichen */}
       <section className="py-20">
@@ -182,7 +185,7 @@ export default function ScalerSchaerfenPage() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-gray-900">
-              Scaler schärfen lassen – so einfach geht&apos;s
+              Scaler professionell schleifen lassen – so geht&apos;s
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -204,7 +207,7 @@ export default function ScalerSchaerfenPage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center max-w-6xl mx-auto">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-6">Warum Schärfservice Hartmann?</h2>
+              <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-6">Scaler im Handschliff schärfen</h2>
               <ul className="space-y-4">
                 {warum.map((text) => (
                   <li key={text} className="flex items-start gap-3 text-gray-700 leading-relaxed">

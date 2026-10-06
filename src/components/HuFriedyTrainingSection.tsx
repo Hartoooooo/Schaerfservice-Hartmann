@@ -1,0 +1,33 @@
+import { GraduationCap } from "lucide-react";
+import { Container } from "@/components/Container";
+
+type HuFriedyTrainingSectionProps = {
+  detail: string;
+};
+
+export function HuFriedyTrainingSection({ detail }: HuFriedyTrainingSectionProps) {
+  return (
+    <section className="border-y border-blue-100 bg-blue-50/70 py-5 sm:py-6">
+      <Container>
+        <div className="mx-auto flex max-w-6xl items-center gap-4 sm:gap-5">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-blue-200 bg-white text-blue-700 shadow-sm sm:h-12 sm:w-12">
+            <GraduationCap className="h-6 w-6" aria-hidden="true" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="mb-1 text-xs font-semibold uppercase tracking-[0.16em] text-blue-700">
+              Fachliche Weiterbildung
+            </p>
+            <h2 className="text-lg font-semibold leading-snug text-gray-900 sm:text-xl">
+              Im Handschärfen bei Hu-Friedy in Chicago geschult
+            </h2>
+            <p className="mt-1 text-sm leading-relaxed text-gray-600 sm:text-base">{detail}</p>
+          </div>
+          <div className="hidden shrink-0 border-l border-blue-200 pl-5 text-right md:block">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">Schulungsort</p>
+            <p className="mt-1 text-sm font-medium text-gray-800">Chicago, USA</p>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
