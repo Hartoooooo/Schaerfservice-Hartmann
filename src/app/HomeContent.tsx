@@ -596,9 +596,6 @@ export default function HomeContent() {
               <p className="text-xl text-gray-600 leading-relaxed mb-4">
                 Stumpfe Instrumente kosten Sie Zeit, belasten Ihre Hände und machen die Arbeit unnötig schwer. Scaler, die nicht mehr greifen. Küretten, die über den Zahnstein gleiten, anstatt ihn zu entfernen. Beim Schärfservice Hartmann erhalten Sie Ihre Instrumente nach der Aufarbeitung mit voller Schärfe zurück, exakt ausgerichtet und ohne Verzögerung wieder im Einsatz.
               </p>
-              <p className="text-lg text-gray-500 leading-relaxed">
-                Wir sind spezialisiert auf zahnärztliche und chirurgische Instrumente und sind seit 2004 für Sie da.
-              </p>
             </div>
             <div className="relative w-full aspect-[4/3] max-w-xl mx-auto lg:max-w-none lg:aspect-auto lg:h-full lg:min-h-0 min-h-[220px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 order-1 lg:order-2">
               <Image
