@@ -34,7 +34,7 @@ const kursInhalte = [
   },
   {
     title: "Schleiftechnik für jeden Instrumententyp",
-    text: "Gracey-Küretten, Universalküretten, Scaler, Scheren: Jeder Typ hat seinen eigenen Winkel. Wir üben genau die Instrumente, die in Ihrer Praxis täglich im Einsatz sind.",
+    text: "Gracey-Küretten, Universalküretten, Scaler: Jeder Typ hat seinen eigenen Winkel. Wir üben genau die Instrumente, die in Ihrer Praxis täglich im Einsatz sind.",
   },
   {
     title: "Direktes Feedback & ehrliche Einschätzung",

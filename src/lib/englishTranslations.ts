@@ -246,7 +246,7 @@ const curatedTranslations: Record<string, string> = {
   "Stumpfe Instrumente sicher erkennen": "Identify dull instruments confidently",
   "Fingernagel-Test, Testplastik, Arbeitsgefühl: Wer das einmal verstanden hat, greift nie wieder unwissend zu einem stumpfen Instrument.": "Fingernail test, test sticks and tactile feedback: once understood, you will recognise a dull instrument immediately.",
   "Schleiftechnik für jeden Instrumententyp": "Sharpening techniques for each instrument type",
-  "Gracey-Küretten, Universalküretten, Scaler, Scheren: Jeder Typ hat seinen eigenen Winkel. Wir üben genau die Instrumente, die in Ihrer Praxis täglich im Einsatz sind.": "Gracey curettes, universal curettes, scalers and scissors each require a specific angle. We practise with the instruments your team uses every day.",
+  "Gracey-Küretten, Universalküretten, Scaler: Jeder Typ hat seinen eigenen Winkel. Wir üben genau die Instrumente, die in Ihrer Praxis täglich im Einsatz sind.": "Gracey curettes, universal curettes and scalers each require a specific angle. We practise with the instruments your team uses every day.",
   "Direktes Feedback & ehrliche Einschätzung": "Direct feedback and honest advice",
   "Sie schärfen selbst, mit sofortigem Feedback unseres Technikers. Dazu eine ehrliche Einschätzung zu Schleifmitteln, ohne Provisionsinteresse.": "You do the sharpening yourself with immediate feedback from our technician, plus impartial advice on sharpening media.",
   "Sie lernen vom selben Spezialisten, der in Berlin täglich Instrumente schärft und aufbereitet. Wissen aus der täglichen Praxis, nicht aus Handbüchern.": "You learn from the same specialist who sharpens and restores instruments in Berlin every day: practical knowledge, not textbook theory.",

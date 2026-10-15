@@ -438,7 +438,7 @@ export default function SchaerfkurseForm() {
                       Schleiftechnik für jeden Instrumententyp
                     </h3>
                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
-                      Gracey-Küretten, Universalküretten, Scaler, Scheren: Jeder Instrumententyp hat seinen eigenen Winkel und seine eigene Technik. Wir gehen genau die Typen durch, die in Ihrer Praxis täglich im Einsatz sind.
+                      Gracey-Küretten, Universalküretten, Scaler: Jeder Instrumententyp hat seinen eigenen Winkel und seine eigene Technik. Wir gehen genau die Typen durch, die in Ihrer Praxis täglich im Einsatz sind.
                     </p>
                   </div>
 
