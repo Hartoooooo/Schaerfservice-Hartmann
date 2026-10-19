@@ -3,20 +3,19 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Stepper, { Step } from "@/components/Stepper";
-type Row = {
-  name: string;
-  price: string;
-  price7: string;
-  price15: string;
-  price75: string;
-};
+import {
+  calculateOrder,
+  FREE_SHIPPING_QUANTITY,
+  MID_TIER_QUANTITY,
+  type InstrumentRow,
+} from "@/lib/schaerfauftrag-prices";
 
 interface SchaerfauftragFormProps {
-  rows: Row[];
+  rows: InstrumentRow[];
 }
 
-const FREE_SHIPPING_QUANTITY = 30;
-const MID_TIER_QUANTITY = 40;
+// Fehlermeldung vom Server, die dem Kunden direkt angezeigt werden kann
+class UserFacingError extends Error {}
 
 function FreeShippingProgress({ quantity }: { quantity: number }) {
   const remaining = Math.max(0, FREE_SHIPPING_QUANTITY - quantity);
@@ -121,6 +120,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   // Eine ID pro Auftrag – bleibt bei automatischen und manuellen Wiederholungen gleich,
   // damit der Server denselben Auftrag nicht doppelt versendet.
   const orderIdRef = useRef<string | null>(null);
+  // Honeypot gegen Spam-Bots (für Menschen unsichtbares Feld)
+  const [honeypot, setHoneypot] = useState("");
 
   // Beim Erreichen des letzten Schritts die API-Funktion vorwärmen: Ein Kaltstart fällt
   // so nicht mehr in den eigentlichen Absende-Klick.
@@ -141,35 +142,13 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     return quantities.reduce((sum, qty) => sum + qty, 0);
   }, [quantities]);
 
-  const subtotalWithDiscount = useMemo(() => {
-    const toNumber = (value: string) => parseFloat(value.replace(/[€*.,\s]/g, m => (m === "," ? "." : "")) || "0");
-    
-    return rows.reduce((sum, row, idx) => {
-      const qty = quantities[idx] ?? 0;
-      if (qty === 0) return sum;
-      
-      let price = toNumber(row.price);
-      
-      // Rabattlogik basierend auf Gesamtmenge
-      if (totalQuantity >= 70) {
-        // 20% Rabatt bei 70+ Instrumenten
-        price = toNumber(row.price75);
-      } else if (totalQuantity >= MID_TIER_QUANTITY) {
-        // 15% Rabatt bei 40+ Instrumenten
-        price = toNumber(row.price15);
-      } else if (totalQuantity >= 15) {
-        // 7% Rabatt bei 15+ Instrumenten
-        price = toNumber(row.price7);
-      }
-      
-      return sum + price * qty;
-    }, 0);
-  }, [quantities, totalQuantity, rows]);
-
-  const shipping = totalQuantity >= 30 ? 0 : 5.90; // Ab 30 Instrumenten versandfrei
-  const totalNet = totalQuantity > 0 ? subtotalWithDiscount + shipping : 0; // Gesamtbetrag Netto (mit Rabatt)
-  const vat = totalQuantity > 0 ? totalNet * 0.19 : 0; // MwSt. 19%
-  const totalGross = totalQuantity > 0 ? totalNet + vat : 0; // Gesamtbetrag Brutto
+  // Vorschau mit derselben Berechnung, die der Server verbindlich durchführt
+  const calculation = useMemo(() => calculateOrder(quantities, rows), [quantities, rows]);
+  const subtotalWithDiscount = calculation.subtotal;
+  const shipping = calculation.shipping; // Ab 30 Instrumenten versandfrei
+  const totalNet = calculation.totalNet; // Gesamtbetrag Netto (mit Rabatt)
+  const vat = calculation.vat; // MwSt. 19%
+  const totalGross = calculation.totalGross; // Gesamtbetrag Brutto
   const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim());
 
   const handleQtyChange = (rowIndex: number, value: number) => {
@@ -224,73 +203,12 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     setSubmitError("");
 
     try {
-      // Erstelle detaillierte Instrumentenliste (E-Mail)
-      const selectedInstruments = rows
-        .map((row, idx) => {
-          let unitPrice = row.price;
-          if (totalQuantity >= 70) unitPrice = row.price75;
-          else if (totalQuantity >= MID_TIER_QUANTITY) unitPrice = row.price15;
-          else if (totalQuantity >= 15) unitPrice = row.price7;
-          
-          return {
-            name: row.name,
-            quantity: quantities[idx],
-            unitPrice: unitPrice,
-            totalPrice: quantities[idx] * parseFloat(unitPrice.replace(/[€*.,\s]/g, m => (m === "," ? "." : "")) || "0")
-          };
-        })
-        .filter(item => item.quantity > 0);
-
-      // Formatiere Instrumentenliste für E-Mail (mit Preisen)
-      const instrumentsText = selectedInstruments
-        .map(item => `${item.name}: ${item.quantity} Stück à ${item.unitPrice} = ${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(item.totalPrice)}`)
-        .join('\n');
-
-      // E-Mail-Template-Parameter
-      const templateParams = {
-        // Kontaktdaten
-        praxisname: formData.praxisname,
-        ansprechpartner: formData.ansprechpartner,
-        email: formData.email.trim(),
-        telefon: formData.telefon || 'Nicht angegeben',
-        praxisanschrift: formData.praxisname,
-        plz: formData.plz,
-        ort: formData.ort,
-        nachricht: formData.nachricht || 'Keine besonderen Wünsche',
-        
-        // Instrumentenliste
-        instruments_list: instrumentsText,
-        total_quantity: totalQuantity,
-        
-        // Preisberechnung
-        subtotal: new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(subtotalWithDiscount),
-        shipping: new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(shipping),
-        total_net: new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalNet),
-        vat: new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(vat),
-        total_gross: new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalGross),
-        
-        // Rabattinformation
-        discount_info: totalQuantity >= 70 ? '20% Rabatt (ab 70 Instrumente)' :
-                      totalQuantity >= MID_TIER_QUANTITY ? '15% Rabatt (ab 40 Instrumente)' :
-                      totalQuantity >= 15 ? '7% Rabatt (ab 15 Instrumente)' : 
-                      'Kein Rabatt',
-        
-        // Einverständniserklärungen
-        widerrufsrecht_accepted: checkboxes.widerrufsrecht ? 'Ja' : 'Nein',
-        agb_accepted: checkboxes.agbAkzeptiert ? 'Ja' : 'Nein',
-        
-        // Datum und Uhrzeit
-        order_date: new Date().toLocaleDateString('de-DE'),
-        order_time: new Date().toLocaleTimeString('de-DE'),
-        
-        // Vollständige Adresse
-        full_address: `${formData.praxisname}, ${formData.plz} ${formData.ort}`,
-      };
-
       if (!orderIdRef.current) {
         orderIdRef.current = `SA-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
       }
 
+      // Nur Kontaktdaten, Mengen und Einwilligungen – Preise und Summen rechnet der Server
+      // selbst, damit sie nicht manipuliert werden können.
       const body = JSON.stringify({
         orderId: orderIdRef.current,
         praxisname: formData.praxisname,
@@ -300,17 +218,10 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         plz: formData.plz,
         ort: formData.ort,
         nachricht: formData.nachricht,
-        items: selectedInstruments,
-        totalQuantity,
-        subtotal: subtotalWithDiscount,
-        shipping,
-        totalNet,
-        vat,
-        totalGross,
-        discountInfo: templateParams.discount_info,
+        quantities,
         widerrufsrecht: checkboxes.widerrufsrecht,
         agb: checkboxes.agbAkzeptiert,
-        allItemNames: rows.map(r => r.name),
+        website: honeypot,
       });
 
       // Auftrag serverseitig verarbeiten: Auftragsbestätigung an den Kunden inkl. BCC an
@@ -344,10 +255,14 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
 
         if (response?.ok) break;
 
-        // 400 = ungültige Eingaben: Wiederholen bringt nichts
-        if (response?.status === 400) {
+        // 4xx (ungültige Eingaben, zu viele Aufträge, …): Wiederholen bringt nichts
+        if (response && response.status >= 400 && response.status < 500) {
           const result = await response.json().catch(() => null);
-          throw new Error(typeof result?.error === "string" ? result.error : "Serverantwort 400");
+          throw new UserFacingError(
+            typeof result?.error === "string"
+              ? result.error
+              : "Ihre Eingaben konnten nicht verarbeitet werden"
+          );
         }
 
         const reason = networkError ?? new Error(`Serverantwort ${response?.status}`);
@@ -358,10 +273,9 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
 
     } catch (error) {
       console.error('Fehler beim Senden des Auftrags:', error);
-      const reason = error instanceof Error ? error.message : "";
       setSubmitError(
-        reason === "Ungültige E-Mail-Adresse" || reason === "Keine Auftragspositionen"
-          ? `${reason}. Bitte prüfen Sie Ihre Eingaben.`
+        error instanceof UserFacingError
+          ? `${error.message.replace(/\.$/, "")}. Bitte prüfen Sie Ihre Eingaben oder rufen Sie uns an unter +49 174 9342576.`
           : 'Ihr Auftrag konnte nicht übermittelt werden. Bitte versuchen Sie es erneut. Falls das Problem bestehen bleibt, erreichen Sie uns telefonisch unter +49 174 9342576 oder per E-Mail an hartmann-schaerfservice@web.de.'
       );
       setIsSubmitting(false);
@@ -799,6 +713,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                 <input
                   type="text"
                   id="ansprechpartner"
+                maxLength={120}
                   className="form-input"
                   value={formData.ansprechpartner}
                   onChange={(e) => handleFormChange("ansprechpartner", e.target.value)}
@@ -811,6 +726,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                 <input
                   type="tel"
                   id="telefon"
+                maxLength={40}
                   className="form-input"
                   value={formData.telefon}
                   onChange={(e) => handleFormChange("telefon", e.target.value)}
@@ -824,6 +740,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               <input
                 type="email"
                 id="email"
+                maxLength={254}
                 className="form-input"
                 value={formData.email}
                 onChange={(e) => handleFormChange("email", e.target.value)}
@@ -841,6 +758,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                 <input
                   type="text"
                   id="praxisname"
+                maxLength={200}
                   className="form-input"
                   value={formData.praxisname}
                   onChange={(e) => handleFormChange("praxisname", e.target.value)}
@@ -853,6 +771,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                 <input
                   type="text"
                   id="plz"
+                maxLength={10}
                   className="form-input"
                   value={formData.plz}
                   onChange={(e) => handleFormChange("plz", e.target.value)}
@@ -865,6 +784,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
                 <input
                   type="text"
                   id="ort"
+                maxLength={100}
                   className="form-input"
                   value={formData.ort}
                   onChange={(e) => handleFormChange("ort", e.target.value)}
@@ -874,10 +794,25 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
               </div>
             </div>
 
+            {/* Honeypot: für Menschen unsichtbar, Bots füllen es aus → Auftrag wird verworfen */}
+            <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+              <label htmlFor="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </div>
+
             <div className="form-group">
               <label className="form-label" htmlFor="nachricht">Nachricht / Besondere Wünsche</label>
               <textarea
                 id="nachricht"
+                maxLength={2000}
                 className="form-input form-textarea"
                 value={formData.nachricht}
                 onChange={(e) => handleFormChange("nachricht", e.target.value)}

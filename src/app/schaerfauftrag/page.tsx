@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import SchaerfauftragForm from "@/components/SchaerfauftragForm";
 import { Container } from "@/components/Container";
+import { INSTRUMENT_ROWS } from "@/lib/schaerfauftrag-prices";
 
 export const metadata: Metadata = {
   title: {
@@ -28,18 +29,7 @@ export const metadata: Metadata = {
   },
 };
 
-const instrumentRows = [
-  { name: "Scaler & Küretten", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
-  { name: "Exkavatoren", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
-  { name: "Knochenküretten & scharfe Löffel", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
-  { name: "Meißel & Gingivalrandschräger", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
-  { name: "Messer & Schnitzinstrumente", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
-  { name: "Microscheren", price: "€26,00", price7: "€24,50", price15: "€22,00", price75: "€21,00" },
-  { name: "Periotome & Tunnelierungsinstr.", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
-  { name: "Raspatorien", price: "€13,00", price7: "€12,00", price15: "€11,00", price75: "€10,50" },
-  { name: "Scheren", price: "€17,00", price7: "€16,00", price15: "€14,50", price75: "€13,50" },
-  { name: "Wurzelheber & Luxatoren", price: "€7,00", price7: "€6,50", price15: "€6,00", price75: "€5,50" },
-];
+const instrumentRows = INSTRUMENT_ROWS;
 
 export default function SchaerfauftragPage() {
   return (

@@ -8,6 +8,8 @@ import {
   PDFArray,
   PDFNumber,
 } from "pdf-lib";
+import { INSTRUMENT_ROWS, type CalculatedOrder } from "@/lib/schaerfauftrag-prices";
+import type { OrderRow } from "@/lib/supabase";
 
 // Datenstruktur, die vom Formular an die API-Route geschickt wird
 export interface OrderItem {
@@ -18,9 +20,6 @@ export interface OrderItem {
 }
 
 export interface OrderPayload {
-  // Eindeutige Auftrags-ID vom Formular (gleich bei Wiederholungen → kein Doppelversand)
-  orderId?: string;
-
   // Kontaktdaten
   praxisname: string;
   ansprechpartner: string;
@@ -58,7 +57,61 @@ const escapeHtml = (s: string) =>
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+/** Kontaktdaten und Einwilligungen aus dem (validierten) Formular */
+export interface OrderContact {
+  praxisname: string;
+  ansprechpartner: string;
+  email: string;
+  telefon: string;
+  plz: string;
+  ort: string;
+  nachricht: string;
+  widerrufsrecht: boolean;
+  agb: boolean;
+}
+
+/** Baut den Auftrag aus Kontaktdaten + serverseitig berechneten Preisen */
+export function buildOrderPayload(contact: OrderContact, calc: CalculatedOrder): OrderPayload {
+  return {
+    ...contact,
+    items: calc.items,
+    totalQuantity: calc.totalQuantity,
+    subtotal: calc.subtotal,
+    shipping: calc.shipping,
+    totalNet: calc.totalNet,
+    vat: calc.vat,
+    totalGross: calc.totalGross,
+    discountInfo: calc.discountInfo,
+    allItemNames: INSTRUMENT_ROWS.map((r) => r.name),
+  };
+}
+
+/** Auftrag für den Nachversand aus der Datenbankzeile wiederherstellen */
+export function orderPayloadFromRow(row: OrderRow): OrderPayload {
+  return {
+    praxisname: row.praxis,
+    ansprechpartner: row.ansprechpartner,
+    email: row.email,
+    telefon: row.telefon,
+    plz: row.plz,
+    ort: row.ort,
+    nachricht: row.nachricht,
+    widerrufsrecht: row.consent_widerruf,
+    agb: row.consent_agb,
+    items: row.items,
+    totalQuantity: row.total_quantity,
+    subtotal: Number(row.subtotal),
+    shipping: Number(row.shipping),
+    totalNet: Number(row.total_net),
+    vat: Number(row.vat),
+    totalGross: Number(row.total_gross),
+    discountInfo: row.discount_info,
+    allItemNames: INSTRUMENT_ROWS.map((r) => r.name),
+  };
+}
 
 /**
  * Befüllt die vorhandene Preislisten-PDF (public/Schaerfpreisliste2026.pdf)
