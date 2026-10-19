@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Stepper, { Step } from "@/components/Stepper";
 type Row = {
@@ -113,9 +113,21 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
     agbAkzeptiert: false,
   });
 
-  // EmailJS State
+  // Versand-State
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  // Sofort wirksame Sperre gegen Doppel-Tap (State greift erst nach dem nächsten Render)
+  const submittingRef = useRef(false);
+  // Eine ID pro Auftrag – bleibt bei automatischen und manuellen Wiederholungen gleich,
+  // damit der Server denselben Auftrag nicht doppelt versendet.
+  const orderIdRef = useRef<string | null>(null);
+
+  // Beim Erreichen des letzten Schritts die API-Funktion vorwärmen: Ein Kaltstart fällt
+  // so nicht mehr in den eigentlichen Absende-Klick.
+  useEffect(() => {
+    if (currentStep !== 3) return;
+    fetch('/api/schaerfauftrag', { method: 'GET', cache: 'no-store' }).catch(() => {});
+  }, [currentStep]);
 
   const handleFormChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -275,50 +287,73 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         full_address: `${formData.praxisname}, ${formData.plz} ${formData.ort}`,
       };
 
+      if (!orderIdRef.current) {
+        orderIdRef.current = `SA-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+      }
+
+      const body = JSON.stringify({
+        orderId: orderIdRef.current,
+        praxisname: formData.praxisname,
+        ansprechpartner: formData.ansprechpartner,
+        email: formData.email.trim(),
+        telefon: formData.telefon,
+        plz: formData.plz,
+        ort: formData.ort,
+        nachricht: formData.nachricht,
+        items: selectedInstruments,
+        totalQuantity,
+        subtotal: subtotalWithDiscount,
+        shipping,
+        totalNet,
+        vat,
+        totalGross,
+        discountInfo: templateParams.discount_info,
+        widerrufsrecht: checkboxes.widerrufsrecht,
+        agb: checkboxes.agbAkzeptiert,
+        allItemNames: rows.map(r => r.name),
+      });
+
       // Auftrag serverseitig verarbeiten: Auftragsbestätigung an den Kunden inkl. BCC an
       // den Betreiber (mit ausgefülltem PDF). Dieser Aufruf ist die verbindliche Quelle der
       // Wahrheit – er wird abgewartet, bevor zur Danke-Seite weitergeleitet wird.
-      // Timeout, damit ein hängender Versand zur Fehlermeldung wird statt ewig zu laden.
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 30000);
-      let response: Response;
-      try {
-        response = await fetch('/api/schaerfauftrag', {
-          signal: controller.signal,
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          praxisname: formData.praxisname,
-          ansprechpartner: formData.ansprechpartner,
-          email: formData.email.trim(),
-          telefon: formData.telefon,
-          plz: formData.plz,
-          ort: formData.ort,
-          nachricht: formData.nachricht,
-          items: selectedInstruments,
-          totalQuantity,
-          subtotal: subtotalWithDiscount,
-          shipping,
-          totalNet,
-          vat,
-          totalGross,
-          discountInfo: templateParams.discount_info,
-          widerrufsrecht: checkboxes.widerrufsrecht,
-          agb: checkboxes.agbAkzeptiert,
-          allItemNames: rows.map(r => r.name),
-        }),
-        });
-      } finally {
-        clearTimeout(timeout);
-      }
+      // Automatische Wiederholung bei Netzwerkfehlern und Serverfehlern: Auf dem Handy
+      // scheitert der erste POST nach längerem Ausfüllen oft an einer eingeschlafenen
+      // Verbindung ("Load failed") – früher musste der Kunde dafür ein zweites Mal klicken.
+      // Dank gleicher Auftrags-ID entsteht dabei kein doppelter Auftrag.
+      const MAX_ATTEMPTS = 3;
+      for (let attempt = 1; ; attempt++) {
+        // Timeout je Versuch, damit ein hängender Versand zur Fehlermeldung wird statt
+        // ewig zu laden. Liegt über der maximalen Serverlaufzeit für zwei SMTP-Versuche.
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 45000);
+        let response: Response | null = null;
+        let networkError: unknown = null;
+        try {
+          response = await fetch('/api/schaerfauftrag', {
+            signal: controller.signal,
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            cache: 'no-store',
+            body,
+          });
+        } catch (error) {
+          networkError = error;
+        } finally {
+          clearTimeout(timeout);
+        }
 
-      if (!response.ok) {
-        const result = await response.json().catch(() => null);
-        throw new Error(
-          response.status === 400 && typeof result?.error === "string"
-            ? result.error
-            : `Serverantwort ${response.status}`
-        );
+        if (response?.ok) break;
+
+        // 400 = ungültige Eingaben: Wiederholen bringt nichts
+        if (response?.status === 400) {
+          const result = await response.json().catch(() => null);
+          throw new Error(typeof result?.error === "string" ? result.error : "Serverantwort 400");
+        }
+
+        const reason = networkError ?? new Error(`Serverantwort ${response?.status}`);
+        if (attempt >= MAX_ATTEMPTS) throw reason;
+        console.warn(`Auftragsversand Versuch ${attempt} fehlgeschlagen, wiederhole:`, reason);
+        await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
       }
 
     } catch (error) {
@@ -333,7 +368,8 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
       return false;
     }
 
-    setIsSubmitting(false);
+    // isSubmitting bleibt bei Erfolg bewusst gesetzt: Der Button bleibt bis zur
+    // Weiterleitung gesperrt, damit kein zweiter Auftrag ausgelöst wird.
     return true;
   };
 
@@ -346,7 +382,7 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
         JSON.stringify({
           value: Number(totalNet.toFixed(2)),
           currency: 'EUR',
-          transaction_id: `SA-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+          transaction_id: orderIdRef.current ?? `SA-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
         })
       );
     } catch {
@@ -366,11 +402,20 @@ export default function SchaerfauftragForm({ rows }: SchaerfauftragFormProps) {
   // sieht die Fehlermeldung. Verhindert die frühere Race-Condition (Navigation bricht den
   // laufenden Mail-Request ab – u.a. in Opera), bei der Aufträge ohne Mail verloren gingen.
   const submitAndRedirect = async () => {
-    if (isSubmitting) return; // Doppelklick / Mehrfachabsenden verhindern
-    const success = await sendEmail();
-    if (success) {
-      goToDanke();
+    if (submittingRef.current) return; // Doppelklick / Mehrfachabsenden verhindern
+    submittingRef.current = true;
+    try {
+      const success = await sendEmail();
+      if (success) {
+        goToDanke();
+        return; // Sperre bleibt bis zur Weiterleitung aktiv
+      }
+    } catch (error) {
+      console.error('Unerwarteter Fehler beim Abschließen des Auftrags:', error);
+      setIsSubmitting(false);
+      setSubmitError('Ihr Auftrag konnte nicht übermittelt werden. Bitte versuchen Sie es erneut.');
     }
+    submittingRef.current = false;
   };
 
   return (

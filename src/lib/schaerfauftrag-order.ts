@@ -18,6 +18,9 @@ export interface OrderItem {
 }
 
 export interface OrderPayload {
+  // Eindeutige Auftrags-ID vom Formular (gleich bei Wiederholungen → kein Doppelversand)
+  orderId?: string;
+
   // Kontaktdaten
   praxisname: string;
   ansprechpartner: string;
