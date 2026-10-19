@@ -580,35 +580,6 @@ export default function HomeContent() {
         </Container>
       </section>
 
-      {/* SEO-Intro Section */}
-      <section className="py-20">
-        <Container>
-          <div className="max-w-3xl mx-auto text-center mb-10 lg:mb-12">
-            <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900">
-              Dentalinstrumente schärfen lassen, präzise Aufarbeitung
-            </h1>
-          </div>
-          <div className="grid max-w-6xl mx-auto lg:grid-cols-2 gap-10 lg:gap-14 items-center lg:items-stretch">
-            <div className="text-center lg:text-left order-2 lg:order-1 lg:min-h-0">
-              <p className="text-xl text-gray-600 leading-relaxed mb-4">
-                Stumpfe Instrumente kosten Sie Zeit, belasten Ihre Hände und machen die Arbeit unnötig schwer. Scaler, die nicht mehr greifen. Küretten, die über den Zahnstein gleiten, anstatt ihn zu entfernen. Beim Schärfservice Hartmann erhalten Sie Ihre Instrumente nach der Aufarbeitung mit voller Schärfe zurück, exakt ausgerichtet und ohne Verzögerung wieder im Einsatz.
-              </p>
-            </div>
-            <div className="relative w-full aspect-[4/3] max-w-xl mx-auto lg:max-w-none lg:aspect-auto lg:h-full lg:min-h-0 min-h-[220px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 order-1 lg:order-2">
-              <Image
-                src="/kuerette-schleifplatte-handschliff-schaerfservice-hartmann.jpg"
-                alt="Instrumente schärfen lassen, professioneller Schleifservice Hartmann"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      <HuFriedyTrainingSection variant="gray" detail="" />
-
       {/* Stats Section */}
       <section ref={statsRef} className="py-8 lg:py-20 bg-gray-50">
         <Container className="max-sm:px-3">
@@ -646,6 +617,35 @@ export default function HomeContent() {
           </div>
         </Container>
       </section>
+
+      {/* SEO-Intro Section */}
+      <section className="py-20">
+        <Container>
+          <div className="max-w-3xl mx-auto text-center mb-10 lg:mb-12">
+            <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900">
+              Dentalinstrumente schärfen lassen, präzise Aufarbeitung
+            </h1>
+          </div>
+          <div className="grid max-w-6xl mx-auto lg:grid-cols-2 gap-10 lg:gap-14 items-center lg:items-stretch">
+            <div className="text-center lg:text-left order-2 lg:order-1 lg:min-h-0">
+              <p className="text-xl text-gray-600 leading-relaxed mb-4">
+                Stumpfe Instrumente kosten Sie Zeit, belasten Ihre Hände und machen die Arbeit unnötig schwer. Scaler, die nicht mehr greifen. Küretten, die über den Zahnstein gleiten, anstatt ihn zu entfernen. Beim Schärfservice Hartmann erhalten Sie Ihre Instrumente nach der Aufarbeitung mit voller Schärfe zurück, exakt ausgerichtet und ohne Verzögerung wieder im Einsatz.
+              </p>
+            </div>
+            <div className="relative w-full aspect-[4/3] max-w-xl mx-auto lg:max-w-none lg:aspect-auto lg:h-full lg:min-h-0 min-h-[220px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 order-1 lg:order-2">
+              <Image
+                src="/kuerette-schleifplatte-handschliff-schaerfservice-hartmann.jpg"
+                alt="Instrumente schärfen lassen, professioneller Schleifservice Hartmann"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <HuFriedyTrainingSection variant="gray" detail="" />
 
       {/* Services Section */}
       <section ref={servicesRef} className="py-20">
