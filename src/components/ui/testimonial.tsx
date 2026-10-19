@@ -1,7 +1,22 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { StandardCard } from "@/components/StandardCard";
 
-const reviews = [
+type Review = {
+  name: string;
+  date?: string;
+  text: string;
+  image?: string;
+};
+
+const reviews: readonly Review[] = [
+  {
+    name: "Kerstin Schumann",
+    text: "Wir lassen seit einigen Wochen unsere Instrumente (Küretten und Scaler) bei Frau Hartmann schärfen. Bei der ersten Lieferung kam von ihr das Feedback, dass ihr bei uns an den eingeschickten Instrumenten grobe Schärffehler aufgefallen waren. Wir belegten einen Schärfkurs bei ihr (die kam dazu in die Praxis) und gab meinen Mitarbeiter*innen sehr wertvolle Hinweise und praktische Tipps. Der Kontakt ist immer angenehm und vertrauensvoll. Vielen Dank Frau Hartmann für die tolle Zusammenarbeit!",
+  },
   {
     name: "Ina Albrecht",
     date: "vor einem Monat",
@@ -20,7 +35,7 @@ const reviews = [
     text: "Zuverlässig und sehr guter Service. Vielen Dank",
     image: "/google-reviews/janin.png",
   },
-] as const;
+];
 
 function GoogleLogo() {
   return (
@@ -46,35 +61,89 @@ function Stars() {
 }
 
 export default function Testimonials() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const update = () => {
+      setCanPrev(track.scrollLeft > 4);
+      setCanNext(track.scrollLeft + track.clientWidth < track.scrollWidth - 4);
+    };
+    update();
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      track.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const scrollByCard = (direction: 1 | -1) => {
+    const track = trackRef.current;
+    const card = track?.firstElementChild as HTMLElement | null;
+    if (!track || !card) return;
+    track.scrollBy({ left: direction * (card.offsetWidth + 20), behavior: "smooth" });
+  };
+
+  const arrowClass =
+    "inline-flex size-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 shadow-sm transition hover:border-blue-200 hover:text-blue-600 disabled:cursor-default disabled:opacity-40 disabled:hover:border-gray-200 disabled:hover:text-gray-700";
+
   return (
-    <div className="flex snap-x snap-mandatory items-stretch gap-5 overflow-x-auto pb-4 text-left [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
-      {reviews.map((review) => (
-        <StandardCard
-          key={review.name}
-          className="!h-80 w-[85%] shrink-0 snap-start p-6 md:!h-full md:min-h-64 md:w-auto"
-        >
-          <div className="flex items-center justify-between gap-4">
-            <Stars />
-            <GoogleLogo />
-          </div>
-          <blockquote className="mt-4 flex-1 text-base leading-6 text-gray-600 md:mt-5 md:leading-7">
-            <p>„{review.text}“</p>
-          </blockquote>
-          <footer className="mt-4 flex items-center gap-3 border-t border-gray-100 pt-4 md:mt-6 md:pt-5">
-            <Image
-              src={review.image}
-              alt={`Google-Profilbild von ${review.name}`}
-              width={48}
-              height={48}
-              className="size-12 rounded-full object-cover"
-            />
-            <div>
-              <cite className="not-italic font-semibold text-gray-900">{review.name}</cite>
-              <p className="text-sm text-gray-500">Google-Rezension · {review.date}</p>
+    <div>
+      <div
+        ref={trackRef}
+        className="flex snap-x snap-mandatory items-stretch gap-5 overflow-x-auto px-1 pt-2 pb-4 text-left [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {reviews.map((review) => (
+          <StandardCard
+            key={review.name}
+            className="!h-auto min-h-80 w-[85%] shrink-0 snap-start p-6 md:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
+          >
+            <div className="flex items-center justify-between gap-4">
+              <Stars />
+              <GoogleLogo />
             </div>
-          </footer>
-        </StandardCard>
-      ))}
+            <blockquote className="mt-4 flex-1 text-base leading-6 text-gray-600 md:mt-5 md:leading-7">
+              <p>„{review.text}“</p>
+            </blockquote>
+            <footer className="mt-4 flex items-center gap-3 border-t border-gray-100 pt-4 md:mt-6 md:pt-5">
+              {review.image ? (
+                <Image
+                  src={review.image}
+                  alt={`Google-Profilbild von ${review.name}`}
+                  width={48}
+                  height={48}
+                  className="size-12 rounded-full object-cover"
+                />
+              ) : (
+                <span
+                  className="flex size-12 shrink-0 items-center justify-center rounded-full bg-blue-600 text-lg font-semibold text-white"
+                  aria-hidden="true"
+                >
+                  {review.name.charAt(0)}
+                </span>
+              )}
+              <div>
+                <cite className="not-italic font-semibold text-gray-900">{review.name}</cite>
+                <p className="text-sm text-gray-500">
+                  Google-Rezension{review.date ? ` · ${review.date}` : ""}
+                </p>
+              </div>
+            </footer>
+          </StandardCard>
+        ))}
+      </div>
+      <div className="mt-4 flex justify-center gap-3">
+        <button type="button" onClick={() => scrollByCard(-1)} disabled={!canPrev} aria-label="Vorherige Bewertung" className={arrowClass}>
+          <ChevronLeft className="size-5" aria-hidden="true" />
+        </button>
+        <button type="button" onClick={() => scrollByCard(1)} disabled={!canNext} aria-label="Nächste Bewertung" className={arrowClass}>
+          <ChevronRight className="size-5" aria-hidden="true" />
+        </button>
+      </div>
     </div>
   );
 }
