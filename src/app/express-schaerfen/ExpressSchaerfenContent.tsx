@@ -45,8 +45,8 @@ export default function ExpressSchaerfenContent() {
               </div>
               <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-[min(420px,52vh)] rounded-2xl overflow-hidden shadow-lg border border-gray-100">
                 <Image
-                  src="/dentalinstrumente-kassette-schaerfung.jpg"
-                  alt="Lagerung und Pflege von Präzisionsinstrumenten, Schärfservice Hartmann Berlin"
+                  src="/dentalinstrumente-sterilkassette-schaerfservice-hartmann.jpg"
+                  alt="Geschärfte Dentalinstrumente in der Sterilkassette – Express-Schleifservice vor Ort"
                   fill
                   className="object-cover object-center"
                   priority

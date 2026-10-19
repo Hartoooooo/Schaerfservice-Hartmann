@@ -13,7 +13,6 @@ export const metadata: Metadata = {
     "dental schleifen",
     "dental schärfen",
     "instrumente aufbereiten",
-    "instrumente schärfen berlin",
     "scaler schärfen",
     "küretten schärfen",
     "raspatorien schärfen",

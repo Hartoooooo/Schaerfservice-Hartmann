@@ -4,6 +4,7 @@ import { ClipboardList, Package, ScanSearch, Truck } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { HuFriedyTrainingSection } from "@/components/HuFriedyTrainingSection";
+import { imageObject } from "@/lib/imageSchema";
 
 const canonical = "https://www.dentalschleifen.de/scaler-schleifen";
 
@@ -18,7 +19,6 @@ export const metadata: Metadata = {
     "Scaler schärfen lassen",
     "Scaler schleifen",
     "Scaler Schleifservice",
-    "Scaler schärfen Berlin",
     "Dental Scaler schärfen",
   ],
   alternates: { canonical: "/scaler-schleifen" },
@@ -40,7 +40,7 @@ const anzeichen = [
 const ablauf = [
   { icon: ClipboardList, t: "Auftrag erteilen", d: "Einfach online über unser Auftragsformular" },
   { icon: Package, t: "Instrumente einsenden", d: "Sicher verpackt per Post oder Kurier" },
-  { icon: ScanSearch, t: "Schleifen & Prüfen", d: "Präziser Handschliff in Berlin" },
+  { icon: ScanSearch, t: "Schleifen & Prüfen", d: "Präziser Handschliff in unserer Werkstatt" },
   { icon: Truck, t: "Zurücksenden", d: "Schnell und zuverlässig, optional als Express" },
 ];
 
@@ -86,6 +86,7 @@ export default function ScalerSchaerfenPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
+            image: imageObject("/scaler-schaerfen-lassen-schaerfservice-hartmann.webp", "Dental-Scaler zum Schärfen – Schärfservice Hartmann"),
             name: "Scaler schärfen lassen | Schleifservice Hartmann",
             description:
               "Deutschlandweiter Schleifservice für Dental-Scaler aller gängigen Typen, präzise geschliffen für volle Schärfe.",
@@ -103,7 +104,7 @@ export default function ScalerSchaerfenPage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/scaler.webp"
+            src="/scaler-schaerfen-lassen-schaerfservice-hartmann.webp"
             alt="Dental-Scaler mit geriffeltem Griff in Nahaufnahme vor grauem Hintergrund"
             fill
             className="object-cover"

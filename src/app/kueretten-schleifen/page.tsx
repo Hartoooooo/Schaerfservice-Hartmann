@@ -4,6 +4,7 @@ import { ClipboardList, Package, ScanSearch, Truck } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { HuFriedyTrainingSection } from "@/components/HuFriedyTrainingSection";
+import { imageObject } from "@/lib/imageSchema";
 
 const canonical = "https://www.dentalschleifen.de/kueretten-schleifen";
 
@@ -20,7 +21,6 @@ export const metadata: Metadata = {
     "Küretten Schleifservice",
     "Gracey Küretten schärfen",
     "Universal Küretten schärfen",
-    "Küretten schärfen Berlin",
   ],
   alternates: { canonical: "/kueretten-schleifen" },
   openGraph: {
@@ -41,7 +41,7 @@ const anzeichen = [
 const ablauf = [
   { icon: ClipboardList, t: "Auftrag erteilen", d: "Einfach online über unser Auftragsformular" },
   { icon: Package, t: "Küretten einsenden", d: "Sicher verpackt per Post oder Kurier" },
-  { icon: ScanSearch, t: "Schleifen & Prüfen", d: "Präziser Handschliff und Qualitätsprüfung in Berlin" },
+  { icon: ScanSearch, t: "Schleifen & Prüfen", d: "Präziser Handschliff und Qualitätsprüfung in unserer Werkstatt" },
   { icon: Truck, t: "Zurücksenden", d: "Schnelle Rücksendung – Express auf Wunsch" },
 ];
 
@@ -87,6 +87,7 @@ export default function KuerettenSchaerfenPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
+            image: imageObject("/kueretten-schaerfen-lassen-schaerfservice-hartmann.webp", "Dental-Küretten zum Schärfen – Schärfservice Hartmann"),
             name: "Küretten schärfen lassen | Schleifservice Hartmann",
             description:
               "Deutschlandweiter Schleifservice für Gracey- und Universal-Küretten, präzise geschliffen für volle Schärfe.",
@@ -104,7 +105,7 @@ export default function KuerettenSchaerfenPage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/kueretten.webp"
+            src="/kueretten-schaerfen-lassen-schaerfservice-hartmann.webp"
             alt="Dental-Küretten mit farbigen Kennringen in Nahaufnahme vor grauem Hintergrund"
             fill
             className="object-cover"

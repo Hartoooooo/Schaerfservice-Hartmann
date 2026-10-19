@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
+import { imageObject } from "@/lib/imageSchema";
 
 const canonical = "https://www.dentalschleifen.de/chirurgische-instrumente-schleifen";
 
@@ -15,7 +16,6 @@ export const metadata: Metadata = {
     "chirurgische Instrumente schärfen",
     "OP-Instrumente schärfen",
     "Scheren schärfen Dental",
-    "chirurgische Instrumente schärfen Berlin",
     "chirurgische Instrumente schleifen",
     "Schleifservice chirurgische Instrumente",
   ],
@@ -81,6 +81,7 @@ export default function ChirurgischeInstrumentePage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
+            image: imageObject("/dentale-chirurgische-schere-schaerfen-schaerfservice-hartmann.jpg", "Chirurgische Dental-Schere nach dem Schärfen – Schärfservice Hartmann"),
             name: "Chirurgische Instrumente schärfen lassen | Schleifservice Hartmann",
             description:
               "Deutschlandweiter Schleifservice zum präzisen Schleifen und Aufarbeiten dentaler OP-Instrumente.",
@@ -98,7 +99,7 @@ export default function ChirurgischeInstrumentePage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/dental-schere-schaerfwinkel-berlin.jpg"
+            src="/dentale-chirurgische-schere-schaerfen-schaerfservice-hartmann.jpg"
             alt="Chirurgische Dental-Schere mit Goldgriff in Nahaufnahme vor grauem Hintergrund"
             fill
             className="object-cover"

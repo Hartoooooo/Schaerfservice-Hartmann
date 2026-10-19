@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { blogPosts } from "@/lib/blogPosts";
+import { imageObject } from "@/lib/imageSchema";
 
 /** Interne Verlinkung zu Themenseiten (SEO) */
 const BLOG_TOPIC_LINKS: Record<string, { href: string; label: string }[]> = {
@@ -69,6 +70,21 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <article className="pb-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.excerpt,
+            url: `https://www.dentalschleifen.de/blog/${post.id}`,
+            image: imageObject(post.imageUrl, post.imageAlt),
+            author: { "@type": "Person", name: "Carina Hartmann" },
+            publisher: { "@type": "Organization", name: "Schärfservice Hartmann", url: "https://www.dentalschleifen.de" },
+          }),
+        }}
+      />
       {/* Hero Bild mit Titel-Overlay */}
       <div className="relative w-full h-[50vh] min-h-[360px] max-h-[640px] -mt-2 sm:-mt-3">
         <Image src={post.imageUrl} alt={post.imageAlt} fill className={imageClassName} priority />

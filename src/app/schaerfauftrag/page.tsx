@@ -5,26 +5,23 @@ import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Dentalinstrumente schärfen lassen, Online-Auftrag starten | Schärfservice Hartmann",
+    absolute: "Schärfauftrag online – Instrumente einschicken | Schärfservice Hartmann",
   },
-  description: "Zahnarztinstrumente einschicken und schärfen lassen: 48 Stunden Bearbeitungsdauer ab Eingang, Versandzeit zusätzlich, ab 30 Instrumenten ab 6 € pro Instrument.",
+  description: "Schärfauftrag in 3 Minuten online ausfüllen, Instrumente per Post einschicken, Bearbeitung in der Regel 48 Stunden ab Eingang. Preise je Instrumententyp mit Mengenrabatt.",
   keywords: [
-    "zahnarztinstrumente einschicken schärfen lassen",
-    "instrumente schärfen lassen",
-    "dental schärfen auftrag",
-    "instrumente schleifen",
-    "online schärfauftrag",
-    "scaler schärfen lassen",
-    "küretten schärfen lassen",
-    "raspatorien schärfen",
-    "instrumente schärfen berlin auftrag",
+    "schärfauftrag",
+    "schärfauftrag online",
+    "instrumente einschicken",
+    "instrumente einsenden schärfen",
+    "schleifauftrag dental",
+    "preisliste instrumente schärfen",
   ],
   alternates: {
     canonical: "/schaerfauftrag",
   },
   openGraph: {
-    title: "Dentalinstrumente schärfen lassen, Online-Auftrag starten | Schärfservice Hartmann",
-    description: "Zahnarztinstrumente einschicken und schärfen lassen: 48 Stunden Bearbeitungsdauer ab Eingang, Versandzeit zusätzlich, ab 30 Instrumenten ab 6 € pro Instrument.",
+    title: "Schärfauftrag online – Instrumente einschicken | Schärfservice Hartmann",
+    description: "Schärfauftrag in 3 Minuten online ausfüllen, Instrumente per Post einschicken, Bearbeitung in der Regel 48 Stunden ab Eingang. Preise je Instrumententyp mit Mengenrabatt.",
   },
 };
 
@@ -64,8 +61,8 @@ export default function SchaerfauftragPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Dentalinstrumente schärfen lassen",
-            "description": "Professioneller Schleifservice für dentale und chirurgische Instrumente",
+            "name": "Online-Schärfauftrag",
+            "description": "Schärfauftrag online erstellen und dentale oder chirurgische Instrumente per Post zum Schärfen einschicken",
             "provider": {
               "@type": "LocalBusiness",
               "name": "Schärfservice Hartmann",
@@ -94,7 +91,7 @@ export default function SchaerfauftragPage() {
       {/* Page Header */}
       <section className="relative h-[50svh] min-h-[360px] sm:hidden">
         <Image
-          src="/schleifen bild.JPG"
+          src="/kuerette-schleifplatte-handschliff-schaerfservice-hartmann.jpg"
           alt="Dentalinstrument wird auf einer Schleifplatte geschliffen"
           fill
           priority
@@ -105,7 +102,7 @@ export default function SchaerfauftragPage() {
         <div className="relative z-10 flex h-full items-end px-6 pb-10 text-white">
           <div>
             <h2 className="text-[1.625rem] leading-tight font-semibold mb-3">
-              Instrumente einschicken &amp; schärfen lassen
+              Schärfauftrag online – Instrumente einschicken
             </h2>
             <p className="text-base leading-relaxed text-white/90">
               Online-Auftrag in 3&nbsp;Minuten &middot; in der Regel 48&nbsp;Stunden Bearbeitungsdauer ab Eingang &middot; Versandzeit zusätzlich
@@ -118,7 +115,7 @@ export default function SchaerfauftragPage() {
         <Container>
           <div className="max-w-3xl mx-auto pt-6 pb-10 text-center">
             <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-3">
-              Instrumente einschicken &amp; schärfen lassen
+              Schärfauftrag online – Instrumente einschicken
             </h1>
             <p className="text-lg text-gray-600 leading-relaxed">
               Online-Auftrag in 3&nbsp;Minuten &middot; in der Regel 48&nbsp;Stunden Bearbeitungsdauer ab Eingang &middot; Versandzeit zusätzlich

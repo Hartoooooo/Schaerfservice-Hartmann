@@ -35,12 +35,9 @@ export const metadata: Metadata = {
     "dental schleifen",
     "dental schärfen",
     "Instrumente aufbereiten",
-    "Instrumente Schärfen Berlin",
-    "instrumente schärfen berlin",
-    "instrumente schleifen berlin",
-    "dental schleifen berlin",
-    "dental schärfen berlin",
-    "instrumente aufbereiten berlin",
+    "dentalinstrumente schärfen lassen",
+    "instrumente einschicken schärfen",
+    "schleifservice deutschlandweit",
     "dentalinstrumente schärfen",
     "dentalinstrumente schleifen",
     "medizinische instrumente schärfen",
@@ -71,10 +68,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.dentalschleifen.de/schaerfservice-werkstatt-berlin.jpg",
+        url: "https://www.dentalschleifen.de/kueretten-scaler-geschaerft-schaerfservice-hartmann.jpg",
         width: 1200,
         height: 630,
-        alt: "Schärfservice Hartmann Werkstatt in Berlin, professioneller Schleifservice",
+        alt: "Geschärfte Küretten und Scaler – Schärfservice Hartmann, deutschlandweiter Schleifservice",
       },
     ],
   },
@@ -82,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Schärfservice Hartmann",
     description: "Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
-    images: ["https://www.dentalschleifen.de/schaerfservice-werkstatt-berlin.jpg"],
+    images: ["https://www.dentalschleifen.de/kueretten-scaler-geschaerft-schaerfservice-hartmann.jpg"],
   },
   robots: {
     index: true,
@@ -105,12 +102,6 @@ export const metadata: Metadata = {
       { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-  },
-  other: {
-    "geo.region": "DE-BB",
-    "geo.placename": "Schöneiche bei Berlin",
-    "geo.position": "52.4667;13.7833",
-    "ICBM": "52.4667, 13.7833",
   },
 };
 
@@ -223,7 +214,7 @@ export default function RootLayout({
         {/* Verstecktes Image-Element zum Vorladen des Hero-Bildes - bleibt im Browser-Cache */}
         <div className="fixed -z-50 opacity-0 pointer-events-none">
           <Image
-            src="/schaerfservice-werkstatt-berlin.jpg"
+            src="/kueretten-scaler-geschaerft-schaerfservice-hartmann.jpg"
             alt=""
             width={1920}
             height={1080}

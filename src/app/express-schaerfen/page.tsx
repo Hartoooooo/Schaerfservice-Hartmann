@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ExpressSchaerfenContent from "./ExpressSchaerfenContent";
+import { imageObject } from "@/lib/imageSchema";
 
 export const metadata: Metadata = {
   title: {
@@ -48,6 +49,7 @@ export default function ExpressSchaerfenPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
+            "image": imageObject("/dentalinstrumente-sterilkassette-schaerfservice-hartmann.jpg", "Geschärfte Dentalinstrumente in der Sterilkassette – Schärfservice Hartmann"),
             "name": "Express-Schleifservice Berlin",
             "description": "Dentalinstrumente schnell schärfen lassen: Schleifservice vor Ort oder als 24h-Abhol- und Bringservice im Umkreis von 75 km",
             "provider": {

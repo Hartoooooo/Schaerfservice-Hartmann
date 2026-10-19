@@ -12,11 +12,8 @@ export const metadata: Metadata = {
   keywords: [
     "kontakt instrumente schärfen",
     "dental schärfen kontakt",
-    "instrumente schleifen berlin kontakt",
-    "schärfservice kontakt berlin",
     "Björn Hartmann",
     "Carina Hartmann", 
-    "Schöneiche Berlin",
     "instrumente aufbereiten kontakt"
   ],
   openGraph: {

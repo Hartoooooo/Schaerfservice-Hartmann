@@ -3,6 +3,7 @@ import Image from "next/image";
 import SchaerfkursForm from "@/components/SchaerfkursForm";
 import AiBadge from "@/components/ui/AiBadge";
 import { Container } from "@/components/Container";
+import { imageObject } from "@/lib/imageSchema";
 
 export const metadata: Metadata = {
   title: "Schärfkurs für Zahnarztpraxen, 2h Vor-Ort-Training",
@@ -11,9 +12,7 @@ export const metadata: Metadata = {
     "schärfkurs zahnarztpraxis",
     "instrumente schärfen lernen",
     "dental schärfen schulung",
-    "schärfkurs berlin",
     "instrumentenschärfung lernen",
-    "dental fortbildung berlin",
     "schleiftechnik schulung",
     "instrumente schleifen kurs",
     "schärfkurs praxis",
@@ -130,6 +129,7 @@ export default function SchaerfkursPage() {
             },
             "course": {
               "@type": "Course",
+              "image": imageObject("/schaerfkurs-zahnarztpraxis-schaerfservice-hartmann.jpg", "Schärfkurs in der Zahnarztpraxis – Schärfservice Hartmann"),
               "name": "Schärfkurs für Dentalinstrumente",
               "description": "2-stündiger Schärfkurs zur professionellen Schleiftechnik für dentale Instrumente",
               "provider": "Schärfservice Hartmann",
@@ -150,7 +150,7 @@ export default function SchaerfkursPage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/schaerfkursbild.png"
+            src="/schaerfkurs-zahnarztpraxis-schaerfservice-hartmann.jpg"
             alt="Schärfkurs für Dentalinstrumente, professionelle Schulung in Ihrer Praxis"
             fill
             className="object-cover"
@@ -224,7 +224,7 @@ export default function SchaerfkursPage() {
                 ))}
               </div>
               <p className="text-sm text-gray-500 leading-relaxed">
-                Sie lernen vom selben Spezialisten, der in Berlin täglich Instrumente schleift, prüft und aufbereitet. Wissen aus der täglichen Praxis, nicht aus Handbüchern.
+                Sie lernen vom selben Spezialisten, der täglich Instrumente schleift, prüft und aufbereitet. Wissen aus der täglichen Praxis, nicht aus Handbüchern.
               </p>
             </div>
           </div>

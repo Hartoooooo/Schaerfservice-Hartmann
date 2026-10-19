@@ -8,7 +8,7 @@ export function HeroImagePreload() {
     const link = document.createElement("link");
     link.rel = "preload";
     link.as = "image";
-    link.href = "/schaerfservice-werkstatt-berlin.jpg";
+    link.href = "/kueretten-scaler-geschaerft-schaerfservice-hartmann.jpg";
     link.setAttribute("fetchpriority", "high");
     document.head.appendChild(link);
 

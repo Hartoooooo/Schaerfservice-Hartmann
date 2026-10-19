@@ -16,6 +16,7 @@ import StackingCards, { ServiceCardData } from "@/components/ui/stacking-card";
 import AiBadge from "@/components/ui/AiBadge";
 import HowItWorks09 from "@/components/ui/how-it-works-09";
 import Testimonials from "@/components/ui/testimonial";
+import { imageObject } from "@/lib/imageSchema";
 
 const CUSTOMER_COUNT = 600;
 const INSTRUMENT_COUNT = 20000;
@@ -72,7 +73,7 @@ export default function HomeContent() {
           Professioneller <strong>Schleifservice</strong> zum <strong>Schärfen und Aufarbeiten aller dentalen und chirurgischen Instrumente</strong>. Höchste Qualität durch präzise Handarbeit.
         </>
       ),
-      imageUrl: "/schleifenblau.png",
+      imageUrl: "/scaler-schleifplatte-handschliff-schaerfservice-hartmann.jpg",
       imageAlt: "Instrumente schärfen lassen, professioneller Schleifservice",
       badgeIcon: (
         <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
@@ -87,7 +88,7 @@ export default function HomeContent() {
     {
       title: "Express-Schleifservice in Berlin",
       description: "In 24h wieder scharfe und einsatzbereite Instrumente. Alternativ Inhouse-Service: Wir kommen zu Ihnen und schärfen direkt vor Ort.",
-      imageUrl: "/3 spitzen.JPG",
+      imageUrl: "/dentalinstrumente-geschaerft-schaerfservice-hartmann.jpg",
       imageAlt: "Express-Schleifservice Berlin, Instrumente vor Ort schärfen lassen",
       badgeIcon: (
         <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
@@ -102,7 +103,7 @@ export default function HomeContent() {
     {
       title: "Schärfkurs in Ihrer Praxis",
       description: "Erlernen Sie die richtige Schleiftechnik. Professionelle Schulungen für das Praxisteam und Einzelpersonen mit zertifizierter Expertise.",
-      imageUrl: "/schaerfkursbild.png",
+      imageUrl: "/schaerfkurs-zahnarztpraxis-schaerfservice-hartmann.jpg",
       imageAlt: "Schärfkurse, professionelle Schulung",
       aiImage: true,
       badgeIcon: (
@@ -402,9 +403,10 @@ export default function HomeContent() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
+            "image": imageObject("/kueretten-scaler-geschaerft-schaerfservice-hartmann.jpg", "Geschärfte Küretten und Scaler – Schärfservice Hartmann"),
             "name": "Dentalinstrumente schärfen lassen",
             "description": "Professioneller Schleifservice für dentale und chirurgische Instrumente, deutschlandweit per Einsendeservice",
-            "alternateName": ["dental schleifen", "dental schärfen", "instrumente aufbereiten", "instrumente schärfen berlin"],
+            "alternateName": ["dental schleifen", "dental schärfen", "instrumente aufbereiten"],
             "provider": {
               "@type": "LocalBusiness",
               "name": "Schärfservice Hartmann"
@@ -504,12 +506,7 @@ export default function HomeContent() {
                   "height": 5489
                 }
               },
-              "image": {
-                "@type": "ImageObject",
-                "url": `https://www.dentalschleifen.de${post.imageUrl}`,
-                "width": 1200,
-                "height": 630
-              },
+              "image": imageObject(post.imageUrl, post.imageAlt),
               "mainEntityOfPage": {
               "@type": "WebPage",
               "@id": `https://www.dentalschleifen.de/blog/${post.id}`
@@ -526,8 +523,8 @@ export default function HomeContent() {
       <section className="relative h-[75vh] min-h-[560px] lg:h-screen lg:min-h-0 flex items-stretch lg:items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/schaerfservice-werkstatt-berlin.jpg" 
-            alt="Schärfservice Hartmann Werkstatt in Berlin, professioneller Schleifservice für dentale und chirurgische Instrumente"
+            src="/kueretten-scaler-geschaerft-schaerfservice-hartmann.jpg" 
+            alt="Geschärfte Küretten und Scaler, Schärfservice Hartmann – Schleifservice für dentale und chirurgische Instrumente"
             fill
             className="object-cover object-[15%_center] lg:object-center scale-x-[-1]"
             priority
@@ -599,7 +596,7 @@ export default function HomeContent() {
             </div>
             <div className="relative w-full aspect-[4/3] max-w-xl mx-auto lg:max-w-none lg:aspect-auto lg:h-full lg:min-h-0 min-h-[220px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 order-1 lg:order-2">
               <Image
-                src="/schleifen bild.JPG"
+                src="/kuerette-schleifplatte-handschliff-schaerfservice-hartmann.jpg"
                 alt="Instrumente schärfen lassen, professioneller Schleifservice Hartmann"
                 fill
                 className="object-cover"
@@ -673,7 +670,7 @@ export default function HomeContent() {
             <div className="p-0 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden">
               <div className="relative w-full h-64 mb-0 rounded-t-2xl overflow-hidden">
                 <Image 
-                  src="/schleifenblau.png" 
+                  src="/scaler-schleifplatte-handschliff-schaerfservice-hartmann.jpg" 
                   alt="Instrumente schärfen lassen, professioneller Schleifservice"
                   fill
                   className="object-cover"
@@ -696,7 +693,7 @@ export default function HomeContent() {
                   </svg>
                   <p className="text-sm text-blue-600 font-medium">Herstellerunabhängig</p>
                 </div>
-                <Link href="/schaerfauftrag" title="Dentalinstrumente schärfen lassen, Online Auftrag">
+                <Link href="/schaerfauftrag" title="Schärfauftrag online starten">
                   <InteractiveHoverButton className="w-full" text="Jetzt schärfen lassen" />
                 </Link>
               </div>
@@ -707,7 +704,7 @@ export default function HomeContent() {
             <div className="p-0 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden">
               <div className="relative w-full h-64 mb-0 rounded-t-2xl overflow-hidden">
                 <Image 
-                  src="/3 spitzen.JPG" 
+                  src="/dentalinstrumente-geschaerft-schaerfservice-hartmann.jpg" 
                   alt="Express-Schleifservice Berlin, Instrumente vor Ort schärfen lassen"
                   fill
                   className="object-cover"
@@ -742,7 +739,7 @@ export default function HomeContent() {
             <div className="p-0 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col md:col-span-2 lg:col-span-1 overflow-hidden">
               <div className="relative w-full h-64 mb-0 rounded-t-2xl overflow-hidden">
                 <Image 
-                  src="/schaerfkursbild.png" 
+                  src="/schaerfkurs-zahnarztpraxis-schaerfservice-hartmann.jpg" 
                   alt="Schärfkurse, professionelle Schulung" 
                   fill
                   className="object-cover"
