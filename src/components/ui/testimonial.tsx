@@ -37,6 +37,9 @@ const reviews: readonly Review[] = [
   },
 ];
 
+// Ab dieser Länge wird der Text auf 4 Zeilen gekürzt und ist aufklappbar
+const LONG_REVIEW = 160;
+
 function GoogleLogo() {
   return (
     <svg className="size-6" viewBox="0 0 24 24" aria-label="Google" role="img">
@@ -64,6 +67,7 @@ export default function Testimonials() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
+  const [expanded, setExpanded] = useState<string | null>(null);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -95,19 +99,31 @@ export default function Testimonials() {
     <div>
       <div
         ref={trackRef}
-        className="flex snap-x snap-mandatory items-stretch gap-5 overflow-x-auto px-1 pt-2 pb-4 text-left [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory items-start gap-5 overflow-x-auto px-1 pt-2 pb-4 text-left [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {reviews.map((review) => (
           <StandardCard
             key={review.name}
-            className="!h-auto min-h-80 w-[85%] shrink-0 snap-start p-6 md:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
+            className="!h-auto min-h-76 w-[85%] shrink-0 snap-start p-6 md:min-h-84 md:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
           >
             <div className="flex items-center justify-between gap-4">
               <Stars />
               <GoogleLogo />
             </div>
             <blockquote className="mt-4 flex-1 text-base leading-6 text-gray-600 md:mt-5 md:leading-7">
-              <p>„{review.text}“</p>
+              <p className={review.text.length > LONG_REVIEW && expanded !== review.name ? "line-clamp-4" : undefined}>
+                „{review.text}“
+              </p>
+              {review.text.length > LONG_REVIEW && (
+                <button
+                  type="button"
+                  onClick={() => setExpanded(expanded === review.name ? null : review.name)}
+                  aria-expanded={expanded === review.name}
+                  className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline"
+                >
+                  {expanded === review.name ? "Weniger anzeigen" : "Mehr anzeigen"}
+                </button>
+              )}
             </blockquote>
             <footer className="mt-4 flex items-center gap-3 border-t border-gray-100 pt-4 md:mt-6 md:pt-5">
               {review.image ? (

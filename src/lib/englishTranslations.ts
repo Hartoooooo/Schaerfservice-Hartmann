@@ -387,6 +387,8 @@ const curatedTranslations: Record<string, string> = {
   "Google-Rezension": "Google review",
   "Vorherige Bewertung": "Previous review",
   "Nächste Bewertung": "Next review",
+  "Mehr anzeigen": "Show more",
+  "Weniger anzeigen": "Show less",
   "Alle Google-Rezensionen ansehen": "View all Google reviews",
   "Stumpfe Instrumente früh erkennen": "Spot dull instruments early",
   "Anzeichen richtig deuten, Belastungen vermeiden und Instrumente durch regelmäßiges Schärfen länger nutzen.": "Read the signs correctly, avoid strain and use instruments longer through regular sharpening.",
