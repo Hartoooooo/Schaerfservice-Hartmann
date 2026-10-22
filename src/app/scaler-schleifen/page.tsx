@@ -52,7 +52,7 @@ const warum = [
 ];
 
 const eckdaten = [
-  { label: "ab 6 €", sub: "pro Instrument ab 30" },
+  { label: "ab 6,50 €", sub: "pro Instrument" },
   { label: "7 % Rabatt", sub: "ab 15 Instrumenten" },
   { label: "Handgeschärft", sub: "korrekter Schleifwinkel" },
   { label: "Express", sub: "in Berlin & Umgebung" },
@@ -221,7 +221,7 @@ export default function ScalerSchaerfenPage() {
             <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-8 sm:p-10 text-white shadow-xl">
               <h2 className="text-2xl sm:text-3xl font-semibold mb-3">Bereit, Ihre Scaler schärfen zu lassen?</h2>
               <p className="text-blue-50 leading-relaxed mb-6">
-                Erteilen Sie Ihren Auftrag online in wenigen Minuten – ab 30 Instrumenten ab 6 € pro Instrument.
+                Erteilen Sie Ihren Auftrag online in wenigen Minuten – ab 6,50 € pro Instrument.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button href="/schaerfauftrag" className="bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 font-medium" hover="lift-sm">

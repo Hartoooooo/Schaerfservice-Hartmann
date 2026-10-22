@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     absolute: "Chirurgische Instrumente schärfen lassen | Einsendeservice",
   },
   description:
-    "Chirurgische Instrumente schärfen lassen: Schleifservice für Scheren, Raspatorien und Hebel. Ab 30 Instrumenten ab 6 €, deutschlandweiter Einsendeservice.",
+    "Chirurgische Instrumente schärfen lassen: Schleifservice für Scheren, Raspatorien und Hebel. Ab 6,50 € pro Instrument, deutschlandweiter Einsendeservice.",
   keywords: [
     "chirurgische Instrumente schärfen",
     "OP-Instrumente schärfen",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chirurgische Instrumente schärfen lassen | Einsendeservice",
     description:
-      "Chirurgische Instrumente schärfen lassen: Schleifservice für Scheren, Raspatorien und Hebel. Ab 30 Instrumenten ab 6 €, deutschlandweiter Einsendeservice.",
+      "Chirurgische Instrumente schärfen lassen: Schleifservice für Scheren, Raspatorien und Hebel. Ab 6,50 € pro Instrument, deutschlandweiter Einsendeservice.",
     url: canonical,
   },
 };
@@ -42,7 +42,7 @@ const anzeichen = [
 ];
 
 const eckdaten = [
-  { label: "ab 6 €", sub: "pro Instrument ab 30" },
+  { label: "ab 6,50 €", sub: "pro Instrument" },
   { label: "7 % Rabatt", sub: "ab 15 Instrumenten" },
   { label: "Aufarbeitung", sub: "inklusive Prüfung" },
   { label: "Express", sub: "in Berlin & Umgebung" },
@@ -203,7 +203,7 @@ export default function ChirurgischeInstrumentePage() {
                 verlängert die Lebensdauer erheblich und spart gegenüber dem Neukauf oft 80–90&nbsp;% der Kosten.
               </p>
               <p className="text-gray-700 leading-relaxed font-medium">
-                Ab 30 Instrumenten ab 6 € pro Instrument · Express-Service verfügbar · ab 15 Instrumenten 7&nbsp;% Rabatt.
+                Ab 6,50 € pro Instrument · Express-Service verfügbar · ab 15 Instrumenten 7&nbsp;% Rabatt.
               </p>
             </div>
             <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-8 sm:p-10 text-white shadow-xl">

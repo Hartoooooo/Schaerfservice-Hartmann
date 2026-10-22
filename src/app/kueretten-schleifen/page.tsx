@@ -49,11 +49,11 @@ const vorteile: [string, string][] = [
   ["Präziser", "korrekte Winkel durch erfahrenen Handschliff"],
   ["Materialschonender", "minimaler Materialabtrag"],
   ["Zeitsparender", "kein Aufwand für die Praxis"],
-  ["Günstiger als Neukauf", "ab 30 Instrumenten ab 6 € pro Instrument"],
+  ["Günstiger als Neukauf", "ab 6,50 € pro Instrument"],
 ];
 
 const eckdaten = [
-  { label: "ab 6 €", sub: "pro Instrument ab 30" },
+  { label: "ab 6,50 €", sub: "pro Instrument" },
   { label: "7 % Rabatt", sub: "ab 15 Instrumenten" },
   { label: "Gracey & Universal", sub: "alle gängigen Hersteller" },
   { label: "Express", sub: "in Berlin & Umgebung" },
@@ -264,7 +264,7 @@ export default function KuerettenSchaerfenPage() {
             <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-8 sm:p-10 text-white shadow-xl">
               <h2 className="text-2xl sm:text-3xl font-semibold mb-3">Küretten schärfen lassen leicht gemacht</h2>
               <p className="text-blue-50 leading-relaxed mb-6">
-                Ab 15 Instrumenten 7&nbsp;% Rabatt · ab 30 Instrumenten ab 6 € pro Instrument.
+                Ab 6,50 € pro Instrument · ab 15 Instrumenten 7&nbsp;% Rabatt.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button href="/schaerfauftrag" className="bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 font-medium" hover="lift-sm">
