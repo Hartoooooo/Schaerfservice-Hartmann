@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: {
     absolute: "Dentalinstrumente schärfen lassen | Schärfservice Hartmann",
   },
-  description: "Dentalinstrumente schärfen lassen: professioneller Schleifservice, deutschlandweiter Einsendeservice. Ab 30 Instrumenten ab 6 € pro Instrument.",
+  description: "Dentalinstrumente schärfen lassen: professioneller Schleifservice, deutschlandweiter Einsendeservice. Ab 6,50 € pro Instrument.",
   keywords: [
     "dentalinstrumente schärfen lassen",
     "instrumente schärfen",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Dentalinstrumente schärfen lassen | Schärfservice Hartmann",
-    description: "Dentalinstrumente schärfen lassen: professioneller Schleifservice, deutschlandweiter Einsendeservice. Ab 30 Instrumenten ab 6 € pro Instrument.",
+    description: "Dentalinstrumente schärfen lassen: professioneller Schleifservice, deutschlandweiter Einsendeservice. Ab 6,50 € pro Instrument.",
     url: "https://www.dentalschleifen.de",
   },
 };

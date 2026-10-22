@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     default: "Schärfservice Hartmann | Dentalinstrumente schärfen lassen",
     template: "%s | Schärfservice Hartmann",
   },
-  description: "Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
+  description: "Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Ab 6,50 € pro Instrument, deutschlandweiter Einsendeservice.",
   keywords: [
     "instrumente schärfen",
     "instrumente schleifen", 
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Schärfservice Hartmann",
-    description: "Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
+    description: "Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Ab 6,50 € pro Instrument, deutschlandweiter Einsendeservice.",
     url: "https://www.dentalschleifen.de",
     siteName: "Schärfservice Hartmann",
     locale: "de_DE",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Schärfservice Hartmann",
-    description: "Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Ab 30 Instrumenten ab 6 € pro Instrument, deutschlandweiter Einsendeservice.",
+    description: "Dentalinstrumente schärfen lassen beim professionellen Schleifservice. Ab 6,50 € pro Instrument, deutschlandweiter Einsendeservice.",
     images: ["https://www.dentalschleifen.de/kueretten-scaler-geschaerft-schaerfservice-hartmann.jpg"],
   },
   robots: {
@@ -166,7 +166,7 @@ export default function RootLayout({
                   "closes": "19:00"
                 }
               ],
-              "priceRange": "ab 6 € pro Instrument bei Aufträgen ab 30 Instrumenten",
+              "priceRange": "ab 6,50 € pro Instrument",
               "areaServed": "Deutschland",
               "foundingDate": "2004",
               "hasOfferCatalog": {
