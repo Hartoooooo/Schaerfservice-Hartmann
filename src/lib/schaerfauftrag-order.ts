@@ -49,6 +49,26 @@ export interface OrderPayload {
   allItemNames: string[];
 }
 
+/**
+ * Reihenfolge der Mengen-Felder menge_0 .. menge_9 in der PDF
+ * (public/Schaerfpreisliste2026.pdf), von oben nach unten.
+ * Diese Reihenfolge weicht bewusst von INSTRUMENT_ROWS ab – sie bildet die
+ * tatsächliche visuelle Zeilenanordnung in der PDF ab. Die Namen müssen exakt
+ * mit den `name`-Werten aus INSTRUMENT_ROWS übereinstimmen.
+ */
+const PDF_FIELD_ORDER: string[] = [
+  "Scaler & Küretten", // menge_0
+  "Exkavatoren", // menge_1
+  "Periotome & Tunnelierungsinstr.", // menge_2
+  "Knochenküretten & scharfe Löffel", // menge_3
+  "Raspatorien", // menge_4
+  "Wurzelheber & Luxatoren", // menge_5
+  "Meißel & Gingivalrandschräger", // menge_6
+  "Messer & Schnitzinstrumente", // menge_7
+  "Scheren", // menge_8
+  "Microscheren", // menge_9
+];
+
 const EUR = (n: number) =>
   new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(n);
 
@@ -150,8 +170,11 @@ export async function buildFilledPdf(order: OrderPayload): Promise<Buffer> {
     }
   };
 
-  // Mengen: menge_0 .. menge_9 folgen exakt der Zeilenreihenfolge (oben nach unten)
-  order.allItemNames.forEach((name, idx) => {
+  // Mengen: menge_0 .. menge_9 entsprechen den Zeilen der PDF (oben nach unten).
+  // ACHTUNG: Die physische Zeilenreihenfolge in der PDF weicht von INSTRUMENT_ROWS ab,
+  // daher wird hier anhand des Instrumentennamens dem richtigen Feld zugeordnet
+  // (nicht über den Zeilen-Index von INSTRUMENT_ROWS).
+  PDF_FIELD_ORDER.forEach((name, idx) => {
     const item = order.items.find((i) => i.name === name);
     const qty = item ? item.quantity : 0;
     try {
